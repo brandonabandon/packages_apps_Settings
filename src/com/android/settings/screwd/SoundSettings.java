@@ -22,13 +22,20 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemProperties;
+import android.os.Vibrator;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
+import android.provider.Settings.Global;
+import android.provider.Settings.System;
 import android.util.Log;
 
 import com.android.settings.R;
@@ -49,6 +56,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String PROP_CAMERA_SOUND = "persist.sys.camera-sound";
     private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
 	private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
+	private static final String KEY_POWER_NOTIFICATIONS = "power_notifications";
+    private static final String KEY_POWER_NOTIFICATIONS_VIBRATE = "power_notifications_vibrate";
+    private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
+	
+	// Request code for power notification ringtone picker
+	private static final int REQUEST_CODE_POWER_NOTIFICATIONS_RINGTONE = 1;
 
     private SwitchPreference mSafeHeadsetVolume;
     private ListPreference mAnnoyingNotifications;
@@ -56,6 +69,13 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mCameraSounds;
     private SwitchPreference mVolBtnMusicCtrl;
 	private SwitchPreference mSwapVolumeButtons;
+	private Preference mPowerSoundsRingtone;
+	private SwitchPreference mPowerSounds;
+	private SwitchPreference mPowerSoundsVibrate;
+	
+
+    // Used for power notification uri string if set to silent
+    private static final String POWER_NOTIFICATIONS_SILENT_URI = "silent";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,6 +116,38 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mSwapVolumeButtons = (SwitchPreference)
         	prefScreen.findPreference(KEY_SWAP_VOLUME_BUTTONS);
         mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
+		
+        mPowerSounds = (SwitchPreference) findPreference(KEY_POWER_NOTIFICATIONS);
+        mPowerSounds.setChecked(Global.getInt(getContentResolver(),
+                Global.POWER_NOTIFICATIONS_ENABLED, 0) != 0);
+        mPowerSoundsVibrate = (SwitchPreference) findPreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
+        mPowerSoundsVibrate.setChecked(Global.getInt(getContentResolver(),
+                Global.POWER_NOTIFICATIONS_VIBRATE, 0) != 0);
+        Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if (vibrator == null || !vibrator.hasVibrator()) {
+            removePreference(KEY_POWER_NOTIFICATIONS_VIBRATE);
+        }
+
+        mPowerSoundsRingtone = findPreference(KEY_POWER_NOTIFICATIONS_RINGTONE);
+        String currentPowerRingtonePath =
+                Global.getString(getContentResolver(), Global.POWER_NOTIFICATIONS_RINGTONE);
+
+        if (currentPowerRingtonePath == null) {
+                currentPowerRingtonePath = System.DEFAULT_NOTIFICATION_URI.toString();
+                Global.putString(getContentResolver(),
+                        Global.POWER_NOTIFICATIONS_RINGTONE, currentPowerRingtonePath);
+        }
+        // is it silent ?
+        if (currentPowerRingtonePath.equals(POWER_NOTIFICATIONS_SILENT_URI)) {
+            mPowerSoundsRingtone.setSummary(
+                    getString(R.string.power_notifications_ringtone_silent));
+        } else {
+            final Ringtone ringtone =
+                    RingtoneManager.getRingtone(getActivity(), Uri.parse(currentPowerRingtonePath));
+            if (ringtone != null) {
+                mPowerSoundsRingtone.setSummary(ringtone.getTitle(getActivity()));
+            }
+        }
     }
 
     @Override
@@ -110,6 +162,20 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                     ? (Utils.isTablet(getActivity()) ? 2 : 1) : 0;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, value);
+		} else if (preference == mPowerSounds) {
+            Global.putInt(getContentResolver(),
+                    Global.POWER_NOTIFICATIONS_ENABLED,
+                    mPowerSounds.isChecked() ? 1 : 0);
+
+        } else if (preference == mPowerSoundsVibrate) {
+            Global.putInt(getContentResolver(),
+                    Global.POWER_NOTIFICATIONS_VIBRATE,
+                    mPowerSoundsVibrate.isChecked() ? 1 : 0);
+
+        } else if (preference == mPowerSoundsRingtone) {
+            launchNotificationSoundPicker(REQUEST_CODE_POWER_NOTIFICATIONS_RINGTONE,
+                    Global.getString(getContentResolver(),
+                            Global.POWER_NOTIFICATIONS_RINGTONE));			
 		}			
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -153,6 +219,60 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
         newFragment.setTargetFragment(this, 0);
         newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+	
+	private void launchNotificationSoundPicker(int code, String currentPowerRingtonePath) {
+        final Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE,
+                getString(R.string.power_notifications_ringtone_title));
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE,
+                RingtoneManager.TYPE_NOTIFICATION);
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI,
+                System.DEFAULT_NOTIFICATION_URI);
+        if (currentPowerRingtonePath != null &&
+                !currentPowerRingtonePath.equals(POWER_NOTIFICATIONS_SILENT_URI)) {
+            Uri uri = Uri.parse(currentPowerRingtonePath);
+            if (uri != null) {
+                intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, uri);
+            }
+        }
+        startActivityForResult(intent, code);
+    }
+
+    private void setPowerNotificationRingtone(Intent intent) {
+        final Uri uri = intent.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+
+        final String toneName;
+        final String toneUriPath;
+
+        if ( uri != null ) {
+            final Ringtone ringtone = RingtoneManager.getRingtone(getActivity(), uri);
+            toneName = ringtone.getTitle(getActivity());
+            toneUriPath = uri.toString();
+        } else {
+            // silent
+            toneName = getString(R.string.power_notifications_ringtone_silent);
+            toneUriPath = POWER_NOTIFICATIONS_SILENT_URI;
+        }
+
+        mPowerSoundsRingtone.setSummary(toneName);
+        Global.putString(getContentResolver(),
+                Global.POWER_NOTIFICATIONS_RINGTONE, toneUriPath);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case REQUEST_CODE_POWER_NOTIFICATIONS_RINGTONE:
+                if (resultCode == Activity.RESULT_OK) {
+                    setPowerNotificationRingtone(data);
+                }
+                break;
+            default:
+                super.onActivityResult(requestCode, resultCode, data);
+                break;
+        }
     }
 
     public static class MyAlertDialogFragment extends DialogFragment {

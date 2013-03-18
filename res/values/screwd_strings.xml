@@ -1316,4 +1316,12 @@
     <string name="timeout_1500">1.5 seconds</string>
     <string name="timeout_1000">1 second</string>
     <string name="timeout_500">0.5 seconds</string>
+    
+    <!-- Charging sounds -->
+    <string name="power_notifications_category_title">Charging sounds</string>
+    <string name="power_notifications_enable_title">Enable</string>
+    <string name="power_notifications_enable_summary">Play a sound when connecting or disconnecting the charger</string>
+    <string name="power_notifications_vibrate_title">Vibrate</string>
+    <string name="power_notifications_ringtone_title">Notification sound</string>
+    <string name="power_notifications_ringtone_silent">Silent</string>
 </resources>
