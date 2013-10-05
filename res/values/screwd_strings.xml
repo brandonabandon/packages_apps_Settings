@@ -1953,5 +1953,10 @@
     
     <string name="status_bar_custom_header_title">Custom header image</string>
     <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
+    
+    <!-- LTO download data over wi-fi only -->
+    <string name="lto_download_data_wifi_only">GPS assisted data download</string>
+    <string name="lto_download_data_wifi_only_on">Over any networks</string>
+    <string name="lto_download_data_wifi_only_off">Only over Wi\u2011Fi networks</string>
 
 </resources>
