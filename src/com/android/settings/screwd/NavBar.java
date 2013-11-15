@@ -61,19 +61,12 @@ public class NavBar extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 		
 		
-	 private static final String PREF_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
-    private static final String PREF_NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
-    private static final String PREF_NAVIGATION_BAR_WIDTH = "navigation_bar_width";
-	
-	private static final String NAVIGATION_BAR_TINT = "navigation_bar_tint";
+
+
 	
 	private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
 
-    ListPreference mNavigationBarHeight;
-    ListPreference mNavigationBarHeightLandscape;
-    ListPreference mNavigationBarWidth;
-	private ColorPickerPreference mNavbarButtonTint;
 	
 
 
@@ -85,79 +78,11 @@ public class NavBar extends SettingsPreferenceFragment implements
 		
 		PreferenceScreen prefSet = getPreferenceScreen();
 		
-		mNavigationBarHeight =
-            (ListPreference) findPreference(PREF_NAVIGATION_BAR_HEIGHT);
-        mNavigationBarHeight.setOnPreferenceChangeListener(this);
-
-        mNavigationBarHeightLandscape =
-            (ListPreference) findPreference(PREF_NAVIGATION_BAR_HEIGHT_LANDSCAPE);
-
-        if (ScreenType.isPhone(getActivity())) {
-            prefSet.removePreference(mNavigationBarHeightLandscape);
-            mNavigationBarHeightLandscape = null;
-        } else {
-            mNavigationBarHeightLandscape.setOnPreferenceChangeListener(this);
-        }
-
-        mNavigationBarWidth =
-            (ListPreference) findPreference(PREF_NAVIGATION_BAR_WIDTH);
-
-        if (!ScreenType.isPhone(getActivity())) {
-            prefSet.removePreference(mNavigationBarWidth);
-            mNavigationBarWidth = null;
-        } else {
-            mNavigationBarWidth.setOnPreferenceChangeListener(this);
-        }
-
-        updateDimensionValues();
         setHasOptionsMenu(true);
 		
 
     }
 	
-	private void updateDimensionValues() {
-        int navigationBarHeight = Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_HEIGHT, -1);
-        if (navigationBarHeight == -1) {
-            navigationBarHeight = (int) (getResources().getDimension(
-                    com.android.internal.R.dimen.navigation_bar_height)
-                    / getResources().getDisplayMetrics().density);
-        }
-        mNavigationBarHeight.setValue(String.valueOf(navigationBarHeight));
-        mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntry());
-
-        if (mNavigationBarHeightLandscape != null) {
-            int navigationBarHeightLandscape = Settings.System.getInt(getContentResolver(),
-                                Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -1);
-            if (navigationBarHeightLandscape == -1) {
-                navigationBarHeightLandscape = (int) (getResources().getDimension(
-                        com.android.internal.R.dimen.navigation_bar_height_landscape)
-                        / getResources().getDisplayMetrics().density);
-            }
-            mNavigationBarHeightLandscape.setValue(String.valueOf(navigationBarHeightLandscape));
-            mNavigationBarHeightLandscape.setSummary(mNavigationBarHeightLandscape.getEntry());
-        }
-
-        if (mNavigationBarWidth != null) {
-            int navigationBarWidth = Settings.System.getInt(getContentResolver(),
-                                Settings.System.NAVIGATION_BAR_WIDTH, -1);
-            if (navigationBarWidth == -1) {
-                navigationBarWidth = (int) (getResources().getDimension(
-                        com.android.internal.R.dimen.navigation_bar_width)
-                        / getResources().getDisplayMetrics().density);
-            }
-            mNavigationBarWidth.setValue(String.valueOf(navigationBarWidth));
-            mNavigationBarWidth.setSummary(mNavigationBarWidth.getEntry());
-        }
-		
-		mNavbarButtonTint = (ColorPickerPreference) findPreference(NAVIGATION_BAR_TINT);
-        mNavbarButtonTint.setOnPreferenceChangeListener(this);
-        int intColor = Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.NAVIGATION_BAR_TINT, 0xffffffff);
-        String hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mNavbarButtonTint.setSummary(hexColor);
-        mNavbarButtonTint.setNewPreviewColor(intColor);
-    }
 
     @Override
     public void onResume() {
@@ -165,103 +90,9 @@ public class NavBar extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mNavigationBarWidth) {
-            int index = mNavigationBarWidth.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_WIDTH, Integer.parseInt((String) newValue));
-            updateDimensionValues();
-            return true;
-        } else if (preference == mNavigationBarHeight) {
-            int index = mNavigationBarHeight.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_HEIGHT, Integer.parseInt((String) newValue));
-            updateDimensionValues();
-            return true;
-        } else if (preference == mNavigationBarHeightLandscape) {
-            int index = mNavigationBarHeightLandscape.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, Integer.parseInt((String) newValue));
-            updateDimensionValues();
-            return true;
-		} else if (preference == mNavbarButtonTint) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(newValue)));
-            preference.setSummary(hex);
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_TINT, intHex);
-            return true;	
-        }
+        
 		return false;
     }
-	
-	@Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.add(0, MENU_RESET, 0, R.string.menu_restore)
-                .setIcon(R.drawable.ic_menu_reset)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case MENU_RESET:
-                showDialogInner(DLG_RESET);
-                return true;
-             default:
-                return super.onContextItemSelected(item);
-        }
-    }
 
-    private void showDialogInner(int id) {
-        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
-        newFragment.setTargetFragment(this, 0);
-        newFragment.show(getFragmentManager(), "dialog " + id);
-    }
-
-    public static class MyAlertDialogFragment extends DialogFragment {
-
-        public static MyAlertDialogFragment newInstance(int id) {
-            MyAlertDialogFragment frag = new MyAlertDialogFragment();
-            Bundle args = new Bundle();
-            args.putInt("id", id);
-            frag.setArguments(args);
-            return frag;
-        }
-
-        NavBar getOwner() {
-            return (NavBar) getTargetFragment();
-        }
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            int id = getArguments().getInt("id");
-            switch (id) {
-                case DLG_RESET:
-                    return new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.menu_restore)
-                    .setMessage(R.string.navigation_bar_dimensions_reset_message)
-                    .setNegativeButton(R.string.cancel, null)
-                    .setPositiveButton(R.string.dlg_ok,
-                        new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.NAVIGATION_BAR_HEIGHT, -2);
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -2);
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.NAVIGATION_BAR_WIDTH, -2);
-                            getOwner().updateDimensionValues();
-                        }
-                    })
-                    .create();
-            }
-            throw new IllegalArgumentException("unknown id " + id);
-        }
-
-        @Override
-        public void onCancel(DialogInterface dialog) {
-
-        }
-    }
 }
