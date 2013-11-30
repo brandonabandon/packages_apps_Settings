@@ -1757,4 +1757,8 @@
     
     <string name="slim_action_floats">Slim Actions and Pie</string>	
     <string name="slim_action_floats_summary">Launch Slim and Pie Actions in Floating Window Mode</string>
+    
+    <!-- Development shortcut -->
+    <string name="development_shortcut_title">Development shortcut</string>
+    <string name="development_shortcut_summary">Enable app management shortcuts in recent apps list</string>
 </resources>
