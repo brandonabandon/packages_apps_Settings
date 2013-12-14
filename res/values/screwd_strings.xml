@@ -1551,4 +1551,11 @@
     <string name="carrier_label_hide_label_title">Hide on notifications</string>
     <string name="carrier_label_number_of_notification_icons_title">Max Number of icons before hiding</string>
     
+    <!-- Slim Shortcuts -->
+    <string name="slim_shortcut_picker">Slim Shortcuts</string>
+    
+    <!-- Chamber of Secrets -->
+    <string name="chamber_title">House of Lean</string>
+    <string name="chamber_toast">Lean is ready, pour me a cup.</string>
+    
 </resources>
