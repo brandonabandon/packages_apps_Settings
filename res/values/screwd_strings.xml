@@ -1593,4 +1593,15 @@
     <!-- NavBar Enable IME button -->
     <string name="navbar_ime_title">Hide IME switcher</string>
     <string name="navbar_ime_summary">Hide the IME switcher button on NavBar</string>
+    
+    <!-- Themes -->
+    <string name="theme_settings_title">Something dark side..</string>
+    <string name="theme_auto_mode_title">Switch theme</string>
+    <string name="theme_auto_mode_off">Manual</string>
+    <string name="theme_auto_mode_lightsensor">On light condition change (experimental)</string>
+    <string name="theme_auto_mode_twilight">On daytime</string>
+    <string name="theme_auto_switch_mode_error">Automatic light condition change mode is enabled. Manual switching is not possible.</string>
+    <string name="theme_reset_message">Reset theme state to default?</string>
+    <string name="reset_default_message">Reset default</string>
+    <string name="shortcut_action_theme_switch">Theme switcher</string>
 </resources>
