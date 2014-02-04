@@ -31,7 +31,12 @@
 	<PreferenceScreen
                 android:key="statusbar_color_pref"
         	android:fragment="com.android.settings.apocalypse.StatusBarColor"
-        	android:title="@string/custom_status_bar_header_title" />	
+        	android:title="@string/custom_status_bar_header_title" />
+		
+    	<PreferenceScreen
+        	android:id="@+id/tile_colors"
+        	android:title="@string/color_tile_title"
+        	android:fragment="com.android.settings.apocalypse.TileColors" />		
 		
 	<PreferenceScreen
             	android:key="battery_style_pref"
