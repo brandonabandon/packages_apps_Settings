@@ -1333,6 +1333,9 @@
     <string name="navigation_menu_always_show">Always show</string>
     <string name="navigation_menu_never_show">Never show</string>
     <string name="navigation_menu_default_jb_behavior">Show on request (default)</string>
+    <string name="additional_options_title">Additional options</string>
+    <string name="pie_disable_ime_triggers_title">Reduce trigger size on keyboard</string>
+    <string name="pie_disable_ime_triggers_summary">Reduces left and right trigger size if keyboard is active</string>
     
     <!-- long press back to kill configurable timeout -->
     <string name="kill_app_longpress_timeout_title">Long press timeout</string>
