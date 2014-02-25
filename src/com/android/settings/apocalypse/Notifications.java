@@ -48,11 +48,13 @@ import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.R;
+import com.android.settings.Utils;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.DreamSettings;
 import com.android.settings.slim.DisplayRotation;
 import com.android.settings.apocalypse.AppMultiSelectListPreference;
 import com.android.settings.cyanogenmod.NEWSeekBarPreference;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.lang.Thread;
@@ -79,7 +81,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private static final String PREF_HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN = "heads_up_exclude_from_lock_screen";
 	private static final String PREF_HEADS_UP_EXPANDED = "heads_up_expanded";
 	private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
-	
+	private static final String SMART_PULLDOWN = "smart_pulldown";
 	
 	
     private CheckBoxPreference mNotificationPulse;
@@ -92,6 +94,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mHeadsExcludeFromLockscreen;
 	private CheckBoxPreference mHeadsUpExpanded;
 	private ListPreference mHeadsUpTimeOut;
+	private ListPreference mSmartPulldown;
 	
 	private ColorPickerPreference mHeadsUpBgColor;
     private ColorPickerPreference mHeadsUpTextColor;
@@ -108,6 +111,8 @@ public class Notifications extends SettingsPreferenceFragment implements
 		
 		Resources res = getResources();
 		PackageManager pm = getPackageManager();
+		
+		PreferenceScreen prefSet = getPreferenceScreen();
 
         addPreferencesFromResource(R.xml.notifications_settings);
 		
@@ -219,6 +224,18 @@ public class Notifications extends SettingsPreferenceFragment implements
 		mForceExpandedNotifications = (CheckBoxPreference) findPreference(PREF_FORCE_EXPANDED_NOTIFICATIONS);
         mForceExpandedNotifications.setChecked((Settings.System.getInt(resolver,
                 Settings.System.FORCE_EXPANDED_NOTIFICATIONS, 0) == 1));
+				
+		// Smart pulldown
+        mSmartPulldown = (ListPreference) findPreference(SMART_PULLDOWN);
+        if (Utils.isPhone(getActivity())) {
+            int smartPulldown = Settings.System.getInt(getContentResolver(),
+                    Settings.System.QS_SMART_PULLDOWN, 2);
+            mSmartPulldown.setValue(String.valueOf(smartPulldown));
+            updateSmartPulldownSummary(smartPulldown);
+            mSmartPulldown.setOnPreferenceChangeListener(this);
+        } else {
+            prefSet.removePreference(mSmartPulldown);
+        }		
     }
 	
 	
@@ -329,7 +346,12 @@ public class Notifications extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.HEADS_UP_EXPANDED,
                     (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
-            return true;					
+            return true;
+		} else if (preference == mSmartPulldown) {
+            int smartPulldown = Integer.valueOf((String) objValue);
+            Settings.System.putInt(getContentResolver(), Settings.System.QS_SMART_PULLDOWN,
+                    smartPulldown);
+            updateSmartPulldownSummary(smartPulldown);						
 		}
         return true;
     }
@@ -392,6 +414,16 @@ public class Notifications extends SettingsPreferenceFragment implements
                     getResources().getString(R.string.heads_up_time_out_never_summary));
         } else {
             mHeadsUpTimeOut.setSummary(summary);
+        }
+    }
+	
+	private void updateSmartPulldownSummary(int i) {
+        if (i == 0) {
+            mSmartPulldown.setSummary(R.string.smart_pulldown_off);
+        } else if (i == 1) {
+            mSmartPulldown.setSummary(R.string.smart_pulldown_dismissable);
+        } else if (i == 2) {
+            mSmartPulldown.setSummary(R.string.smart_pulldown_persistent);
         }
     }
 }

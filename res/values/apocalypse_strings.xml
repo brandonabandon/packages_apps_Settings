@@ -1981,6 +1981,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="color_five">Color five</string>
     <string name="color_six">Color six</string>
     <string name="color_tile_title">Tile colors</string>
+    <!-- Smart Pulldown -->
+    <string name="smart_pulldown_title">Smart pulldown</string>
+    <string name="smart_pulldown_summary">Open Quick Settings when there are no notifications present</string>
+    <string name="smart_pulldown_off">Off</string>
+    <string name="smart_pulldown_dismissable">Pulldown if there are no cleareable notifications</string>
+    <string name="smart_pulldown_persistent">Pulldown if there are no notifications</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>
