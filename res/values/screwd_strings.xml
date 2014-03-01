@@ -760,5 +760,8 @@
     <string name="status_bar_battery_percentage_default">Hidden (default)</string>
     <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
     <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
+    
+    <!-- StatusBar Bold Clock -->
+    <string name="clock_use_bold_text">Use Bold Text</string>
 
 </resources>
