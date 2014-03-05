@@ -1329,4 +1329,7 @@
     <string name="status_bar_greeting_title">Greeting</string>
     <string name="status_bar_greeting_summary">Display a custom greeting in the status bar after unlocking the device</string>
     <string name="status_bar_greeting_dialog">Set your greeting</string>
+    
+    <!-- Setting switch summary when device is in Charging mode -->
+    <string name="enable_adb_summary_charging">Device is in Charging mode, USB debugging is disabled</string>
 </resources>

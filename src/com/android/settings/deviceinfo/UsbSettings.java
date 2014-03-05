@@ -23,7 +23,7 @@ import android.content.IntentFilter;
 import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.os.UserManager;
-import android.preference.CheckBoxPreference;
+import android.preference.SwitchPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.util.Log;
@@ -41,10 +41,12 @@ public class UsbSettings extends SettingsPreferenceFragment {
 
     private static final String KEY_MTP = "usb_mtp";
     private static final String KEY_PTP = "usb_ptp";
+    private static final String KEY_CHARGING = "usb_charging";
 
     private UsbManager mUsbManager;
-    private CheckBoxPreference mMtp;
-    private CheckBoxPreference mPtp;
+    private SwitchPreference mMtp;
+    private SwitchPreference mPtp;
+    private SwitchPreference mCharging;
     private boolean mUsbAccessoryMode;
 
     private final BroadcastReceiver mStateReceiver = new BroadcastReceiver() {
@@ -66,8 +68,9 @@ public class UsbSettings extends SettingsPreferenceFragment {
         addPreferencesFromResource(R.xml.usb_settings);
         root = getPreferenceScreen();
 
-        mMtp = (CheckBoxPreference)root.findPreference(KEY_MTP);
-        mPtp = (CheckBoxPreference)root.findPreference(KEY_PTP);
+        mMtp = (SwitchPreference)root.findPreference(KEY_MTP);
+        mPtp = (SwitchPreference)root.findPreference(KEY_PTP);
+        mCharging = (SwitchPreference)root.findPreference(KEY_CHARGING);
 
         UserManager um = (UserManager) getActivity().getSystemService(Context.USER_SERVICE);
         if (um.hasUserRestriction(UserManager.DISALLOW_USB_FILE_TRANSFER)) {
@@ -107,13 +110,21 @@ public class UsbSettings extends SettingsPreferenceFragment {
         if (UsbManager.USB_FUNCTION_MTP.equals(function)) {
             mMtp.setChecked(true);
             mPtp.setChecked(false);
+            mCharging.setChecked(false);
         } else if (UsbManager.USB_FUNCTION_PTP.equals(function)) {
             mMtp.setChecked(false);
             mPtp.setChecked(true);
-        } else  {
+            mCharging.setChecked(false);
+        }  else if (UsbManager.USB_FUNCTION_CHARGING.equals(function)) {
             mMtp.setChecked(false);
             mPtp.setChecked(false);
+            mCharging.setChecked(true);
+        }  else  {
+            mMtp.setChecked(false);
+            mPtp.setChecked(false);
+            mCharging.setChecked(false);
         }
+
         UserManager um = (UserManager) getActivity().getSystemService(Context.USER_SERVICE);
         if (um.hasUserRestriction(UserManager.DISALLOW_USB_FILE_TRANSFER)) {
             Log.e(TAG, "USB is locked down");
@@ -151,6 +162,8 @@ public class UsbSettings extends SettingsPreferenceFragment {
             function = UsbManager.USB_FUNCTION_MTP;
         } else if (preference == mPtp && mPtp.isChecked()) {
             function = UsbManager.USB_FUNCTION_PTP;
+        } else if (preference == mCharging && mCharging.isChecked()) {
+            function = UsbManager.USB_FUNCTION_CHARGING;
         }
 
         mUsbManager.setCurrentFunction(function, true);
