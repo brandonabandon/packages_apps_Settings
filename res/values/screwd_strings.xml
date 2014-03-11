@@ -776,8 +776,13 @@
     <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
     <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
     
-    <!-- StatusBar Bold Clock -->
-    <string name="clock_use_bold_text">Use Bold Text</string>
+    <!-- StatusBar Clock Styles -->
+    <string name="clock_font_style_title">Font styles</string>
+    <string name="clock_font_bold">Bold</string>
+    <string name="clock_font_condensed">Condensed</string>
+    <string name="clock_font_light">Light</string>
+    <string name="clock_font_light_italic">Light italic</string>
+    <string name="clock_font_normal">Normal</string>
     
     <!-- Unaccounted and overcounted battery stats -->
     <string name="show_unac_and_overcounted_stats_title">Show unaccounted/overcounted stats</string>
