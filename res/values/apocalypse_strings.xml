@@ -2114,6 +2114,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="overscroll_summary">Choose how scrollable objects look when they overshoot</string>
     <string name="overscroll_weight_title">Over scrolling weight</string>
     <string name="overscroll_weight_summary">Select the weight of the scrollable objects</string>
+    <!-- On the go -->
+    <string name="power_menu_onthego_title">On-The-Go Mode</string>
+    <string name="power_menu_onthego_title_summary">Enables On-The-Go Mode button in power menu.</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>

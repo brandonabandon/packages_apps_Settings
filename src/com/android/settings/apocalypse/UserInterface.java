@@ -68,6 +68,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
 	private static final String PREF_STATUS_BAR_CLOCK_LOCKSCREEN = "status_bar_clock_lockscreen";
 	private static final String TOGGLE_CARRIER_LOGO = "toggle_carrier_logo";
+	private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
 	
 	
     private static final String ROTATION_ANGLE_0 = "0";
@@ -83,6 +84,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mExpandedDesktopNoNavbarPref;
 	private CheckBoxPreference mClockInStatusbar;
 	private CheckBoxPreference mToggleCarrierLogo;
+	private CheckBoxPreference mOnTheGoPowerMenu;
 	
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -135,11 +137,17 @@ public class UserInterface extends SettingsPreferenceFragment implements
         } catch (RemoteException e) {
             Log.e(TAG, "Error getting navigation bar status");
         }
-		
+		//Clock in status bar on Keyguard
 		mClockInStatusbar = (CheckBoxPreference) findPreference(PREF_STATUS_BAR_CLOCK_LOCKSCREEN);
         mClockInStatusbar.setChecked(Settings.System.getInt(getContentResolver(),
                  Settings.System.STATUS_BAR_CLOCK_LOCKSCREEN, 0) == 1);
-        mClockInStatusbar.setOnPreferenceChangeListener(this);		
+        mClockInStatusbar.setOnPreferenceChangeListener(this);
+		
+		// On the go
+        mOnTheGoPowerMenu = (CheckBoxPreference) findPreference(POWER_MENU_ONTHEGO_ENABLED);
+        mOnTheGoPowerMenu.setChecked(Settings.System.getInt(getContentResolver(),
+        Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0) == 1);
+        mOnTheGoPowerMenu.setOnPreferenceChangeListener(this);		
     }
 	
     @Override
@@ -235,6 +243,10 @@ public class UserInterface extends SettingsPreferenceFragment implements
             boolean value = (Boolean) objValue;
             updateExpandedDesktop(value ? 2 : 0);
             return true;
+		} else if (preference == mOnTheGoPowerMenu) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.POWER_MENU_ONTHEGO_ENABLED, value ? 1 : 0);	
 		}			
 
         return true;
