@@ -1709,7 +1709,8 @@
         <activity android:name=".apocalypse.Pie" />
         <activity android:name=".apocalypse.PieColor" />
 	<activity android:name=".apocalypse.PieTargets" />
-
+	<activity android:name=".apocalypse.CarrierLabel" />
+	
         <activity android:name=".profiles.ProfilesSettings" />
 
         <activity android:name=".chameleonos.labs.gestureanywhere.GestureAnywhereBuilderActivity" />

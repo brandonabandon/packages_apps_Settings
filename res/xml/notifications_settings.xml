@@ -149,16 +149,10 @@
             	android:showSilent="false"
             	android:dependency="noti_reminder_enabled" />		    
 	    
-	    <com.android.settings.slim.CustomCarrier
-            	android:key="notification_custom_carrier_label"
-            	android:title="@string/notification_custom_carrier_label_title"
-            	android:dialogTitle="@string/notification_custom_carrier_label_title"
-            	android:positiveButtonText="@string/save"
-            	android:negativeButtonText="@string/cancel"
-            	android:selectAllOnFocus="true"
-            	android:imeOptions="actionDone"
-            	android:inputType="textNoSuggestions"
-            	android:persistent="false" /> 
+	    <PreferenceScreen
+        	android:key="carrier_label"
+        	android:fragment="com.android.settings.apocalypse.CarrierLabel"
+        	android:title="@string/carrier_label_title" /> 
 	    
 	    <Preference
             	android:fragment="com.android.settings.slim.NotificationDrawerStyle"
