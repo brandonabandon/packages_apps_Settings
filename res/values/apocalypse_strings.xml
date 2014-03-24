@@ -1945,6 +1945,20 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="battery_bolt_color">Bolt charging color</string>
     <string name="battery_text_charging_color">Percentage text charging color</string>
     <string name="battery_style_reset_message">Reset all battery colors?</string>
+    <!-- Status bar color -->
+    <string name="custom_status_bar_header_title">System bars color</string>
+    <string name="custom_status_bar_color_title">Custom system bars color</string>
+    <string name="status_bar_opaque_color">Opaque color</string>
+    <string name="status_bar_transparent_color">Dimmed color</string>
+    <string name="status_bar_color_reset">Reset status bar color</string>
+    <string name="restart_status_bar_menu_title">Restart status bar</string>
+    <string name="restart_status_bar_title">Restart?</string>
+    <string name="restart_status_bar_message">Restarting the System UI will significally change the values you modify.</string>
+    <string name="custom_system_icon_color_title">Custom system icon color</string>
+    <string name="system_icon_color">Icon color</string>
+    <string name="custom_color_summary">Override the system color of the System UI</string>
+    <string name="custom_status_bar_apply_title">Apply</string>
+    <string name="custom_status_bar_apply_summary">Restart SystemUI to apply changes to\nthe system bars colors.</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>
