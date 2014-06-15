@@ -1332,4 +1332,5 @@
     
     <!-- Setting switch summary when device is in Charging mode -->
     <string name="enable_adb_summary_charging">Device is in Charging mode, USB debugging is disabled</string>
+    <string name="enable_adb_summary_charging">Device is in Charging mode, USB debugging is disabled</string>
 </resources>
