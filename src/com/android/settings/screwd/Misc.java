@@ -52,10 +52,10 @@ public class Misc extends SettingsPreferenceFragment implements
 		
 		
 	private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
-	
-	
+	private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
 	
 	private CheckBoxPreference mKillAppLongpressBack;
+	private SwitchPreference mDisableIM;
 	
 	private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 	
@@ -68,7 +68,14 @@ public class Misc extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.screwd_misc_settings);
 		
+		ContentResolver resolver = getActivity().getContentResolver();
+		
 		mKillAppLongpressBack = findAndInitCheckboxPref(KILL_APP_LONGPRESS_BACK);
+		
+		mDisableIM = (SwitchPreference) findPreference(DISABLE_IMMERSIVE_MESSAGE);
+        mDisableIM.setChecked((Settings.System.getInt(resolver,
+                Settings.System.DISABLE_IMMERSIVE_MESSAGE, 0) == 1));
+		mDisableIM.setOnPreferenceChangeListener(this);		
 
     }
 
@@ -79,6 +86,12 @@ public class Misc extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+		if  (preference == mDisableIM) {  
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.DISABLE_IMMERSIVE_MESSAGE,
+					(Boolean) newValue ? 1 : 0);
+            return true;
+		}	
         return false;
     }
 	

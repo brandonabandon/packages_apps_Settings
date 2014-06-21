@@ -28,6 +28,13 @@
         android:key="recents_show_hide_search_bar"
         android:title="@string/recents_show_searchbar"
         android:summary="@string/recents_show_searchbar_summary"
-        android:defaultValue="false" />	
+        android:defaultValue="false" />
+	
+     <SwitchPreference
+        android:key="disable_immersive_message"
+        android:title="@string/disable_immersive_message_title"
+        android:summary="@string/disable_immersive_message_summary"
+        android:persistent="false"
+	android:defaultValue="false" />		
 
 </PreferenceScreen>
