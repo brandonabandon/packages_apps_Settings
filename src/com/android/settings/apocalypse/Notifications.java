@@ -24,6 +24,7 @@ import android.app.admin.DevicePolicyManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.ContentObserver;
@@ -77,6 +78,8 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private static final String PREF_FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
 	private static final String PREF_HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN = "heads_up_exclude_from_lock_screen";
 	private static final String PREF_HEADS_UP_EXPANDED = "heads_up_expanded";
+	private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
+	
 	
 	
     private CheckBoxPreference mNotificationPulse;
@@ -88,6 +91,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mForceExpandedNotifications;
 	private CheckBoxPreference mHeadsExcludeFromLockscreen;
 	private CheckBoxPreference mHeadsUpExpanded;
+	private ListPreference mHeadsUpTimeOut;
 	
 	private ColorPickerPreference mHeadsUpBgColor;
     private ColorPickerPreference mHeadsUpTextColor;
@@ -103,6 +107,7 @@ public class Notifications extends SettingsPreferenceFragment implements
         ContentResolver resolver = getActivity().getContentResolver();
 		
 		Resources res = getResources();
+		PackageManager pm = getPackageManager();
 
         addPreferencesFromResource(R.xml.notifications_settings);
 		
@@ -186,6 +191,23 @@ public class Notifications extends SettingsPreferenceFragment implements
         }
         mHeadsUpTextColor.setNewPreviewColor(intTextColor);
         setHasOptionsMenu(true);
+		
+		//Heads Up Timeout
+		Resources systemUiResources;
+        try {
+            systemUiResources = pm.getResourcesForApplication("com.android.systemui");
+        } catch (Exception e) {
+            return;
+        }
+
+        int defaultTimeOut = systemUiResources.getInteger(systemUiResources.getIdentifier(
+                    "com.android.systemui:integer/heads_up_notification_decay", null, null));
+        mHeadsUpTimeOut = (ListPreference) findPreference(PREF_HEADS_UP_TIME_OUT);
+        mHeadsUpTimeOut.setOnPreferenceChangeListener(this);
+        int headsUpTimeOut = Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_NOTIFCATION_DECAY, defaultTimeOut);
+        mHeadsUpTimeOut.setValue(String.valueOf(headsUpTimeOut));
+        updateHeadsUpTimeOutSummary(headsUpTimeOut);
 		
 		//Show HeadsUp at bottom		
 		mShowHeadsUpBottom = (CheckBoxPreference) findPreference(PREF_SHOW_HEADS_UP_BOTTOM);
@@ -272,6 +294,13 @@ public class Notifications extends SettingsPreferenceFragment implements
                     Settings.System.HEADS_UP_BG_COLOR,
                     intHex);
             return true;
+		} else if (preference == mHeadsUpTimeOut) {
+            int headsUpTimeOut = Integer.valueOf((String) objValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.HEADS_UP_NOTIFCATION_DECAY,
+                    headsUpTimeOut);
+            updateHeadsUpTimeOutSummary(headsUpTimeOut);
+            return true;	
         } else if (preference == mHeadsUpTextColor) {
             String hexText = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(objValue)));
@@ -353,5 +382,16 @@ public class Notifications extends SettingsPreferenceFragment implements
                 Settings.System.HEADS_UP_TEXT_COLOR, 0);
         mHeadsUpTextColor.setNewPreviewColor(DEFAULT_TEXT_COLOR);
         mHeadsUpTextColor.setSummary(R.string.default_color);
+    }
+	
+	private void updateHeadsUpTimeOutSummary(int value) {
+        String summary = getResources().getString(R.string.heads_up_time_out_summary,
+                value / 1000);
+        if (value == 0) {
+            mHeadsUpTimeOut.setSummary(
+                    getResources().getString(R.string.heads_up_time_out_never_summary));
+        } else {
+            mHeadsUpTimeOut.setSummary(summary);
+        }
     }
 }
