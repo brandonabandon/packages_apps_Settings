@@ -1336,6 +1336,8 @@
     <string name="additional_options_title">Additional options</string>
     <string name="pie_disable_ime_triggers_title">Reduce trigger size on keyboard</string>
     <string name="pie_disable_ime_triggers_summary">Reduces left and right trigger size if keyboard is active</string>
+    <string name="pie_trigger_sensitivity_title">Trigger sensitivity"</string>
+    <string name="pie_trigger_sensitivity_summary">Adjust the pie trigger sensitivity</string>
     
     <!-- long press back to kill configurable timeout -->
     <string name="kill_app_longpress_timeout_title">Long press timeout</string>
