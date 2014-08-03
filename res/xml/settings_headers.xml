@@ -104,6 +104,13 @@
         android:fragment="com.android.settings.profiles.ProfilesSettings"
         android:title="@string/profiles_settings_title" />
 	
+    <!-- Privacy Guard -->	
+    <header
+            android:fragment="com.android.settings.privacyguard.PrivacyGuardManager"
+            android:key="privacy_guard_manager"
+            android:summary="@string/privacy_guard_manager_summary"
+            android:title="@string/privacy_guard_manager_title" />	
+	
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
         android:title="@string/header_category_device" />
