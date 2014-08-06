@@ -1871,6 +1871,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Heads Up Floating Window -->
     <string name="heads_up_floating_window_title">HeadsUp in floating window</string>
     <string name="heads_up_floating_window_summary">Launches floating window from Heads Up</string>
+    <!-- Heads Up Exclude from Lockscreen -->
+    <string name="heads_up_exclude_from_lock_screen">Disable on lockscreen</string>
     <!-- Heads Up Colors -->
     <string name="heads_up_bg_color_title">HeadsUp Background color</string>
     <string name="heads_up_text_color_title">HeadsUp Text color</string>

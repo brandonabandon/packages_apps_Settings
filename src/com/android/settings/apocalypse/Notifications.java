@@ -75,6 +75,7 @@ public class Notifications extends SettingsPreferenceFragment implements
     private static final String PREF_HEADS_UP_TEXT_COLOR = "heads_up_text_color";
 	private static final String PREF_SHOW_HEADS_UP_BOTTOM = "show_heads_up_bottom";
 	private static final String PREF_FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
+	private static final String PREF_HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN = "heads_up_exclude_from_lock_screen";
 	
 	
     private CheckBoxPreference mNotificationPulse;
@@ -84,6 +85,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	CheckBoxPreference mHeadsUpFloatingWindow;
 	private CheckBoxPreference mShowHeadsUpBottom;
 	private CheckBoxPreference mForceExpandedNotifications;
+	private CheckBoxPreference mHeadsExcludeFromLockscreen;
 	
 	private ColorPickerPreference mHeadsUpBgColor;
     private ColorPickerPreference mHeadsUpTextColor;
@@ -155,6 +157,12 @@ public class Notifications extends SettingsPreferenceFragment implements
             mHeadsUpBgColor.setSummary(hexColor);
         }
         mHeadsUpBgColor.setNewPreviewColor(intColor);
+		
+		//Exclude Heads Up from lockscreen
+		mHeadsExcludeFromLockscreen = (CheckBoxPreference) findPreference(PREF_HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN);
+        mHeadsExcludeFromLockscreen.setChecked(Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN, 0, UserHandle.USER_CURRENT) == 1);
+        mHeadsExcludeFromLockscreen.setOnPreferenceChangeListener(this);
 
         // Heads Up text color
         mHeadsUpTextColor =
@@ -274,7 +282,12 @@ public class Notifications extends SettingsPreferenceFragment implements
                     Settings.System.SHOW_HEADS_UP_BOTTOM,
                     (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
             Helpers.restartSystemUI();
-            return true;			
+            return true;
+		} else if (preference == mHeadsExcludeFromLockscreen) {
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN,
+                    (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
+            return true;				
 		}
         return true;
     }
