@@ -1731,8 +1731,11 @@
             </intent-filter>
         </activity>
 
+
         <activity android:name="Settings$ThemeSettingsActivity"
                   android:label="@string/themes_settings_title"
+
+
                   android:taskAffinity=""
                   android:excludeFromRecents="true">
             <intent-filter>
@@ -1927,5 +1930,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+	
+	<activity android:name=".cyanogenmod.LockscreenTargets" />
+	<activity android:name=".cyanogenmod.LockscreenInterface" />
+	
     </application>
 </manifest>
