@@ -1365,4 +1365,5 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     
     <!-- Misc -->
     <string name="save">Save</string>
-    <string name="cancel">Cancel</string>  
+    <string name="cancel">Cancel</string> 
+</resources>     
