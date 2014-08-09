@@ -40,7 +40,7 @@
                 android:entries="@array/screen_timeout_entries"
                 android:entryValues="@array/screen_timeout_values" />
 		
-	<com.android.settings.AOSPAL.CustomCarrier
+	<com.android.settings.slim.CustomCarrier
             android:key="notification_custom_carrier_label"
             android:title="@string/notification_custom_carrier_label_title"
             android:dialogTitle="@string/notification_custom_carrier_label_title"
