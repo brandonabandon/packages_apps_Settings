@@ -1356,6 +1356,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="display_rotation_90_title">90 degrees</string>
     <string name="display_rotation_180_title">180 degrees</string>
     <string name="display_rotation_270_title">270 degrees</string>
-
-
-</resources>
+    
+    <!-- Carrier label -->
+    <string name="notification_carrier_label_title">Carrier label</string>
+    <string name="notification_custom_carrier_label_title">Custom carrier label</string>
+    <string name="notification_custom_carrier_label_explain">Please enter a new label. Enter an empty label to revert to stock label.</string>
+    <string name="notification_custom_carrier_label_notset">Custom label currently not set</string> 
+    
+    <!-- Misc -->
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>  
