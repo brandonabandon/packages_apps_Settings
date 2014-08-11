@@ -76,6 +76,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private static final String PREF_SHOW_HEADS_UP_BOTTOM = "show_heads_up_bottom";
 	private static final String PREF_FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
 	private static final String PREF_HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN = "heads_up_exclude_from_lock_screen";
+	private static final String PREF_HEADS_UP_EXPANDED = "heads_up_expanded";
 	
 	
     private CheckBoxPreference mNotificationPulse;
@@ -86,6 +87,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mShowHeadsUpBottom;
 	private CheckBoxPreference mForceExpandedNotifications;
 	private CheckBoxPreference mHeadsExcludeFromLockscreen;
+	private CheckBoxPreference mHeadsUpExpanded;
 	
 	private ColorPickerPreference mHeadsUpBgColor;
     private ColorPickerPreference mHeadsUpTextColor;
@@ -138,7 +140,7 @@ public class Notifications extends SettingsPreferenceFragment implements
             }
         }
 		
-		//Heads Up in FLoating Window
+		//Heads Up in Floating Window
 		mHeadsUpFloatingWindow = (CheckBoxPreference) findPreference(PREF_HEADS_UP_FLOATING_WINDOW);
 		mHeadsUpFloatingWindow.setChecked(Settings.System.getIntForUser(getContentResolver(),
 		Settings.System.HEADS_UP_FLOATING_WINDOW, 1, UserHandle.USER_CURRENT) == 1);
@@ -163,6 +165,12 @@ public class Notifications extends SettingsPreferenceFragment implements
         mHeadsExcludeFromLockscreen.setChecked(Settings.System.getIntForUser(getContentResolver(),
                 Settings.System.HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN, 0, UserHandle.USER_CURRENT) == 1);
         mHeadsExcludeFromLockscreen.setOnPreferenceChangeListener(this);
+		
+		//Heads Up: Always Show Expanded
+		mHeadsUpExpanded = (CheckBoxPreference) findPreference(PREF_HEADS_UP_EXPANDED);
+        mHeadsUpExpanded.setChecked(Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.HEADS_UP_EXPANDED, 0, UserHandle.USER_CURRENT) == 1);
+        mHeadsUpExpanded.setOnPreferenceChangeListener(this);
 
         // Heads Up text color
         mHeadsUpTextColor =
@@ -287,7 +295,12 @@ public class Notifications extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN,
                     (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
-            return true;				
+            return true;
+		} else if (preference == mHeadsUpExpanded) {
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.HEADS_UP_EXPANDED,
+                    (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
+            return true;					
 		}
         return true;
     }
