@@ -81,6 +81,12 @@
             android:key="notification_peek"
             android:title="@string/notification_peek_title"
             android:summary="@string/notification_peek_summary" />
+	    
+	<Preference
+            android:fragment="com.android.settings.slim.NotificationDrawerStyle"
+            android:key="notification_style"
+            android:title="@string/notification_style_title"
+            android:summary="@string/notification_style_summary" />   
 
 
 </PreferenceScreen>
