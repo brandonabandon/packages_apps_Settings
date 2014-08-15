@@ -32,11 +32,6 @@
                 android:fragment="com.android.settings.slim.DisplayRotation"
                 android:title="@string/display_rotation_title" />
 		
-	<PreferenceScreen
-            android:key="gesture_anywhere"
-            android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
-            android:icon="@drawable/ic_dt_gesture_anywhere"
-            android:title="@string/gesture_anywhere_title" />	
 
         <ListPreference
                 android:key="screen_timeout"
@@ -60,6 +55,11 @@
                 android:key="wifi_display"
                 android:title="@string/wifi_display_settings_title"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
+	
+	<PreferenceScreen
+            android:key="gesture_anywhere"
+            android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
+            android:title="@string/gesture_anywhere_title" />		
 
         <!-- Notifications -->
         <PreferenceCategory

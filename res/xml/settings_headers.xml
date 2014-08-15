@@ -103,7 +103,6 @@
         android:icon="@drawable/ic_settings_profiles"
         android:fragment="com.android.settings.profiles.ProfilesSettings"
         android:title="@string/profiles_settings_title" />
-		
 	
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
