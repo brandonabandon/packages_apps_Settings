@@ -57,7 +57,7 @@
     <string name="increasing_ring_interval_10seconds">10 seconds</string>
 
     <!-- Profiles settings -->
-    <string name="profiles_settings_title">CM\'s Profiles</string>
+    <string name="profiles_settings_title">Profiles</string>
     <string name="profiles_add">Add</string>
     <string name="profile_menu_delete">Delete</string>
     <string name="profile_settings_title">Profile</string>
@@ -297,7 +297,7 @@
     <string name="lockscreen_quick_unlock_control_summary">Unlock password/pin lockscreen without pressing enter button</string>
 
     <!-- ROM control -->
-    <string name="rom_control_title">AOKP\'s ROM control</string>
+    <string name="rom_control_title">ROM control</string>
 
     <!-- Device specific settings -->
     <string name="customize">Customize</string>
