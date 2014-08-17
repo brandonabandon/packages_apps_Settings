@@ -51,7 +51,13 @@
      	    android:title="@string/toast_animation_title"
      	    android:entries="@array/toast_animation_entries"
      	    android:entryValues="@array/toast_animation_values"
-     	    android:persistent="false" />    
+     	    android:persistent="false" />
+	    
+	<PreferenceScreen
+	    android:key="overscroll_effects"
+	    android:title="@string/ui_overscroll_title"
+	    android:summary="@string/overscroll_weight_summary"
+	    android:fragment="com.android.settings.screwd.OverscrollEffects" />        
 
 
 </PreferenceScreen>
