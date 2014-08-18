@@ -2006,6 +2006,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="noti_reminder_interval_3s">3 seconds</string>
     <string name="noti_reminder_interval_3dot5s">3.5 second</string>
     <string name="noti_reminder_interval_4s">4 seconds</string>
+    <!-- Disable Boot Audio -->
+    <string name="disable_bootaudio_title">Disable boot audio</string>
+    <string name="disable_bootaudio_summary">Quiet</string>
+    <string name="disable_bootaudio_summary_disabled">To enable boot audio, you must have an MP3 file at \n/system/media/audio.mp3</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>

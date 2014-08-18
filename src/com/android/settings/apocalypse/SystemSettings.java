@@ -48,6 +48,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.apocalypse.AppMultiSelectListPreference;
 import com.android.settings.cyanogenmod.NEWSeekBarPreference;
 import com.android.settings.util.CMDProcessor;
+
 import java.io.File;
 import java.lang.Thread;
 import java.util.HashSet;
@@ -63,9 +64,11 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 		
     	private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
 		private static final String DISABLE_FC_NOTIFICATIONS = "disable_fc_notifications";
+		private static final String DISABLE_BOOTAUDIO = "disable_bootaudio";
 	
 
     	private CheckBoxPreference mDisableFC;
+		private CheckBoxPreference mDisableBootAudio;
 	
 	
     @Override
@@ -89,6 +92,19 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         mDisableFC = (CheckBoxPreference) findPreference(DISABLE_FC_NOTIFICATIONS);
         mDisableFC.setChecked((Settings.System.getInt(resolver,
                 Settings.System.DISABLE_FC_NOTIFICATIONS, 0) == 1));
+				
+		// Boot audio
+        mDisableBootAudio = (CheckBoxPreference) findPreference("disable_bootaudio");
+
+        if(!new File("/system/media/audio.mp3").exists() &&
+                !new File("/system/media/boot_audio").exists() ) {
+            mDisableBootAudio.setEnabled(false);
+            mDisableBootAudio.setSummary(R.string.disable_bootaudio_summary_disabled);
+        } else {
+            mDisableBootAudio.setChecked(!new File("/system/media/audio.mp3").exists());
+            if (mDisableBootAudio.isChecked())
+                mDisableBootAudio.setSummary(R.string.disable_bootaudio_summary);
+        }		
 		        		
     }
 	
@@ -112,7 +128,20 @@ public class SystemSettings extends SettingsPreferenceFragment implements
             boolean checked = ((CheckBoxPreference)preference).isChecked();
             Settings.System.putInt(resolver,
                     Settings.System.DISABLE_FC_NOTIFICATIONS, checked ? 1:0);
-			
+		} else if (preference == mDisableBootAudio) {
+            boolean checked = ((CheckBoxPreference) preference).isChecked();
+            if (checked) {
+                Helpers.getMount("rw");
+                CMDProcessor.runSuCommand(
+                        "mv /system/media/audio.mp3 /system/media/boot_audio");
+                Helpers.getMount("ro");
+                preference.setSummary(R.string.disable_bootaudio_summary);
+            } else {
+                Helpers.getMount("rw");
+                CMDProcessor.runSuCommand(
+                        "mv /system/media/boot_audio /system/media/audio.mp3");
+                Helpers.getMount("ro");
+            }					
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
