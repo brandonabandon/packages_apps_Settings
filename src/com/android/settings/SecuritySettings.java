@@ -94,6 +94,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
     // Omni Additions
     private static final String KEY_APP_SECURITY_CATEGORY = "app_security";
     private static final String KEY_BLACKLIST = "blacklist";
+	   private static final String LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
@@ -129,6 +130,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
 
     // Omni Additions
     private PreferenceScreen mBlacklist;
+    private CheckBoxPreference mMaximizeKeyguardWidgets;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -222,6 +224,11 @@ public class SecuritySettings extends RestrictedSettingsFragment
             updateLockAfterPreferenceSummary();
         }
 
+        mMaximizeKeyguardWidgets = (CheckBoxPreference) root.findPreference(LOCKSCREEN_MAXIMIZE_WIDGETS);
+        if (mMaximizeKeyguardWidgets != null) {
+            mMaximizeKeyguardWidgets.setChecked(Settings.System.getInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, 0) == 1);
+        }
         // biometric weak liveliness
         mBiometricWeakLiveliness =
                 (CheckBoxPreference) root.findPreference(KEY_BIOMETRIC_WEAK_LIVELINESS);
@@ -628,6 +635,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
             lockPatternUtils.setPowerButtonInstantlyLocks(isToggled(preference));
         } else if (KEY_ENABLE_WIDGETS.equals(key)) {
             lockPatternUtils.setWidgetsEnabled(mEnableKeyguardWidgets.isChecked());
+        } else if (preference == mMaximizeKeyguardWidgets) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, isToggled(preference) ? 1 : 0);
         } else if (preference == mShowPassword) {
             Settings.System.putInt(getContentResolver(), Settings.System.TEXT_SHOW_PASSWORD,
                     mShowPassword.isChecked() ? 1 : 0);
