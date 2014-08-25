@@ -38,6 +38,11 @@
             android:entries="@array/lock_after_timeout_entries"
             android:entryValues="@array/lock_after_timeout_values"
             android:persistent="false"/>
+	    
+	 <CheckBoxPreference
+            android:key="lock_before_unlock"
+            android:title="@string/lock_before_unlock_title"
+            android:summary="@string/lock_before_unlock_summary" />   
 
         <ListPreference
             android:key="lock_numpad_random"
