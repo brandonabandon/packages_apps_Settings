@@ -30,6 +30,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.RemoteException;
+import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -59,6 +60,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_PEEK = "notification_peek";
+	private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -71,6 +73,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private FontDialogPreference mFontSizePref;
     private CheckBoxPreference mNotificationPulse;
 	private CheckBoxPreference mNotificationPeek;
+	private ListPreference mPeekPickupTimeout;
 
     private final Configuration mCurConfig = new Configuration();
     private ListPreference mScreenTimeoutPreference;
@@ -117,6 +120,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 		
 		mNotificationPeek = (CheckBoxPreference) findPreference(KEY_PEEK);
         mNotificationPeek.setPersistent(false);
+		
+		mPeekPickupTimeout = (ListPreference) findPreference(KEY_PEEK_PICKUP_TIMEOUT);
+        int peekTimeout = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.PEEK_PICKUP_TIMEOUT, 0, UserHandle.USER_CURRENT);
+        mPeekPickupTimeout.setValue(String.valueOf(peekTimeout));
+        mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntry());
+        mPeekPickupTimeout.setOnPreferenceChangeListener(this);
         
 		mNotificationPulse = (CheckBoxPreference) findPreference(KEY_NOTIFICATION_PULSE);
         if (mNotificationPulse != null
@@ -358,6 +368,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);
         }
+		if (preference == mPeekPickupTimeout) {
+            int peekTimeout = Integer.valueOf((String) objValue);
+            Settings.System.putIntForUser(getContentResolver(),
+                Settings.System.PEEK_PICKUP_TIMEOUT,
+                    peekTimeout, UserHandle.USER_CURRENT);
+            updatePeekTimeoutOptions(objValue);
+            return true;
+		}	
 
         return true;
     }
@@ -373,5 +391,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
         return false;
+    }
+	
+	private void updatePeekTimeoutOptions(Object newValue) {
+        int index = mPeekPickupTimeout.findIndexOfValue((String) newValue);
+        int value = Integer.valueOf((String) newValue);
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.System.PEEK_PICKUP_TIMEOUT, value);
+        mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntries()[index]);
     }
 }
