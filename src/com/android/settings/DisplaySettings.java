@@ -61,6 +61,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_PEEK = "notification_peek";
 	private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
+	private static final String STATUS_BAR_CUSTOM_HEADER = "custom_status_bar_header";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -74,6 +75,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mNotificationPulse;
 	private CheckBoxPreference mNotificationPeek;
 	private ListPreference mPeekPickupTimeout;
+	private CheckBoxPreference mStatusBarCustomHeader;
 
     private final Configuration mCurConfig = new Configuration();
     private ListPreference mScreenTimeoutPreference;
@@ -127,6 +129,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mPeekPickupTimeout.setValue(String.valueOf(peekTimeout));
         mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntry());
         mPeekPickupTimeout.setOnPreferenceChangeListener(this);
+		
+		mStatusBarCustomHeader = (CheckBoxPreference) findPreference(STATUS_BAR_CUSTOM_HEADER);
+		mStatusBarCustomHeader.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1);
+        mStatusBarCustomHeader.setOnPreferenceChangeListener(this);
         
 		mNotificationPulse = (CheckBoxPreference) findPreference(KEY_NOTIFICATION_PULSE);
         if (mNotificationPulse != null
@@ -375,7 +382,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     peekTimeout, UserHandle.USER_CURRENT);
             updatePeekTimeoutOptions(objValue);
             return true;
-		}	
+		} else if (preference == mStatusBarCustomHeader) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, value ? 1 : 0);
+            return true;
+		}		
 
         return true;
     }

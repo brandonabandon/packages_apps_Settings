@@ -1659,4 +1659,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="ad_redisplay_1h">1 hour</string>
     <string name="ad_redisplay_2h">2 hours</string>
     <string name="ad_redisplay_5h">5 hours</string>
+    <!-- Ooo, pretty notification header -->
+    <string name="custom_statusbar_header_title">Contextual notification panel header</string>
+    <string name="custom_statusbar_header_summary">Sets the background of the notification panel header to an image based on the current date and time</string>
 </resources>     
