@@ -1745,6 +1745,7 @@
         </activity>
 
 
+        <activity android:name=".cyanogenmod.SpamList" />
         <activity android:name="Settings$ThemeSettingsActivity"
                   android:label="@string/themes_settings_title"
 

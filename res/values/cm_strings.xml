@@ -375,6 +375,7 @@
     <string name="title_tile_volume">Volume</string>
     <string name="title_tile_expanded_desktop">Expanded desktop</string>
     <string name="title_tile_network_adb">ADB over network</string>
+    
 
     <string name="title_dynamic_tiles">Dynamic tiles</string>
     <string name="dynamic_tiles_note_title">Note</string>
@@ -500,11 +501,15 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <string name="ok">OK</string>
 
+    
     <!-- Ringer mute options -->
     <string name="quiet_hours_ringer_allow_all">Ring for all callers</string>
     <string name="quiet_hours_ringer_allow_contacts">Ring for all contacts</string>
     <string name="quiet_hours_ringer_allow_starred">Ring for favorite contacts</string>
     <string name="quiet_hours_ringer_mute_all">Mute ringer for all callers</string>
+    
+    <string name="quiet_hours_mute">Notifications</string>
+    <string name="quiet_hours_mute_summary">Mute notifications</string>
 
     <!-- time range preference -->
     <string name="start_time_title">Start</string>
@@ -1662,4 +1667,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Ooo, pretty notification header -->
     <string name="custom_statusbar_header_title">Contextual notification panel header</string>
     <string name="custom_statusbar_header_summary">Sets the background of the notification panel header to an image based on the current date and time</string>
+    <!-- Spam filter -->
+    <string name="spam_added_title">Added <xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g></string>
+    <string name="spam_last_blocked_title">Last blocked <xliff:g id="time_since" example="5 minutes ago">%1$s</xliff:g> (total: <xliff:g id="count" example="2 times">%2$s</xliff:g>)</string>
+    <string name="block_notifications_title">Filter notifications</string>
+    <string name="block_notifications_summary">Manage ignored notifications and filters</string>
+    <!-- Keep the referenced menu string consistent with status_bar_notification_spam_item_title in frameworks/base/packages/SystemUI -->
+    <string name="no_filters_title">No filters set. To filter a notification, long press it and choose \'Ignore messages like this\'.</string>
 </resources>     
