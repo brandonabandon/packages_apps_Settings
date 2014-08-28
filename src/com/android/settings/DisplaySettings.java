@@ -38,13 +38,22 @@ import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.DreamSettings;
 import com.android.settings.slim.DisplayRotation;
+import com.android.settings.apocalypse.AppMultiSelectListPreference;
+import com.android.settings.cyanogenmod.NEWSeekBarPreference;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.lang.Thread;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+
 
 public class DisplaySettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, OnPreferenceClickListener {
@@ -62,6 +71,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_PEEK = "notification_peek";
 	private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
 	private static final String STATUS_BAR_CUSTOM_HEADER = "custom_status_bar_header";
+	private static final String PREF_ENABLE_APP_CIRCLE_BAR = "enable_app_circle_bar";
+	private static final String PREF_INCLUDE_APP_CIRCLE_BAR_KEY = "app_circle_bar_included_apps";
+	private static final String KEY_TRIGGER_WIDTH = "trigger_width";
+    private static final String KEY_TRIGGER_TOP = "trigger_top";
+    private static final String KEY_TRIGGER_BOTTOM = "trigger_bottom";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -76,6 +90,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mNotificationPeek;
 	private ListPreference mPeekPickupTimeout;
 	private CheckBoxPreference mStatusBarCustomHeader;
+	
+	private AppMultiSelectListPreference mIncludedAppCircleBar;
+	private NEWSeekBarPreference mTriggerWidthPref;
+    private NEWSeekBarPreference mTriggerTopPref;
+    private NEWSeekBarPreference mTriggerBottomPref;
+	private CheckBoxPreference mEnableAppCircleBar;
+	
 
     private final Configuration mCurConfig = new Configuration();
     private ListPreference mScreenTimeoutPreference;
@@ -119,6 +140,31 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mFontSizePref = (FontDialogPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
         mFontSizePref.setOnPreferenceClickListener(this);
+		
+		// App circle bar
+		mEnableAppCircleBar = (CheckBoxPreference) findPreference(PREF_ENABLE_APP_CIRCLE_BAR);
+		mEnableAppCircleBar.setChecked((Settings.System.getInt(getContentResolver(),
+		Settings.System.ENABLE_APP_CIRCLE_BAR, 0) == 1));
+
+		mIncludedAppCircleBar = (AppMultiSelectListPreference) findPreference(PREF_INCLUDE_APP_CIRCLE_BAR_KEY);
+		Set<String> includedApps = getIncludedApps();
+		if (includedApps != null) mIncludedAppCircleBar.setValues(includedApps);
+		mIncludedAppCircleBar.setOnPreferenceChangeListener(this);
+		
+		mTriggerWidthPref = (NEWSeekBarPreference) findPreference(KEY_TRIGGER_WIDTH);
+		mTriggerWidthPref.setValue(Settings.System.getInt(getContentResolver(),
+		Settings.System.APP_CIRCLE_BAR_TRIGGER_WIDTH, 10));
+		mTriggerWidthPref.setOnPreferenceChangeListener(this);
+
+		mTriggerTopPref = (NEWSeekBarPreference) findPreference(KEY_TRIGGER_TOP);
+		mTriggerTopPref.setValue(Settings.System.getInt(getContentResolver(),
+		Settings.System.APP_CIRCLE_BAR_TRIGGER_TOP, 0));
+		mTriggerTopPref.setOnPreferenceChangeListener(this);
+
+		mTriggerBottomPref = (NEWSeekBarPreference) findPreference(KEY_TRIGGER_BOTTOM);
+		mTriggerBottomPref.setValue(Settings.System.getInt(getContentResolver(),
+		Settings.System.APP_CIRCLE_BAR_TRIGGER_HEIGHT, 100));
+		mTriggerBottomPref.setOnPreferenceChangeListener(this);
 		
 		mNotificationPeek = (CheckBoxPreference) findPreference(KEY_PEEK);
         mNotificationPeek.setPersistent(false);
@@ -225,6 +271,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION), true,
                 mAccelerometerRotationObserver);
         updateDisplayRotationPreferenceDescription();
+		Settings.System.putInt(getContentResolver(),
+		Settings.System.APP_CIRCLE_BAR_SHOW_TRIGGER, 1);
         updateState();
     }
 
@@ -232,6 +280,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     public void onPause() {
         super.onPause();
         getContentResolver().unregisterContentObserver(mAccelerometerRotationObserver);
+		Settings.System.putInt(getContentResolver(), Settings.System.APP_CIRCLE_BAR_SHOW_TRIGGER, 0);
     }
 
     @Override
@@ -356,7 +405,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         } else if (preference == mNotificationPeek) {
             Settings.System.putInt(getContentResolver(), Settings.System.PEEK_STATE,
                     mNotificationPeek.isChecked() ? 1 : 0);
-		}			
+		} else if (preference == mEnableAppCircleBar) {
+	    	boolean checked = ((CheckBoxPreference)preference).isChecked();
+	    	Settings.System.putInt(getContentResolver(),
+			Settings.System.ENABLE_APP_CIRCLE_BAR, checked ? 1:0);
+		}				
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
@@ -387,6 +440,23 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, value ? 1 : 0);
             return true;
+		} else if (preference == mIncludedAppCircleBar) {
+	    	storeIncludedApps((Set<String>) objValue);
+		} else if (preference == mTriggerWidthPref) {
+	    	int width = ((Integer)objValue).intValue();
+	    	Settings.System.putInt(getContentResolver(),
+			Settings.System.APP_CIRCLE_BAR_TRIGGER_WIDTH, width);
+	    	return true;
+		} else if (preference == mTriggerTopPref) {
+	    	int top = ((Integer)objValue).intValue();
+	    	Settings.System.putInt(getContentResolver(),
+			Settings.System.APP_CIRCLE_BAR_TRIGGER_TOP, top);
+	    	return true;
+		} else if (preference == mTriggerBottomPref) {
+	    	int bottom = ((Integer)objValue).intValue();
+	    	Settings.System.putInt(getContentResolver(),
+			Settings.System.APP_CIRCLE_BAR_TRIGGER_HEIGHT, bottom);
+	    	return true;
 		}		
 
         return true;
@@ -411,5 +481,26 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         Settings.Secure.putInt(getActivity().getContentResolver(),
                 Settings.System.PEEK_PICKUP_TIMEOUT, value);
         mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntries()[index]);
+    }
+	
+	private Set<String> getIncludedApps() {
+		String included = Settings.System.getString(getActivity().getContentResolver(),
+				Settings.System.WHITELIST_APP_CIRCLE_BAR);
+		if (TextUtils.isEmpty(included)) {
+			return null;
+		}
+		return new HashSet<String>(Arrays.asList(included.split("\\|")));
+    }
+	
+	private void storeIncludedApps(Set<String> values) {
+		StringBuilder builder = new StringBuilder();
+		String delimiter = "";
+		for (String value : values) {
+			builder.append(delimiter);
+			builder.append(value);
+			delimiter = "|";
+		}
+		Settings.System.putString(getActivity().getContentResolver(),
+			Settings.System.WHITELIST_APP_CIRCLE_BAR, builder.toString());
     }
 }
