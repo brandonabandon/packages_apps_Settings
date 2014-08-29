@@ -27,17 +27,6 @@
                 android:title="@string/wallpaper_settings_title"
                 android:fragment="com.android.settings.WallpaperTypeSettings" />
 
-        <PreferenceScreen
-                android:key="display_rotation"
-                android:fragment="com.android.settings.slim.DisplayRotation"
-                android:title="@string/display_rotation_title" />
-		
-	<PreferenceScreen
-		android:fragment="com.android.settings.beanstalk.BatteryIconStyle"
-		android:key="battery_style_pref"
-		android:title="@string/battery_bar_title" />	
-		
-
         <ListPreference
                 android:key="screen_timeout"
                 android:title="@string/screen_timeout"
@@ -56,112 +45,7 @@
                 android:summary="@string/summary_font_size"
                 android:dialogTitle="@string/dialog_title_font_size" />
 		
-	<com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-                android:key="proximity_on_wake"
-                android:title="@string/proximity_wake_title"
-                android:summary="@string/proximity_wake_summary"
-                android:defaultValue="false" />	
-
-        <PreferenceScreen
-                android:key="wifi_display"
-                android:title="@string/wifi_display_settings_title"
-                android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
-	
-	<PreferenceScreen
-            android:key="gesture_anywhere"
-            android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
-            android:title="@string/gesture_anywhere_title" />
-	    
-	<CheckBoxPreference
-		android:key="enable_app_circle_bar"
-		android:title="@string/app_circle_bar_title"
-		android:summary="@string/app_circle_bar_summary" />
-
-	<com.android.settings.apocalypse.AppMultiSelectListPreference
-		android:key="app_circle_bar_included_apps"
-		android:persistent="false"
-		android:title="@string/app_circle_bar_included_apps_title"
-		android:summary="@string/app_circle_bar_included_apps_summary"
-		android:dependency="enable_app_circle_bar" />    
-		
-	<com.android.settings.cyanogenmod.NEWSeekBarPreference
-		android:key="trigger_width"
-		android:title="@string/trigger_width_title"
-		android:summary="@string/trigger_width_summary"
-		android:defaultValue="4"
-		android:max="64"
-		settings:min="4"
-		settings:unitsLeft=""
-		settings:unitsRight="px"
-		android:dependency="enable_app_circle_bar" />
-
-	<com.android.settings.cyanogenmod.NEWSeekBarPreference
-		android:key="trigger_top"
-		android:title="@string/trigger_top_title"
-		android:summary="@string/trigger_top_summary"
-		android:defaultValue="0"
-		android:max="99"
-		settings:min="0"
-		settings:unitsLeft=""
-		settings:unitsRight="%"
-		android:dependency="enable_app_circle_bar" />
-
-	<com.android.settings.cyanogenmod.NEWSeekBarPreference
-		android:key="trigger_bottom"
-		android:title="@string/trigger_bottom_title"
-		android:summary="@string/trigger_bottom_summary"
-		android:defaultValue="100"
-		android:max="100"
-		settings:min="1"
-		settings:unitsLeft=""
-		settings:unitsRight="%"
-		android:dependency="enable_app_circle_bar" />			
-
-        <!-- Notifications -->
-        <PreferenceCategory
-            android:key="notification_category"
-            android:title="@string/notification_category"/>
-	    
-	<CheckBoxPreference
-            android:key="custom_status_bar_header"
-            android:title="@string/custom_statusbar_header_title"
-            android:summary="@string/custom_statusbar_header_summary"
-            android:defaultValue="false" />    
-	    
-	<com.android.settings.slim.CustomCarrier
-            android:key="notification_custom_carrier_label"
-            android:title="@string/notification_custom_carrier_label_title"
-            android:dialogTitle="@string/notification_custom_carrier_label_title"
-            android:positiveButtonText="@string/save"
-            android:negativeButtonText="@string/cancel"
-            android:selectAllOnFocus="true"
-            android:imeOptions="actionDone"
-            android:inputType="textNoSuggestions"
-            android:persistent="false" />    
-	
-	<CheckBoxPreference
-            android:key="notification_pulse"
-            android:title="@string/notification_pulse_title"
-            android:persistent="false" />    
-
-        <CheckBoxPreference
-            android:key="notification_peek"
-            android:title="@string/notification_peek_title"
-            android:summary="@string/notification_peek_summary" />
-	    
-	<ListPreference
-            android:key="peek_pickup_timeout"
-            android:title="@string/peek_pickup_timeout_title"
-            android:persistent="false"
-            android:entries="@array/peek_pickup_timeout_entries"
-            android:entryValues="@array/peek_pickup_timeout_values"
-            android:dependency="notification_peek" />    
-	    
-	<Preference
-            android:fragment="com.android.settings.slim.NotificationDrawerStyle"
-            android:key="notification_style"
-            android:title="@string/notification_style_title"
-            android:summary="@string/notification_style_summary" />   
+	  
 
 
 </PreferenceScreen>
