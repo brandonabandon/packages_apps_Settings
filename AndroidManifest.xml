@@ -1689,6 +1689,7 @@
         <activity android:name=".chameleonos.labs.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".chameleonos.labs.gestureanywhere.GestureAnywhereCreateGestureActivity" />
         <activity android:name=".apocalypse.UserInterface" />
+	<activity android:name=".apocalypse.Notifications" />
 	<activity android:name="Settings$ProfilesSettingsActivity"
                 android:label="@string/profile_settings"
                 android:taskAffinity=""

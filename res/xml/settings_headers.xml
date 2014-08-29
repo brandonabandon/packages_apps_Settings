@@ -97,12 +97,19 @@
         android:fragment="com.android.settings.ThemeSettings"
         android:icon="@drawable/prd_ic_themepacks" />
 	
-    <!-- Status Bar -->
+    <!-- User Interface -->
     <header
         android:id="@+id/ui_settings"
         android:icon="@drawable/ic_settings_system"
         android:fragment="com.android.settings.apocalypse.UserInterface"
         android:title="@string/user_interface" />	
+	
+    <!-- Notifications -->
+    <header
+        android:id="@+id/notifications_settings"
+        android:icon="@drawable/ic_settings_system"
+        android:fragment="com.android.settings.apocalypse.Notifications"
+        android:title="@string/notifications" />
 
     <!-- Profiles -->
     <header
