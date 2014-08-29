@@ -96,6 +96,13 @@
         android:breadCrumbTitle="@string/themes_settings_title"
         android:fragment="com.android.settings.ThemeSettings"
         android:icon="@drawable/prd_ic_themepacks" />
+	
+    <!-- Status Bar -->
+    <header
+        android:id="@+id/ui_settings"
+        android:icon="@drawable/ic_settings_system"
+        android:fragment="com.android.settings.apocalypse.UserInterface"
+        android:title="@string/user_interface" />	
 
     <!-- Profiles -->
     <header
