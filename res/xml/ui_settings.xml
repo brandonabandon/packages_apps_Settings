@@ -24,6 +24,11 @@
                 android:title="@string/display_rotation_title" />
 		
 	<PreferenceScreen
+		android:fragment="com.android.settings.beanstalk.BatteryIconStyle"
+		android:key="battery_style_pref"
+		android:title="@string/battery_bar_title" />	
+		
+	<PreferenceScreen
             android:key="gesture_anywhere"
             android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
             android:title="@string/gesture_anywhere_title" />
