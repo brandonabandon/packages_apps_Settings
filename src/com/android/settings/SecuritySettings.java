@@ -21,6 +21,7 @@ import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.ActivityManagerNative;
 import android.app.AlertDialog;
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
@@ -29,7 +30,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.UserInfo;
+import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.CheckBoxPreference;
@@ -95,7 +98,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
     // Omni Additions
     private static final String KEY_APP_SECURITY_CATEGORY = "app_security";
     private static final String KEY_BLACKLIST = "blacklist";
-	   private static final String LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
+	private static final String LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
+    private static final String KEY_ENABLE_CAMERA = "lockscreen_enable_camera";
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
@@ -121,6 +125,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private ListPreference mLockNumpadRandom;
     private CheckBoxPreference mVisibleGesture;
 	private CheckBoxPreference mLockBeforeUnlock;
+	private CheckBoxPreference mEnableCameraWidget;
 
     private Preference mNotificationAccess;
 
@@ -231,6 +236,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
             mMaximizeKeyguardWidgets.setChecked(Settings.System.getInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, 0) == 1);
         }
+        // Enable / disable camera widget on lockscreen
+        mEnableCameraWidget = (CheckBoxPreference) findPreference(KEY_ENABLE_CAMERA);
         // biometric weak liveliness
         mBiometricWeakLiveliness =
                 (CheckBoxPreference) root.findPreference(KEY_BIOMETRIC_WEAK_LIVELINESS);
@@ -717,7 +724,11 @@ public class SecuritySettings extends RestrictedSettingsFragment
             Settings.Secure.putInt(getContentResolver(),
                     Settings.Secure.LOCK_BEFORE_UNLOCK,
                     ((Boolean) value) ? 1 : 0);
-        }
+        } else if (preference == mEnableCameraWidget) {
+            boolean newValue = (Boolean) value;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_ENABLE_CAMERA, newValue ? 1 : 0);
+		}			
         return true;
     }
 
