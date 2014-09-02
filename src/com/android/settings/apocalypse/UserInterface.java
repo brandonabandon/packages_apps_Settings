@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
+ * Code has been modified - Copyright (C) 2014 Corey "Mr. Apocalypse" Edwards
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +43,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
+import android.view.WindowManagerGlobal;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.DreamSettings;
@@ -55,22 +58,34 @@ import java.util.ArrayList;
 import java.util.Arrays;
 public class UserInterface extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
+	private static final String TAG = "UI Settings";	
+		
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
 	private static final String PREF_ENABLE_APP_CIRCLE_BAR = "enable_app_circle_bar";
 	private static final String PREF_INCLUDE_APP_CIRCLE_BAR_KEY = "app_circle_bar_included_apps";
 	private static final String KEY_TRIGGER_WIDTH = "trigger_width";
     private static final String KEY_TRIGGER_TOP = "trigger_top";
     private static final String KEY_TRIGGER_BOTTOM = "trigger_bottom";
+	private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
+	private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
+	
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
     private static final String ROTATION_ANGLE_180 = "180";
     private static final String ROTATION_ANGLE_270 = "270";
+	
+	int expandedDesktopValue;
+	
+	
     private PreferenceScreen mDisplayRotationPreference;
 	private AppMultiSelectListPreference mIncludedAppCircleBar;
 	private NEWSeekBarPreference mTriggerWidthPref;
     private NEWSeekBarPreference mTriggerTopPref;
     private NEWSeekBarPreference mTriggerBottomPref;
 	private CheckBoxPreference mEnableAppCircleBar;
+	private ListPreference mExpandedDesktopPref;
+	private CheckBoxPreference mExpandedDesktopNoNavbarPref;
+	
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
         @Override
@@ -85,6 +100,8 @@ public class UserInterface extends SettingsPreferenceFragment implements
         ContentResolver resolver = getActivity().getContentResolver();
 
         addPreferencesFromResource(R.xml.ui_settings);
+		
+		PreferenceScreen prefScreen = getPreferenceScreen();
 
         mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
         if (!RotationPolicy.isRotationSupported(getActivity())) {
@@ -114,6 +131,32 @@ public class UserInterface extends SettingsPreferenceFragment implements
 		mTriggerBottomPref.setValue(Settings.System.getInt(getContentResolver(),
 		Settings.System.APP_CIRCLE_BAR_TRIGGER_HEIGHT, 100));
 		mTriggerBottomPref.setOnPreferenceChangeListener(this);
+		
+		// Expanded desktop
+        mExpandedDesktopPref = (ListPreference) findPreference(KEY_EXPANDED_DESKTOP);
+        mExpandedDesktopNoNavbarPref =
+                (CheckBoxPreference) findPreference(KEY_EXPANDED_DESKTOP_NO_NAVBAR);
+
+        int expandedDesktopValue = Settings.System.getInt(getContentResolver(),
+                Settings.System.EXPANDED_DESKTOP_STYLE, 0);
+				
+		try {
+            boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar();
+
+            if (hasNavBar) {
+                mExpandedDesktopPref.setOnPreferenceChangeListener(this);
+                mExpandedDesktopPref.setValue(String.valueOf(expandedDesktopValue));
+                updateExpandedDesktop(expandedDesktopValue);
+                prefScreen.removePreference(mExpandedDesktopNoNavbarPref);
+            } else {
+                // Hide no-op "Status bar visible" expanded desktop mode
+                mExpandedDesktopNoNavbarPref.setOnPreferenceChangeListener(this);
+                mExpandedDesktopNoNavbarPref.setChecked(expandedDesktopValue > 0);
+                prefScreen.removePreference(mExpandedDesktopPref);
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "Error getting navigation bar status");
+        }		
     }
     @Override
     public void onResume() {
@@ -213,7 +256,15 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	    	Settings.System.putInt(getContentResolver(),
 			Settings.System.APP_CIRCLE_BAR_TRIGGER_HEIGHT, bottom);
 	    	return true;
-		}		
+		} else if (preference == mExpandedDesktopPref) {
+            int expandedDesktopValue = Integer.valueOf((String) objValue);
+            updateExpandedDesktop(expandedDesktopValue);
+            return true;
+		} else if (preference == mExpandedDesktopNoNavbarPref) {
+            boolean value = (Boolean) objValue;
+            updateExpandedDesktop(value ? 2 : 0);
+            return true;
+        }		
 
         return true;
     }
@@ -236,5 +287,30 @@ public class UserInterface extends SettingsPreferenceFragment implements
 		}
 		Settings.System.putString(getActivity().getContentResolver(),
 			Settings.System.WHITELIST_APP_CIRCLE_BAR, builder.toString());
+    }
+	
+	private void updateExpandedDesktop(int value) {
+        ContentResolver cr = getContentResolver();
+        Resources res = getResources();
+        int summary = -1;
+
+        Settings.System.putInt(cr, Settings.System.EXPANDED_DESKTOP_STYLE, value);
+
+        if (value == 0) {
+            // Expanded desktop deactivated
+            Settings.System.putInt(cr, Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 0);
+            Settings.System.putInt(cr, Settings.System.EXPANDED_DESKTOP_STATE, 0);
+            summary = R.string.expanded_desktop_disabled;
+        } else if (value == 1) {
+            Settings.System.putInt(cr, Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 1);
+            summary = R.string.expanded_desktop_status_bar;
+        } else if (value == 2) {
+            Settings.System.putInt(cr, Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 1);
+            summary = R.string.expanded_desktop_no_status_bar;
+        }
+
+        if (mExpandedDesktopPref != null && summary != -1) {
+            mExpandedDesktopPref.setSummary(res.getString(summary));
+        }
     }
 }

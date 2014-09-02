@@ -32,6 +32,17 @@
             android:key="gesture_anywhere"
             android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
             android:title="@string/gesture_anywhere_title" />
+	<ListPreference
+            android:key="expanded_desktop"
+            android:title="@string/power_menu_expanded_desktop"
+            android:entries="@array/expanded_desktop_entries"
+            android:entryValues="@array/expanded_desktop_values"
+            android:persistent="false" />
+
+    	<CheckBoxPreference
+            android:key="expanded_desktop_no_navbar"
+            android:title="@string/power_menu_expanded_desktop"
+            android:persistent="true" />
 	    
 	<CheckBoxPreference
 		android:key="enable_app_circle_bar"
