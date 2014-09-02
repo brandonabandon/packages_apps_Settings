@@ -52,6 +52,8 @@ import java.util.Set;
 import java.lang.Thread;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+
 public class Notifications extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "NotificationSettings";
@@ -70,6 +72,8 @@ public class Notifications extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ContentResolver resolver = getActivity().getContentResolver();
+		
+		Resources res = getResources();
 
         addPreferencesFromResource(R.xml.notifications_settings);
 
@@ -87,6 +91,12 @@ public class Notifications extends SettingsPreferenceFragment implements
 		mStatusBarCustomHeader.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1);
         mStatusBarCustomHeader.setOnPreferenceChangeListener(this);
+		
+		 boolean proximityCheckOnWait = res.getBoolean(
+                com.android.internal.R.bool.config_proximityCheckOnWake);
+        if (!proximityCheckOnWait) {
+            Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 1);
+        }
         
 		mNotificationPulse = (CheckBoxPreference) findPreference(KEY_NOTIFICATION_PULSE);
         if (mNotificationPulse != null
