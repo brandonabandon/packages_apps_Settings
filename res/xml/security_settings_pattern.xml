@@ -48,6 +48,12 @@
             android:summary="@string/lock_before_unlock_summary" />
 	
         <CheckBoxPreference
+            android:key="lockscreen_enable_power_menu"
+            android:title="@string/lockscreen_enable_power_menu_title"
+            android:summary="@string/lockscreen_enable_power_menu_summary"
+            android:persistent="false" />
+	
+	<CheckBoxPreference
             android:key="keyguard_enable_widgets"
             android:title="@string/security_enable_widgets_title"/>
 

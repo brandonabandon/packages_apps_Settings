@@ -56,6 +56,12 @@
             android:title="@string/lockpattern_settings_enable_power_button_instantly_locks"/>
 
         <CheckBoxPreference
+            android:key="lockscreen_enable_power_menu"
+            android:title="@string/lockscreen_enable_power_menu_title"
+            android:summary="@string/lockscreen_enable_power_menu_summary"
+            android:persistent="false" />
+	
+	<CheckBoxPreference
             android:key="keyguard_enable_widgets"
             android:title="@string/security_enable_widgets_title"/>
 
