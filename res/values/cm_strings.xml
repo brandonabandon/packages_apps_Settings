@@ -1697,6 +1697,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="app_ops_labels_alarm_wakeup">Wake up</string>
     
     <!-- Halo options -->
+    <string name="halo_enabled_title">Enable Halo</string>
+    <string name="halo_enabled_summary">When checked the bubble is activated</string>
     <string name="halo_options_title">Halo options</string>
     <string name="halo_hide_title">Hide after activity</string>
     <string name="halo_hide_summary">Appears then scrolls out of the way</string>
@@ -1736,6 +1738,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="app_halo_label_white">Whitelist from Halo</string>
     <string name="advanced_category_title">Advanced</string>
     <string name="general_category_title">General</string>
+    <string name="halo_color_title">Circle color</string>
+    <string name="halo_color_summary">Define the background shading color</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>
