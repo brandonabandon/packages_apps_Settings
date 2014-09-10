@@ -39,6 +39,11 @@
 	    android:title="@string/halo_options_title"
 	    android:fragment="com.android.settings.apocalypse.HaloOptions"
 	    android:icon="@drawable/ic_halo_options" />
+	  
+	<PreferenceScreen
+            android:id="@+id/wakelock_blocker"
+            android:title="@string/wakelock_blocker"
+            android:fragment="com.android.settings.apocalypse.WakeLockBlocker" />  
 	    
 	<ListPreference
             android:key="expanded_desktop"

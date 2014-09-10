@@ -1748,6 +1748,7 @@
 
 
         <activity android:name=".cyanogenmod.SpamList" />
+	<activity android:name=".apocalypse.WakeLockBlocker" />
         <activity android:name="Settings$ThemeSettingsActivity"
                   android:label="@string/themes_settings_title"
 

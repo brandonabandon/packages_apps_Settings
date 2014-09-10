@@ -1740,6 +1740,15 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="general_category_title">General</string>
     <string name="halo_color_title">Circle color</string>
     <string name="halo_color_summary">Define the background shading color</string>
+    <!-- Wakelock blocker -->
+    <string name="wakelock_blocker">Wakelock blocker</string>
+    <string name="wakelock_blocker_title">Enable</string>
+    <string name="wakelock_blocker_summary">Block system wakelocks</string>
+    <string name="wakelock_blocker_save">Save</string>
+    <string name="wakelock_list_header">Available wakelocks</string>
+    <string name="wakelock_blocker_reload">Reload</string>
+    <string name="wakelock_blocker_warning_title">Proceed with caution</string>
+    <string name="wakelock_blocker_warning">Blocking wakelocks have the potential to cause instability, crashes or data loss.</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>
