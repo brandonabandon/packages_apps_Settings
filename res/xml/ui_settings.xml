@@ -32,13 +32,6 @@
             android:key="gesture_anywhere"
             android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
             android:title="@string/gesture_anywhere_title" />
-	    
-	    
-	<PreferenceScreen
-	    android:key="halo_options"
-	    android:title="@string/halo_options_title"
-	    android:fragment="com.android.settings.apocalypse.HaloOptions"
-	    android:icon="@drawable/ic_halo_options" />
 	  
 	<PreferenceScreen
             android:id="@+id/wakelock_blocker"
