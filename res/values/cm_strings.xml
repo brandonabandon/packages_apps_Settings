@@ -1754,6 +1754,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="floating_blacklist_label">Blacklist from Floating Mode</string>
     <string name="halo_blacklist_label">Blacklist from Halo</string>
     <string name="peek_blacklist_label">Blacklist from Peek</string>
+    <string name="hover_blacklist_label">Blacklist from Hover</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>
