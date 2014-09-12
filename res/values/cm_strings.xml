@@ -1763,6 +1763,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="hover_exclude_low_priority_summary">Exclude notifications marked as low priority</string>
     <string name="hover_exclude_non_clearable_title">Exclude non-clearable</string>
     <string name="hover_exclude_non_clearable_summary">Exclude not dismissable notifications</string>
+    <string name="heads_up_floating_window_title">Launch floating window</string>
+    <string name="heads_up_floating_window_summary">Open heads up in floating window</string>
     <!-- Hover long fade out delay -->
     <string name="hover_long_fadeout_title">Hover notification time</string>
     <string name="hover_long_fadeout_3seconds">3 seconds</string>

@@ -30,10 +30,17 @@
 	    android:fragment="com.android.settings.apocalypse.HaloOptions" />
 	    
 	<com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-                android:key="proximity_on_wake"
-                android:title="@string/proximity_wake_title"
-                android:summary="@string/proximity_wake_summary"
-                android:defaultValue="true" />    
+            android:key="proximity_on_wake"
+            android:title="@string/proximity_wake_title"
+            android:summary="@string/proximity_wake_summary"
+            android:defaultValue="true" />
+		
+	<CheckBoxPreference
+	    android:key="heads_up_floating_window"
+	    android:title="@string/heads_up_floating_window_title"
+	    android:summary="@string/heads_up_floating_window_summary"
+	    android:persistent="false"
+	    android:defaultValue="true" />	    
 	    
 	<CheckBoxPreference
             android:key="custom_status_bar_header"
