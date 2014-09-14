@@ -100,7 +100,7 @@
     <!-- User Interface -->
     <header
         android:id="@+id/ui_settings"
-        android:icon="@drawable/ic_settings_system"
+        android:icon="@drawable/ic_apocalypse_ui"
         android:fragment="com.android.settings.apocalypse.UserInterface"
         android:title="@string/user_interface" />	
 	
