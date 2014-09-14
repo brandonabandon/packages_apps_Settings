@@ -1684,14 +1684,22 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 	
-	<activity
-            android:name=".apocalypse.Pie"
-            android:label="@string/pie_controls_title" >
+	<!-- Pie Control-->
+        <activity android:name="Settings$PieActivity"
+            android:label="@string/pie_controls_title"
+            android:taskAffinity=""
+            android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="com.intent.category.SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.apocalypse.Pie" />
         </activity>
+
+        <activity android:name=".apocalypse.Pie" />
+        <activity android:name=".apocalypse.PieColor" />
+	<activity android:name=".apocalypse.PieTargets" />
 
         <activity android:name=".profiles.ProfilesSettings" />
 

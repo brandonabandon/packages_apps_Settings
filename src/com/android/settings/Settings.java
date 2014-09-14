@@ -85,6 +85,7 @@ import com.android.settings.location.LocationSettings;
 import com.android.settings.net.MobileDataEnabler;
 import com.android.settings.nfc.AndroidBeam;
 import com.android.settings.nfc.PaymentSettings;
+import com.android.settings.apocalypse.Pie;
 import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintServiceSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
@@ -362,7 +363,8 @@ public class Settings extends PreferenceActivity
         KeyboardLayoutPickerFragment.class.getName(),
         QuietHours.class.getName(),
         ThemeSettings.class.getName(),
-        BlacklistSettings.class.getName()
+        BlacklistSettings.class.getName(),
+		Pie.class.getName()
     };
 
     @Override
@@ -1189,4 +1191,5 @@ public class Settings extends PreferenceActivity
     public static class ThemeSettingsActivity extends Settings { /* empty */ }
     public static class QuietHoursSettingsActivity extends Settings { /* empty */ }
     public static class BlacklistSettingsActivity extends Settings { /* empty */ }
+    public static class PieActivity extends Settings { /* empty */ }
 }

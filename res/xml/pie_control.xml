@@ -39,6 +39,12 @@
         android:entries="@array/entries_pie_gravity"
         android:entryValues="@array/values_pie_gravity"
         android:dependency="pie_controls" />
+	
+    <PreferenceScreen
+        android:key="pie_color"
+        android:title="@string/pie_color_title"
+        android:fragment="com.android.settings.apocalypse.PieColor"
+        android:dependency="pie_controls" />
 
     <CheckBoxPreference
         android:key="pie_center"
@@ -95,16 +101,10 @@
         android:defaultValue="false"
         android:dependency="pie_controls" />
 
-    <CheckBoxPreference
-        android:key="pie_menu"
-        android:title="@string/pie_menu_title"
-        android:summary="@string/pie_menu_summary"
-        android:dependency="pie_controls" />
-
-    <CheckBoxPreference
-        android:key="pie_search"
-        android:title="@string/pie_search_title"
-        android:summary="@string/pie_search_summary"
+    <PreferenceScreen
+        android:key="pie_targets"
+        android:title="@string/pie_targets_title"
+        android:fragment="com.android.settings.apocalypse.PieTargets"
         android:dependency="pie_controls" />
 
 </PreferenceScreen>
