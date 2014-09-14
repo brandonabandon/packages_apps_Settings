@@ -17,6 +17,11 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
 	android:title="@string/user_interface"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    	<PreferenceScreen
+        	android:id="@+id/pie_control"
+        	android:fragment="com.android.settings.apocalypse.Pie"
+        	android:title="@string/pie_controls_title" />
 	
 	<PreferenceScreen
                 android:key="display_rotation"

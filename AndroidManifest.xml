@@ -1683,6 +1683,15 @@
             android:launchMode="singleTop"
             android:theme="@style/CryptKeeperBlankTheme"
         />
+	
+	<activity
+            android:name=".apocalypse.Pie"
+            android:label="@string/pie_controls_title" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.intent.category.SHORTCUT" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".profiles.ProfilesSettings" />
 
