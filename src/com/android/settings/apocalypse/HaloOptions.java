@@ -42,7 +42,6 @@ public class HaloOptions extends SettingsPreferenceFragment
     private static final String KEY_HALO_SIZE = "halo_size";
     private static final String KEY_HALO_COLOR = "halo_color";
     private static final String KEY_HALO_PAUSE = "halo_pause";
-    private static final String KEY_HALO_NINJA = "halo_ninja";
     private static final String KEY_HALO_MSGBOX = "halo_msgbox";
     private static final String KEY_HALO_MSGBOX_ANIMATION = "halo_msgbox_animation";
     private static final String KEY_HALO_NOTIFY_COUNT = "halo_notify_count";
@@ -57,7 +56,6 @@ public class HaloOptions extends SettingsPreferenceFragment
     private CheckBoxPreference mHaloPause;
     private ListPreference mHaloNotifyCount;
     private ListPreference mHaloMsgAnimate;
-    private CheckBoxPreference mHaloNinja;
     private CheckBoxPreference mHaloMsgBox;
     private CheckBoxPreference mHaloUnlockPing;
 
@@ -108,10 +106,6 @@ public class HaloOptions extends SettingsPreferenceFragment
 
         mHaloColor = (ColorPickerPreference) prefSet.findPreference(KEY_HALO_COLOR);
         mHaloColor.setOnPreferenceChangeListener(this);
-
-        mHaloNinja = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_NINJA);
-        //mHaloNinja.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-        //        Settings.System.HALO_NINJA, 0) == 1);
 
         mHaloMsgBox = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_MSGBOX);
         mHaloMsgBox.setChecked(Settings.System.getInt(mContext.getContentResolver(),
@@ -169,10 +163,6 @@ public class HaloOptions extends SettingsPreferenceFragment
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.HALO_PAUSE, mHaloPause.isChecked()
                     ? 1 : 0);
-        } else if (preference == mHaloNinja) {
-            //Settings.System.putInt(mContext.getContentResolver(),
-            //        Settings.System.HALO_NINJA, mHaloNinja.isChecked()
-             //       ? 1 : 0);
         } else if (preference == mHaloMsgBox) {
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.HALO_MSGBOX, mHaloMsgBox.isChecked()
