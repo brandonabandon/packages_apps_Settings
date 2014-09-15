@@ -1855,6 +1855,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pie_actnotif_summary">Enable expand notifications button</string>
     <string name="pie_power_title">Power button</string>
     <string name="pie_power_summary">Enable power button on Pie</string>
+    <!-- Chamber of Secrets -->
+    <string name="chamber_title">Chamber of secrets</string>
+    <string name="chamber_toast">The chamber of secrets has opened</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>
