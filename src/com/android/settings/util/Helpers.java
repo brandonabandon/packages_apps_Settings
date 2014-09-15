@@ -40,9 +40,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Helpers2 implements Constants {
+public class Helpers implements Constants {
 
-    private static final String TAG = "Helpers2";
+    private static final String TAG = "Helpers";
 
     private static String mVoltagePath;
 
@@ -57,7 +57,7 @@ public class Helpers2 implements Constants {
             return false; // tell caller to bail...
         }
         try {
-            if ((new CMDProcessor2().su.runWaitFor("ls /data/app-private")).success()) {
+            if ((new CMDProcessor().su.runWaitFor("ls /data/app-private")).success()) {
                 Log.i(TAG, " SU exists and we have permission");
                 return true;
             } else {
@@ -81,7 +81,7 @@ public class Helpers2 implements Constants {
             return false;
         }
         try {
-            if (!new CMDProcessor2().su.runWaitFor("busybox mount").success()) {
+            if (!new CMDProcessor().su.runWaitFor("busybox mount").success()) {
                 Log.e(TAG, " Busybox is there but it is borked! ");
                 return false;
             }
@@ -123,7 +123,7 @@ public class Helpers2 implements Constants {
      * @return success or failure
      */
     public static boolean getMount(final String mount) {
-        final CMDProcessor2 cmd = new CMDProcessor2();
+        final CMDProcessor cmd = new CMDProcessor();
         final String mounts[] = getMounts("/system");
         if (mounts != null && mounts.length >= 3) {
             final String device = mounts[0];
@@ -174,11 +174,11 @@ public class Helpers2 implements Constants {
      * @return file output
      */
     public static String readFileViaShell(String filePath, boolean useSu) {
-        CMDProcessor2.CommandResult cr = null;
+        CMDProcessor.CommandResult cr = null;
         if (useSu) {
-            cr = new CMDProcessor2().su.runWaitFor("cat " + filePath);
+            cr = new CMDProcessor().su.runWaitFor("cat " + filePath);
         } else {
-            cr = new CMDProcessor2().sh.runWaitFor("cat " + filePath);
+            cr = new CMDProcessor().sh.runWaitFor("cat " + filePath);
         }
         if (cr.success())
             return cr.stdout;
@@ -279,7 +279,7 @@ public class Helpers2 implements Constants {
      */
     public static int getNumOfCpus() {
         int numOfCpu = 1;
-        String numOfCpus = Helpers2.readOneLine(NUM_OF_CPUS_PATH);
+        String numOfCpus = Helpers.readOneLine(NUM_OF_CPUS_PATH);
         String[] cpuCount = numOfCpus.split("-");
         if (cpuCount.length > 1) {
             try {
@@ -404,8 +404,8 @@ public class Helpers2 implements Constants {
     }
 
     public static String binExist(String b) {
-        CMDProcessor2.CommandResult cr = null;
-        cr = new CMDProcessor2().sh.runWaitFor("busybox which " + b);
+        CMDProcessor.CommandResult cr = null;
+        cr = new CMDProcessor().sh.runWaitFor("busybox which " + b);
         if (cr.success()) {
             return cr.stdout;
         } else {
@@ -414,8 +414,8 @@ public class Helpers2 implements Constants {
     }
 
     public static String getCachePartition() {
-        CMDProcessor2.CommandResult cr = null;
-        cr = new CMDProcessor2().sh.runWaitFor("busybox echo `busybox mount | busybox grep cache | busybox cut -d' ' -f1`");
+        CMDProcessor.CommandResult cr = null;
+        cr = new CMDProcessor().sh.runWaitFor("busybox echo `busybox mount | busybox grep cache | busybox cut -d' ' -f1`");
         if (cr.success() && !cr.stdout.equals("")) {
             return cr.stdout;
         } else {
@@ -425,7 +425,7 @@ public class Helpers2 implements Constants {
 
     public static long getTotMem() {
         long v = 0;
-        CMDProcessor2.CommandResult cr = new CMDProcessor2().sh.runWaitFor("busybox echo `busybox grep MemTot /proc/meminfo | busybox grep -E --only-matching '[[:digit:]]+'`");
+        CMDProcessor.CommandResult cr = new CMDProcessor().sh.runWaitFor("busybox echo `busybox grep MemTot /proc/meminfo | busybox grep -E --only-matching '[[:digit:]]+'`");
         if (cr.success()) {
             try {
                 v = (long) Integer.parseInt(cr.stdout) * 1024;
@@ -443,15 +443,15 @@ public class Helpers2 implements Constants {
     public static String shExec(StringBuilder s, Context c, Boolean su) {
         get_assetsScript("run", c, s.toString(), "");
         if (isSystemApp(c)) {
-            new CMDProcessor2().sh.runWaitFor("busybox chmod 750 " + c.getFilesDir() + "/run");
+            new CMDProcessor().sh.runWaitFor("busybox chmod 750 " + c.getFilesDir() + "/run");
         } else {
-            new CMDProcessor2().su.runWaitFor("busybox chmod 750 " + c.getFilesDir() + "/run");
+            new CMDProcessor().su.runWaitFor("busybox chmod 750 " + c.getFilesDir() + "/run");
         }
-        CMDProcessor2.CommandResult cr = null;
+        CMDProcessor.CommandResult cr = null;
         if (su && !isSystemApp(c))
-            cr = new CMDProcessor2().su.runWaitFor(c.getFilesDir() + "/run");
+            cr = new CMDProcessor().su.runWaitFor(c.getFilesDir() + "/run");
         else
-            cr = new CMDProcessor2().sh.runWaitFor(c.getFilesDir() + "/run");
+            cr = new CMDProcessor().sh.runWaitFor(c.getFilesDir() + "/run");
         if (cr.success()) {
             return cr.stdout;
         } else {
@@ -476,7 +476,7 @@ public class Helpers2 implements Constants {
             if (!prefix.equals("")) {
                 sb.insert(0, prefix + "\n");
             }
-            sb.insert(0, "#!" + Helpers2.binExist("sh") + "\n\n");
+            sb.insert(0, "#!" + Helpers.binExist("sh") + "\n\n");
             try {
                 FileOutputStream fos;
                 fos = c.openFileOutput(fn, Context.MODE_PRIVATE);

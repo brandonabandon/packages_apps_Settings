@@ -33,7 +33,7 @@ import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.util.Helpers2;
+import com.android.settings.util.Helpers;
 
 public class Pie extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {

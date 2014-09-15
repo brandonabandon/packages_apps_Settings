@@ -24,7 +24,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 
-public class CMDProcessor2 implements Constants {
+public class CMDProcessor implements Constants {
 
     private static final String LD_LIBRARY_PATH = System.getenv("LD_LIBRARY_PATH");
     private static final String TAG = "CMD Processor";
@@ -33,7 +33,7 @@ public class CMDProcessor2 implements Constants {
     public SH sh;
     public SH su;
 
-    public CMDProcessor2() {
+    public CMDProcessor() {
         sh = new SH("sh");
         su = new SH("su");
     }
