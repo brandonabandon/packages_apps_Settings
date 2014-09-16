@@ -1855,6 +1855,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pie_actnotif_summary">Enable expand notifications button</string>
     <string name="pie_power_title">Power button</string>
     <string name="pie_power_summary">Enable power button on Pie</string>
+    <string name="pie_torch_title">Torch</string>
+    <string name="pie_torch_summary">Enable torch button</string>
+    <string name="pie_screenshot_title">Screenshot</string>
+    <string name="pie_screenshot_summary">Enable screenshot button on Pie</string>
     <!-- Chamber of Secrets -->
     <string name="chamber_title">Chamber of secrets</string>
     <string name="chamber_toast">The chamber of secrets has opened</string>
