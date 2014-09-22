@@ -1,73 +1,85 @@
-/*
- * Performance Control - An Android CPU Control application Copyright (C) 2012
- * Jared Rummler Copyright (C) 2012 James Roberts
- *
- * This program is free software: you can redistribute it and/or modify it under
- * the terms of the GNU General Public License as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option) any later
- * version.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
- * details.
- *
- * You should have received a copy of the GNU General Public License along with
- * this program. If not, see <http://www.gnu.org/licenses/>.
- */
 
 package com.android.settings.util;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.support.v4.view.ViewPager;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.SystemProperties;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.SubMenu;
-
-import com.android.settings.R;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.Date;
 
+// don't show unavoidable warnings
+@SuppressWarnings({
+        "UnusedDeclaration",
+        "MethodWithMultipleReturnPoints",
+        "ReturnOfNull",
+        "NestedAssignment",
+        "DynamicRegexReplaceableByCompiledPattern",
+        "BreakStatement"})
 public class Helpers implements Constants {
+    // avoids hardcoding the tag
+    private static final String TAG = Thread.currentThread().getStackTrace()[1].getClassName();
 
-    private static final String TAG = "Helpers";
-
-    private static String mVoltagePath;
+    public Helpers() {
+        // dummy constructor
+    }
 
     /**
      * Checks device for SuperUser permission
      *
      * @return If SU was granted or denied
      */
+    @SuppressWarnings("MethodWithMultipleReturnPoints")
     public static boolean checkSu() {
-        if (!new File("/system/bin/su").exists() && !new File("/system/xbin/su").exists()) {
-            Log.e(TAG, "su does not exist!!!");
+        if (!new File("/system/bin/su").exists()
+                && !new File("/system/xbin/su").exists()) {
+            Log.e(TAG, "su binary does not exist!!!");
             return false; // tell caller to bail...
         }
         try {
-            if ((new CMDProcessor().su.runWaitFor("ls /data/app-private")).success()) {
+            if (CMDProcessor.runSuCommand("ls /data/app-private").success()) {
                 Log.i(TAG, " SU exists and we have permission");
                 return true;
             } else {
-                Log.i(TAG, " SU exists but we dont have permission");
+                Log.i(TAG, " SU exists but we don't have permission");
                 return false;
             }
-        } catch (final NullPointerException e) {
-            Log.e(TAG, e.getMessage());
+        } catch (NullPointerException e) {
+            Log.e(TAG, "NullPointer throw while looking for su binary", e);
             return false;
         }
+    }
+
+    /**
+     * Checks device for network connectivity
+     *
+     * @return If the device has data connectivity
+    */
+    public static boolean isNetworkAvailable(Context context) {
+        boolean state = false;
+        if (context != null) {
+            ConnectivityManager cm =
+                    (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+            if (netInfo != null && netInfo.isConnected()) {
+                Log.i(TAG, "The device currently has data connectivity");
+                state = true;
+            } else {
+                Log.i(TAG, "The device does not currently have data connectivity");
+                state = false;
+            }
+        }
+        return state;
     }
 
     /**
@@ -76,87 +88,83 @@ public class Helpers implements Constants {
      * @return If busybox exists
      */
     public static boolean checkBusybox() {
-        if (!new File("/system/bin/busybox").exists() && !new File("/system/xbin/busybox").exists()) {
+        if (!new File("/system/bin/busybox").exists()
+                && !new File("/system/xbin/busybox").exists()) {
             Log.e(TAG, "Busybox not in xbin or bin!");
             return false;
         }
         try {
-            if (!new CMDProcessor().su.runWaitFor("busybox mount").success()) {
-                Log.e(TAG, " Busybox is there but it is borked! ");
+            if (!CMDProcessor.runSuCommand("busybox mount").success()) {
+                Log.e(TAG, "Busybox is there but it is borked! ");
                 return false;
             }
-        } catch (final NullPointerException e) {
-            Log.e(TAG, e.getMessage());
+        } catch (NullPointerException e) {
+            Log.e(TAG, "NullpointerException thrown while testing busybox", e);
             return false;
         }
         return true;
     }
 
-    /**
-     * Return mount points
-     *
-     * @param path
-     * @return line if present
-     */
-    public static String[] getMounts(final String path) {
+    public static String[] getMounts(CharSequence path) {
+        BufferedReader bufferedReader = null;
         try {
-            BufferedReader br = new BufferedReader(new FileReader("/proc/mounts"), 256);
-            String line = null;
-            while ((line = br.readLine()) != null) {
+            bufferedReader = new BufferedReader(new FileReader("/proc/mounts"), 256);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
                 if (line.contains(path)) {
                     return line.split(" ");
                 }
             }
-            br.close();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException ignored) {
             Log.d(TAG, "/proc/mounts does not exist");
-        } catch (IOException e) {
+        } catch (IOException ignored) {
             Log.d(TAG, "Error reading /proc/mounts");
+        } finally {
+            if (bufferedReader != null) {
+                try {
+                    bufferedReader.close();
+                } catch (IOException ignored) {
+                    // ignored
+                }
+            }
         }
         return null;
     }
 
-    /**
-     * Get mounts
-     *
-     * @param mount
-     * @return success or failure
-     */
-    public static boolean getMount(final String mount) {
-        final CMDProcessor cmd = new CMDProcessor();
-        final String mounts[] = getMounts("/system");
+    public static boolean getMount(String mount) {
+        String[] mounts = getMounts("/system");
         if (mounts != null && mounts.length >= 3) {
-            final String device = mounts[0];
-            final String path = mounts[1];
-            final String point = mounts[2];
-            if (cmd.su.runWaitFor("mount -o " + mount + ",remount -t " + point + " " + device + " " + path).success()) {
+            String device = mounts[0];
+            String path = mounts[1];
+            String point = mounts[2];
+            String preferredMountCmd = new String("mount -o " + mount + ",remount -t " + point + ' ' + device + ' ' + path);
+            if (CMDProcessor.runSuCommand(preferredMountCmd).success()) {
                 return true;
             }
         }
-        return (cmd.su.runWaitFor("busybox mount -o remount," + mount + " /system").success());
+        String fallbackMountCmd = new String("busybox mount -o remount," + mount + " /system");
+        return CMDProcessor.runSuCommand(fallbackMountCmd).success();
     }
 
-    /**
-     * Read one line from file
-     *
-     * @param fname
-     * @return line
-     */
     public static String readOneLine(String fname) {
+        BufferedReader br = null;
         String line = null;
-        if (new File(fname).exists()) {
-            BufferedReader br;
-            try {
-                br = new BufferedReader(new FileReader(fname), 512);
+        try {
+            br = new BufferedReader(new FileReader(fname), 1024);
+            line = br.readLine();
+        } catch (FileNotFoundException ignored) {
+            Log.d(TAG, "File was not found! trying via shell...");
+            return readFileViaShell(fname, true);
+        } catch (IOException e) {
+            Log.d(TAG, "IOException while reading system file", e);
+            return readFileViaShell(fname, true);
+        } finally {
+            if (br != null) {
                 try {
-                    line = br.readLine();
-                } finally {
                     br.close();
+                } catch (IOException ignored) {
+                    // failed to close reader
                 }
-            } catch (Exception e) {
-                Log.e(TAG, "IO Exception when reading sys file", e);
-                // attempt to do magic!
-                return readFileViaShell(fname, true);
             }
         }
         return line;
@@ -165,79 +173,47 @@ public class Helpers implements Constants {
     public static boolean fileExists(String fname) {
         return new File(fname).exists();
     }
-
-    /**
-     * Read file via shell
-     *
-     * @param filePath
-     * @param useSu
-     * @return file output
-     */
     public static String readFileViaShell(String filePath, boolean useSu) {
-        CMDProcessor.CommandResult cr = null;
-        if (useSu) {
-            cr = new CMDProcessor().su.runWaitFor("cat " + filePath);
-        } else {
-            cr = new CMDProcessor().sh.runWaitFor("cat " + filePath);
-        }
-        if (cr.success())
-            return cr.stdout;
-        return null;
+        String command = new String("cat " + filePath);
+        return useSu ? CMDProcessor.runSuCommand(command).getStdout()
+                : CMDProcessor.runShellCommand(command).getStdout();
     }
 
-    /**
-     * Write one line to a file
-     *
-     * @param fname
-     * @param value
-     * @return if line was written
-     */
-    public static boolean writeOneLine(String fname, String value) {
-        if (!new File(fname).exists()) {
-            return false;
-        }
+    public static boolean writeOneLine(String filename, String value) {
+        FileWriter fileWriter = null;
         try {
-            FileWriter fw = new FileWriter(fname);
-            try {
-                fw.write(value);
-            } finally {
-                fw.close();
-            }
+            fileWriter = new FileWriter(filename);
+            fileWriter.write(value);
         } catch (IOException e) {
-            String Error = "Error writing to " + fname + ". Exception: ";
+            String Error = "Error writing { " + value + " } to file: " + filename;
             Log.e(TAG, Error, e);
             return false;
+        } finally {
+            if (fileWriter != null) {
+                try {
+                    fileWriter.close();
+                } catch (IOException ignored) {
+                    // failed to close writer
+                }
+            }
         }
         return true;
     }
 
-    /**
-     * Gets available schedulers from file
-     *
-     * @return available schedulers
-     */
     public static String[] getAvailableIOSchedulers() {
         String[] schedulers = null;
-        String[] aux = readStringArray(IO_SCHEDULER_PATH[0]);
+        String[] aux = readStringArray("/sys/block/mmcblk0/queue/scheduler");
         if (aux != null) {
             schedulers = new String[aux.length];
             for (int i = 0; i < aux.length; i++) {
-                if (aux[i].charAt(0) == '[') {
-                    schedulers[i] = aux[i].substring(1, aux[i].length() - 1);
-                } else {
-                    schedulers[i] = aux[i];
-                }
+                schedulers[i] = aux[i].charAt(0) == '['
+                        ? aux[i].substring(1, aux[i].length() - 1)
+                        : aux[i];
             }
         }
         return schedulers;
     }
 
-    /**
-     * Reads string array from file
-     *
-     * @param fname
-     * @return string array
-     */
     private static String[] readStringArray(String fname) {
         String line = readOneLine(fname);
         if (line != null) {
@@ -246,14 +222,9 @@ public class Helpers implements Constants {
         return null;
     }
 
-    /**
-     * Get current IO Scheduler
-     *
-     * @return current io scheduler
-     */
     public static String getIOScheduler() {
         String scheduler = null;
-        String[] schedulers = readStringArray(IO_SCHEDULER_PATH[0]);
+        String[] schedulers = readStringArray("/sys/block/mmcblk0/queue/scheduler");
         if (schedulers != null) {
             for (String s : schedulers) {
                 if (s.charAt(0) == '[') {
@@ -265,19 +236,19 @@ public class Helpers implements Constants {
         return scheduler;
     }
 
-    /*
-         * @return available performance scheduler
-         */
-    public static Boolean GovernorExist(String gov) {
-        return readOneLine(GOVERNORS_LIST_PATH).contains(gov);
-    }
-
     /**
-     * Get total number of cpus
+     * Long toast message
      *
-     * @return total number of cpus
+     * @param context Application Context
+     * @param msg Message to send
      */
-    public static int getNumOfCpus() {
+    public static void msgLong(Context context, String msg) {
+        if (context != null && msg != null) {
+            Toast.makeText(context, msg.trim(), Toast.LENGTH_LONG).show();
+        }
+    }
+	
+	public static int getNumOfCpus() {
         int numOfCpu = 1;
         String numOfCpus = Helpers.readOneLine(NUM_OF_CPUS_PATH);
         String[] cpuCount = numOfCpus.split("-");
@@ -298,50 +269,30 @@ public class Helpers implements Constants {
     }
 
     /**
-     * Check if any voltage control tables exist and set the voltage path if a
-     * file is found.
-     * <p/>
-     * If false is returned, there was no tables found and none will be used.
+     * Short toast message
      *
-     * @return true/false if uv table exists
+     * @param context Application Context
+     * @param msg Message to send
      */
-    public static boolean voltageFileExists() {
-        if (new File(UV_MV_PATH).exists()) {
-            setVoltagePath(UV_MV_PATH);
-            return true;
-        } else if (new File(VDD_PATH).exists()) {
-            setVoltagePath(VDD_PATH);
-            return true;
-        } else if (new File(VDD_SYSFS_PATH).exists()) {
-            setVoltagePath(VDD_SYSFS_PATH);
-            return true;
-        } else if (new File(COMMON_VDD_PATH).exists()) {
-            setVoltagePath(COMMON_VDD_PATH);
-            return true;
+    public static void msgShort(Context context, String msg) {
+        if (context != null && msg != null) {
+            Toast.makeText(context, msg.trim(), Toast.LENGTH_SHORT).show();
         }
-        return false;
     }
 
     /**
-     * Sets the voltage file to be used by the rest of the app elsewhere.
+     * Long toast message
      *
-     * @param voltageFile
+     * @param context Application Context
+     * @param msg Message to send
      */
-    public static void setVoltagePath(String voltageFile) {
-        Log.d(TAG, "UV table path detected: " + voltageFile);
-        mVoltagePath = voltageFile;
+    public static void sendMsg(Context context, String msg) {
+        if (context != null && msg != null) {
+            msgLong(context, msg);
+        }
     }
-
-    /**
-     * Gets the currently set voltage path
-     *
-     * @return voltage path
-     */
-    public static String getVoltagePath() {
-        return mVoltagePath;
-    }
-
-    /**
+	
+ 	/**
      * Convert to MHz and append a tag
      *
      * @param mhzString
@@ -352,28 +303,36 @@ public class Helpers implements Constants {
     }
 
     /**
-     * Restart the activity smoothly
+     * Return a timestamp
      *
-     * @param activity
+     * @param context Application Context
      */
-    public static void restartPC(final Activity activity) {
-        if (activity == null)
-            return;
-        final int enter_anim = android.R.anim.fade_in;
-        final int exit_anim = android.R.anim.fade_out;
-        activity.overridePendingTransition(enter_anim, exit_anim);
-        activity.finish();
-        activity.overridePendingTransition(enter_anim, exit_anim);
-        activity.startActivity(activity.getIntent());
+    @SuppressWarnings("UnnecessaryFullyQualifiedName")
+    public static String getTimestamp(Context context) {
+        String timestamp = "unknown";
+        Date now = new Date();
+        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
+        java.text.DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(context);
+        if (dateFormat != null && timeFormat != null) {
+            timestamp = dateFormat.format(now) + ' ' + timeFormat.format(now);
+        }
+        return timestamp;
     }
 
-    /**
-     * Helper to update the app widget
-     *
-     * @param context
-     * @note OMNI: The widget has been disabled
-     */
-    public static void updateAppWidget(Context context) {
+    public static boolean isPackageInstalled(String packageName, PackageManager pm) {
+        try {
+            String mVersion = pm.getPackageInfo(packageName, 0).versionName;
+            if (mVersion == null) {
+                return false;
+            }
+        } catch (NameNotFoundException notFound) {
+            Log.e(TAG, "Package could not be found!", notFound);
+            return false;
+        }
+        return true;
+    }
+	
+	public static void updateAppWidget(Context context) {
 /*
         AppWidgetManager widgetManager = AppWidgetManager.getInstance(context);
         ComponentName widgetComponent = new ComponentName(context, PCWidget.class);
@@ -385,197 +344,21 @@ public class Helpers implements Constants {
 */
     }
 
-    /**
-     * Helper to create a bitmap to set as imageview or bg
-     *
-     * @param bgcolor
-     * @return bitmap
-     */
-    public static Bitmap getBackground(int bgcolor) {
+    public static void restartSystemUI() {
+        CMDProcessor.startSuCommand("pkill -TERM -f com.android.systemui");
+    }
+
+    public static void setSystemProp(String prop, String val) {
+        CMDProcessor.startSuCommand("setprop " + prop + " " + val);
+    }
+
+    public static String getSystemProp(String prop, String def) {
+        String result = null;
         try {
-            Bitmap.Config config = Bitmap.Config.ARGB_8888;
-            Bitmap bitmap = Bitmap.createBitmap(2, 2, config);
-            Canvas canvas = new Canvas(bitmap);
-            canvas.drawColor(bgcolor);
-            return bitmap;
-        } catch (Exception e) {
-            return null;
+            result = SystemProperties.get(prop, def);
+        } catch (IllegalArgumentException iae) {
+            Log.e(TAG, "Failed to get prop: " + prop);
         }
-    }
-
-    public static String binExist(String b) {
-        CMDProcessor.CommandResult cr = null;
-        cr = new CMDProcessor().sh.runWaitFor("busybox which " + b);
-        if (cr.success()) {
-            return cr.stdout;
-        } else {
-            return NOT_FOUND;
-        }
-    }
-
-    public static String getCachePartition() {
-        CMDProcessor.CommandResult cr = null;
-        cr = new CMDProcessor().sh.runWaitFor("busybox echo `busybox mount | busybox grep cache | busybox cut -d' ' -f1`");
-        if (cr.success() && !cr.stdout.equals("")) {
-            return cr.stdout;
-        } else {
-            return NOT_FOUND;
-        }
-    }
-
-    public static long getTotMem() {
-        long v = 0;
-        CMDProcessor.CommandResult cr = new CMDProcessor().sh.runWaitFor("busybox echo `busybox grep MemTot /proc/meminfo | busybox grep -E --only-matching '[[:digit:]]+'`");
-        if (cr.success()) {
-            try {
-                v = (long) Integer.parseInt(cr.stdout) * 1024;
-            } catch (NumberFormatException e) {
-                Log.d(TAG, "MemTot conversion err: " + e);
-            }
-        }
-        return v;
-    }
-
-    public static boolean showBattery() {
-        return (new File(BLX_PATH).exists() || (fastcharge_path() != null) || new File(BAT_VOLT_PATH).exists());
-    }
-
-    public static String shExec(StringBuilder s, Context c, Boolean su) {
-        get_assetsScript("run", c, s.toString(), "");
-        if (isSystemApp(c)) {
-            new CMDProcessor().sh.runWaitFor("busybox chmod 750 " + c.getFilesDir() + "/run");
-        } else {
-            new CMDProcessor().su.runWaitFor("busybox chmod 750 " + c.getFilesDir() + "/run");
-        }
-        CMDProcessor.CommandResult cr = null;
-        if (su && !isSystemApp(c))
-            cr = new CMDProcessor().su.runWaitFor(c.getFilesDir() + "/run");
-        else
-            cr = new CMDProcessor().sh.runWaitFor(c.getFilesDir() + "/run");
-        if (cr.success()) {
-            return cr.stdout;
-        } else {
-            Log.d(TAG, "execute: " + cr.stderr);
-            return null;
-        }
-    }
-
-    public static void get_assetsScript(String fn, Context c, String prefix, String postfix) {
-        byte[] buffer;
-        final AssetManager assetManager = c.getAssets();
-        try {
-            InputStream f = assetManager.open(fn);
-            buffer = new byte[f.available()];
-            f.read(buffer);
-            f.close();
-            final String s = new String(buffer);
-            final StringBuilder sb = new StringBuilder(s);
-            if (!postfix.equals("")) {
-                sb.append("\n\n").append(postfix);
-            }
-            if (!prefix.equals("")) {
-                sb.insert(0, prefix + "\n");
-            }
-            sb.insert(0, "#!" + Helpers.binExist("sh") + "\n\n");
-            try {
-                FileOutputStream fos;
-                fos = c.openFileOutput(fn, Context.MODE_PRIVATE);
-                fos.write(sb.toString().getBytes());
-                fos.close();
-
-            } catch (IOException e) {
-                Log.d(TAG, "error write " + fn + " file");
-                e.printStackTrace();
-            }
-
-        } catch (IOException e) {
-            Log.d(TAG, "error read " + fn + " file");
-            e.printStackTrace();
-        }
-    }
-
-    public static void get_assetsBinary(String fn, Context c) {
-        byte[] buffer;
-        final AssetManager assetManager = c.getAssets();
-        try {
-            InputStream f = assetManager.open(fn);
-            buffer = new byte[f.available()];
-            f.read(buffer);
-            f.close();
-            try {
-                FileOutputStream fos;
-                fos = c.openFileOutput(fn, Context.MODE_PRIVATE);
-                fos.write(buffer);
-                fos.close();
-
-            } catch (IOException e) {
-                Log.d(TAG, "error write " + fn + " file");
-                e.printStackTrace();
-            }
-
-        } catch (IOException e) {
-            Log.d(TAG, "error read " + fn + " file");
-            e.printStackTrace();
-        }
-    }
-
-    public static String ReadableByteCount(long bytes) {
-        if (bytes < 1024) return bytes + " B";
-        int exp = (int) (Math.log(bytes) / Math.log(1024));
-        String pre = String.valueOf("KMGTPE".charAt(exp - 1));
-        return String.format("%.1f %sB", bytes / Math.pow(1024, exp), pre);
-    }
-
-    public static void removeCurItem(MenuItem item, int idx, ViewPager vp) {
-        for (int i = 0; i < vp.getAdapter().getCount(); i++) {
-            if (item.getItemId() == idx + i + 1) {
-                vp.setCurrentItem(i);
-            }
-        }
-    }
-
-    public static void addItems2Menu(Menu menu, int idx, String nume, ViewPager vp) {
-        final SubMenu smenu = menu.addSubMenu(0, idx, 0, nume);
-        for (int i = 0; i < vp.getAdapter().getCount(); i++) {
-            if (i != vp.getCurrentItem())
-                smenu.add(0, idx + i + 1, 0, vp.getAdapter().getPageTitle(i));
-        }
-    }
-
-    public static String bln_path() {
-        if (new File("/sys/class/misc/backlightnotification/enabled").exists()) {
-            return "/sys/class/misc/backlightnotification/enabled";
-        } else if (new File("/sys/class/leds/button-backlight/blink_buttons").exists()) {
-            return "/sys/class/leds/button-backlight/blink_buttons";
-        } else {
-            return null;
-        }
-    }
-
-    public static String fastcharge_path() {
-        if (new File("/sys/kernel/fast_charge/force_fast_charge").exists()) {
-            return "/sys/kernel/fast_charge/force_fast_charge";
-        } else if (new File("/sys/module/msm_otg/parameters/fast_charge").exists()) {
-            return "/sys/module/msm_otg/parameters/fast_charge";
-        } else if (new File("/sys/devices/platform/htc_battery/fast_charge").exists()) {
-            return "/sys/devices/platform/htc_battery/fast_charge";
-        } else {
-            return null;
-        }
-    }
-
-    public static String fsync_path() {
-        if (new File("/sys/class/misc/fsynccontrol/fsync_enabled").exists()) {
-            return "/sys/class/misc/fsynccontrol/fsync_enabled";
-        } else if (new File("/sys/module/sync/parameters/fsync_enabled").exists()) {
-            return "/sys/module/sync/parameters/fsync_enabled";
-        } else {
-            return null;
-        }
-    }
-
-    public static boolean isSystemApp(Context c) {
-        boolean mIsSystemApp;
-        return mIsSystemApp = c.getResources().getBoolean(R.bool.config_isSystemApp);
+        return result == null ? def : result;
     }
 }

@@ -56,6 +56,8 @@ import java.util.Set;
 import java.lang.Thread;
 import java.util.ArrayList;
 import java.util.Arrays;
+import com.android.settings.util.Helpers;
+
 public class UserInterface extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 	private static final String TAG = "UI Settings";	
@@ -68,6 +70,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
     private static final String KEY_TRIGGER_BOTTOM = "trigger_bottom";
 	private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
 	private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
+	private static final String PREF_SHOW_HEADS_UP_BOTTOM = "show_heads_up_bottom";
 	
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
@@ -85,6 +88,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mEnableAppCircleBar;
 	private ListPreference mExpandedDesktopPref;
 	private CheckBoxPreference mExpandedDesktopNoNavbarPref;
+	private CheckBoxPreference mShowHeadsUpBottom;
 	
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -139,6 +143,12 @@ public class UserInterface extends SettingsPreferenceFragment implements
 
         int expandedDesktopValue = Settings.System.getInt(getContentResolver(),
                 Settings.System.EXPANDED_DESKTOP_STYLE, 0);
+		
+		//Show HeadsUp at bottom		
+		mShowHeadsUpBottom = (CheckBoxPreference) findPreference(PREF_SHOW_HEADS_UP_BOTTOM);
+        mShowHeadsUpBottom.setChecked(Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.SHOW_HEADS_UP_BOTTOM, 0, UserHandle.USER_CURRENT) == 1);
+        mShowHeadsUpBottom.setOnPreferenceChangeListener(this);
 				
 		try {
             boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar();
@@ -158,6 +168,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
             Log.e(TAG, "Error getting navigation bar status");
         }		
     }
+	
     @Override
     public void onResume() {
         super.onResume();
@@ -169,12 +180,14 @@ public class UserInterface extends SettingsPreferenceFragment implements
 		Settings.System.APP_CIRCLE_BAR_SHOW_TRIGGER, 1);
         
     }
+	
     @Override
     public void onPause() {
         super.onPause();
         getContentResolver().unregisterContentObserver(mAccelerometerRotationObserver);
 		Settings.System.putInt(getContentResolver(), Settings.System.APP_CIRCLE_BAR_SHOW_TRIGGER, 0);
     }
+	
     private void updateDisplayRotationPreferenceDescription() {
         if (mDisplayRotationPreference == null) {
             return;
@@ -227,6 +240,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
         }
         preference.setSummary(summary);
     }
+	
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
        if (preference == mEnableAppCircleBar) {
@@ -236,6 +250,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
 		}				
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
+	
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final String key = preference.getKey();
@@ -264,7 +279,13 @@ public class UserInterface extends SettingsPreferenceFragment implements
             boolean value = (Boolean) objValue;
             updateExpandedDesktop(value ? 2 : 0);
             return true;
-        }		
+        } else if (preference == mShowHeadsUpBottom) {
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.SHOW_HEADS_UP_BOTTOM,
+                    (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
+            Helpers.restartSystemUI();
+            return true;
+		}			
 
         return true;
     }

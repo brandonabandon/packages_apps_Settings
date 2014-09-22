@@ -59,6 +59,12 @@
 		android:key="enable_app_circle_bar"
 		android:title="@string/app_circle_bar_title"
 		android:summary="@string/app_circle_bar_summary" />
+		
+	<com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="show_heads_up_bottom"
+            android:title="@string/show_heads_up_bottom_title"
+            android:persistent="false"
+            android:defaultValue="false" />	
 
 	<com.android.settings.apocalypse.AppMultiSelectListPreference
 		android:key="app_circle_bar_included_apps"
