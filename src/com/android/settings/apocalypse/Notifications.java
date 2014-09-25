@@ -64,10 +64,16 @@ public class Notifications extends SettingsPreferenceFragment implements
     private static final String KEY_PEEK = "notification_peek";
 	private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
 	private static final String STATUS_BAR_CUSTOM_HEADER = "custom_status_bar_header";
+	private static final String PREF_HEADS_UP_FLOATING_WINDOW = "heads_up_floating_window";
+	
+	
     private CheckBoxPreference mNotificationPulse;
 	private CheckBoxPreference mNotificationPeek;
 	private ListPreference mPeekPickupTimeout;
 	private CheckBoxPreference mStatusBarCustomHeader;
+	CheckBoxPreference mHeadsUpFloatingWindow;
+	
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +118,11 @@ public class Notifications extends SettingsPreferenceFragment implements
                 Log.e(TAG, Settings.System.NOTIFICATION_LIGHT_PULSE + " not found");
             }
         }
+		
+		mHeadsUpFloatingWindow = (CheckBoxPreference) findPreference(PREF_HEADS_UP_FLOATING_WINDOW);
+		mHeadsUpFloatingWindow.setChecked(Settings.System.getIntForUser(getContentResolver(),
+		Settings.System.HEADS_UP_FLOATING_WINDOW, 1, UserHandle.USER_CURRENT) == 1);
+		mHeadsUpFloatingWindow.setOnPreferenceChangeListener(this);
     }
     @Override
     public void onResume() {
@@ -166,6 +177,11 @@ public class Notifications extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, value ? 1 : 0);
             return true;
+		} else if (preference == mHeadsUpFloatingWindow) {
+	    	Settings.System.putIntForUser(getContentResolver(),
+		    	Settings.System.HEADS_UP_FLOATING_WINDOW,
+	    	(Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
+	    	return true;	
         }		
 
         return true;

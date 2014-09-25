@@ -29,6 +29,13 @@
 	    android:title="@string/halo_options_title"
 	    android:fragment="com.android.settings.apocalypse.HaloOptions" />
 	    
+	<CheckBoxPreference
+	    android:key="heads_up_floating_window"
+	    android:title="@string/heads_up_floating_window_title"
+	    android:summary="@string/heads_up_floating_window_summary"
+	    android:persistent="false"
+	    android:defaultValue="true" /> 
+	    
 	<com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
                 android:key="proximity_on_wake"
                 android:title="@string/proximity_wake_title"

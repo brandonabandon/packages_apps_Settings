@@ -1868,6 +1868,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Heads Up on bottom -->
     <string name="show_heads_up_bottom_title">Show HeadsUp on bottom</string>
     <string name="show_heads_up_bottom_summary">Instead of showing Heads Up on top, show it on the bottom of screen</string>
+    <!-- Heads Up Floating Window -->
+    <string name="heads_up_floating_window_title">HeadsUp in floating window</string>
+    <string name="heads_up_floating_window_summary">Launches floating window from Heads Up</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>
