@@ -1871,8 +1871,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Heads Up Floating Window -->
     <string name="heads_up_floating_window_title">HeadsUp in floating window</string>
     <string name="heads_up_floating_window_summary">Launches floating window from Heads Up</string>
+    <!-- Disable Boot Audio -->
+    <string name="disable_bootaudio_title">Disable boot audio</string>
+    <string name="disable_bootaudio_summary">Quiet</string>
+    <string name="disable_bootaudio_summary_disabled">To enable boot audio, you must have an MP3 file at \n/system/media/audio.mp3</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>
-    <string name="notifications">Notifications</string> 
+    <string name="notifications">Notifications</string>
+    <string name="system">System</string> 
 </resources>     

@@ -110,6 +110,13 @@
         android:icon="@drawable/ic_settings_system"
         android:fragment="com.android.settings.apocalypse.Notifications"
         android:title="@string/notifications" />
+	
+    <!-- System -->
+    <header
+        android:id="@+id/system_settings"
+        android:icon="@drawable/ic_apocalypse_system"
+        android:fragment="com.android.settings.apocalypse.SystemSettings"
+        android:title="@string/system" />	
 
     <!-- Profiles -->
     <header
