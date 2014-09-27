@@ -18,10 +18,12 @@ package com.android.settings.apocalypse;
 
 
 import android.app.ActivityManagerNative;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.admin.DevicePolicyManager;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.ContentObserver;
@@ -38,6 +40,9 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuInflater;
 import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
@@ -53,6 +58,7 @@ import java.lang.Thread;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class Notifications extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -65,6 +71,8 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
 	private static final String STATUS_BAR_CUSTOM_HEADER = "custom_status_bar_header";
 	private static final String PREF_HEADS_UP_FLOATING_WINDOW = "heads_up_floating_window";
+	private static final String PREF_HEADS_UP_BG_COLOR = "heads_up_bg_color";
+    private static final String PREF_HEADS_UP_TEXT_COLOR = "heads_up_text_color";
 	
 	
     private CheckBoxPreference mNotificationPulse;
@@ -72,6 +80,13 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private ListPreference mPeekPickupTimeout;
 	private CheckBoxPreference mStatusBarCustomHeader;
 	CheckBoxPreference mHeadsUpFloatingWindow;
+	
+	private ColorPickerPreference mHeadsUpBgColor;
+    private ColorPickerPreference mHeadsUpTextColor;
+	
+	private static final int MENU_RESET = Menu.FIRST;
+    private static final int DEFAULT_BACKGROUND_COLOR = 0x00ffffff;
+    private static final int DEFAULT_TEXT_COLOR = 0xffffffff;
 	
 	
     @Override
@@ -123,13 +138,41 @@ public class Notifications extends SettingsPreferenceFragment implements
 		mHeadsUpFloatingWindow.setChecked(Settings.System.getIntForUser(getContentResolver(),
 		Settings.System.HEADS_UP_FLOATING_WINDOW, 1, UserHandle.USER_CURRENT) == 1);
 		mHeadsUpFloatingWindow.setOnPreferenceChangeListener(this);
+		
+		// Heads Up background color
+        mHeadsUpBgColor =
+                (ColorPickerPreference) findPreference(PREF_HEADS_UP_BG_COLOR);
+        mHeadsUpBgColor.setOnPreferenceChangeListener(this);
+        final int intColor = Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_BG_COLOR, 0x00ffffff);
+        String hexColor = String.format("#%08x", (0x00ffffff & intColor));
+        if (hexColor.equals("#00ffffff")) {
+            mHeadsUpBgColor.setSummary(R.string.default_color);
+        } else {
+            mHeadsUpBgColor.setSummary(hexColor);
+        }
+        mHeadsUpBgColor.setNewPreviewColor(intColor);
+
+        // Heads Up text color
+        mHeadsUpTextColor =
+                (ColorPickerPreference) findPreference(PREF_HEADS_UP_TEXT_COLOR);
+        mHeadsUpTextColor.setOnPreferenceChangeListener(this);
+        final int intTextColor = Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_TEXT_COLOR, 0x00000000);
+        String hexTextColor = String.format("#%08x", (0x00000000 & intTextColor));
+        if (hexTextColor.equals("#00000000")) {
+            mHeadsUpTextColor.setSummary(R.string.default_color);
+        } else {
+            mHeadsUpTextColor.setSummary(hexTextColor);
+        }
+        mHeadsUpTextColor.setNewPreviewColor(intTextColor);
+        setHasOptionsMenu(true);
     }
+	
+	
     @Override
     public void onResume() {
-        super.onResume();
-       	
-	 	
-        
+        super.onResume();   
         updateState();
     }
     @Override
@@ -182,8 +225,33 @@ public class Notifications extends SettingsPreferenceFragment implements
 		    	Settings.System.HEADS_UP_FLOATING_WINDOW,
 	    	(Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
 	    	return true;	
-        }		
-
+        } else if (preference == mHeadsUpBgColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            if (hex.equals("#00ffffff")) {
+                preference.setSummary(R.string.default_color);
+            } else {
+                preference.setSummary(hex);
+            }
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.HEADS_UP_BG_COLOR,
+                    intHex);
+            return true;
+        } else if (preference == mHeadsUpTextColor) {
+            String hexText = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            if (hexText.equals("#00000000")) {
+                preference.setSummary(R.string.default_color);
+            } else {
+                preference.setSummary(hexText);
+            }
+            int intHexText = ColorPickerPreference.convertToColorInt(hexText);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.HEADS_UP_TEXT_COLOR,
+                    intHexText);
+            return true;		
+		}
         return true;
     }
 	
@@ -193,5 +261,47 @@ public class Notifications extends SettingsPreferenceFragment implements
         Settings.Secure.putInt(getActivity().getContentResolver(),
                 Settings.System.PEEK_PICKUP_TIMEOUT, value);
         mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntries()[index]);
+    }
+	
+	@Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add(0, MENU_RESET, 0, R.string.reset_default_message)
+                .setIcon(R.drawable.ic_settings_backup)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                resetToDefault();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void resetToDefault() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle(R.string.reset);
+        alertDialog.setMessage(R.string.color_reset_message);
+        alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                resetValues();
+            }
+        });
+        alertDialog.setNegativeButton(R.string.cancel, null);
+        alertDialog.create().show();
+    }
+
+    private void resetValues() {
+        Settings.System.putInt(getContentResolver(),
+                Settings.System.HEADS_UP_BG_COLOR, DEFAULT_BACKGROUND_COLOR);
+        mHeadsUpBgColor.setNewPreviewColor(DEFAULT_BACKGROUND_COLOR);
+        mHeadsUpBgColor.setSummary(R.string.default_color);
+        Settings.System.putInt(getContentResolver(),
+                Settings.System.HEADS_UP_TEXT_COLOR, 0);
+        mHeadsUpTextColor.setNewPreviewColor(DEFAULT_TEXT_COLOR);
+        mHeadsUpTextColor.setSummary(R.string.default_color);
     }
 }
