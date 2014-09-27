@@ -61,7 +61,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 		private static final String TAG = "System Settings";	
 		
-    	private static final String HOLDER = "holder";
+    	private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
 	
 
     	private CheckBoxPreference blah;
@@ -76,9 +76,14 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 		
 		PreferenceScreen prefScreen = getPreferenceScreen();
 		
+		Resources res = getResources();
 		
-
-        		
+		boolean proximityCheckOnWait = res.getBoolean(
+                com.android.internal.R.bool.config_proximityCheckOnWake);
+        if (!proximityCheckOnWait) {
+            Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 1);
+        }
+		        		
     }
 	
     @Override

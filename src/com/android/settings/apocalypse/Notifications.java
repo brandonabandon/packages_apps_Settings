@@ -58,14 +58,14 @@ import java.lang.Thread;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import com.android.settings.util.Helpers;
+
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class Notifications extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "NotificationSettings";
     
-
-    private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_PEEK = "notification_peek";
 	private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
@@ -73,6 +73,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private static final String PREF_HEADS_UP_FLOATING_WINDOW = "heads_up_floating_window";
 	private static final String PREF_HEADS_UP_BG_COLOR = "heads_up_bg_color";
     private static final String PREF_HEADS_UP_TEXT_COLOR = "heads_up_text_color";
+	private static final String PREF_SHOW_HEADS_UP_BOTTOM = "show_heads_up_bottom";
 	
 	
     private CheckBoxPreference mNotificationPulse;
@@ -80,6 +81,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private ListPreference mPeekPickupTimeout;
 	private CheckBoxPreference mStatusBarCustomHeader;
 	CheckBoxPreference mHeadsUpFloatingWindow;
+	private CheckBoxPreference mShowHeadsUpBottom;
 	
 	private ColorPickerPreference mHeadsUpBgColor;
     private ColorPickerPreference mHeadsUpTextColor;
@@ -113,12 +115,6 @@ public class Notifications extends SettingsPreferenceFragment implements
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1);
         mStatusBarCustomHeader.setOnPreferenceChangeListener(this);
 		
-		 boolean proximityCheckOnWait = res.getBoolean(
-                com.android.internal.R.bool.config_proximityCheckOnWake);
-        if (!proximityCheckOnWait) {
-            Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 1);
-        }
-        
 		mNotificationPulse = (CheckBoxPreference) findPreference(KEY_NOTIFICATION_PULSE);
         if (mNotificationPulse != null
                 && getResources().getBoolean(
@@ -167,6 +163,12 @@ public class Notifications extends SettingsPreferenceFragment implements
         }
         mHeadsUpTextColor.setNewPreviewColor(intTextColor);
         setHasOptionsMenu(true);
+		
+		//Show HeadsUp at bottom		
+		mShowHeadsUpBottom = (CheckBoxPreference) findPreference(PREF_SHOW_HEADS_UP_BOTTOM);
+        mShowHeadsUpBottom.setChecked(Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.SHOW_HEADS_UP_BOTTOM, 0, UserHandle.USER_CURRENT) == 1);
+        mShowHeadsUpBottom.setOnPreferenceChangeListener(this);
     }
 	
 	
@@ -250,7 +252,13 @@ public class Notifications extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.HEADS_UP_TEXT_COLOR,
                     intHexText);
-            return true;		
+            return true;
+		} else if (preference == mShowHeadsUpBottom) {
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.SHOW_HEADS_UP_BOTTOM,
+                    (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
+            Helpers.restartSystemUI();
+            return true;			
 		}
         return true;
     }

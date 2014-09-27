@@ -18,82 +18,95 @@
         android:title="@string/notifications"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 	
+	<PreferenceCategory
+            android:title="@string/category_notification_style">
 	
-    	<PreferenceScreen
-            android:id="@+id/hover_settings"
-            android:fragment="com.android.settings.apocalypse.HoverSettings"
-            android:title="@string/hover_settings_title" />
+    	    <PreferenceScreen
+            	android:id="@+id/hover_settings"
+            	android:fragment="com.android.settings.apocalypse.HoverSettings"
+            	android:title="@string/hover_settings_title" />
 	
-	<PreferenceScreen
-	    android:key="halo_options"
-	    android:title="@string/halo_options_title"
-	    android:fragment="com.android.settings.apocalypse.HaloOptions" />
+	    <PreferenceScreen
+	    	android:key="halo_options"
+	    	android:title="@string/halo_options_title"
+	    	android:fragment="com.android.settings.apocalypse.HaloOptions" />
 	    
-	<CheckBoxPreference
-	    android:key="heads_up_floating_window"
-	    android:title="@string/heads_up_floating_window_title"
-	    android:summary="@string/heads_up_floating_window_summary"
-	    android:persistent="false"
-	    android:defaultValue="true" /> 
+	     <CheckBoxPreference
+            	android:key="notification_peek"
+            	android:title="@string/notification_peek_title"
+            	android:summary="@string/notification_peek_summary" />
 	    
-	 <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="heads_up_bg_color"
-            android:title="@string/heads_up_bg_color_title"
-            android:defaultValue="0x00ffffff"
-            alphaSlider="true" />
+	    <ListPreference
+            	android:key="peek_pickup_timeout"
+            	android:title="@string/peek_pickup_timeout_title"
+            	android:persistent="false"
+            	android:entries="@array/peek_pickup_timeout_entries"
+            	android:entryValues="@array/peek_pickup_timeout_values"
+            	android:dependency="notification_peek" />   
+	
+	</PreferenceCategory>	   
+	    
+	<PreferenceCategory
+            android:title="@string/category_heads_up">    
+	    
+	    <CheckBoxPreference
+	    	android:key="heads_up_floating_window"
+	    	android:title="@string/heads_up_floating_window_title"
+	    	android:summary="@string/heads_up_floating_window_summary"
+	    	android:persistent="false"
+	    	android:defaultValue="true" /> 
+	    
+	    <net.margaritov.preference.colorpicker.ColorPickerPreference
+           	 android:key="heads_up_bg_color"
+           	 android:title="@string/heads_up_bg_color_title"
+           	 android:defaultValue="0x00ffffff"
+           	 alphaSlider="true" />
 
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="heads_up_text_color"
-            android:title="@string/heads_up_text_color_title"
-            android:defaultValue="0"
-            alphaSlider="true" />   
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
+                 android:key="heads_up_text_color"
+       	         android:title="@string/heads_up_text_color_title"
+            	 android:defaultValue="0"
+            	 alphaSlider="true" />
+		   
+	    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+                 android:key="show_heads_up_bottom"
+            	 android:title="@string/show_heads_up_bottom_title"
+            	 android:persistent="false"
+            	 android:defaultValue="false" />	   
+		    
+	</PreferenceCategory>	     
 	    
-	<com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-                android:key="proximity_on_wake"
-                android:title="@string/proximity_wake_title"
-                android:summary="@string/proximity_wake_summary"
-                android:defaultValue="true" />    
+	<PreferenceCategory
+            android:title="@string/category_notification_drawer"> 
 	    
-	<CheckBoxPreference
-            android:key="custom_status_bar_header"
-            android:title="@string/custom_statusbar_header_title"
-            android:summary="@string/custom_statusbar_header_summary"
-            android:defaultValue="false" />    
+	    <CheckBoxPreference
+            	android:key="custom_status_bar_header"
+            	android:title="@string/custom_statusbar_header_title"
+            	android:summary="@string/custom_statusbar_header_summary"
+            	android:defaultValue="false" />    
 	    
-	<com.android.settings.slim.CustomCarrier
-            android:key="notification_custom_carrier_label"
-            android:title="@string/notification_custom_carrier_label_title"
-            android:dialogTitle="@string/notification_custom_carrier_label_title"
-            android:positiveButtonText="@string/save"
-            android:negativeButtonText="@string/cancel"
-            android:selectAllOnFocus="true"
-            android:imeOptions="actionDone"
-            android:inputType="textNoSuggestions"
-            android:persistent="false" />    
+	    <com.android.settings.slim.CustomCarrier
+            	android:key="notification_custom_carrier_label"
+            	android:title="@string/notification_custom_carrier_label_title"
+            	android:dialogTitle="@string/notification_custom_carrier_label_title"
+            	android:positiveButtonText="@string/save"
+            	android:negativeButtonText="@string/cancel"
+            	android:selectAllOnFocus="true"
+            	android:imeOptions="actionDone"
+            	android:inputType="textNoSuggestions"
+            	android:persistent="false" /> 
+	    
+	    <Preference
+            	android:fragment="com.android.settings.slim.NotificationDrawerStyle"
+            	android:key="notification_style"
+            	android:title="@string/notification_style_title"
+            	android:summary="@string/notification_style_summary" />    
+	    
+	</PreferenceCategory>       
 	
 	<CheckBoxPreference
             android:key="notification_pulse"
             android:title="@string/notification_pulse_title"
-            android:persistent="false" />    
-
-        <CheckBoxPreference
-            android:key="notification_peek"
-            android:title="@string/notification_peek_title"
-            android:summary="@string/notification_peek_summary" />
+            android:persistent="false" />
 	    
-	<ListPreference
-            android:key="peek_pickup_timeout"
-            android:title="@string/peek_pickup_timeout_title"
-            android:persistent="false"
-            android:entries="@array/peek_pickup_timeout_entries"
-            android:entryValues="@array/peek_pickup_timeout_values"
-            android:dependency="notification_peek" />    
-	    
-	<Preference
-            android:fragment="com.android.settings.slim.NotificationDrawerStyle"
-            android:key="notification_style"
-            android:title="@string/notification_style_title"
-            android:summary="@string/notification_style_summary" />
-
-
 </PreferenceScreen>

@@ -20,4 +20,11 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 	
 	
+	<com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+                android:key="proximity_on_wake"
+                android:title="@string/proximity_wake_title"
+                android:summary="@string/proximity_wake_summary"
+                android:defaultValue="true" /> 
+	
+	
 </PreferenceScreen>
