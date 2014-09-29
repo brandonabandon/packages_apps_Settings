@@ -24,7 +24,11 @@
                 android:key="proximity_on_wake"
                 android:title="@string/proximity_wake_title"
                 android:summary="@string/proximity_wake_summary"
-                android:defaultValue="true" /> 
-	
+                android:defaultValue="true" />
+		 
+	<PreferenceScreen
+            android:id="@+id/wakelock_blocker"
+            android:title="@string/wakelock_blocker"
+            android:fragment="com.android.settings.apocalypse.WakeLockBlocker" />  
 	
 </PreferenceScreen>

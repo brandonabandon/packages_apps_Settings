@@ -37,11 +37,6 @@
             android:key="gesture_anywhere"
             android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
             android:title="@string/gesture_anywhere_title" />
-	  
-	<PreferenceScreen
-            android:id="@+id/wakelock_blocker"
-            android:title="@string/wakelock_blocker"
-            android:fragment="com.android.settings.apocalypse.WakeLockBlocker" />  
 	    
 	<ListPreference
             android:key="expanded_desktop"
