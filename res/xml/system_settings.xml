@@ -29,6 +29,11 @@
 	<PreferenceScreen
             android:id="@+id/wakelock_blocker"
             android:title="@string/wakelock_blocker"
-            android:fragment="com.android.settings.apocalypse.WakeLockBlocker" />  
+            android:fragment="com.android.settings.apocalypse.WakeLockBlocker" />
+	    
+	<PreferenceScreen
+            android:id="@+id/system_app_remover"
+            android:title="@string/system_app_remover"
+            android:fragment="com.android.settings.slim.SystemappRemover" />      
 	
 </PreferenceScreen>
