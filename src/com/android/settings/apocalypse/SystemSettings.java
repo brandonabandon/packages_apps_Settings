@@ -62,9 +62,10 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 		private static final String TAG = "System Settings";	
 		
     	private static final String KEY_PROXIMITY_WAKE = "proximity_on_wake";
+		private static final String DISABLE_FC_NOTIFICATIONS = "disable_fc_notifications";
 	
 
-    	private CheckBoxPreference blah;
+    	private CheckBoxPreference mDisableFC;
 	
 	
     @Override
@@ -83,6 +84,11 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         if (!proximityCheckOnWait) {
             Settings.System.putInt(getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 1);
         }
+		
+		// Disable FC notification
+        mDisableFC = (CheckBoxPreference) findPreference(DISABLE_FC_NOTIFICATIONS);
+        mDisableFC.setChecked((Settings.System.getInt(resolver,
+                Settings.System.DISABLE_FC_NOTIFICATIONS, 0) == 1));
 		        		
     }
 	
@@ -101,16 +107,12 @@ public class SystemSettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
        	
-		ContentResolver resolver = getActivity().getContentResolver();
-        boolean value;
-				
-        if (preference == blah) {
-            boolean checked = ((CheckBoxPreference) preference).isChecked();
-            if (checked) {
-                //do stuff
-            } else {
-                //do stuff
-            }
+		ContentResolver resolver = getActivity().getContentResolver();	
+        if  (preference == mDisableFC) {
+            boolean checked = ((CheckBoxPreference)preference).isChecked();
+            Settings.System.putInt(resolver,
+                    Settings.System.DISABLE_FC_NOTIFICATIONS, checked ? 1:0);
+			
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }

@@ -1901,6 +1901,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="minimum_vibration_duration">Minimum vibration duration</string>
     <!-- Vibration multiplier -->
     <string name="vibrator_multiplier_title">Vibration multiplier</string>
+    <!-- Disable Force Close Notifications -->
+    <string name="disable_fc_notifications_title">Disable FC Notifications</string>
+    <string name="disable_fc_notifications_summary">This will hide all force close notifications</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>

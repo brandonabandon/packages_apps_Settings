@@ -21,10 +21,10 @@
 	
 	
 	<com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-                android:key="proximity_on_wake"
-                android:title="@string/proximity_wake_title"
-                android:summary="@string/proximity_wake_summary"
-                android:defaultValue="true" />
+            android:key="proximity_on_wake"
+            android:title="@string/proximity_wake_title"
+            android:summary="@string/proximity_wake_summary"
+            android:defaultValue="true" />
 		 
 	<PreferenceScreen
             android:id="@+id/wakelock_blocker"
@@ -34,6 +34,12 @@
 	<PreferenceScreen
             android:id="@+id/system_app_remover"
             android:title="@string/system_app_remover"
-            android:fragment="com.android.settings.slim.SystemappRemover" />      
+            android:fragment="com.android.settings.slim.SystemappRemover" />
+	    
+        <CheckBoxPreference
+            android:key="disable_fc_notifications"
+            android:title="@string/disable_fc_notifications_title"
+            android:summary="@string/disable_fc_notifications_summary"
+            android:persistent="false" />         
 	
 </PreferenceScreen>
