@@ -34,26 +34,32 @@
 		android:title="@string/battery_bar_title" />	
 		
 	<PreferenceScreen
-            android:key="gesture_anywhere"
-            android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
-            android:title="@string/gesture_anywhere_title" />
+            	android:key="gesture_anywhere"
+            	android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
+            	android:title="@string/gesture_anywhere_title" />
 	    
 	<ListPreference
-            android:key="expanded_desktop"
-            android:title="@string/power_menu_expanded_desktop"
-            android:entries="@array/expanded_desktop_entries"
-            android:entryValues="@array/expanded_desktop_values"
-            android:persistent="false" />
+            	android:key="expanded_desktop"
+            	android:title="@string/power_menu_expanded_desktop"
+            	android:entries="@array/expanded_desktop_entries"
+            	android:entryValues="@array/expanded_desktop_values"
+            	android:persistent="false" />
 
     	<CheckBoxPreference
-            android:key="expanded_desktop_no_navbar"
-            android:title="@string/power_menu_expanded_desktop"
-            android:persistent="true" />
+            	android:key="expanded_desktop_no_navbar"
+            	android:title="@string/power_menu_expanded_desktop"
+            	android:persistent="true" />
 	    
 	<CheckBoxPreference
 		android:key="enable_app_circle_bar"
 		android:title="@string/app_circle_bar_title"
 		android:summary="@string/app_circle_bar_summary" />
+		
+	<CheckBoxPreference
+        	android:key="status_bar_clock_lockscreen"
+        	android:title="@string/status_bar_show_clock_lockscreen_title"
+        	android:summary="@string/status_bar_show_clock_lockscreen_summary"
+        	android:defaultValue="false" />		
 		
 	<com.android.settings.apocalypse.AppMultiSelectListPreference
 		android:key="app_circle_bar_included_apps"

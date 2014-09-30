@@ -51,6 +51,7 @@ import com.android.settings.DreamSettings;
 import com.android.settings.slim.DisplayRotation;
 import com.android.settings.apocalypse.AppMultiSelectListPreference;
 import com.android.settings.cyanogenmod.NEWSeekBarPreference;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.lang.Thread;
@@ -70,6 +71,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
     private static final String KEY_TRIGGER_BOTTOM = "trigger_bottom";
 	private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
 	private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
+	private static final String PREF_STATUS_BAR_CLOCK_LOCKSCREEN = "status_bar_clock_lockscreen";
 	
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
@@ -87,6 +89,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mEnableAppCircleBar;
 	private ListPreference mExpandedDesktopPref;
 	private CheckBoxPreference mExpandedDesktopNoNavbarPref;
+	private CheckBoxPreference mClockInStatusbar;
 	
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -158,7 +161,12 @@ public class UserInterface extends SettingsPreferenceFragment implements
             }
         } catch (RemoteException e) {
             Log.e(TAG, "Error getting navigation bar status");
-        }		
+        }
+		
+		mClockInStatusbar = (CheckBoxPreference) findPreference(PREF_STATUS_BAR_CLOCK_LOCKSCREEN);
+        mClockInStatusbar.setChecked(Settings.System.getInt(getContentResolver(),
+                 Settings.System.STATUS_BAR_CLOCK_LOCKSCREEN, 0) == 1);
+        mClockInStatusbar.setOnPreferenceChangeListener(this);		
     }
 	
     @Override
@@ -239,7 +247,10 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	    	boolean checked = ((CheckBoxPreference)preference).isChecked();
 	    	Settings.System.putInt(getContentResolver(),
 			Settings.System.ENABLE_APP_CIRCLE_BAR, checked ? 1:0);
-		}				
+		} else if (preference == mClockInStatusbar) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.STATUS_BAR_CLOCK_LOCKSCREEN, mClockInStatusbar.isChecked() ? 1 : 0);
+		}							
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 	
