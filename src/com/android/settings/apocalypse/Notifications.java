@@ -74,6 +74,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private static final String PREF_HEADS_UP_BG_COLOR = "heads_up_bg_color";
     private static final String PREF_HEADS_UP_TEXT_COLOR = "heads_up_text_color";
 	private static final String PREF_SHOW_HEADS_UP_BOTTOM = "show_heads_up_bottom";
+	private static final String PREF_FORCE_EXPANDED_NOTIFICATIONS = "force_expanded_notifications";
 	
 	
     private CheckBoxPreference mNotificationPulse;
@@ -82,6 +83,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private CheckBoxPreference mStatusBarCustomHeader;
 	CheckBoxPreference mHeadsUpFloatingWindow;
 	private CheckBoxPreference mShowHeadsUpBottom;
+	private CheckBoxPreference mForceExpandedNotifications;
 	
 	private ColorPickerPreference mHeadsUpBgColor;
     private ColorPickerPreference mHeadsUpTextColor;
@@ -99,7 +101,8 @@ public class Notifications extends SettingsPreferenceFragment implements
 		Resources res = getResources();
 
         addPreferencesFromResource(R.xml.notifications_settings);
-
+		
+		//Peek
 		mNotificationPeek = (CheckBoxPreference) findPreference(KEY_PEEK);
         mNotificationPeek.setPersistent(false);
 		
@@ -110,12 +113,15 @@ public class Notifications extends SettingsPreferenceFragment implements
         mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntry());
         mPeekPickupTimeout.setOnPreferenceChangeListener(this);
 		
+		//Custom Status Bar header
 		mStatusBarCustomHeader = (CheckBoxPreference) findPreference(STATUS_BAR_CUSTOM_HEADER);
 		mStatusBarCustomHeader.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1);
         mStatusBarCustomHeader.setOnPreferenceChangeListener(this);
 		
+		//LED Notificaion Pulse
 		mNotificationPulse = (CheckBoxPreference) findPreference(KEY_NOTIFICATION_PULSE);
+		
         if (mNotificationPulse != null
                 && getResources().getBoolean(
                         com.android.internal.R.bool.config_intrusiveNotificationLed) == false) {
@@ -130,6 +136,7 @@ public class Notifications extends SettingsPreferenceFragment implements
             }
         }
 		
+		//Heads Up in FLoating Window
 		mHeadsUpFloatingWindow = (CheckBoxPreference) findPreference(PREF_HEADS_UP_FLOATING_WINDOW);
 		mHeadsUpFloatingWindow.setChecked(Settings.System.getIntForUser(getContentResolver(),
 		Settings.System.HEADS_UP_FLOATING_WINDOW, 1, UserHandle.USER_CURRENT) == 1);
@@ -169,6 +176,11 @@ public class Notifications extends SettingsPreferenceFragment implements
         mShowHeadsUpBottom.setChecked(Settings.System.getIntForUser(getContentResolver(),
                 Settings.System.SHOW_HEADS_UP_BOTTOM, 0, UserHandle.USER_CURRENT) == 1);
         mShowHeadsUpBottom.setOnPreferenceChangeListener(this);
+		
+		//Force Expanded Notifications
+		mForceExpandedNotifications = (CheckBoxPreference) findPreference(PREF_FORCE_EXPANDED_NOTIFICATIONS);
+        mForceExpandedNotifications.setChecked((Settings.System.getInt(resolver,
+                Settings.System.FORCE_EXPANDED_NOTIFICATIONS, 0) == 1));
     }
 	
 	
@@ -203,6 +215,10 @@ public class Notifications extends SettingsPreferenceFragment implements
         } else if (preference == mNotificationPeek) {
             Settings.System.putInt(getContentResolver(), Settings.System.PEEK_STATE,
                     mNotificationPeek.isChecked() ? 1 : 0);
+		} else if (preference == mForceExpandedNotifications) {
+            boolean value = mForceExpandedNotifications.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.FORCE_EXPANDED_NOTIFICATIONS, value ? 1 : 0);			
 		}				
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
