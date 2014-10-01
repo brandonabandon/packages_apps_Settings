@@ -1924,6 +1924,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Statusbar clock on lockscreen -->
     <string name="status_bar_show_clock_lockscreen_title">Statusbar clock on lockscrenn</string>
     <string name="status_bar_show_clock_lockscreen_summary">Show clock in statusbar while\non lockscreen.</string>
+    <!-- Statusbar Carrier Logo -->
+    <string name="disable_carrier_logo">Show carrier logo in statusbar</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>

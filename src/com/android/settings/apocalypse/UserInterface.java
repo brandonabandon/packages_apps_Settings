@@ -72,6 +72,8 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
 	private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
 	private static final String PREF_STATUS_BAR_CLOCK_LOCKSCREEN = "status_bar_clock_lockscreen";
+	private static final String TOGGLE_CARRIER_LOGO = "toggle_carrier_logo";
+	
 	
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
@@ -90,6 +92,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	private ListPreference mExpandedDesktopPref;
 	private CheckBoxPreference mExpandedDesktopNoNavbarPref;
 	private CheckBoxPreference mClockInStatusbar;
+	private CheckBoxPreference mToggleCarrierLogo;
 	
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -136,6 +139,11 @@ public class UserInterface extends SettingsPreferenceFragment implements
 		mTriggerBottomPref.setValue(Settings.System.getInt(getContentResolver(),
 		Settings.System.APP_CIRCLE_BAR_TRIGGER_HEIGHT, 100));
 		mTriggerBottomPref.setOnPreferenceChangeListener(this);
+		
+		// Carrier logo
+        mToggleCarrierLogo = (CheckBoxPreference) findPreference(TOGGLE_CARRIER_LOGO);
+        mToggleCarrierLogo.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.TOGGLE_CARRIER_LOGO, 0) == 1));
 		
 		// Expanded desktop
         mExpandedDesktopPref = (ListPreference) findPreference(KEY_EXPANDED_DESKTOP);
@@ -250,6 +258,10 @@ public class UserInterface extends SettingsPreferenceFragment implements
 		} else if (preference == mClockInStatusbar) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_CLOCK_LOCKSCREEN, mClockInStatusbar.isChecked() ? 1 : 0);
+		} else if (preference == mToggleCarrierLogo) {
+           Settings.System.putInt(getContentResolver(), Settings.System.TOGGLE_CARRIER_LOGO,
+                   mToggleCarrierLogo.isChecked() ? 1 : 0);
+           return true;			
 		}							
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
