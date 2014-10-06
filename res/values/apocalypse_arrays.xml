@@ -1084,11 +1084,6 @@
         <item>0</item>
         <item>1</item>
     </string-array>
-    <string-array name="trigger_page_title">
-        <item>WiFi</item>
-        <item>Bluetooth</item>
-        <item>NFC</item>
-    </string-array>
     
     <!-- Custom Overscroll Settings -->
     <string-array name="overscroll_effect_entries">
