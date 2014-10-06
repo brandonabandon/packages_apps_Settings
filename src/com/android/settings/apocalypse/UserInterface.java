@@ -64,11 +64,6 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	private static final String TAG = "UI Settings";	
 		
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
-	private static final String PREF_ENABLE_APP_CIRCLE_BAR = "enable_app_circle_bar";
-	private static final String PREF_INCLUDE_APP_CIRCLE_BAR_KEY = "app_circle_bar_included_apps";
-	private static final String KEY_TRIGGER_WIDTH = "trigger_width";
-    private static final String KEY_TRIGGER_TOP = "trigger_top";
-    private static final String KEY_TRIGGER_BOTTOM = "trigger_bottom";
 	private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
 	private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
 	private static final String PREF_STATUS_BAR_CLOCK_LOCKSCREEN = "status_bar_clock_lockscreen";
@@ -84,11 +79,6 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	
 	
     private PreferenceScreen mDisplayRotationPreference;
-	private AppMultiSelectListPreference mIncludedAppCircleBar;
-	private NEWSeekBarPreference mTriggerWidthPref;
-    private NEWSeekBarPreference mTriggerTopPref;
-    private NEWSeekBarPreference mTriggerBottomPref;
-	private CheckBoxPreference mEnableAppCircleBar;
 	private ListPreference mExpandedDesktopPref;
 	private CheckBoxPreference mExpandedDesktopNoNavbarPref;
 	private CheckBoxPreference mClockInStatusbar;
@@ -115,30 +105,6 @@ public class UserInterface extends SettingsPreferenceFragment implements
         if (!RotationPolicy.isRotationSupported(getActivity())) {
             getPreferenceScreen().removePreference(mDisplayRotationPreference);
         }
-		// App circle bar
-		mEnableAppCircleBar = (CheckBoxPreference) findPreference(PREF_ENABLE_APP_CIRCLE_BAR);
-		mEnableAppCircleBar.setChecked((Settings.System.getInt(getContentResolver(),
-		Settings.System.ENABLE_APP_CIRCLE_BAR, 0) == 1));
-
-		mIncludedAppCircleBar = (AppMultiSelectListPreference) findPreference(PREF_INCLUDE_APP_CIRCLE_BAR_KEY);
-		Set<String> includedApps = getIncludedApps();
-		if (includedApps != null) mIncludedAppCircleBar.setValues(includedApps);
-		mIncludedAppCircleBar.setOnPreferenceChangeListener(this);
-		
-		mTriggerWidthPref = (NEWSeekBarPreference) findPreference(KEY_TRIGGER_WIDTH);
-		mTriggerWidthPref.setValue(Settings.System.getInt(getContentResolver(),
-		Settings.System.APP_CIRCLE_BAR_TRIGGER_WIDTH, 10));
-		mTriggerWidthPref.setOnPreferenceChangeListener(this);
-
-		mTriggerTopPref = (NEWSeekBarPreference) findPreference(KEY_TRIGGER_TOP);
-		mTriggerTopPref.setValue(Settings.System.getInt(getContentResolver(),
-		Settings.System.APP_CIRCLE_BAR_TRIGGER_TOP, 0));
-		mTriggerTopPref.setOnPreferenceChangeListener(this);
-
-		mTriggerBottomPref = (NEWSeekBarPreference) findPreference(KEY_TRIGGER_BOTTOM);
-		mTriggerBottomPref.setValue(Settings.System.getInt(getContentResolver(),
-		Settings.System.APP_CIRCLE_BAR_TRIGGER_HEIGHT, 100));
-		mTriggerBottomPref.setOnPreferenceChangeListener(this);
 		
 		// Carrier logo
         mToggleCarrierLogo = (CheckBoxPreference) findPreference(TOGGLE_CARRIER_LOGO);
@@ -184,8 +150,6 @@ public class UserInterface extends SettingsPreferenceFragment implements
                 Settings.System.getUriFor(Settings.System.ACCELEROMETER_ROTATION), true,
                 mAccelerometerRotationObserver);
         updateDisplayRotationPreferenceDescription();
-		Settings.System.putInt(getContentResolver(),
-		Settings.System.APP_CIRCLE_BAR_SHOW_TRIGGER, 1);
         
     }
 	
@@ -193,7 +157,6 @@ public class UserInterface extends SettingsPreferenceFragment implements
     public void onPause() {
         super.onPause();
         getContentResolver().unregisterContentObserver(mAccelerometerRotationObserver);
-		Settings.System.putInt(getContentResolver(), Settings.System.APP_CIRCLE_BAR_SHOW_TRIGGER, 0);
     }
 	
     private void updateDisplayRotationPreferenceDescription() {
@@ -251,11 +214,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
 	
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-       if (preference == mEnableAppCircleBar) {
-	    	boolean checked = ((CheckBoxPreference)preference).isChecked();
-	    	Settings.System.putInt(getContentResolver(),
-			Settings.System.ENABLE_APP_CIRCLE_BAR, checked ? 1:0);
-		} else if (preference == mClockInStatusbar) {
+       if (preference == mClockInStatusbar) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_CLOCK_LOCKSCREEN, mClockInStatusbar.isChecked() ? 1 : 0);
 		} else if (preference == mToggleCarrierLogo) {
@@ -269,24 +228,7 @@ public class UserInterface extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         final String key = preference.getKey();
-        if (preference == mIncludedAppCircleBar) {
-	    	storeIncludedApps((Set<String>) objValue);
-		} else if (preference == mTriggerWidthPref) {
-	    	int width = ((Integer)objValue).intValue();
-	    	Settings.System.putInt(getContentResolver(),
-			Settings.System.APP_CIRCLE_BAR_TRIGGER_WIDTH, width);
-	    	return true;
-		} else if (preference == mTriggerTopPref) {
-	    	int top = ((Integer)objValue).intValue();
-	    	Settings.System.putInt(getContentResolver(),
-			Settings.System.APP_CIRCLE_BAR_TRIGGER_TOP, top);
-	    	return true;
-		} else if (preference == mTriggerBottomPref) {
-	    	int bottom = ((Integer)objValue).intValue();
-	    	Settings.System.putInt(getContentResolver(),
-			Settings.System.APP_CIRCLE_BAR_TRIGGER_HEIGHT, bottom);
-	    	return true;
-		} else if (preference == mExpandedDesktopPref) {
+        if (preference == mExpandedDesktopPref) {
             int expandedDesktopValue = Integer.valueOf((String) objValue);
             updateExpandedDesktop(expandedDesktopValue);
             return true;
@@ -297,26 +239,6 @@ public class UserInterface extends SettingsPreferenceFragment implements
 		}			
 
         return true;
-    }
-	private Set<String> getIncludedApps() {
-		String included = Settings.System.getString(getActivity().getContentResolver(),
-				Settings.System.WHITELIST_APP_CIRCLE_BAR);
-		if (TextUtils.isEmpty(included)) {
-			return null;
-		}
-		return new HashSet<String>(Arrays.asList(included.split("\\|")));
-    }
-	
-	private void storeIncludedApps(Set<String> values) {
-		StringBuilder builder = new StringBuilder();
-		String delimiter = "";
-		for (String value : values) {
-			builder.append(delimiter);
-			builder.append(value);
-			delimiter = "|";
-		}
-		Settings.System.putString(getActivity().getContentResolver(),
-			Settings.System.WHITELIST_APP_CIRCLE_BAR, builder.toString());
     }
 	
 	private void updateExpandedDesktop(int value) {

@@ -2101,4 +2101,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="category_heads_up">Heads Up Settings</string>
     <string name="category_notification_style">Notification style</string>
     <string name="category_notification_drawer">Notification drawer</string>
+    <string name="category_navigation">Navigation</string>
+    <string name="category_statusbar">Status Bar</string>
+    <string name="category_general">General</string>
 </resources>     
