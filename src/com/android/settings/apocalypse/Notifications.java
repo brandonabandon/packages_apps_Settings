@@ -39,6 +39,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.RingtonePreference;
 import android.provider.Settings;
@@ -238,6 +239,8 @@ public class Notifications extends SettingsPreferenceFragment implements
 				
 		// Smart pulldown
         mSmartPulldown = (ListPreference) findPreference(SMART_PULLDOWN);
+		
+		PreferenceCategory notiDrawer = (PreferenceCategory) findPreference("category_notification_drawer");
         if (Utils.isPhone(getActivity())) {
             int smartPulldown = Settings.System.getInt(getContentResolver(),
                     Settings.System.QS_SMART_PULLDOWN, 2);
@@ -245,7 +248,7 @@ public class Notifications extends SettingsPreferenceFragment implements
             updateSmartPulldownSummary(smartPulldown);
             mSmartPulldown.setOnPreferenceChangeListener(this);
         } else {
-            prefSet.removePreference(mSmartPulldown);
+            notiDrawer.removePreference(mSmartPulldown);
         }
 		
 		// Notification Remider

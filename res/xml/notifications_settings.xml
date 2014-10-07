@@ -103,7 +103,8 @@
 	</PreferenceCategory>	     
 	    
 	<PreferenceCategory
-            android:title="@string/category_notification_drawer"> 
+            android:title="@string/category_notification_drawer"
+	    android:key="category_notification_drawer"> 
 	    
 	    <CheckBoxPreference
             	android:key="custom_status_bar_header"
