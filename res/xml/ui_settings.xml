@@ -25,7 +25,9 @@
                 	android:key="display_rotation"
                 	android:fragment="com.android.settings.slim.DisplayRotation"
                 	android:title="@string/display_rotation_title" />
-			
+				
+	</PreferenceCategory>
+	
 		<ListPreference
             		android:key="expanded_desktop"
             		android:title="@string/power_menu_expanded_desktop"
@@ -36,9 +38,7 @@
     		<CheckBoxPreference
             		android:key="expanded_desktop_no_navbar"
             		android:title="@string/power_menu_expanded_desktop"
-            		android:persistent="true" />	
-			
-	</PreferenceCategory>
+            		android:persistent="true" />
 	
 	<PreferenceCategory
             android:title="@string/category_navigation">
@@ -72,11 +72,6 @@
             		android:key="battery_style_pref"
             		android:fragment="com.android.settings.apocalypse.BatteryIconStyles"
             		android:title="@string/battery_icon_title"/>
-			
-		<PreferenceScreen
-			android:fragment="com.android.settings.beanstalk.BatteryIconStyle"
-			android:key="battery_style_pref"
-			android:title="@string/battery_bar_title" />
 			
 		<CheckBoxPreference
             		android:key="toggle_carrier_logo"

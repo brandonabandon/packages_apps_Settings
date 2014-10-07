@@ -1932,7 +1932,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Statusbar Carrier Logo -->
     <string name="disable_carrier_logo">Show carrier logo in statusbar</string>
     <!-- StatusBar Battery Settings -->
-    <string name="battery_icon_title">Battery icon</string>
+    <string name="battery_icon_title">Battery icon &amp; Bar</string>
+    <string name="battery_icon_style">Battery icon style</string>
     <string name="battery_status_icon">Icon</string>
     <string name="battery_status_percentage">Percentage</string>
     <string name="battery_status_icon_percentage">Icon with percentage</string>
@@ -2103,5 +2104,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="category_notification_drawer">Notification drawer</string>
     <string name="category_navigation">Navigation</string>
     <string name="category_statusbar">Status Bar &amp; Tiles</string>
+    <string name="category_status_bar_battery_icon">Status Bar battery icon</string>
     <string name="category_general">General</string>
 </resources>     
