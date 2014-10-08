@@ -142,7 +142,7 @@ import com.android.settings.net.UidDetailProvider;
 import com.android.settings.widget.ChartDataUsageView;
 import com.android.settings.widget.ChartDataUsageView.DataUsageChartListener;
 import com.android.settings.widget.PieChartView;
-import com.android.settings.beanstalk.batterysaver.BatterySaverHelper;
+import com.android.settings.apocalypse.batterysaver.BatterySaverHelper;
 import com.google.android.collect.Lists;
 
 import libcore.util.Objects;

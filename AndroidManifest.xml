@@ -1980,20 +1980,20 @@
         </receiver>
 		
         <receiver
-            android:name="com.android.settings.beanstalk.batterysaver.BootReceiver">
+            android:name="com.android.settings.apocalypse.batterysaver.BootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
 
         <receiver
-            android:name="com.android.settings.beanstalk.batterysaver.BatterySaverReceiver">
+            android:name="com.android.settings.apocalypse.batterysaver.BatterySaverReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
                 <action android:name="android.intent.action.TIME_CHANGED"></action>
                 <action android:name="android.intent.action.DATE_CHANGED"></action>
                 <action android:name="android.intent.action.BATTERY_SERVICES"></action>
-                <action android:name="com.android.settings.beanstalk.batterysaver.SCHEDULE_BATTERY_SAVER"/>
+                <action android:name="com.android.settings.apocalypse.batterysaver.SCHEDULE_BATTERY_SAVER"/>
             </intent-filter>
         </receiver>
 

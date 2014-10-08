@@ -29,6 +29,12 @@
             android:title="@string/proximity_wake_title"
             android:summary="@string/proximity_wake_summary"
             android:defaultValue="true" />
+	    
+		
+   	<PreferenceScreen
+        	android:key="pref_battery_saver"
+        	android:fragment="com.android.settings.apocalypse.BatterySaverSettings"
+        	android:title="@string/battery_saver_title" />      
 		 
 	<PreferenceScreen
             android:id="@+id/wakelock_blocker"

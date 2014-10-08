@@ -16,7 +16,7 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.android.settings.beanstalk;
+package com.android.settings.apocalypse;
 
 import android.app.AlertDialog;
 import android.app.Fragment;

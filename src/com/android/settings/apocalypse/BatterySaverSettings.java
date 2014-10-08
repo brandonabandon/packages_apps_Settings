@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.beanstalk;
+package com.android.settings.apocalypse;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -37,8 +37,8 @@ import android.telephony.TelephonyManager;
 import com.android.internal.telephony.Phone;
 
 import com.android.settings.cyanogenmod.NEWSeekBarPreference;
-import com.android.settings.beanstalk.batterysaver.BatterySaverHelper;
-import com.android.settings.beanstalk.TimeRangePreference;
+import com.android.settings.apocalypse.batterysaver.BatterySaverHelper;
+import com.android.settings.cyanogenmod.TimeRangePreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
 
