@@ -2117,6 +2117,20 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- On the go -->
     <string name="power_menu_onthego_title">On-The-Go Mode</string>
     <string name="power_menu_onthego_title_summary">Enables On-The-Go Mode button in power menu.</string>
+    <!-- Tinted statusbar -->
+    <string name="tinted_statusbar_title">Colors</string>
+    <string name="title_tinted_statusbar">Dynamic Color Changer</string>
+    <string name="title_tinted_statusbar_option">Apply color to</string>
+    <string name="tinted_statusbar_off">Disabled</string>
+    <string name="tinted_statusbar_actionbar">Action bar color</string>
+    <string name="tinted_statusbar_system">Screen color</string>
+    <string name="tinted_statusbar_statusbar">Status bar</string>
+    <string name="tinted_statusbar_navbar">Navigation bar</string>
+    <string name="tinted_statusbar_all">Both</string>
+    <string name="tinted_statusbar_filter_title">Reverse color</string>
+    <string name="tinted_statusbar_filter_summary">Enable using reverse color</string>
+    <string name="tinted_statusbar_transparent_title">Status bar opacity</string>
+    <string name="tinted_navbar_transparent_title">Navigation bar opacity</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>

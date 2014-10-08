@@ -20,6 +20,11 @@
 	
 	<PreferenceCategory
             android:title="@string/category_general">
+	    
+    		<Preference
+        		android:key="cat_tinted_statusbar"
+        		android:title="@string/title_tinted_statusbar"
+        		android:fragment="com.android.settings.apocalypse.TintedStatusBar" />
 	
 		<PreferenceScreen
                 	android:key="display_rotation"

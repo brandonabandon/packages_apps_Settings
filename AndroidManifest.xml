@@ -1710,6 +1710,7 @@
         <activity android:name=".apocalypse.PieColor" />
 	<activity android:name=".apocalypse.PieTargets" />
 	<activity android:name=".apocalypse.CarrierLabel" />
+	<activity android:name=".apocalypse.TintedStatusBar" />
 	<activity android:name=".apocalypse.AppCircleSidebar" />
         <activity android:name=".profiles.ProfilesSettings" />
 

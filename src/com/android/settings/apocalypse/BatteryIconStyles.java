@@ -202,7 +202,7 @@ public class BatteryIconStyles extends SettingsPreferenceFragment
         mBatteryBarThickness.setSummary(mBatteryBarThickness.getEntry());
 
         updateBatteryIconOptions(statusBarBattery);
-		
+        updateTintPref();
 
         setHasOptionsMenu(true);
         mCheckPreferences = true;
@@ -380,6 +380,19 @@ public class BatteryIconStyles extends SettingsPreferenceFragment
             mBatteryBarChargingAnimation.setEnabled(true);
             mBatteryBarColor.setEnabled(true);
         }
+    }
+
+     private void updateTintPref() {
+          ContentResolver resolver = getActivity().getContentResolver();
+          int tintEnabled = Settings.System.getInt(resolver,
+                  Settings.System.STATUS_BAR_TINTED_COLOR, 0);
+          int tintStatusbar = Settings.System.getInt(resolver,
+                  Settings.System.STATUS_BAR_TINTED_OPTION, 0);
+          if (tintEnabled != 0 || tintStatusbar != 1) {
+                mBatteryColor.setEnabled(false);
+                mBatteryTextColor.setEnabled(false);
+                mBatteryTextChargingColor.setEnabled(false);
+          }
     }
 
 }
