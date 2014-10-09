@@ -151,6 +151,10 @@
     <string name="recents">Recents</string>
     <string name="sounds">Sounds &amp; Volume</string>
     <string name="kernel_tweaker">Kernel Adiutor</string>
+    
+    <!-- Changelog -->
+    <string name="changelog_screwd_title">Changelog</string>
+    <string name="changelog_screwd_error">Unable to load changelog</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>
