@@ -2131,6 +2131,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="tinted_statusbar_filter_summary">Enable using reverse color</string>
     <string name="tinted_statusbar_transparent_title">Status bar opacity</string>
     <string name="tinted_navbar_transparent_title">Navigation bar opacity</string>
+    <string name="tinted_statusbar_full_mode_title">Full color mode</string>
+    <string name="tinted_statusbar_full_mode_summary">Allow to change color of window shade panel</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>

@@ -52,18 +52,20 @@ public class TintedStatusBar extends SettingsPreferenceFragment implements
     private static final String TINTED_STATUSBAR_FILTER = "status_bar_tinted_filter";
     private static final String TINTED_STATUSBAR_TRANSPARENT = "tinted_statusbar_transparent";
     private static final String TINTED_NAVBAR_TRANSPARENT = "tinted_navbar_transparent";
+    private static final String TINTED_STATUSBAR_FULL_MODE = "status_bar_tinted_full_mode";
     private static final String CATEGORY_TINTED = "category_tinted_statusbar";
 
     private ListPreference mTintedStatusbar;
     private ListPreference mTintedStatusbarOption;
 
     private SystemSettingCheckBoxPreference mTintedStatusbarFilter;
+    private SystemSettingCheckBoxPreference mTintedStatusbarFullmode;
     private SeekBarPreferenceCham mTintedStatusbarTransparency;
     private SeekBarPreferenceCham mTintedNavbarTransparency;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.tintedstatusbar);
+        addPreferencesFromResource(R.xml.tinted_statusbar);
 
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
@@ -80,6 +82,10 @@ public class TintedStatusBar extends SettingsPreferenceFragment implements
 
         mTintedStatusbarFilter = (SystemSettingCheckBoxPreference) findPreference(TINTED_STATUSBAR_FILTER);
         mTintedStatusbarFilter.setEnabled(tintedStatusbar != 0);
+
+        mTintedStatusbarFullmode = (SystemSettingCheckBoxPreference)
+                findPreference(TINTED_STATUSBAR_FULL_MODE);
+        mTintedStatusbarFullmode.setEnabled(tintedStatusbar != 0);
 
         mTintedStatusbarTransparency = (SeekBarPreferenceCham) findPreference(TINTED_STATUSBAR_TRANSPARENT);
         mTintedStatusbarTransparency.setValue(Settings.System.getInt(resolver,
@@ -123,6 +129,7 @@ public class TintedStatusBar extends SettingsPreferenceFragment implements
             }
             mTintedStatusbarFilter.setEnabled(val != 0);
             mTintedStatusbarTransparency.setEnabled(val != 0);
+            mTintedStatusbarFullmode.setEnabled(val != 0);
             if (mTintedNavbarTransparency != null) {
                 mTintedNavbarTransparency.setEnabled(val != 0);
             }
@@ -132,6 +139,7 @@ public class TintedStatusBar extends SettingsPreferenceFragment implements
             Settings.System.putInt(resolver,
                 Settings.System.STATUS_BAR_TINTED_OPTION, val);
             mTintedStatusbarOption.setSummary(mTintedStatusbarOption.getEntries()[index]);
+            mTintedStatusbarFullmode.setEnabled((val == 0) || (val == 2));
         } else if (preference == mTintedStatusbarTransparency) {
             int val = ((Integer)objValue).intValue();
             Settings.System.putInt(resolver,
