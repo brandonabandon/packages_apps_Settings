@@ -2174,6 +2174,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="custom_density_dialog_summary">"Changing your LCD density can cause unexpected app behavior. If you encounter Play Store app incompatibility please doublecheck if u have installed a Multi-DPI Play Store."</string>
     <string name="custom_density_dialog_button_got">Got it!</string>
     <string name="custom_density_dialog_button_reboot">Reboot now</string>
+    <!-- Enable/Disable Ticker -->
+    <string name="ticker_disabled_title">Disable notification ticker</string>
+    <string name="ticker_disabled_summary">Don\'t scroll text from incoming notifications in the status bar</string>
     <!-- Exodus Extra Settings -->
     <string name="exodus_extra_settings">Extra Settings</string>
     <string name="user_interface">User interface</string>

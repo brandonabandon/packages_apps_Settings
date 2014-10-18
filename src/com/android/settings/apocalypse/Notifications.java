@@ -97,6 +97,7 @@ public class Notifications extends SettingsPreferenceFragment implements
     private static final String PREF_NOTI_REMINDER_ENABLED = "noti_reminder_enabled";
     private static final String PREF_NOTI_REMINDER_RINGTONE = "noti_reminder_ringtone";
 	private static final String PREF_NOTI_REMINDER_INTERVAL = "noti_reminder_interval";
+	private static final String PREF_TICKER = "ticker_disabled";
 	
 	
     private CheckBoxPreference mNotificationPulse;
@@ -114,6 +115,7 @@ public class Notifications extends SettingsPreferenceFragment implements
 	private ListPreference mReminderMode;
 	private RingtonePreference mReminderRingtone;
 	private ListPreference mReminderInterval;
+	private CheckBoxPreference mTicker;
 	
 	private ColorPickerPreference mHeadsUpBgColor;
     private ColorPickerPreference mHeadsUpTextColor;
@@ -319,7 +321,11 @@ public class Notifications extends SettingsPreferenceFragment implements
             mIntentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
             mIntentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
         }
-        getActivity().registerReceiver(mPackageStatusReceiver, mIntentFilter);		
+        getActivity().registerReceiver(mPackageStatusReceiver, mIntentFilter);
+		
+		// Ticker
+        mTicker = (CheckBoxPreference) findPreference(PREF_TICKER);
+        mTicker.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.TICKER_DISABLED, 0) == 1);		
     }
 	
 	
@@ -360,7 +366,11 @@ public class Notifications extends SettingsPreferenceFragment implements
 		} else if (preference == mForceExpandedNotifications) {
             boolean value = mForceExpandedNotifications.isChecked();
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.FORCE_EXPANDED_NOTIFICATIONS, value ? 1 : 0);			
+                    Settings.System.FORCE_EXPANDED_NOTIFICATIONS, value ? 1 : 0);
+		} else if (preference == mTicker) {
+            value = mTicker.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.TICKER_DISABLED, value ? 1 : 0);						
 		}				
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

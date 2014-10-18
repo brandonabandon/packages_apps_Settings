@@ -168,7 +168,13 @@
             	android:title="@string/notification_style_title"
             	android:summary="@string/notification_style_summary" />    
 	    
-	</PreferenceCategory>       
+	</PreferenceCategory>
+	
+	<CheckBoxPreference
+            android:key="ticker_disabled"
+            android:title="@string/ticker_disabled_title"
+            android:summary="@string/ticker_disabled_summary"
+            android:defaultValue="false" />       
 	
 	<CheckBoxPreference
             android:key="notification_pulse"
