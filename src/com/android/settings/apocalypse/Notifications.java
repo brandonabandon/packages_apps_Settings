@@ -368,7 +368,7 @@ public class Notifications extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.FORCE_EXPANDED_NOTIFICATIONS, value ? 1 : 0);
 		} else if (preference == mTicker) {
-            value = mTicker.isChecked();
+            boolean value = mTicker.isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.TICKER_DISABLED, value ? 1 : 0);						
 		}				
