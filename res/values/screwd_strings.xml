@@ -914,4 +914,10 @@
     <string name="quick_settings_collapse_title">Auto close panel</string>
     <string name="quick_settings_collapse_summary">Close the Quick Settings panel upon toggle</string>
     
+    <!--User preferences settings-->
+    <string name="personalization">Personalization</string>
+    <string name="reset_user_preferences_title">Reset preferences</string>
+    <string name="reset_user_preferences_summary">Restores user interface preferences to default values</string>
+    <string name="reset_user_preferences_dialog">Are you sure you want to reset your preferences?</string>
+    
 </resources>
