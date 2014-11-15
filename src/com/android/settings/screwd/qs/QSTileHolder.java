@@ -198,6 +198,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_floating_on";
                 stringId = R.string.qs_tile_slim_floats;
                 break;	
+            case QSConstants.TILE_LIVE_DISPLAY:
+                resourceName ="ic_livedisplay_day";
+                stringId = R.string.live_display_title;
+                break;
             default:
                 return null;
         }
