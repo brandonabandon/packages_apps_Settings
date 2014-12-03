@@ -26,4 +26,7 @@ limitations under the License.
     
     <!-- QS tiles -->
     <color name="qs_tile_tint_color">#FF009587</color>
+    
+    <!-- FAB -->
+    <color name="floating_action_button_touch_tint">#80ffffff</color>
 </resources>
