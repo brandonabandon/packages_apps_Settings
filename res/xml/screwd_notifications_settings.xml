@@ -18,18 +18,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/notifications"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    	
+	<!-- Notification counter -->
+    	<com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="status_bar_notif_count"
+            android:title="@string/status_bar_notif_count_title"
+            android:summary="@string/status_bar_notif_count_summary"
+            android:defaultValue="false" />
     
         <!-- Pulse notification light -->
         <PreferenceScreen
-                android:key="notification_light"
-                android:title="@string/notification_light_title"
-                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+            android:key="notification_light"
+            android:title="@string/notification_light_title"
+            android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 
         <!-- Battery light -->
         <PreferenceScreen
-                android:key="battery_light"
-                android:title="@string/battery_light_title"
-                android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
+            android:key="battery_light"
+            android:title="@string/battery_light_title"
+            android:fragment="com.android.settings.notificationlight.BatteryLightSettings" />
 	
 	<!-- Spam Notifications -->	
 	<PreferenceScreen
