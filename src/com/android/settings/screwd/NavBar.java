@@ -19,6 +19,10 @@ package com.android.settings.screwd;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Resources;
@@ -36,6 +40,9 @@ import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.settings.R;
@@ -44,18 +51,22 @@ import com.android.settings.SettingsPreferenceFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
+import com.android.internal.util.slim.DeviceUtils;
 
 public class NavBar extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 		
 		
-	private static final String KEY_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+	private static final String LIST_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+    private static final String LIST_NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
+    private static final String LIST_NAVIGATION_BAR_WIDTH = "navigation_bar_width";
 	
-	
-	
-	private ListPreference mNavigationBarHeight;
+	private static final int MENU_RESET = Menu.FIRST;
+    private static final int DLG_RESET = 0;
+
+    ListPreference mNavigationBarHeight;
+    ListPreference mNavigationBarHeightLandcape;
+    ListPreference mNavigationBarWidth;
 	
 
 
@@ -65,15 +76,68 @@ public class NavBar extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.screwd_navbar_settings);
 		
-		/* Nav Bar height */
-		mNavigationBarHeight = (ListPreference) findPreference(KEY_NAVIGATION_BAR_HEIGHT);
-        mNavigationBarHeight.setOnPreferenceChangeListener(this);
-        int statusNavigationBarHeight = Settings.System.getInt(getActivity().getApplicationContext()
-                .getContentResolver(),
-                Settings.System.NAVIGATION_BAR_HEIGHT, 48);
-        mNavigationBarHeight.setValue(String.valueOf(statusNavigationBarHeight));
-        mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntry());
+		PreferenceScreen prefSet = getPreferenceScreen();
 		
+		// Height
+        mNavigationBarHeight = (ListPreference) findPreference(LIST_NAVIGATION_BAR_HEIGHT);
+        mNavigationBarHeight.setOnPreferenceChangeListener(this);
+
+        // Height Landscape
+        mNavigationBarHeightLandcape = (ListPreference) findPreference(LIST_NAVIGATION_BAR_HEIGHT_LANDSCAPE);
+        if (DeviceUtils.isPhone(getActivity())) {
+            prefSet.removePreference(mNavigationBarHeightLandcape);
+            mNavigationBarHeightLandcape = null;
+        } else {
+            mNavigationBarHeightLandcape.setOnPreferenceChangeListener(this);
+        }
+        // Width
+        mNavigationBarWidth = (ListPreference) findPreference(LIST_NAVIGATION_BAR_WIDTH);
+        if (!DeviceUtils.isPhone(getActivity())) {
+            prefSet.removePreference(mNavigationBarWidth);
+            mNavigationBarWidth = null;
+        } else {
+            mNavigationBarWidth.setOnPreferenceChangeListener(this);
+        }
+
+        updateDimension();
+        setHasOptionsMenu(true);
+		
+
+    }
+	
+	private void updateDimension() {
+        int navigationBarHeight = Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_HEIGHT, -2);
+        if (navigationBarHeight == -2) {
+            navigationBarHeight =
+                    (int) (getResources().getDimension(com.android.internal.R.dimen.navigation_bar_height)
+                    / getResources().getDisplayMetrics().density);
+        }
+        mNavigationBarHeight.setValue(String.valueOf(navigationBarHeight));
+
+        if (mNavigationBarHeightLandcape == null) {
+            return;
+        }
+        int navigationBarHeightLandcape = Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -2);
+        if (navigationBarHeightLandcape == -2) {
+            navigationBarHeightLandcape =
+                    (int) (getResources().getDimension(com.android.internal.R.dimen.navigation_bar_height_landscape)
+                    / getResources().getDisplayMetrics().density);
+        }
+        mNavigationBarHeightLandcape.setValue(String.valueOf(navigationBarHeightLandcape));
+
+        if (mNavigationBarWidth == null) {
+            return;
+        }
+        int navigationBarWidth = Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_WIDTH, -2);
+        if (navigationBarWidth == -2) {
+            navigationBarWidth =
+                    (int) (getResources().getDimension(com.android.internal.R.dimen.navigation_bar_width)
+                    / getResources().getDisplayMetrics().density);
+        }
+        mNavigationBarWidth.setValue(String.valueOf(navigationBarWidth));
 
     }
 
@@ -84,12 +148,23 @@ public class NavBar extends SettingsPreferenceFragment implements
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mNavigationBarHeight) {
-            int statusNavigationBarHeight = Integer.valueOf((String) newValue);
-            int index = mNavigationBarHeight.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_HEIGHT, statusNavigationBarHeight);
-            mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntries()[index]);
-			return true;
+            String newVal = (String) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_HEIGHT,
+                    Integer.parseInt(newVal));
+            return true;
+        } else if (preference == mNavigationBarHeightLandcape) {
+            String newVal = (String) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE,
+                    Integer.parseInt(newVal));
+            return true;
+        } else if (preference == mNavigationBarWidth) {
+            String newVal = (String) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_WIDTH,
+                    Integer.parseInt(newVal));
+            return true;
         }
 		return false;
     }
@@ -97,5 +172,75 @@ public class NavBar extends SettingsPreferenceFragment implements
 	@Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         return false;
+    }
+	
+	@Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add(0, MENU_RESET, 0, R.string.menu_restore)
+                .setIcon(R.drawable.ic_menu_reset)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                showDialogInner(DLG_RESET);
+                return true;
+             default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void showDialogInner(int id) {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
+        newFragment.setTargetFragment(this, 0);
+        newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+
+    public static class MyAlertDialogFragment extends DialogFragment {
+
+        public static MyAlertDialogFragment newInstance(int id) {
+            MyAlertDialogFragment frag = new MyAlertDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("id", id);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        NavBar getOwner() {
+            return (NavBar) getTargetFragment();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int id = getArguments().getInt("id");
+            switch (id) {
+                case DLG_RESET:
+                    return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.menu_restore)
+                    .setMessage(R.string.navigation_bar_dimensions_reset_message)
+                    .setNegativeButton(R.string.cancel, null)
+                    .setPositiveButton(R.string.dlg_ok,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.NAVIGATION_BAR_HEIGHT, -2);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -2);
+                            Settings.System.putInt(getActivity().getContentResolver(),
+                                    Settings.System.NAVIGATION_BAR_WIDTH, -2);
+                            getOwner().updateDimension();
+                        }
+                    })
+                    .create();
+            }
+            throw new IllegalArgumentException("unknown id " + id);
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+
+        }
     }
 }
