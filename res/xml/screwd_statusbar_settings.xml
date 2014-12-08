@@ -33,6 +33,11 @@
     <PreferenceCategory
             android:title="@string/status_bar_options_title" />
 	    
+    	<PreferenceScreen
+           android:key="net_traffic"
+           android:fragment="com.android.settings.screwd.NetworkTraffic"
+           android:title="@string/network_traffic_title" />   
+	    
 	 <SwitchPreference
             android:key="status_bar_brightness_control"
             android:title="@string/status_bar_toggle_brightness"
