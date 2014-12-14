@@ -1920,9 +1920,6 @@
                 android:resource="@id/notification_settings" />
         </activity>
 
-	<activity android:name=".screwd.InitD" />
-	<activity android:name=".screwd.Density" />
-
         <!-- Show apps for which application-level notification settings are applicable -->
         <activity android:name="Settings$NotificationAppListActivity"
                 android:label="@string/app_notifications_title"
@@ -1963,9 +1960,13 @@
         </activity>
 	
 	<!-- Screw'd Activities -->
+	<activity android:name=".screwd.InitD" />
+	<activity android:name=".screwd.Density" />
 	<activity android:name=".screwd.SpamList" />
         <activity android:name=".notificationlight.NotificationLightSettings" />
         <activity android:name=".notificationlight.BatteryLightSettings" />
+	<activity android:name=".screwd.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".screwd.gestureanywhere.GestureAnywhereCreateGestureActivity" />
 
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
