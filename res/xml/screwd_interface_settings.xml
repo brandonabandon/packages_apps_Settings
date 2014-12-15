@@ -57,6 +57,11 @@
      	android:entryValues="@array/toast_animation_values"
      	android:persistent="false" />
 	
+    <PreferenceScreen
+        android:id="@+id/disp_anim_settings"
+        android:title="@string/disp_anim_settings_title"
+        android:fragment="com.android.settings.screwd.DisplayAnimationsSettings" />	
+	
      <PreferenceScreen
         android:key="gesture_anywhere"
         android:fragment="com.android.settings.screwd.gestureanywhere.GestureAnywhereSettings"
