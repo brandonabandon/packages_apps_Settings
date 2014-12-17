@@ -1369,4 +1369,7 @@
     <!-- Network meter-->
     <string name="show_network_meter">Network meter indicator</string>
     <string name="show_network_meter_summary">Show network meter in statusbar</string>
+    
+    <!-- Volume settings - Volume adjustment sound -->
+    <string name="volume_adjust_sounds_title">Volume adjustment sounds</string>
 </resources>
