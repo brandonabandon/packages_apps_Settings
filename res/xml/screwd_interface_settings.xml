@@ -35,38 +35,28 @@
         android:fragment="com.android.settings.screwd.BatteryIconStyle"
         android:title="@string/status_bar_battery_cat_title" />
 	
+    <PreferenceScreen
+        android:id="@+id/disp_anim_settings"
+        android:title="@string/disp_anim_settings_title"
+        android:fragment="com.android.settings.screwd.DisplayAnimationsSettings" />
+	
+    <PreferenceScreen
+        android:key="status_bar"
+        android:fragment="com.android.settings.screwd.NavBar"
+        android:title="@string/navbar" />
+	
     <ListPreference
-    	android:key="navigation_bar_height"
-    	android:dialogTitle="@string/navigation_bar_height"
-    	android:title="@string/navigation_bar_height"
-    	android:entries="@array/navigation_bar_height_entries"
-    	android:entryValues="@array/navigation_bar_height_values"
-    	android:defaultValue="48"
-    	android:persistent="false" />	
+     	android:key="toast_animation"
+     	android:title="@string/toast_animation_title"
+     	android:entries="@array/toast_animation_entries"
+     	android:entryValues="@array/toast_animation_values"
+     	android:persistent="false" />		
 	
     <com.android.settings.screwd.SystemSettingSwitchPreference
         android:key="recents_show_hide_search_bar"
         android:title="@string/recents_show_searchbar"
         android:summary="@string/recents_show_searchbar_summary"
-        android:defaultValue="false" />
-	
-     <com.android.settings.screwd.SystemCheckBoxPreference
-            android:key="double_tap_sleep_navbar"
-            android:title="@string/double_tap_sleep_nav_bar_title"
-            android:summary="@string/double_tap_sleep_nav_bar_summary"
-            android:defaultValue="false" />	
-	
-     <ListPreference
-     	android:key="toast_animation"
-     	android:title="@string/toast_animation_title"
-     	android:entries="@array/toast_animation_entries"
-     	android:entryValues="@array/toast_animation_values"
-     	android:persistent="false" />
-	
-    <PreferenceScreen
-        android:id="@+id/disp_anim_settings"
-        android:title="@string/disp_anim_settings_title"
-        android:fragment="com.android.settings.screwd.DisplayAnimationsSettings" />	
+        android:defaultValue="false" />		
 	
      <PreferenceScreen
         android:key="gesture_anywhere"

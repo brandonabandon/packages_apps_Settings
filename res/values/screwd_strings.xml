@@ -21,6 +21,7 @@
     <string name="system">System</string>
     <string name="notifications">Notifications</string>
     <string name="misc">Misc</string>
+    <string name="navbar">Navigation Bar</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>

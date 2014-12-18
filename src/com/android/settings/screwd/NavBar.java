@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 SlimRoms
+
  * Copyright (C) 2014 Screw'd Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +16,6 @@
  */
 
 package com.android.settings.screwd;
-
-import com.android.settings.notification.DropDownPreference;
-import com.android.settings.notification.DropDownPreference.Callback;
-import com.android.settings.search.BaseSearchIndexProvider;
-import com.android.settings.search.Indexable;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -49,55 +44,58 @@ import com.android.settings.SettingsPreferenceFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InterfaceSettings extends SettingsPreferenceFragment implements
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
+
+public class NavBar extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 		
-	private static final String KEY_TOAST_ANIMATION = "toast_animation";	
+		
+	private static final String KEY_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+	
+	
+	
+	private ListPreference mNavigationBarHeight;
 	
 
-	private ListPreference mToastAnimation;	
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.screwd_interface_settings);
+        addPreferencesFromResource(R.xml.screwd_navbar_settings);
 		
-		PreferenceScreen prefSet = getPreferenceScreen();
+		/* Nav Bar height */
+		mNavigationBarHeight = (ListPreference) findPreference(KEY_NAVIGATION_BAR_HEIGHT);
+        mNavigationBarHeight.setOnPreferenceChangeListener(this);
+        int statusNavigationBarHeight = Settings.System.getInt(getActivity().getApplicationContext()
+                .getContentResolver(),
+                Settings.System.NAVIGATION_BAR_HEIGHT, 48);
+        mNavigationBarHeight.setValue(String.valueOf(statusNavigationBarHeight));
+        mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntry());
 		
-		
-		/* Toast animations */
-		mToastAnimation = (ListPreference) prefSet.findPreference(KEY_TOAST_ANIMATION);
-        mToastAnimation.setSummary(mToastAnimation.getEntry());
-        int CurrentToastAnimation = Settings.System.getInt(
-                getContentResolver(),Settings.System.TOAST_ANIMATION, 1);
-        mToastAnimation.setValueIndex(CurrentToastAnimation);
-        mToastAnimation.setOnPreferenceChangeListener(this);
 
     }
-	
-	
 
     @Override
     public void onResume() {
         super.onResume();
     }
-	
-	
-    public boolean onPreferenceChange(Preference preference, Object objValue) {
-		final String key = preference.getKey();
-		
-		if (KEY_TOAST_ANIMATION.equals(key)) {
-            int index = mToastAnimation.findIndexOfValue((String) objValue);
-            Settings.System.putString(getContentResolver(),
-                    Settings.System.TOAST_ANIMATION, (String) objValue);
-            mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
-            Toast.makeText(getActivity(), "Toast animation test!!!",
-                    Toast.LENGTH_SHORT).show();
-			return true;		
+
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mNavigationBarHeight) {
+            int statusNavigationBarHeight = Integer.valueOf((String) newValue);
+            int index = mNavigationBarHeight.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_HEIGHT, statusNavigationBarHeight);
+            mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntries()[index]);
+			return true;
         }
+		return false;
+    }
+			
+	@Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         return false;
     }
-	
-
 }
