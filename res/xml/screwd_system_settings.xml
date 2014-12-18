@@ -41,6 +41,11 @@
     <Preference
     	android:key="initD"
     	android:fragment="com.android.settings.screwd.InitD"
-    	android:title="@string/init_d_title" />		
+    	android:title="@string/init_d_title" />
+	
+     <PreferenceScreen
+     	android:key="wakelock_blocker"
+        android:fragment="com.android.settings.screwd.WakeLockBlocker"
+        android:title="@string/wakelock_blocker_title" />			
 
 </PreferenceScreen>
