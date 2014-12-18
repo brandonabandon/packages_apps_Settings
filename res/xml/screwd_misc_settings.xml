@@ -24,5 +24,10 @@
 	android:title="@string/kill_app_longpress_back"
 	android:summary="@string/kill_app_longpress_back_summary"/> 
 
+    <com.android.settings.screwd.SystemSettingSwitchPreference
+        android:key="recents_show_hide_search_bar"
+        android:title="@string/recents_show_searchbar"
+        android:summary="@string/recents_show_searchbar_summary"
+        android:defaultValue="false" />	
 
 </PreferenceScreen>
