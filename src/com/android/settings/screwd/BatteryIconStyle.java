@@ -53,7 +53,6 @@ public class BatteryIconStyle extends SettingsPreferenceFragment
     implements OnPreferenceChangeListener {
 
     private static final String TAG = "BatteryIconStyle";
-	private static final String TAG = "StatusBar";
 	
 	private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";

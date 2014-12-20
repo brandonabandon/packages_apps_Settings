@@ -51,6 +51,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -242,6 +243,9 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
     private final ArrayList<CheckBoxPreference> mResetCbPrefs
             = new ArrayList<CheckBoxPreference>();
+			
+	private final ArrayList<SwitchPreference> mResetSpPrefs
+            = new ArrayList<SwitchPreference>();		
 
     private final HashSet<Preference> mDisabledPrefs = new HashSet<Preference>();
     // To track whether a confirmation dialog was clicked.
@@ -390,6 +394,16 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             pref.setEnabled(false);
             mDisabledPrefs.add(pref);
         }
+    }
+	
+	private SwitchPreference findAndInitSwitchPref(String key) {
+        SwitchPreference pref = (SwitchPreference) findPreference(key);
+        if (pref == null) {
+            throw new IllegalArgumentException("Cannot find preference with key = " + key);
+        }
+        mAllPrefs.add(pref);
+        mResetSpPrefs.add(pref);
+        return pref;
     }
 
     private CheckBoxPreference findAndInitCheckboxPref(String key) {
