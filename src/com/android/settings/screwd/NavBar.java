@@ -47,6 +47,7 @@ import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,15 +58,15 @@ public class NavBar extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 		
 		
-	private static final String LIST_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
-    private static final String LIST_NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
-    private static final String LIST_NAVIGATION_BAR_WIDTH = "navigation_bar_width";
+	 private static final String PREF_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+    private static final String PREF_NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
+    private static final String PREF_NAVIGATION_BAR_WIDTH = "navigation_bar_width";
 	
 	private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
 
     ListPreference mNavigationBarHeight;
-    ListPreference mNavigationBarHeightLandcape;
+    ListPreference mNavigationBarHeightLandscape;
     ListPreference mNavigationBarWidth;
 	
 
@@ -78,67 +79,70 @@ public class NavBar extends SettingsPreferenceFragment implements
 		
 		PreferenceScreen prefSet = getPreferenceScreen();
 		
-		// Height
-        mNavigationBarHeight = (ListPreference) findPreference(LIST_NAVIGATION_BAR_HEIGHT);
+		mNavigationBarHeight =
+            (ListPreference) findPreference(PREF_NAVIGATION_BAR_HEIGHT);
         mNavigationBarHeight.setOnPreferenceChangeListener(this);
 
-        // Height Landscape
-        mNavigationBarHeightLandcape = (ListPreference) findPreference(LIST_NAVIGATION_BAR_HEIGHT_LANDSCAPE);
-        if (DeviceUtils.isPhone(getActivity())) {
-            prefSet.removePreference(mNavigationBarHeightLandcape);
-            mNavigationBarHeightLandcape = null;
+        mNavigationBarHeightLandscape =
+            (ListPreference) findPreference(PREF_NAVIGATION_BAR_HEIGHT_LANDSCAPE);
+
+        if (Utils.isPhone(getActivity())) {
+            prefSet.removePreference(mNavigationBarHeightLandscape);
+            mNavigationBarHeightLandscape = null;
         } else {
-            mNavigationBarHeightLandcape.setOnPreferenceChangeListener(this);
+            mNavigationBarHeightLandscape.setOnPreferenceChangeListener(this);
         }
-        // Width
-        mNavigationBarWidth = (ListPreference) findPreference(LIST_NAVIGATION_BAR_WIDTH);
-        if (!DeviceUtils.isPhone(getActivity())) {
+
+        mNavigationBarWidth =
+            (ListPreference) findPreference(PREF_NAVIGATION_BAR_WIDTH);
+
+        if (!Utils.isPhone(getActivity())) {
             prefSet.removePreference(mNavigationBarWidth);
             mNavigationBarWidth = null;
         } else {
             mNavigationBarWidth.setOnPreferenceChangeListener(this);
         }
 
-        updateDimension();
+        updateDimensionValues();
         setHasOptionsMenu(true);
 		
 
     }
 	
-	private void updateDimension() {
+	private void updateDimensionValues() {
         int navigationBarHeight = Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_HEIGHT, -2);
-        if (navigationBarHeight == -2) {
-            navigationBarHeight =
-                    (int) (getResources().getDimension(com.android.internal.R.dimen.navigation_bar_height)
+                Settings.System.NAVIGATION_BAR_HEIGHT, -1);
+        if (navigationBarHeight == -1) {
+            navigationBarHeight = (int) (getResources().getDimension(
+                    com.android.internal.R.dimen.navigation_bar_height)
                     / getResources().getDisplayMetrics().density);
         }
         mNavigationBarHeight.setValue(String.valueOf(navigationBarHeight));
+        mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntry());
 
-        if (mNavigationBarHeightLandcape == null) {
-            return;
+        if (mNavigationBarHeightLandscape != null) {
+            int navigationBarHeightLandscape = Settings.System.getInt(getContentResolver(),
+                                Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -1);
+            if (navigationBarHeightLandscape == -1) {
+                navigationBarHeightLandscape = (int) (getResources().getDimension(
+                        com.android.internal.R.dimen.navigation_bar_height_landscape)
+                        / getResources().getDisplayMetrics().density);
+            }
+            mNavigationBarHeightLandscape.setValue(String.valueOf(navigationBarHeightLandscape));
+            mNavigationBarHeightLandscape.setSummary(mNavigationBarHeightLandscape.getEntry());
         }
-        int navigationBarHeightLandcape = Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -2);
-        if (navigationBarHeightLandcape == -2) {
-            navigationBarHeightLandcape =
-                    (int) (getResources().getDimension(com.android.internal.R.dimen.navigation_bar_height_landscape)
-                    / getResources().getDisplayMetrics().density);
-        }
-        mNavigationBarHeightLandcape.setValue(String.valueOf(navigationBarHeightLandcape));
 
-        if (mNavigationBarWidth == null) {
-            return;
+        if (mNavigationBarWidth != null) {
+            int navigationBarWidth = Settings.System.getInt(getContentResolver(),
+                                Settings.System.NAVIGATION_BAR_WIDTH, -1);
+            if (navigationBarWidth == -1) {
+                navigationBarWidth = (int) (getResources().getDimension(
+                        com.android.internal.R.dimen.navigation_bar_width)
+                        / getResources().getDisplayMetrics().density);
+            }
+            mNavigationBarWidth.setValue(String.valueOf(navigationBarWidth));
+            mNavigationBarWidth.setSummary(mNavigationBarWidth.getEntry());
         }
-        int navigationBarWidth = Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_WIDTH, -2);
-        if (navigationBarWidth == -2) {
-            navigationBarWidth =
-                    (int) (getResources().getDimension(com.android.internal.R.dimen.navigation_bar_width)
-                    / getResources().getDisplayMetrics().density);
-        }
-        mNavigationBarWidth.setValue(String.valueOf(navigationBarWidth));
-
     }
 
     @Override
@@ -147,23 +151,23 @@ public class NavBar extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mNavigationBarHeight) {
-            String newVal = (String) newValue;
+        if (preference == mNavigationBarWidth) {
+            int index = mNavigationBarWidth.findIndexOfValue((String) newValue);
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_HEIGHT,
-                    Integer.parseInt(newVal));
+                    Settings.System.NAVIGATION_BAR_WIDTH, Integer.parseInt((String) newValue));
+            updateDimensionValues();
             return true;
-        } else if (preference == mNavigationBarHeightLandcape) {
-            String newVal = (String) newValue;
+        } else if (preference == mNavigationBarHeight) {
+            int index = mNavigationBarHeight.findIndexOfValue((String) newValue);
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE,
-                    Integer.parseInt(newVal));
+                    Settings.System.NAVIGATION_BAR_HEIGHT, Integer.parseInt((String) newValue));
+            updateDimensionValues();
             return true;
-        } else if (preference == mNavigationBarWidth) {
-            String newVal = (String) newValue;
+        } else if (preference == mNavigationBarHeightLandscape) {
+            int index = mNavigationBarHeightLandscape.findIndexOfValue((String) newValue);
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_WIDTH,
-                    Integer.parseInt(newVal));
+                    Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, Integer.parseInt((String) newValue));
+            updateDimensionValues();
             return true;
         }
 		return false;
@@ -230,7 +234,7 @@ public class NavBar extends SettingsPreferenceFragment implements
                                     Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -2);
                             Settings.System.putInt(getActivity().getContentResolver(),
                                     Settings.System.NAVIGATION_BAR_WIDTH, -2);
-                            getOwner().updateDimension();
+                            getOwner().updateDimensionValues();
                         }
                     })
                     .create();
