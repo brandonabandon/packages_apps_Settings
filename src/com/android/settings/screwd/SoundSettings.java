@@ -33,6 +33,7 @@ import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class SoundSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -47,12 +48,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_CAMERA_SOUNDS = "camera_sounds";
     private static final String PROP_CAMERA_SOUND = "persist.sys.camera-sound";
     private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
+	private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
 
     private SwitchPreference mSafeHeadsetVolume;
     private ListPreference mAnnoyingNotifications;
     private SwitchPreference mVolumeKeysControlMedia;
     private SwitchPreference mCameraSounds;
     private SwitchPreference mVolBtnMusicCtrl;
+	private SwitchPreference mSwapVolumeButtons;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,6 +88,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mVolBtnMusicCtrl.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.VOLUME_MUSIC_CONTROLS, 1) != 0);
         mVolBtnMusicCtrl.setOnPreferenceChangeListener(this);
+		
+		int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
+        	Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
+        mSwapVolumeButtons = (SwitchPreference)
+        	prefScreen.findPreference(KEY_SWAP_VOLUME_BUTTONS);
+        mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
     }
 
     @Override
@@ -94,7 +103,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        // If we didn't handle it, let preferences handle it.
+        if (preference == mSwapVolumeButtons) {
+            int value = mSwapVolumeButtons.isChecked()
+                    ? (Utils.isTablet(getActivity()) ? 2 : 1) : 0;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, value);
+		}			
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
