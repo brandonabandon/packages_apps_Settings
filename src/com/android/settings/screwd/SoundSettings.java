@@ -62,6 +62,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.screwd_sound_settings);
+		
+		PreferenceScreen prefScreen = getPreferenceScreen();
 
         mSafeHeadsetVolume = (SwitchPreference) findPreference(KEY_SAFE_HEADSET_VOLUME);
         mSafeHeadsetVolume.setChecked(Settings.System.getInt(getContentResolver(),
