@@ -862,5 +862,9 @@
     <!-- Doze pulse (ambient display) notification timeout -->
     <string name="doze_timeout_title">Ambient display timeout</string>
     <string name="doze_timeout_summary">Time that the screen stays on for notification pulse</string>
+    
+    <!-- Left Handed NavBar -->
+    <string name="navigation_bar_left_title">Left-handed mode</string>
+    <string name="navigation_bar_left_summary">Place the navigation bar on the left side of the screen in landscape mode</string>
 
 </resources>
