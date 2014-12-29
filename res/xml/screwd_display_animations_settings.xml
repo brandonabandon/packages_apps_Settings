@@ -18,10 +18,12 @@
         android:title="@string/display_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceCategory
-        android:key="category_display_animations_options"
-        android:title="@string/disp_anim_settings_title" >
-
+    	<PreferenceScreen
+            android:key="aokp_animation"
+            android:title="@string/aokp_animation_title"
+            android:summary="@string/aokp_animation_summary"
+            android:fragment="com.android.settings.screwd.AnimationControls" /> 
+     
         <ListPreference
             android:key="listview_animation"
             android:dialogTitle="@string/listview_animation_title"
@@ -38,7 +40,6 @@
             android:entryValues="@array/listview_interpolator_values"
             android:defaultValue="0" />
 
-    </PreferenceCategory>
 
 </PreferenceScreen>
 
