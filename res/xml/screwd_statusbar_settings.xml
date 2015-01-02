@@ -25,6 +25,11 @@
         android:title="@string/statusbar_general_cat" >
 	
 	<PreferenceScreen
+            android:id="@+id/qs_settings"
+            android:title="@string/qs_settings_title"
+            android:fragment="com.android.settings.screwd.QsSettings" />
+	
+	<PreferenceScreen
             android:title="@string/status_bar_icon_blacklist_title"
             android:summary="@string/status_bar_icon_blacklist_summary" >
         <intent android:action="android.intent.action.MAIN"
