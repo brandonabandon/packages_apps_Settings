@@ -22,6 +22,7 @@
     <string name="notifications">Notifications</string>
     <string name="misc">Misc</string>
     <string name="navbar">Navigation Bar</string>
+    <string name="headsup">Heads Up</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>
