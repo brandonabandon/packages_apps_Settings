@@ -624,6 +624,8 @@
     <string name="ps_loopy_smoothness_tweak">Enable/disable loopy smoothness tweaks</string>
     <string name="pt_init_d_credits">Developed by:</string>
     <string name="ps_init_d_credits">Jared Rummler (JRummy16)</string>
+    <string name="pt_init_d_sysrw">Mount /system read/write</string>
+    <string name="ps_init_d_sysrw">Always mount /system read/write on boot</string>
     <string name="dt_init_d_error">Init.d error</string>
     <string name="dm_init_d_error">It looks like init.d isn\'t setup properly. Please contact your ROM developer.</string>
     <string name="db_exit">Exit</string>

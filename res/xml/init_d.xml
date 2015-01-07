@@ -107,6 +107,11 @@
             android:key="loopy_smoothness_tweak"
             android:summary="@string/ps_loopy_smoothness_tweak"
             android:title="@string/pt_loopy_smoothness_tweak" />
+	<SwitchPreference
+            android:defaultValue="true"
+            android:key="mount_sys_rw"
+            android:summary="@string/ps_init_d_sysrw"
+            android:title="@string/pt_init_d_sysrw" />    
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -64,6 +64,7 @@ public class InitD extends SettingsPreferenceFragment {
     private static final String KEY_TWEAKS = "tweaks";
     private static final String KEY_SPEEDY_MODIFIED = "speedy_modified";
     private static final String KEY_LOOPY_SMOOTHNESS_TWEAK = "loopy_smoothness_tweak";
+	private static final String KEY_MOUNT_SYS_RW = "mount_sys_rw";
 
     private static final String[] KEYS = {
         KEY_ZIPALIGN_APKS, KEY_FIX_PERMISSIONS, KEY_ENABLE_SYSCTL,
@@ -71,7 +72,7 @@ public class InitD extends SettingsPreferenceFragment {
         KEY_FILE_SYSTEM_SPEEDUPS, KEY_READ_AHEAD_KB, KEY_BATTERY,
         KEY_TOUCH, KEY_MINFREE, KEY_GPURENDER, KEY_SLEEPERS, KEY_JOURNALISM,
         KEY_SQLITE3, KEY_WIFISLEEP, KEY_IOSTATS, KEY_SENTRENICE, KEY_TWEAKS,
-        KEY_SPEEDY_MODIFIED, KEY_LOOPY_SMOOTHNESS_TWEAK
+        KEY_SPEEDY_MODIFIED, KEY_LOOPY_SMOOTHNESS_TWEAK, KEY_MOUNT_SYS_RW
     };
 
     private HashMap<String, String> mShellVariables;
