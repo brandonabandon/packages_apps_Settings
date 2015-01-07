@@ -35,6 +35,12 @@
             	android:fragment="com.android.settings.screwd.qs.QSTiles" />	
 	    
 	</PreferenceCategory>
+	
+	<com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="qs_location_advanced"
+            android:title="@string/qs_advanced_location_title"
+            android:summary="@string/qs_advanced_location_summary"
+            android:defaultValue="false" />
 
         <ListPreference
             android:key="quick_pulldown"
