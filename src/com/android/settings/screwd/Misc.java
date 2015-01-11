@@ -57,15 +57,15 @@ public class Misc extends SettingsPreferenceFragment implements
 	private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
 	private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
 	
-	private CheckBoxPreference mKillAppLongpressBack;
+	private SwitchPreference mKillAppLongpressBack;
 	private SwitchPreference mDisableIM;
 	private SwitchPreference mRecentsClearAll;
 	private ListPreference mRecentsClearAllLocation;
 	
 	private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 	
-	private final ArrayList<CheckBoxPreference> mResetCbPrefs
-            = new ArrayList<CheckBoxPreference>();	
+	private final ArrayList<SwitchPreference> mResetSbPrefs
+            = new ArrayList<SwitchPreference>();	
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,7 @@ public class Misc extends SettingsPreferenceFragment implements
 		
 		ContentResolver resolver = getActivity().getContentResolver();
 		
-		mKillAppLongpressBack = findAndInitCheckboxPref(KILL_APP_LONGPRESS_BACK);
+		mKillAppLongpressBack = findAndInitSwitchPref(KILL_APP_LONGPRESS_BACK);
 		
 		mDisableIM = (SwitchPreference) findPreference(DISABLE_IMMERSIVE_MESSAGE);
         mDisableIM.setChecked((Settings.System.getInt(resolver,
@@ -123,13 +123,13 @@ public class Misc extends SettingsPreferenceFragment implements
         return false;
     }
 	
-	private CheckBoxPreference findAndInitCheckboxPref(String key) {
-        CheckBoxPreference pref = (CheckBoxPreference) findPreference(key);
+	private SwitchPreference findAndInitSwitchPref(String key) {
+        SwitchPreference pref = (SwitchPreference) findPreference(key);
         if (pref == null) {
             throw new IllegalArgumentException("Cannot find preference with key = " + key);
         }
         mAllPrefs.add(pref);
-        mResetCbPrefs.add(pref);
+        mResetSbPrefs.add(pref);
         return pref;
     }
 	
