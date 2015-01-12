@@ -147,6 +147,7 @@
     <string name="navbar">Navigation Bar</string>
     <string name="headsup">Heads Up</string>
     <string name="power_menu">Power Menu</string>
+    <string name="recents">Recents</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>
