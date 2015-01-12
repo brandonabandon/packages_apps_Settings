@@ -17,18 +17,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
     
-        <PreferenceScreen
-            android:key="qs_order"
-            android:title="@string/qs_order"
-            android:summary="@string/qs_order_summary"
-            android:fragment="com.android.settings.screwd.qs.QSTiles" />
+    	<PreferenceCategory
+            android:key="qs_tiles"
+            android:title="@string/qs_tiles_cat" >
 
-    	<SwitchPreference
-            android:key="qs_main_tiles"
-            android:title="@string/qs_main_tiles_title"
-            android:summaryOn="@string/qs_main_tiles_summary_on"
-            android:summaryOff="@string/qs_main_tiles_summary_off"
-            android:defaultValue="true" />
+    	    <SwitchPreference
+            	android:key="qs_main_tiles"
+            	android:title="@string/qs_main_tiles_title"
+            	android:summaryOn="@string/qs_main_tiles_summary_on"
+            	android:summaryOff="@string/qs_main_tiles_summary_off"
+            	android:defaultValue="true" />
+		
+	    <PreferenceScreen
+            	android:key="qs_order"
+            	android:title="@string/qs_order"
+            	android:summary="@string/qs_order_summary"
+            	android:fragment="com.android.settings.screwd.qs.QSTiles" />	
+	    
+	</PreferenceCategory>
 
         <ListPreference
             android:key="quick_pulldown"
