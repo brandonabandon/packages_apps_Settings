@@ -2169,6 +2169,7 @@
 	<activity android:name=".screwd.InitD" />
 	<activity android:name=".screwd.Density" />
 	<activity android:name=".screwd.SpamList" />
+	<activity android:name=".screwd.OmniSwitch" />
         <activity android:name=".notificationlight.NotificationLightSettings" />
         <activity android:name=".notificationlight.BatteryLightSettings" />
 	<activity android:name=".screwd.gestureanywhere.GestureAnywhereBuilderActivity" />

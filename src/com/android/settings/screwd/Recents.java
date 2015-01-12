@@ -115,13 +115,6 @@ public class Recents extends SettingsPreferenceFragment implements
         mResetSbPrefs.add(pref);
         return pref;
     }
-
-	
-	@Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-
-        return false;
-    }
 	
 	private void updateRecentsLocation(int value) {
         ContentResolver resolver = getContentResolver();
