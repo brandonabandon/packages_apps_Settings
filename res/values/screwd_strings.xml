@@ -1107,4 +1107,12 @@
     <string name="weather_clock_title">Status bar weather</string>
     <string name="weather_clock_summary">View or change status bar weather settings</string>
     
+    <!-- Disable lockscreen camera -->
+    <string name="camera_widget_hide">Disable lockscreen camera</string>
+    <string name="camera_widget_hide_summary">Allows you to disable swipe to open camera in lockscreen.</string>
+    
+    <!-- Disable lockscreen dialer -->
+    <string name="dialer_widget_hide">Disable lockscreen dialer</string>
+    <string name="dialer_widget_hide_summary">Allows you to disable swipe to open dialer in lockscreen.</string>
+    
 </resources>
