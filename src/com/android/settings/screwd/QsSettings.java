@@ -33,6 +33,8 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.android.settings.screwd.qs.QSTiles;
+
 import com.android.internal.widget.LockPatternUtils;
 
 import com.android.settings.SettingsPreferenceFragment;
@@ -48,12 +50,12 @@ public class QsSettings extends SettingsPreferenceFragment
     private static final String PREF_QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
-	private static final String TOGGLE_MAIN_TILES = "qs_main_tiles";
 
     ListPreference mQuickPulldown;
     ListPreference mSmartPulldown;
     SwitchPreference mBlockOnSecureKeyguard;
-	SwitchPreference mToggleMainTiles;
+	private Preference mQSTiles;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,21 +92,17 @@ public class QsSettings extends SettingsPreferenceFragment
             prefs.removePreference(mBlockOnSecureKeyguard);
         }
 		
-		//Main Tiles
-		mToggleMainTiles = (SwitchPreference) findPreference(TOGGLE_MAIN_TILES);
-        mToggleMainTiles.setOnPreferenceChangeListener(this);
-
-        boolean useMainTiles = Settings.Secure.getIntForUser(
-                getActivity().getContentResolver(), Settings.Secure.QS_USE_MAIN_TILES,
-                1, UserHandle.myUserId()) == 1;
-
-        mToggleMainTiles.setChecked(useMainTiles);
+		 mQSTiles = findPreference("qs_order");
 
     }
 
     @Override
     public void onResume() {
         super.onResume();
+		
+		int qsTileCount = QSTiles.determineTileCount(getActivity());
+        mQSTiles.setSummary(getResources().getQuantityString(R.plurals.qs_tiles_summary,
+                    qsTileCount, qsTileCount));
     }
 
     @Override
@@ -126,11 +124,6 @@ public class QsSettings extends SettingsPreferenceFragment
             Settings.Secure.putInt(getContentResolver(),
                     Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
                     (Boolean) newValue ? 1 : 0);
-            return true;
-		} else if(preference == mToggleMainTiles) {
-            Settings.Secure.putIntForUser(
-                    getActivity().getContentResolver(), Settings.Secure.QS_USE_MAIN_TILES,
-                    ((Boolean) newValue) ? 1 : 0, UserHandle.myUserId());
             return true;	
         }
         return false;
