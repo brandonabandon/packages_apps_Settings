@@ -1358,4 +1358,11 @@
     <string name="no_media_notification_summary">Show notification when storage media is removed</string>
     <string name="mount_notification_title">Mount notification</string>
     <string name="mount_notification_summary">Display ongoing notification for mounted storage</string>
+    
+    <!-- Lockscreen shortcuts -->
+    <string name="lockscreen_settings_title">Lock screen</string>
+    <string name="lockscreen_targets_message">Lockscreen shortcuts</string>
+    <string name="lockscreen_default_target">Default</string>
+    <string name="lockscreen_message">Tap an icon on the left or right to reassign a lock screen shortcut.</string>
+    <string name="lockscreen_choose_action_title">Choose action</string>
 </resources>

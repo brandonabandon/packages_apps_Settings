@@ -18,7 +18,7 @@
     <!-- Gesture Anywhere -->
     <dimen name="ga_gesture_thumbnail_inset">8dip</dimen>
     <dimen name="ga_gesture_thumbnail_size">64dip</dimen>
-    <dimen name="shortcut_picker_left_padding">70dip</dimen>
+    <dimen name="shortcut_picker_left_padding">40dip</dimen>
     
     <!-- QS tiles -->
     <dimen name="qs_tile_max_size">120dp</dimen>
@@ -33,4 +33,13 @@
     <dimen name="fab_icon_size">24dp</dimen>
     <dimen name="fab_elevation_normal">8dp</dimen>
     <dimen name="fab_elevation_pressed">6dp</dimen>
+    
+    <!-- Lockscreen shortcuts -->
+    <dimen name="lockscreen_icon_side_padding">10dp</dimen>
+    <dimen name="lockscreen_icon_size">35dp</dimen>
+    <dimen name="phone_side_padding">10dp</dimen>
+    <dimen name="phone_bottom_padding">40dp</dimen>
+
+    <dimen name="phone_width">320dp</dimen>
+    <dimen name="phone_height">420dp</dimen>
 </resources>
