@@ -79,5 +79,12 @@
     <!-- DSLV colors -->
     <color name="dslv_icon_dark">#ff009688</color>
     <color name="dslv_float_cackground_color">#ffe1e1e0</color>
+    
+    <!-- Layout colors -->
+    <color name="dashboard_category_background_color">#ffffffff</color>
+    <color name="battery_history_chart_textcolor">#ff000000</color>
+    <color name="data_usage_chart_fillcolor">#ff009688</color>
+    <color name="data_usage_chart_fillcolor_secondary">#ff80cbc4</color>
+    <color name="ownerinfo_background_color">#ffffffff</color>
 
 </resources>
