@@ -20,7 +20,7 @@
     	<PreferenceCategory
         android:title="@string/qs_category_title">
 
-    	   <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+    	   <com.android.settings.cyanogenmod.SecureSettingSwitchPreference
         	android:key="sysui_qs_main_tiles"
         	android:title="@string/qs_main_tiles_title"
         	android:summaryOn="@string/qs_main_tiles_summary_on"
@@ -72,7 +72,7 @@
             android:summary="@string/quick_settings_vibrate_summary"
             android:defaultValue="false"/>
 	    
-	<com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+	<com.android.settings.cyanogenmod.SecureSettingSwitchPreference
             android:key="qs_show_brightness_slider"
             android:title="@string/qs_brightness_slider_title"
             android:summary="@string/qs_brightness_slider_summary"
