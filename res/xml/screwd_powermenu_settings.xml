@@ -43,6 +43,11 @@
             android:title="@string/powermenu_screenshot"
             android:defaultValue="true" />
 	    
+     <com.android.settings.screwd.NumberPickerPreference
+            android:key="screenshot_delay"
+            android:title="@string/powermenu_screenshot_delay_title" 
+            android:dependency="powermenu_screenshot" />	    
+	    
      <com.android.settings.screwd.SystemSettingSwitchPreference
             android:key="powermenu_screenrecord"
             android:title="@string/powermenu_screenrecord"

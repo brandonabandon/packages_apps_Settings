@@ -47,14 +47,19 @@ import java.util.List;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.screwd.NumberPickerPreference;
 
 public class PowerMenu extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 		
 		private static final String KEY_ADVANCED_REBOOT = "advanced_reboot";
+        private static final String SCREENSHOT_DELAY = "screenshot_delay";
 		
 		private ListPreference mAdvancedReboot;
+        private NumberPickerPreference mScreenshotDelay;
 
+        private static final int MIN_DELAY_VALUE = 1;
+        private static final int MAX_DELAY_VALUE = 30;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +74,14 @@ public class PowerMenu extends SettingsPreferenceFragment implements
         mAdvancedReboot.setSummary(mAdvancedReboot.getEntry());
         mAdvancedReboot.setOnPreferenceChangeListener(this);
         	
+        mScreenshotDelay = (NumberPickerPreference) findPreference(
+                SCREENSHOT_DELAY);
+        mScreenshotDelay.setOnPreferenceChangeListener(this);
+        mScreenshotDelay.setMinValue(MIN_DELAY_VALUE);
+        mScreenshotDelay.setMaxValue(MAX_DELAY_VALUE);
+        int ssDelay = Settings.System.getInt(getContentResolver(),
+                Settings.System.SCREENSHOT_DELAY, 1);
+        mScreenshotDelay.setCurrentValue(ssDelay);
     }
 
     @Override
@@ -83,6 +96,11 @@ public class PowerMenu extends SettingsPreferenceFragment implements
             mAdvancedReboot.setValue(String.valueOf(newValue));
             mAdvancedReboot.setSummary(mAdvancedReboot.getEntry());
 			return true;
+		} else if (preference == mScreenshotDelay) {
+            int value = Integer.parseInt(newValue.toString());
+            Settings.System.putInt(getContentResolver(), Settings.System.SCREENSHOT_DELAY,
+                    value);
+            return true;	
 		}	
         return false;
     }
