@@ -1117,7 +1117,7 @@
     
     <!-- Disable lockscreen dialer -->
     <string name="dialer_widget_hide">Disable lockscreen dialer</string>
-    <string name="dialer_widget_hide_summary">Allows you to disable swipe to open dialer in lockscreen.</string>
+    <string name="dialer_widget_hide_summary">Allows you to disable swipe to open dialer in lockscreen. \nNote this will trigger a reboot to take effect!</string>
     
     <!-- Link notification volume -->
     <string name="link_volume_option_title">Link ringtone &amp; notification volumes</string>
