@@ -68,6 +68,7 @@ import com.android.settings.accessibility.AccessibilitySettings;
 import com.android.settings.accessibility.CaptionPropertiesFragment;
 import com.android.settings.accounts.AccountSettings;
 import com.android.settings.accounts.AccountSyncSettings;
+import com.android.settings.applications.ExpandedDesktopPreferenceFragment;
 import com.android.settings.applications.InstalledAppDetails;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.applications.ProcessStatsUi;
@@ -303,7 +304,9 @@ public class SettingsActivity extends Activity
             ApnSettings.class.getName(),
 			QSTiles.class.getName(),
             BlacklistSettings.class.getName(),
-			HeadsUpSettings.class.getName()
+			HeadsUpSettings.class.getName(),
+            ExpandedDesktopPreferenceFragment.class.getName(),
+	    	HeadsUpSettings.class.getName()
     };
 
 
