@@ -42,10 +42,17 @@
     	android:key="initD"
     	android:fragment="com.android.settings.screwd.InitD"
     	android:title="@string/init_d_title" />
-	
+    
+     <!-- Wakelock Blocker -->	
      <PreferenceScreen
      	android:key="wakelock_blocker"
         android:fragment="com.android.settings.screwd.WakeLockBlocker"
-        android:title="@string/wakelock_blocker_title" />			
+        android:title="@string/wakelock_blocker_title" />
+     
+     <!-- Disable FCs -->	
+     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="disable_fc_notifications"
+        android:title="@string/disable_fc_notifications_title"
+        android:summary="@string/disable_fc_notifications_summary" />  				
 
 </PreferenceScreen>
