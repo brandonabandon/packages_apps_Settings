@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.settings.screwd.fragments;
+package com.android.settings.applications;
 
 import android.annotation.Nullable;
 import android.content.ContentResolver;
