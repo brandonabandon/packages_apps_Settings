@@ -53,7 +53,13 @@
     <PreferenceScreen
     	android:key="navigation_bar_ring"
     	android:fragment="com.android.settings.screwd.NavRing"
-    	android:title="@string/navring" />	
+    	android:title="@string/navring" />
+	
+
+    <PreferenceScreen
+         android:key="pie_settings"
+         android:fragment="com.android.settings.screwd.PieControl"
+         android:title="@string/pie_control_title" />		
 	
     <PreferenceScreen
     	android:key="expanded_desktop"
