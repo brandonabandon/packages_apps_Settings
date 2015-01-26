@@ -139,6 +139,7 @@
     <string name="app_ops_categories_bootup">Bootup</string>
 
     <!-- Screw'd Settings -->
+    <string name="header_customize">Customize</string>
     <string name="header_category_screwd">Screw\'d Settings</string>
     <string name="ui">User Interface</string>
     <string name="system">System</string>
