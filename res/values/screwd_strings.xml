@@ -1115,6 +1115,8 @@
     <string name="qs_tile_lockscreen">Lock screen</string>
     <string name="qs_screentimeout_tile">Screen timeout</string>
     <string name="qs_screentimeout_mode_title">Screen timeout modes</string>
+    <string name="qs_screentimeout_tile">Screen timeout</string>
+    <string name="qs_screentimeout_mode_title">Screen timeout modes</string>
     
     <!-- Weather in status bar -->
     <string name="status_bar_show_weather_title">Show weather</string>
