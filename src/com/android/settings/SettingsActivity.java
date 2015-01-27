@@ -114,6 +114,7 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.screwd.qs.QSTiles;
+import com.android.settings.screwd.HeadsUpSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -301,7 +302,8 @@ public class SettingsActivity extends Activity
             QuickLaunchSettings.class.getName(),
             ApnSettings.class.getName(),
 			QSTiles.class.getName(),
-            BlacklistSettings.class.getName()
+            BlacklistSettings.class.getName(),
+			HeadsUpSettings.class.getName()
     };
 
 
