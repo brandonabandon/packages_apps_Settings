@@ -78,7 +78,7 @@
 	<!-- Screw'd Settings -->
         <dashboard-tile
                 android:id="@+id/screwd_settings"
-                android:icon="@drawable/ic_settings_screwd_ui"
+                android:icon="@drawable/ic_settings_screwd_system"
                 android:fragment="com.android.settings.screwd.ScrewdSettings"
                 android:title="@string/header_category_screwd"
                 />
