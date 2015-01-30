@@ -172,11 +172,6 @@ public class NavBar extends SettingsPreferenceFragment implements
         }
 		return false;
     }
-			
-	@Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        return false;
-    }
 	
 	@Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
