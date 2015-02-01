@@ -91,6 +91,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String ROTATION_ANGLE_180 = "180";
     private static final String ROTATION_ANGLE_270 = "270";
     private static final String KEY_DOZE_TIMEOUT = "doze_timeout";
+    private static final String KEY_DOZE_TRIGGER_MOTION = "doze_trigger_motion";
 
     private PreferenceScreen mDisplayRotationPreference;
 
@@ -105,6 +106,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private Preference mScreenSaverPreference;
     private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mDozePreference;
+    private SwitchPreference mDozeTriggerMotion;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mVolumeWake;
 
@@ -173,6 +175,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 mDozeTimeout.minimumValue(100);
                 mDozeTimeout.multiplyValue(100);
                 mDozeTimeout.setOnPreferenceChangeListener(this);
+				
+				// Doze triggers
+            	if (areMotionSensorsAvailable(activity)) {
+                	mDozeTriggerMotion = (SwitchPreference) findPreference(KEY_DOZE_TRIGGER_MOTION);
+                	mDozeTriggerMotion.setOnPreferenceChangeListener(this);
+            	} else {
+                	removePreference(KEY_DOZE_TRIGGER_MOTION);
+            	}
             }
         } else {
             removePreference(KEY_DOZE);
@@ -238,6 +248,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static boolean isLiftToWakeAvailable(Context context) {
         SensorManager sensors = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         return sensors != null && sensors.getDefaultSensor(Sensor.TYPE_WAKE_GESTURE) != null;
+    }
+
+    private static boolean areMotionSensorsAvailable(Context context) {
+        SensorManager sensors = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        return sensors != null &&
+                (sensors.getDefaultSensor(Sensor.TYPE_SIGNIFICANT_MOTION) != null
+                || sensors.getDefaultSensor(Sensor.TYPE_PICK_UP_GESTURE) != null);
     }
 
     private static boolean isDozeAvailable(Context context) {
@@ -425,6 +442,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     com.android.internal.R.bool.config_doze_enabled_by_default) ? 1 : 0);
             mDozePreference.setChecked(value != 0);
         }
+
+        // Update doze triggers
+        if (mDozeTriggerMotion != null) {
+            int value = Settings.System.getInt(getContentResolver(),
+                    Settings.System.DOZE_TRIGGER_MOTION, 1);
+            mDozeTriggerMotion.setChecked(value != 0);
+        }
     }
 
     private void updateScreenSaverSummary() {
@@ -511,6 +535,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.DOZE_TIMEOUT, dozeTimeout);
         }
+        if (preference == mDozeTriggerMotion) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DOZE_TRIGGER_MOTION, value ? 1 : 0);
+        }
         return true;
     }
 
@@ -557,6 +586,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     }
                     if (!isDozeAvailable(context)) {
                         result.add(KEY_DOZE);
+                        if (!areMotionSensorsAvailable(context)) {
+                            result.add(KEY_DOZE_TRIGGER_MOTION);
+                        }
                     }
                     if (!RotationPolicy.isRotationLockToggleVisible(context)) {
                         result.add(KEY_AUTO_ROTATE);
