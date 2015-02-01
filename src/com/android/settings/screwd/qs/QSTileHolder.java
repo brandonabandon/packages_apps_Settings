@@ -122,13 +122,21 @@ public class QSTileHolder {
                 resourceName = "ic_qs_lock_screen_on";
                 stringId = R.string.qs_tile_lockscreen;
                 break;
- 	    case QSConstants.TILE_SCREEN_TIMEOUT:
+ 	    	case QSConstants.TILE_SCREEN_TIMEOUT:
                 resourceName = "ic_qs_screen_timeout_vector";
                 stringId = R.string.qs_tile_screen_timeout;
                 break;
-	    case QSConstants.TILE_HEADS_UP:
+	    	case QSConstants.TILE_HEADS_UP:
                 resourceName = "ic_qs_heads_up_on";
                 stringId = R.string.qs_tile_headsup;
+				break;
+            case QSConstants.TILE_SCREENSHOT:
+                resourceName = "ic_qs_screenshot";
+                stringId = R.string.qs_screenshot_tile;
+                break;
+            case QSConstants.TILE_SYNC:
+                resourceName = "ic_qs_sync_on";
+                stringId = R.string.qs_sync_tile;
                 break;
             default:
                 return null;
