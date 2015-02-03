@@ -2243,6 +2243,7 @@
         <activity android:name=".notificationlight.BatteryLightSettings" />
 	<activity android:name=".screwd.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".screwd.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+        <activity android:name=".slim.PerformanceSettings" />
 
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
