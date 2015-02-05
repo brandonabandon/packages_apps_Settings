@@ -1122,6 +1122,7 @@
     <string name="qs_screentimeout_mode_title">Screen timeout modes</string>
     <string name="qs_tile_headsup">Heads up</string>
     <string name="qs_screenshot_tile">Screenshot</string>
+    <string name="qs_screenrecord_tile">Screenrecord</string>
     <string name="qs_sync_tile">Sync</string>
     
     <!-- QuickSettings 4 columns -->
