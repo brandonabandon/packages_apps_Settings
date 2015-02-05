@@ -48,13 +48,7 @@
     <PreferenceScreen
         android:key="nav_bar"
         android:fragment="com.android.settings.screwd.NavBar"
-        android:title="@string/navbar" />
-	
-    <PreferenceScreen
-    	android:key="navigation_bar_ring"
-    	android:fragment="com.android.settings.screwd.NavRing"
-    	android:title="@string/navring" />
-	
+        android:title="@string/navbar_navring" />   
 
     <PreferenceScreen
          android:key="pie_settings"
