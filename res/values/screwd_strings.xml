@@ -145,10 +145,9 @@
     <string name="system">System</string>
     <string name="notifications">Notifications</string>
     <string name="misc">Misc</string>
-    <string name="navbar_navring">Navigation Bar &amp; Ring</string>
+    <string name="navbar_navring">NavBar &amp; NavRing</string>
     <string name="headsup">Heads Up</string>
     <string name="power_menu">Power Menu</string>
-    <string name="navring">Navigation Ring</string>
     <string name="recents">Recents</string>
     <string name="sounds">Sounds &amp; Volume</string>
 
@@ -1238,6 +1237,7 @@
     
     <!-- Navigation ring shortcuts -->
     <string name="navring_cat_title">Navigation Ring</string>
+    <string name="navring_targets">Targets</string>
     <string name="navigation_ring_enable_title">Enable navigation rings</string>
     <string name="navigation_ring_title">Navigation ring targets</string>
     <string name="navigation_ring_summary">Edit and re-arrange navigation ring shortcuts</string>

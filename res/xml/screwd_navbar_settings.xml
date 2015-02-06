@@ -30,7 +30,7 @@
     	<PreferenceScreen
     	     android:key="navigation_bar_ring"
     	     android:fragment="com.android.settings.screwd.NavRing"
-    	     android:title="@string/navring"
+    	     android:title="@string/navring_targets"
 	     android:dependency="search_panel_enabled" />
 	
     </PreferenceCategory>
