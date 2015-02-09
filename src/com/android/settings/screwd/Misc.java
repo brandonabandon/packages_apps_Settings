@@ -54,10 +54,12 @@ public class Misc extends SettingsPreferenceFragment implements
 		
 		
 	private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
+	private static final String KILL_APP_LONGPRESS_TIMEOUT = "kill_app_longpress_timeout";
 	private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
 	private static final String KEY_LOCKSCREEN_DIALER_WIDGET_HIDE = "dialer_widget_hide";
 	
 	private SwitchPreference mKillAppLongpressBack;
+	private ListPreference mKillAppLongpressTimeout;
 	private SwitchPreference mDisableIM;
 	private SwitchPreference mDialerWidgetHide;
 	
@@ -75,6 +77,11 @@ public class Misc extends SettingsPreferenceFragment implements
 		ContentResolver resolver = getActivity().getContentResolver();
 		
 		mKillAppLongpressBack = findAndInitSwitchPref(KILL_APP_LONGPRESS_BACK);
+		
+        mKillAppLongpressTimeout = addListPreference(KILL_APP_LONGPRESS_TIMEOUT);
+        int killAppLongpressTimeout = Settings.Secure.getIntForUser(getActivity().getContentResolver(),
+                Settings.Secure.KILL_APP_LONGPRESS_TIMEOUT, 2000, UserHandle.USER_CURRENT);
+        mKillAppLongpressTimeout.setOnPreferenceChangeListener(this);
 		
 		mDisableIM = (SwitchPreference) findPreference(DISABLE_IMMERSIVE_MESSAGE);
         mDisableIM.setChecked((Settings.System.getInt(resolver,
@@ -95,6 +102,7 @@ public class Misc extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
 		updateKillAppLongpressBackOptions();
+		updateKillAppLongpressTimeoutOptions();
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -107,7 +115,10 @@ public class Misc extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putIntForUser(getActivity().getContentResolver(),
                     Settings.System.DIALER_WIDGET_HIDE, value ? 1 : 0, UserHandle.USER_CURRENT);
-            Helpers.restartSystem();		
+            Helpers.restartSystem();
+		} else if (preference == mKillAppLongpressTimeout) {
+            writeKillAppLongpressTimeoutOptions(newValue);
+            return true;			
 		}	
         return false;
     }
@@ -131,6 +142,40 @@ public class Misc extends SettingsPreferenceFragment implements
     private void updateKillAppLongpressBackOptions() {
         mKillAppLongpressBack.setChecked(Settings.Secure.getInt(
             getActivity().getContentResolver(), Settings.Secure.KILL_APP_LONGPRESS_BACK, 0) != 0);
+    }
+	
+	private void writeKillAppLongpressTimeoutOptions(Object newValue) {
+        int index = mKillAppLongpressTimeout.findIndexOfValue((String) newValue);
+        int value = Integer.valueOf((String) newValue);
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.Secure.KILL_APP_LONGPRESS_TIMEOUT, value);
+        mKillAppLongpressTimeout.setSummary(mKillAppLongpressTimeout.getEntries()[index]);
+    }
+
+    private void updateKillAppLongpressTimeoutOptions() {
+        String value = Settings.Secure.getString(getActivity().getContentResolver(),
+                Settings.Secure.KILL_APP_LONGPRESS_TIMEOUT);
+        if (value == null) {
+            value = "";
+        }
+
+        CharSequence[] values = mKillAppLongpressTimeout.getEntryValues();
+        for (int i = 0; i < values.length; i++) {
+            if (value.contentEquals(values[i])) {
+                mKillAppLongpressTimeout.setValueIndex(i);
+                mKillAppLongpressTimeout.setSummary(mKillAppLongpressTimeout.getEntries()[i]);
+                return;
+            }
+        }
+        mKillAppLongpressTimeout.setValueIndex(0);
+        mKillAppLongpressTimeout.setSummary(mKillAppLongpressTimeout.getEntries()[0]);
+    }
+	
+	private ListPreference addListPreference(String prefKey) {
+        ListPreference pref = (ListPreference) findPreference(prefKey);
+        mAllPrefs.add(pref);
+        pref.setOnPreferenceChangeListener(this);
+        return pref;
     }
 	
 	@Override
