@@ -51,6 +51,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker_enabled";
 	private static final String STATUS_BAR_CARRIER = "status_bar_carrier";
 	private static final String STATUS_BAR_CARRIER_COLOR = "status_bar_carrier_color";
+	private static final String KEY_STATUS_BAR_GREETING = "status_bar_greeting";
 	
 	static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 	
@@ -59,6 +60,9 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private PreferenceScreen mClockStyle;
     private SwitchPreference mTicker;
 	SwitchPreference mStatusBarCarrier;
+	private SwitchPreference mStatusBarGreeting;
+	
+	private String mCustomGreetingText = "";
 	ColorPickerPreference mCarrierColorPicker;
 	
 	int intColor;
@@ -113,6 +117,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         hexColor = String.format("#%08x", (0xffffffff & intColor));
         mCarrierColorPicker.setSummary(hexColor);
         mCarrierColorPicker.setNewPreviewColor(intColor);
+		
+		mStatusBarGreeting = (SwitchPreference) findPreference(KEY_STATUS_BAR_GREETING);
+        mCustomGreetingText = Settings.System.getString(resolver, Settings.System.STATUS_BAR_GREETING);
+        boolean greeting = mCustomGreetingText != null && !TextUtils.isEmpty(mCustomGreetingText);
+        mStatusBarGreeting.setChecked(greeting);
 
     }
 
@@ -145,9 +154,44 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
            Settings.System.putInt(getContentResolver(),
                    Settings.System.STATUS_BAR_CARRIER, mStatusBarCarrier.isChecked() ? 1 : 0);
            return true;
+		} else  if (preference == mStatusBarGreeting) {
+           boolean enabled = mStatusBarGreeting.isChecked();
+           if (enabled) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+
+                alert.setTitle(R.string.status_bar_greeting_title);
+                alert.setMessage(R.string.status_bar_greeting_dialog);
+
+                // Set an EditText view to get user input
+                final EditText input = new EditText(getActivity());
+                input.setText(mCustomGreetingText != null ? mCustomGreetingText : "Chopped, not slopped");
+                alert.setView(input);
+                alert.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String value = ((Spannable) input.getText()).toString();
+                        Settings.System.putString(getActivity().getContentResolver(),
+                                Settings.System.STATUS_BAR_GREETING, value);
+                        updateCheckState(value);
+                    }
+                });
+                alert.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Canceled.
+                    }
+                });
+
+                alert.show();
+            } else {
+                Settings.System.putString(getActivity().getContentResolver(),
+                                Settings.System.STATUS_BAR_GREETING, "");
+            }   
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
+	
+	private void updateCheckState(String value) {
+		if (value == null || TextUtils.isEmpty(value)) mStatusBarGreeting.setChecked(false);
+	}
 
     @Override
     public void onResume() {

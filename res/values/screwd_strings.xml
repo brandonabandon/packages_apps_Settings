@@ -1324,4 +1324,9 @@
     <string name="power_notifications_vibrate_title">Vibrate</string>
     <string name="power_notifications_ringtone_title">Notification sound</string>
     <string name="power_notifications_ringtone_silent">Silent</string>
+    
+    <!-- Status bar greeting -->
+    <string name="status_bar_greeting_title">Greeting</string>
+    <string name="status_bar_greeting_summary">Display a custom greeting in the status bar after unlocking the device</string>
+    <string name="status_bar_greeting_dialog">Set your greeting</string>
 </resources>
