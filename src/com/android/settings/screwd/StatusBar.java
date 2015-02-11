@@ -57,6 +57,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	private static final String STATUS_BAR_CARRIER = "status_bar_carrier";
 	private static final String STATUS_BAR_CARRIER_COLOR = "status_bar_carrier_color";
 	private static final String KEY_STATUS_BAR_GREETING = "status_bar_greeting";
+	private static final String NETWORK_METER_ENABLED = "network_meter_enabled";
 	
 	static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 	
@@ -66,6 +67,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private SwitchPreference mTicker;
 	SwitchPreference mStatusBarCarrier;
 	private SwitchPreference mStatusBarGreeting;
+	private SwitchPreference mNetworkMeterEnabled;
 	
 	private String mCustomGreetingText = "";
 	ColorPickerPreference mCarrierColorPicker;
@@ -127,6 +129,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mCustomGreetingText = Settings.System.getString(resolver, Settings.System.STATUS_BAR_GREETING);
         boolean greeting = mCustomGreetingText != null && !TextUtils.isEmpty(mCustomGreetingText);
         mStatusBarGreeting.setChecked(greeting);
+		
+		mNetworkMeterEnabled = (SwitchPreference) prefSet.findPreference(NETWORK_METER_ENABLED);
+        mNetworkMeterEnabled.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.NETWORK_METER_ENABLED, 1) == 1);
+        mNetworkMeterEnabled.setOnPreferenceChangeListener(this);
 
     }
 
@@ -148,6 +155,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_CARRIER_COLOR, intHex);
+            return true;	
+		} else if (preference == mNetworkMeterEnabled) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.NETWORK_METER_ENABLED,
+                    (Boolean) newValue ? 1 : 0);
             return true;	
 		}
         return false;
