@@ -47,7 +47,7 @@ import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
+import com.android.internal.util.cm.ScreenType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +86,7 @@ public class NavBar extends SettingsPreferenceFragment implements
         mNavigationBarHeightLandscape =
             (ListPreference) findPreference(PREF_NAVIGATION_BAR_HEIGHT_LANDSCAPE);
 
-        if (Utils.isPhone(getActivity())) {
+        if (ScreenType.isPhone(getActivity())) {
             prefSet.removePreference(mNavigationBarHeightLandscape);
             mNavigationBarHeightLandscape = null;
         } else {
@@ -96,7 +96,7 @@ public class NavBar extends SettingsPreferenceFragment implements
         mNavigationBarWidth =
             (ListPreference) findPreference(PREF_NAVIGATION_BAR_WIDTH);
 
-        if (!Utils.isPhone(getActivity())) {
+        if (!ScreenType.isPhone(getActivity())) {
             prefSet.removePreference(mNavigationBarWidth);
             mNavigationBarWidth = null;
         } else {
