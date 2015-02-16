@@ -18,6 +18,11 @@
         android:entries="@array/heads_up_time_out_entries"
         android:entryValues="@array/heads_up_time_out_values"
         android:persistent="false" />
+	
+    <SwitchPreference
+        android:key="heads_up_dismiss_on_remove"
+	android:title="@string/heads_up_dismiss_on_remove_title"
+	android:defaultValue="false" />	
 
     <PreferenceCategory
             android:title="@string/heads_up_dnd_title"
