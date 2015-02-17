@@ -40,11 +40,10 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.android.settings.R;
-import com.android.settings.screwd.util.Helpers;
+import com.android.settings.SettingsPreferenceFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.android.settings.Utils;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -56,12 +55,10 @@ public class Misc extends SettingsPreferenceFragment implements
 	private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
 	private static final String KILL_APP_LONGPRESS_TIMEOUT = "kill_app_longpress_timeout";
 	private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
-	private static final String KEY_LOCKSCREEN_DIALER_WIDGET_HIDE = "dialer_widget_hide";
 	
 	private SwitchPreference mKillAppLongpressBack;
 	private ListPreference mKillAppLongpressTimeout;
 	private SwitchPreference mDisableIM;
-	private SwitchPreference mDialerWidgetHide;
 	
 	private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 	
@@ -86,15 +83,7 @@ public class Misc extends SettingsPreferenceFragment implements
 		mDisableIM = (SwitchPreference) findPreference(DISABLE_IMMERSIVE_MESSAGE);
         mDisableIM.setChecked((Settings.System.getInt(resolver,
                 Settings.System.DISABLE_IMMERSIVE_MESSAGE, 0) == 1));
-		mDisableIM.setOnPreferenceChangeListener(this);
-		
-        mDialerWidgetHide = (SwitchPreference) findPreference(KEY_LOCKSCREEN_DIALER_WIDGET_HIDE);
-        mDialerWidgetHide.setChecked(Settings.System.getIntForUser(resolver,
-            Settings.System.DIALER_WIDGET_HIDE, 0, UserHandle.USER_CURRENT) == 1);
-        mDialerWidgetHide.setOnPreferenceChangeListener(this);
-        if (!Utils.isVoiceCapable(getActivity())){
-            getPreferenceScreen().removePreference(mDialerWidgetHide);
-        }		
+		mDisableIM.setOnPreferenceChangeListener(this);		
 
     }
 
@@ -111,11 +100,6 @@ public class Misc extends SettingsPreferenceFragment implements
                     Settings.System.DISABLE_IMMERSIVE_MESSAGE,
 					(Boolean) newValue ? 1 : 0);
             return true;
-		} else if (preference == mDialerWidgetHide) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putIntForUser(getActivity().getContentResolver(),
-                    Settings.System.DIALER_WIDGET_HIDE, value ? 1 : 0, UserHandle.USER_CURRENT);
-            Helpers.restartSystem();
 		} else if (preference == mKillAppLongpressTimeout) {
             writeKillAppLongpressTimeoutOptions(newValue);
             return true;			
