@@ -71,9 +71,14 @@ public class InputMethodsSettings extends SettingsPreferenceFragment implements
         mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
         mDisableFullscreenKeyboard.setOnPreferenceChangeListener(this);
+		
+		
 
         // Enable or disable mStatusBarImeSwitcher based on boolean value: config_show_cmIMESwitcher
+		// Disable preference for now..
         final Preference keyImeSwitcherPref = findPreference(KEY_IME_SWITCHER);
+		getPreferenceScreen().removePreference(keyImeSwitcherPref);
+		/*
         if (keyImeSwitcherPref != null) {
             if (!getResources().getBoolean(com.android.internal.R.bool.config_show_IMESwitcher)) {
                 getPreferenceScreen().removePreference(keyImeSwitcherPref);
@@ -82,6 +87,10 @@ public class InputMethodsSettings extends SettingsPreferenceFragment implements
                 mStatusBarImeSwitcher.setOnPreferenceChangeListener(this);
             }
         }
+		
+		*/
+		
+		
 
         mVolumeKeyCursorControl = (ListPreference) findPreference(VOLUME_KEY_CURSOR_CONTROL);
         if(mVolumeKeyCursorControl != null) {
