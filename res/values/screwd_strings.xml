@@ -1106,6 +1106,8 @@
     
     <!-- QS tiles -->
     <string name="qs_category_title">Quick Settings</string>
+    <string name="qs_category_tiles">Tiles layout</string>
+    <string name="qs_category_options">Options</string>
     <string name="qs_order_title">Select and order tiles</string>
     <string name="add_qs">Add new tile</string>
     <string name="qs_action_delete">Delete</string>
