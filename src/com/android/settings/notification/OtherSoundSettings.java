@@ -90,7 +90,7 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
             DEFAULT_ON) {
         @Override
         public boolean isApplicable(Context context) {
-            return Utils.hasVolumeRocker(context);
+            return true;
         }
     };
 
