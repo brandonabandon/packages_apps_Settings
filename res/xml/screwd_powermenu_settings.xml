@@ -62,6 +62,11 @@
             android:key="powermenu_settings"
             android:title="@string/powermenu_settings"
             android:defaultValue="false" />
+	    
+     <com.android.settings.screwd.SystemSettingSwitchPreference	    
+            android:key="powermenu_lockdown"
+            android:title="@string/powermenu_lockdown"
+            android:defaultValue="false" />	    
 
      <com.android.settings.screwd.SystemSettingSwitchPreference
             android:key="powermenu_soundpanel"
