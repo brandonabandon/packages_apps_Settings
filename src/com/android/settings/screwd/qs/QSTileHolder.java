@@ -169,7 +169,11 @@ public class QSTileHolder {
             case QSConstants.TILE_APPCIRCLEBAR:
                 resourceName = "ic_qs_appcirclebar_on";
                 stringId = R.string.qs_appcirclebar_tile;
-                break;		
+                break;
+            case QSConstants.TILE_REBOOT:
+                resourceName = "ic_qs_reboot";
+                stringId = R.string.qs_tile_reboot;
+                break;
             default:
                 return null;
         }
