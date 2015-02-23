@@ -54,8 +54,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
     private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
     private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker_enabled";
-	private static final String STATUS_BAR_CARRIER = "status_bar_carrier";
-	private static final String STATUS_BAR_CARRIER_COLOR = "status_bar_carrier_color";
 	private static final String KEY_STATUS_BAR_GREETING = "status_bar_greeting";
 	private static final String NETWORK_METER_ENABLED = "network_meter_enabled";
 	
@@ -65,15 +63,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private SwitchPreference mStatusBarBrightnessControl;
     private PreferenceScreen mClockStyle;
     private SwitchPreference mTicker;
-	SwitchPreference mStatusBarCarrier;
 	private SwitchPreference mStatusBarGreeting;
 	private SwitchPreference mNetworkMeterEnabled;
 	
 	private String mCustomGreetingText = "";
-	ColorPickerPreference mCarrierColorPicker;
 	
-	int intColor;
-	String hexColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -111,20 +105,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mClockStyle = (PreferenceScreen) prefSet.findPreference(KEY_STATUS_BAR_CLOCK);
         updateClockStyleDescription();
 		
-		//carrier Label
-        mStatusBarCarrier = (SwitchPreference) findPreference(STATUS_BAR_CARRIER);
-        mStatusBarCarrier.setChecked((Settings.System.getInt(getContentResolver(),
-                Settings.System.STATUS_BAR_CARRIER, 0) == 1));
-
-        //carrier Label color
-        mCarrierColorPicker = (ColorPickerPreference) findPreference(STATUS_BAR_CARRIER_COLOR);
-        mCarrierColorPicker.setOnPreferenceChangeListener(this);
-        intColor = Settings.System.getInt(getContentResolver(),
-                    Settings.System.STATUS_BAR_CARRIER_COLOR, DEFAULT_STATUS_CARRIER_COLOR);
-        hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mCarrierColorPicker.setSummary(hexColor);
-        mCarrierColorPicker.setNewPreviewColor(intColor);
-		
 		mStatusBarGreeting = (SwitchPreference) findPreference(KEY_STATUS_BAR_GREETING);
         mCustomGreetingText = Settings.System.getString(resolver, Settings.System.STATUS_BAR_GREETING);
         boolean greeting = mCustomGreetingText != null && !TextUtils.isEmpty(mCustomGreetingText);
@@ -148,13 +128,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_TICKER_ENABLED,
                     (Boolean) newValue ? 1 : 0);
-            return true;
-		} else if (preference == mCarrierColorPicker) {
-            String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String.valueOf(newValue)));
-            preference.setSummary(hex);
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_CARRIER_COLOR, intHex);
             return true;	
 		} else if (preference == mNetworkMeterEnabled) {
             Settings.System.putInt(getContentResolver(),
@@ -167,11 +140,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	
 	@Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-       if (preference == mStatusBarCarrier) {
-           Settings.System.putInt(getContentResolver(),
-                   Settings.System.STATUS_BAR_CARRIER, mStatusBarCarrier.isChecked() ? 1 : 0);
-           return true;
-		} else  if (preference == mStatusBarGreeting) {
+		if (preference == mStatusBarGreeting) {
            boolean enabled = mStatusBarGreeting.isChecked();
            if (enabled) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
