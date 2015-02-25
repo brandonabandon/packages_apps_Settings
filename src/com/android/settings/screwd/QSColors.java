@@ -31,7 +31,7 @@ import android.view.MenuItem;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.cyanogenmod.qs.QSTiles;
+import com.android.settings.screwd.qs.QSTiles;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -47,7 +47,7 @@ public class QSColors extends SettingsPreferenceFragment implements
 
     private static final int DEFAULT_BACKGROUND_COLOR = 0xff263238;
     private static final int WHITE = 0xffffffff;
-    private static final int BLISS_BLUE = 0xff1976D2;
+    private static final int SCREWD_PURPLE = 0xff692DE1;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DLG_RESET = 0;
@@ -201,7 +201,7 @@ public class QSColors extends SettingsPreferenceFragment implements
                             getOwner().refreshSettings();
                         }
                     })
-                    .setPositiveButton(R.string.reset_bliss,
+                    .setPositiveButton(R.string.reset_screwd,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             Settings.System.putInt(getOwner().mResolver,
@@ -209,10 +209,10 @@ public class QSColors extends SettingsPreferenceFragment implements
                                     0xff1b1f23);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_ICON_COLOR,
-                                    BLISS_BLUE);
+                                    SCREWD_PURPLE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_TEXT_COLOR,
-                                    BLISS_BLUE);
+                                    SCREWD_PURPLE);
                             getOwner().refreshSettings();
                         }
                     })

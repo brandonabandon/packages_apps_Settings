@@ -164,6 +164,8 @@
     <string name="add">Add</string>
     <string name="choose_app">Choose App</string>
     <string name="reset_message">Reset all entries to default?</string>
+    <string name="reset_android">Android</string>
+    <string name="reset_screwd">Screw\'d</string>
 
     <!-- Slim settings screens -->
     <string name="interface_settings_title">Interface</string>
@@ -1456,4 +1458,5 @@
     <string name="qs_colors_title">Custom Color Options</string>
     <string name="colors_title">Colors</string>
     <string name="category_colors_title">Customize colors</string>
+    <string name="text_title">Text</string>
 </resources>
