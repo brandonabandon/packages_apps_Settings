@@ -1459,4 +1459,7 @@
     <string name="colors_title">Colors</string>
     <string name="category_colors_title">Customize colors</string>
     <string name="text_title">Text</string>
+    
+    <!--AppOps-->
+    <string name="appops_settings_title">App privacy</string>
 </resources>
