@@ -1462,4 +1462,9 @@
     
     <!--AppOps-->
     <string name="appops_settings_title">App privacy</string>
+    
+    <!-- Show bluetooth icon when disconnected -->
+    <string name="status_bar_bluetooth_icon">Show Bluetooth icon</string>
+    <string name="status_bar_bluetooth_icon_summary">Display the bluetooth icon when it is enabled but not connected</string>
+
 </resources>
