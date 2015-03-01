@@ -49,6 +49,12 @@
             android:entries="@array/entries_status_bar_am_pm"
             android:entryValues="@array/values_status_bar_am_pm"
             android:dependency="status_bar_show_clock" />
+	    
+        <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            android:key="clock_use_second"
+            android:title="@string/status_bar_show_clock_second_title"
+            android:defaultValue="false"
+            android:dependency="status_bar_show_clock" />    
 
         <ListPreference
             android:key="clock_date_display"
