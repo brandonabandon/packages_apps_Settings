@@ -117,6 +117,7 @@ import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.screwd.qs.QSTiles;
 import com.android.settings.screwd.HeadsUpSettings;
+import com.android.settings.screwd.AmbientSettings;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -307,7 +308,8 @@ public class SettingsActivity extends Activity
             BlacklistSettings.class.getName(),
 			HeadsUpSettings.class.getName(),
             ExpandedDesktopPreferenceFragment.class.getName(),
-	    	HeadsUpSettings.class.getName()
+	    	HeadsUpSettings.class.getName(),
+			AmbientSettings.class.getName()
     };
 
 
