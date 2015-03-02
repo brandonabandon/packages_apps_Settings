@@ -43,6 +43,7 @@ import android.widget.EditText;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.widget.SeekBarPreferenceCham;
 
 import com.android.internal.util.slim.DeviceUtils;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
@@ -64,6 +65,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private PreferenceScreen mClockStyle;
     private SwitchPreference mTicker;
 	private SwitchPreference mStatusBarGreeting;
+	private SeekBarPreferenceCham mStatusBarGreetingTimeout;
 	private SwitchPreference mNetworkMeterEnabled;
 	
 	private String mCustomGreetingText = "";
@@ -110,6 +112,13 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         boolean greeting = mCustomGreetingText != null && !TextUtils.isEmpty(mCustomGreetingText);
         mStatusBarGreeting.setChecked(greeting);
 		
+		mStatusBarGreetingTimeout =
+                (SeekBarPreferenceCham) prefSet.findPreference(KEY_STATUS_BAR_GREETING_TIMEOUT);
+        int statusBarGreetingTimeout = Settings.System.getInt(getContentResolver(),
+                Settings.System.STATUS_BAR_GREETING_TIMEOUT, 400);
+        mStatusBarGreetingTimeout.setValue(statusBarGreetingTimeout / 1);
+        mStatusBarGreetingTimeout.setOnPreferenceChangeListener(this);
+		
 		mNetworkMeterEnabled = (SwitchPreference) prefSet.findPreference(NETWORK_METER_ENABLED);
         mNetworkMeterEnabled.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.NETWORK_METER_ENABLED, 1) == 1);
@@ -133,7 +142,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getContentResolver(),
                     Settings.System.NETWORK_METER_ENABLED,
                     (Boolean) newValue ? 1 : 0);
-            return true;	
+            return true;
+		} else if (preference == mStatusBarGreetingTimeout) {
+            int timeout = (Integer) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_GREETING_TIMEOUT, timeout * 1);
+            return true;		
 		}
         return false;
     }

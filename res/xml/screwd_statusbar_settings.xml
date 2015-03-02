@@ -80,6 +80,16 @@
            android:summary="@string/status_bar_greeting_summary"	
            android:defaultValue="true" />
 	   
+	<com.android.settings.widget.SeekBarPreferenceCham
+                android:key="status_bar_greeting_timeout"
+                android:title="@string/status_bar_greeting_timeout_title"
+                android:max="10000"
+                settings:min="100"
+                settings:unitsLeft=""
+                settings:unitsRight="ms"
+                android:dependency="status_bar_greeting"
+                android:persistent="false" />   
+	   
 	<com.android.settings.cyanogenmod.SystemSettingSwitchPreference
            android:key="show_bluetooth_icon"
            android:title="@string/status_bar_bluetooth_icon"
