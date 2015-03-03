@@ -56,6 +56,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
     private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker_enabled";
 	private static final String KEY_STATUS_BAR_GREETING = "status_bar_greeting";
+	private static final String KEY_STATUS_BAR_GREETING_TIMEOUT = "status_bar_greeting_timeout";
 	private static final String NETWORK_METER_ENABLED = "network_meter_enabled";
 	
 	static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
