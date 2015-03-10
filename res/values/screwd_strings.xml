@@ -934,6 +934,7 @@
     <string name="status_bar_battery_percentage_default">Hidden (default)</string>
     <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
     <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
+    <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
     
     <!-- StatusBar Clock Styles -->
     <string name="clock_font_style_title">Font styles</string>
