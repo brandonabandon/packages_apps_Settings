@@ -2176,6 +2176,8 @@
                 <action android:name="android.provider.Contacts.PROFILE_CHANGED" />
             </intent-filter>
         </receiver>
+	
+	<activity android:name="com.android.settings.screwd.hfm.HfmWhitelist" />
 
         <receiver android:name="com.android.settings.screwd.hfm.IntentReceiver" >
             <intent-filter>
