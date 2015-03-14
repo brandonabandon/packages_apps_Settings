@@ -457,6 +457,9 @@ public class InstalledAppDetails extends Fragment
         mNotificationSwitch.setChecked(enabled);
         if (Utils.isSystemPackage(mPm, mPackageInfo)) {
             mNotificationSwitch.setEnabled(false);
+        } else if ((mPackageInfo.applicationInfo.flags & ApplicationInfo.FLAG_INSTALLED) == 0) {
+            // App is not installed on the current user
+            mNotificationSwitch.setEnabled(false);
         } else {
             mNotificationSwitch.setEnabled(true);
             mNotificationSwitch.setOnCheckedChangeListener(this);
@@ -1496,6 +1499,7 @@ public class InstalledAppDetails extends Fragment
         } else if(v == mActivitiesButton) {
             mPm.clearPackagePreferredActivities(packageName);
             if (mUsbManager != null) { // may be null because USB service is optional
+                mPm.clearPackagePreferredActivities(packageName);
                 try {
                     mUsbManager.clearDefaults(packageName, UserHandle.myUserId());
                 } catch (RemoteException e) {

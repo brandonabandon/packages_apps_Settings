@@ -31,6 +31,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.hardware.usb.IUsbManager;
 import android.hardware.usb.UsbManager;
 import android.net.wifi.WifiManager;
@@ -46,7 +47,6 @@ import android.os.StrictMode;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.os.UserManager;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -68,7 +68,6 @@ import android.widget.TextView;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.widget.SwitchBar;
-import dalvik.system.VMRuntime;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -126,7 +125,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String SHOW_SCREEN_UPDATES_KEY = "show_screen_updates";
     private static final String DISABLE_OVERLAYS_KEY = "disable_overlays";
     private static final String SIMULATE_COLOR_SPACE = "simulate_color_space";
-    private static final String USE_NUPLAYER_KEY = "use_nuplayer";
+    private static final String USE_AWESOMEPLAYER_KEY = "use_awesomeplayer";
     private static final String USB_AUDIO_KEY = "usb_audio";
     private static final String USE_AWESOMEPLAYER_PROPERTY = "persist.sys.media.use-awesome";
     private static final String SHOW_CPU_USAGE_KEY = "show_cpu_usage";
@@ -173,6 +172,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final int RESULT_DEBUG_APP = 1000;
 
     private static final String PERSISTENT_DATA_BLOCK_PROP = "ro.frp.pst";
+
+    private static final int REQUEST_CODE_ENABLE_OEM_UNLOCK = 0;
 
     private static String DEFAULT_LOG_RING_BUFFER_SIZE_IN_BYTES = "262144"; // 256K
 
@@ -235,8 +236,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private ListPreference mOpenGLTraces;
 
     private ListPreference mSimulateColorSpace;
+    private SwitchPreference mUseAwesomePlayer;
 
-    private SwitchPreference mUseNuplayer;
     private SwitchPreference mUSBAudio;
     private SwitchPreference mImmediatelyDestroyActivities;
 
@@ -360,12 +361,14 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         mOverlayDisplayDevices = addListPreference(OVERLAY_DISPLAY_DEVICES_KEY);
         mOpenGLTraces = addListPreference(OPENGL_TRACES_KEY);
         mSimulateColorSpace = addListPreference(SIMULATE_COLOR_SPACE);
-        mUseNuplayer = findAndInitSwitchPref(USE_NUPLAYER_KEY);
         mUSBAudio = findAndInitSwitchPref(USB_AUDIO_KEY);
 		
 		mWindowAnimationScale = findAndInitAnimationScalePreference(WINDOW_ANIMATION_SCALE_KEY);
         mTransitionAnimationScale = findAndInitAnimationScalePreference(TRANSITION_ANIMATION_SCALE_KEY);
         mAnimatorDurationScale = findAndInitAnimationScalePreference(ANIMATOR_DURATION_SCALE_KEY);
+
+        mUseAwesomePlayer = findAndInitSwitchPref(USE_AWESOMEPLAYER_KEY);
+
 
         mImmediatelyDestroyActivities = (SwitchPreference) findPreference(
                 IMMEDIATELY_DESTROY_ACTIVITIES_KEY);
@@ -534,7 +537,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         if (mEnableTerminal != null) {
             updateSwitchPref(mEnableTerminal,
                     context.getPackageManager().getApplicationEnabledSetting(TERMINAL_APP_PACKAGE)
-                    == PackageManager.COMPONENT_ENABLED_STATE_ENABLED);
+                            == PackageManager.COMPONENT_ENABLED_STATE_ENABLED);
         }
         updateSwitchPref(mBugreportInPower, Settings.Secure.getInt(cr,
                 Settings.Secure.BUGREPORT_IN_POWER_MENU, 0) != 0);
@@ -1037,12 +1040,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
     }
 
-    private void updateUseNuplayerOptions() {
+    private void updateUseAwesomePlayerOptions() {
         updateSwitchPref(
-                mUseNuplayer, !SystemProperties.getBoolean(USE_AWESOMEPLAYER_PROPERTY, false));
-    }
-
-    private void writeUseNuplayerOptions() {
+                mUseAwesomePlayer, SystemProperties.getBoolean(USE_AWESOMEPLAYER_PROPERTY, false));
+    private void writeUseAwesomePlayerOptions() {
         SystemProperties.set(
                 USE_AWESOMEPLAYER_PROPERTY, mUseNuplayer.isChecked() ? "false" : "true");
         pokeSystemProperties();
@@ -1327,6 +1328,24 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             getActivity().getContentResolver(), Settings.Secure.ANR_SHOW_BACKGROUND, 0) != 0);
     }
 
+    private void confirmEnableOemUnlock() {
+        DialogInterface.OnClickListener onConfirmListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Utils.setOemUnlockEnabled(getActivity(), true);
+                updateAllOptions();
+            }
+        };
+
+        new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.confirm_enable_oem_unlock_title)
+                .setMessage(R.string.confirm_enable_oem_unlock_text)
+                .setPositiveButton(R.string.enable_text, onConfirmListener)
+                .setNegativeButton(android.R.string.cancel, null)
+                .create()
+                .show();
+    }
+
     @Override
     public void onSwitchChanged(Switch switchView, boolean isChecked) {
         if (switchView != mSwitchBar.getSwitch()) {
@@ -1361,6 +1380,14 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 mDebugApp = data.getAction();
                 writeDebuggerOptions();
                 updateDebuggerOptions();
+            }
+        } else if (requestCode == REQUEST_CODE_ENABLE_OEM_UNLOCK) {
+            if (resultCode == Activity.RESULT_OK) {
+                if (mEnableOemUnlock.isChecked()) {
+                    confirmEnableOemUnlock();
+                } else {
+                    Utils.setOemUnlockEnabled(getActivity(), false);
+                }
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -1429,7 +1456,13 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         } else if (preference == mBtHciSnoopLog) {
             writeBtHciSnoopLogOptions();
         } else if (preference == mEnableOemUnlock) {
-            Utils.setOemUnlockEnabled(getActivity(), mEnableOemUnlock.isChecked());
+            if (!showKeyguardConfirmation(getResources(), REQUEST_CODE_ENABLE_OEM_UNLOCK)) {
+                if (mEnableOemUnlock.isChecked()) {
+                    confirmEnableOemUnlock();
+                } else {
+                    Utils.setOemUnlockEnabled(getActivity(), false);
+                }
+            }
         } else if (preference == mAllowMockLocation) {
             Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.ALLOW_MOCK_LOCATION,
@@ -1482,8 +1515,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             writeWifiAggressiveHandoverOptions();
         } else if (preference == mWifiAllowScansWithTraffic) {
             writeWifiAllowScansWithTrafficOptions();
-        } else if (preference == mUseNuplayer) {
-            writeUseNuplayerOptions();
+        } else if (preference == mUseAwesomePlayer) {
+            writeUseAwesomePlayerOptions();
         } else if (preference == mUSBAudio) {
             writeUSBAudioOptions();
         } else {
@@ -1491,6 +1524,13 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
 
         return false;
+    }
+
+    private boolean showKeyguardConfirmation(Resources resources, int requestCode) {
+        return new ChooseLockSettingsHelper(getActivity(), this)
+                .launchConfirmationActivity(requestCode,
+                        resources.getString(R.string.oem_unlock_enable_pin_prompt),
+                        resources.getString(R.string.oem_unlock_enable_pin_description));
     }
 
     @Override
