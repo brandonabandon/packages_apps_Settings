@@ -226,35 +226,6 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         }
     }
 
-    private void handleBadAttempt(Integer failedAttempts) {
-        // Wrong entry. Handle pattern case.
-        if (mLockPatternView != null) {
-            mLockPatternView.setDisplayMode(DisplayMode.Wrong);
-            mLockPatternView.removeCallbacks(mClearPatternRunnable);
-            mLockPatternView.postDelayed(mClearPatternRunnable, WRONG_PATTERN_CLEAR_TIMEOUT_MS);
-        }
-        if ((failedAttempts % COOL_DOWN_ATTEMPTS) == 0) {
-            mCooldown = COOL_DOWN_INTERVAL;
-            cooldown();
-        } else {
-            final TextView status = (TextView) findViewById(R.id.status);
-
-            int remainingAttempts = MAX_FAILED_ATTEMPTS - failedAttempts;
-            if (remainingAttempts < COOL_DOWN_ATTEMPTS) {
-                CharSequence warningTemplate = getText(R.string.crypt_keeper_warn_wipe);
-                CharSequence warning = TextUtils.expandTemplate(warningTemplate,
-                        Integer.toString(remainingAttempts));
-                status.setText(warning);
-            } else {
-                status.setText(R.string.try_again);
-            }
-
-            if (mLockPatternView != null) {
-                mLockPatternView.setDisplayMode(DisplayMode.Wrong);
-            }
-
-	}
-	
     private void beginAttempt() {
         final TextView status = (TextView) findViewById(R.id.status);
         status.setText(R.string.checking_decryption);

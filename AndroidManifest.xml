@@ -2177,7 +2177,6 @@
             </intent-filter>
         </receiver>
 
-<<<<<<< HEAD
         <receiver android:name="com.android.settings.screwd.hfm.IntentReceiver" >
             <intent-filter>
                  <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -2186,14 +2185,12 @@
 
         <service android:name="com.android.settings.screwd.hfm.CheckHosts" />
 
-=======
         <receiver android:name=".sim.SimBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"></action>
             </intent-filter>
         </receiver>
 
->>>>>>> android-5.1.0_r1
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.android.settings.files"

@@ -139,12 +139,14 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         addPreferencesFromResource(R.xml.notification_settings);
 
         final PreferenceCategory sound = (PreferenceCategory) findPreference(KEY_SOUND);
-        initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC);
-        initVolumePreference(KEY_ALARM_VOLUME, AudioManager.STREAM_ALARM);
-
+        initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC,
+                com.android.internal.R.drawable.ic_audio_vol_mute);
+        initVolumePreference(KEY_ALARM_VOLUME, AudioManager.STREAM_ALARM,
+                com.android.internal.R.drawable.ic_audio_alarm_mute);
         if (mVoiceCapable) {
             mRingPreference =
-                    initVolumePreference(KEY_RING_VOLUME, AudioManager.STREAM_RING);
+                    initVolumePreference(KEY_RING_VOLUME, AudioManager.STREAM_RING,
+                            com.android.internal.R.drawable.ic_audio_ring_notif_mute);
         } else {
             sound.removePreference(sound.findPreference(KEY_RING_VOLUME));
             sound.removePreference(sound.findPreference(KEY_VOLUME_LINK_NOTIFICATION));
@@ -229,8 +231,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mRingPreference.showIcon(progress > 0
                     ? R.drawable.ic_audio_ring_24dp
                     : (mVibrator == null
-                            ? R.drawable.ring_notif_mute
-                            : R.drawable.ring_notif_vibrate));
+                            ? com.android.internal.R.drawable.ic_audio_ring_notif_mute
+                            : com.android.internal.R.drawable.ic_audio_ring_notif_vibrate));
 	}
 	
     private void updateRingOrNotificationPreference() {
@@ -527,7 +529,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
     private void updateNotificationPreferenceState() {
         mNotificationPreference = initVolumePreference(KEY_NOTIFICATION_VOLUME,
-                AudioManager.STREAM_NOTIFICATION);
+                AudioManager.STREAM_NOTIFICATION,
+                com.android.internal.R.drawable.ic_audio_alarm_mute);
 
         if (mVoiceCapable) {
             final boolean enabled = Settings.System.getInt(getContentResolver(),
@@ -626,6 +629,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         private static final int STOP_SAMPLE = 3;
         private static final int UPDATE_EFFECTS_SUPPRESSOR = 4;
         private static final int UPDATE_RINGER_MODE = 5;
+		private static final int UPDATE_RINGER_ICON = 6;
 
         private H() {
             super(Looper.getMainLooper());
@@ -645,6 +649,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                     break;
                 case UPDATE_RINGER_ICON:
                     updateRingIcon(msg.arg1);
+					break;
                 case UPDATE_EFFECTS_SUPPRESSOR:
                     updateEffectsSuppressor();
 

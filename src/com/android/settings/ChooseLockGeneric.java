@@ -179,6 +179,7 @@ public class ChooseLockGeneric extends SettingsActivity {
             } else if (KEY_UNLOCK_SET_PASSWORD.equals(key)) {
                 maybeEnableEncryption(
                         DevicePolicyManager.PASSWORD_QUALITY_ALPHABETIC, false);
+			}			
             if (!isUnlockMethodSecure(key) && mLockPatternUtils.isSecure()) {
                 // Show the disabling FRP warning only when the user is switching from a secure
                 // unlock method to an insecure one
@@ -469,7 +470,7 @@ public class ChooseLockGeneric extends SettingsActivity {
 
             quality = upgradeQuality(quality, null);
 
-            
+            final Context context = getActivity();
             if (quality >= DevicePolicyManager.PASSWORD_QUALITY_NUMERIC) {
                 int minLength = mDPM.getPasswordMinimumLength(null);
                 if (minLength < MIN_PASSWORD_LENGTH) {

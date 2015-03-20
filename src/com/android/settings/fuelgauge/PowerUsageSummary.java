@@ -296,7 +296,7 @@ public class PowerUsageSummary extends PreferenceFragment {
                         continue;
                     }
                     if (!showUnacAndOvercounted) {
-						continue:
+						continue;
 					}	
                     if ("user".equals(Build.TYPE)) {
                         continue;
