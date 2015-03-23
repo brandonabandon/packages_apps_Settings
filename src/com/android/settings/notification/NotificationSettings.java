@@ -144,10 +144,14 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         initVolumePreference(KEY_ALARM_VOLUME, AudioManager.STREAM_ALARM,
                 com.android.internal.R.drawable.ic_audio_alarm_mute);
         if (mVoiceCapable) {
-            mRingPreference =
+            mRingOrNotificationPreference =
                     initVolumePreference(KEY_RING_VOLUME, AudioManager.STREAM_RING,
                             com.android.internal.R.drawable.ic_audio_ring_notif_mute);
+            sound.removePreference(sound.findPreference(KEY_NOTIFICATION_VOLUME));
         } else {
+            mRingOrNotificationPreference =
+                    initVolumePreference(KEY_NOTIFICATION_VOLUME, AudioManager.STREAM_NOTIFICATION,
+                            com.android.internal.R.drawable.ic_audio_ring_notif_mute);
             sound.removePreference(sound.findPreference(KEY_RING_VOLUME));
             sound.removePreference(sound.findPreference(KEY_VOLUME_LINK_NOTIFICATION));
         }
@@ -220,6 +224,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
 
     private VolumeSeekBarPreference initVolumePreference(String key, int stream, int muteIcon) {
         final VolumeSeekBarPreference volumePref = (VolumeSeekBarPreference) findPreference(key);
+        if (volumePref == null) return null;
         volumePref.setCallback(mVolumeCallback);
         volumePref.setStream(stream);
         mVolumePrefs.add(volumePref);
@@ -395,7 +400,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mIncreasingRingVolume = (IncreasingRingVolumePreference)
                 root.findPreference(KEY_INCREASING_RING_VOLUME);
 
-        if (mIncreasingRing == null || mIncreasingRingVolume == null || !mVoiceCapable) {
+        if (!mVoiceCapable) {
             if (mIncreasingRing != null) {
                 root.removePreference(mIncreasingRing);
                 mIncreasingRing = null;
@@ -405,7 +410,9 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                 mIncreasingRingVolume = null;
             }
         } else {
-            mIncreasingRingVolume.setCallback(mIncreasingRingVolumeCallback);
+            if (mIncreasingRingVolume != null) {
+                mIncreasingRingVolume.setCallback(mIncreasingRingVolumeCallback);
+            }
         }
     }
 
@@ -528,17 +535,15 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     }
 
     private void updateNotificationPreferenceState() {
-        mNotificationPreference = initVolumePreference(KEY_NOTIFICATION_VOLUME,
-                AudioManager.STREAM_NOTIFICATION,
-                com.android.internal.R.drawable.ic_audio_alarm_mute);
-
+        mNotificationPreference = 
+                initVolumePreference(KEY_NOTIFICATION_VOLUME, AudioManager.STREAM_NOTIFICATION,
+                        com.android.internal.R.drawable.ic_audio_ring_notif_mute);
         if (mVoiceCapable) {
             final boolean enabled = Settings.System.getInt(getContentResolver(),
                     Settings.Secure.VOLUME_LINK_NOTIFICATION, 1) == 1;
 
             if (mNotificationPreference != null) {
-                boolean show = !enabled;
-                mNotificationPreference.setEnabled(show);
+                mNotificationPreference.setEnabled(!enabled);
             }
         }
     }
