@@ -150,7 +150,7 @@
     <string name="power_menu">Power Menu</string>
     <string name="recents">Recents</string>
     <string name="sounds">Sounds &amp; Volume</string>
-    <string name="performance_settings">Performance</string>
+    <string name="kernel_tweaker">Kernel Adiutor</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>

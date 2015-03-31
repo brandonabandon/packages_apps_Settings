@@ -116,7 +116,7 @@
         <dashboard-tile
                 android:id="@+id/kernel_auditor"
                 android:icon="@drawable/ic_screwd_performance_purp"
-                android:title="@string/performance_settings">
+                android:title="@string/kernel_tweaker">
                 <intent
                     android:action="android.intent.action.MAIN"
                     android:targetPackage="com.grarak.kerneladiutor"
