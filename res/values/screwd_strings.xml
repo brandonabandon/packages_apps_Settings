@@ -908,7 +908,7 @@
     <string name="battery_saver_style_reset_message">Reset battery saver warning color?</string>
     
     <!-- Display and Animations -->
-    <string name="disp_anim_settings_title">Display and animations</string>
+    <string name="disp_anim_settings_title">Animations</string>
     
     <!-- ListView animation -->
     <string name="interface_settings_animation_title">Animation options</string>

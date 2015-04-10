@@ -52,11 +52,6 @@ import java.util.List;
 public class InterfaceSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 		
-	private static final String KEY_TOAST_ANIMATION = "toast_animation";	
-	
-
-	private ListPreference mToastAnimation;	
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,16 +59,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.screwd_interface_settings);
 		
 		PreferenceScreen prefSet = getPreferenceScreen();
-		
-		
-		/* Toast animations */
-		mToastAnimation = (ListPreference) prefSet.findPreference(KEY_TOAST_ANIMATION);
-        mToastAnimation.setSummary(mToastAnimation.getEntry());
-        int CurrentToastAnimation = Settings.System.getInt(
-                getContentResolver(),Settings.System.TOAST_ANIMATION, 1);
-        mToastAnimation.setValueIndex(CurrentToastAnimation);
-        mToastAnimation.setOnPreferenceChangeListener(this);
-
     }
 	
 	
@@ -86,16 +71,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
 	
     public boolean onPreferenceChange(Preference preference, Object objValue) {
 		final String key = preference.getKey();
-		
-		if (KEY_TOAST_ANIMATION.equals(key)) {
-            int index = mToastAnimation.findIndexOfValue((String) objValue);
-            Settings.System.putString(getContentResolver(),
-                    Settings.System.TOAST_ANIMATION, (String) objValue);
-            mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
-            Toast.makeText(getActivity(), "Toast animation test!!!",
-                    Toast.LENGTH_SHORT).show();
-			return true;		
-        }
+				
         return false;
     }
 	

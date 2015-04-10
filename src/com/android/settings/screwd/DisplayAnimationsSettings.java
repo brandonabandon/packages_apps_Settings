@@ -33,6 +33,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -45,9 +46,12 @@ public class DisplayAnimationsSettings extends SettingsPreferenceFragment implem
 
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
+	private static final String KEY_TOAST_ANIMATION = "toast_animation";
 
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
+	private ListPreference mToastAnimation;
+	
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,6 +77,14 @@ public class DisplayAnimationsSettings extends SettingsPreferenceFragment implem
         mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
         mListViewInterpolator.setOnPreferenceChangeListener(this);
         mListViewInterpolator.setEnabled(listviewanimation > 0);
+		
+		/* Toast animations */
+		mToastAnimation = (ListPreference) prefSet.findPreference(KEY_TOAST_ANIMATION);
+        mToastAnimation.setSummary(mToastAnimation.getEntry());
+        int CurrentToastAnimation = Settings.System.getInt(
+                getContentResolver(),Settings.System.TOAST_ANIMATION, 1);
+        mToastAnimation.setValueIndex(CurrentToastAnimation);
+        mToastAnimation.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -99,6 +111,14 @@ public class DisplayAnimationsSettings extends SettingsPreferenceFragment implem
                     Settings.System.LISTVIEW_INTERPOLATOR,
                     value);
             mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
+        }
+		if (KEY_TOAST_ANIMATION.equals(key)) {
+            int index = mToastAnimation.findIndexOfValue((String) objValue);
+            Settings.System.putString(getContentResolver(),
+                    Settings.System.TOAST_ANIMATION, (String) objValue);
+            mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
+            Toast.makeText(getActivity(), "Toast animation test!!!",
+                    Toast.LENGTH_SHORT).show();		
         }
 
         return true;

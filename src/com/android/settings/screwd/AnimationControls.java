@@ -28,7 +28,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.aicp.AnimBarPreference;
+import com.android.settings.screwd.AnimBarPreference;
 import com.android.settings.R;
 
 import com.android.internal.util.screwd.AwesomeAnimationHelper;
@@ -72,7 +72,7 @@ public class AnimationControls extends SettingsPreferenceFragment implements OnP
         super.onCreate(savedInstanceState);
         setTitle(R.string.aokp_animation_title);
         // Load the preferences from an XML resource
-        addPreferencesFromResource(R.xml.aicp_aokp_animation_controls);
+        addPreferencesFromResource(R.xml.animation_controls);
 
         PreferenceScreen prefs = getPreferenceScreen();
         mAnimations = AwesomeAnimationHelper.getAnimationsList();
