@@ -29,4 +29,7 @@ limitations under the License.
     
     <!-- FAB -->
     <color name="floating_action_button_touch_tint">#80ffffff</color>
+    
+    <color name="setting_separator">#ff484848</color>
+    <color name="extension_list_item_color">#ff999999</color>
 </resources>
