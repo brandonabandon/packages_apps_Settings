@@ -22,10 +22,10 @@
                 android:enabled="false"
                 android:layout="@layout/screwd_rom_logo" />
 		
-	<!-- Changelog -->
+	<!-- Changelog 
 	<PreferenceScreen android:key="changelog"
 		android:title="@string/changelog_screwd_title"	
-		android:fragment="com.android.settings.screwd.Changelog" />
+		android:fragment="com.android.settings.screwd.Changelog" /> -->
 
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
