@@ -1595,12 +1595,12 @@
     <string name="power_usage_level_and_status" msgid="7449847570973811784">"<xliff:g id="LEVEL">%1$s</xliff:g> – <xliff:g id="STATUS">%2$s</xliff:g>"</string>
     <string name="power_discharge_remaining" msgid="4925678997049911808">"Temps restant : <xliff:g id="REMAIN">%1$s</xliff:g>"</string>
     <string name="power_charge_remaining" msgid="6132074970943913135">"<xliff:g id="UNTIL_CHARGED">%1$s</xliff:g> avant le chargement complet"</string>
-    <string name="power_discharging_duration" msgid="7125493014448497620">"<xliff:g id="LEVEL">%1$d</xliff:g> %% – Temps restant : environ <xliff:g id="TIME">%2$s</xliff:g>"</string>
-    <string name="power_charging" msgid="712751285832976915">"<xliff:g id="LEVEL">%1$d</xliff:g> %% – <xliff:g id="STATE">%2$s</xliff:g>"</string>
-    <string name="power_charging_duration" msgid="4802183864773082009">"<xliff:g id="LEVEL">%1$d</xliff:g> %% (chargée à 100 %% dans <xliff:g id="TIME">%2$s</xliff:g>)"</string>
-    <string name="power_charging_duration_ac" msgid="3611179931297824699">"<xliff:g id="LEVEL">%1$d</xliff:g> %% (chargée à 100 %% sur prise de courant dans <xliff:g id="TIME">%2$s</xliff:g>)"</string>
-    <string name="power_charging_duration_usb" msgid="1106605348913397583">"<xliff:g id="LEVEL">%1$d</xliff:g> %% (chargée à 100 %% par USB dans <xliff:g id="TIME">%2$s</xliff:g>)"</string>
-    <string name="power_charging_duration_wireless" msgid="633606920144617227">"<xliff:g id="LEVEL">%1$d</xliff:g> %% (chargée à 100 %% avec chargeur sans fil dans <xliff:g id="TIME">%2$s</xliff:g>)"</string>
+    <string name="power_discharging_duration" msgid="1605929174734600590">"<xliff:g id="LEVEL">%1$s</xliff:g> %% – Temps restant : environ <xliff:g id="TIME">%2$s</xliff:g>"</string>
+    <string name="power_charging" msgid="1779532561355864267">"<xliff:g id="LEVEL">%1$s</xliff:g> - <xliff:g id="STATE">%2$s</xliff:g>"</string>
+    <string name="power_charging_duration" msgid="2853265177761520490">"<xliff:g id="LEVEL">%1$s</xliff:g> %% (chargée à 100 %% dans <xliff:g id="TIME">%2$s</xliff:g>)"</string>
+    <string name="power_charging_duration_ac" msgid="3969186192576594254">"<xliff:g id="LEVEL">%1$s</xliff:g> %% (charge complète sur c.a. dans <xliff:g id="TIME">%2$s</xliff:g>)"</string>
+    <string name="power_charging_duration_usb" msgid="182405645340976546">"<xliff:g id="LEVEL">%1$s</xliff:g> %% (chargée à 100 %% par USB dans <xliff:g id="TIME">%2$s</xliff:g>)"</string>
+    <string name="power_charging_duration_wireless" msgid="1829295708243159464">"<xliff:g id="LEVEL">%1$s</xliff:g> %% (chargée à 100 %% avec chargeur sans fil dans <xliff:g id="TIME">%2$s</xliff:g>)"</string>
     <string name="power_usage_list_summary" msgid="2409288197839512482">"Usage depuis la dernière charge complète"</string>
     <string name="battery_since_unplugged" msgid="338073389740738437">"Utilisation de la batterie depuis le débranchement"</string>
     <string name="battery_since_reset" msgid="7464546661121187045">"Utilisation de la batterie depuis la dernière réinitialisation"</string>

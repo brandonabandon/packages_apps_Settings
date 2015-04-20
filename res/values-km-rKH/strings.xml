@@ -1595,20 +1595,12 @@
     <string name="power_usage_level_and_status" msgid="7449847570973811784">"<xliff:g id="LEVEL">%1$s</xliff:g> - <xliff:g id="STATUS">%2$s</xliff:g>"</string>
     <string name="power_discharge_remaining" msgid="4925678997049911808">"នៅ​សល់ <xliff:g id="REMAIN">%1$s</xliff:g>"</string>
     <string name="power_charge_remaining" msgid="6132074970943913135">"<xliff:g id="UNTIL_CHARGED">%1$s</xliff:g> ដើម្បី​បញ្ចូល​ថ្ម"</string>
-    <string name="power_discharging_duration" msgid="7125493014448497620">"<xliff:g id="LEVEL">%1$d</xliff:g>%% - ប្រហែល​នៅ​ប្រើ​បាន <xliff:g id="TIME">%2$s</xliff:g>"</string>
-    <string name="power_charging" msgid="712751285832976915">"<xliff:g id="LEVEL">%1$d</xliff:g>%% - <xliff:g id="STATE">%2$s</xliff:g>"</string>
-    <!-- String.format failed for translation -->
-    <!-- no translation found for power_charging_duration (4802183864773082009) -->
-    <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for power_charging_duration_ac (3611179931297824699) -->
-    <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for power_charging_duration_usb (1106605348913397583) -->
-    <skip />
-    <!-- String.format failed for translation -->
-    <!-- no translation found for power_charging_duration_wireless (633606920144617227) -->
-    <skip />
+    <string name="power_discharging_duration" msgid="1605929174734600590">"<xliff:g id="LEVEL">%1$s</xliff:g> - នៅ​សល់​ប្រហែល <xliff:g id="TIME">%2$s</xliff:g>"</string>
+    <string name="power_charging" msgid="1779532561355864267">"<xliff:g id="LEVEL">%1$s</xliff:g> - <xliff:g id="STATE">%2$s</xliff:g>"</string>
+    <string name="power_charging_duration" msgid="2853265177761520490">"<xliff:g id="LEVEL">%1$s</xliff:g> - <xliff:g id="TIME">%2$s</xliff:g> រហូត​ដល់​ពេញ"</string>
+    <string name="power_charging_duration_ac" msgid="3969186192576594254">"<xliff:g id="LEVEL">%1$s</xliff:g> - <xliff:g id="TIME">%2$s</xliff:g> រហូត​ដល់ពេញ​រចន្ត​ឆ្លាស់"</string>
+    <string name="power_charging_duration_usb" msgid="182405645340976546">"<xliff:g id="LEVEL">%1$s</xliff:g> - <xliff:g id="TIME">%2$s</xliff:g> រហូត​ដល់​ពេញ​តាមយូអេសប៊ី"</string>
+    <string name="power_charging_duration_wireless" msgid="1829295708243159464">"<xliff:g id="LEVEL">%1$s</xliff:g> - <xliff:g id="TIME">%2$s</xliff:g> រហូត​ដល់​ពេញ​ពី​ឥតខ្សែ"</string>
     <string name="power_usage_list_summary" msgid="2409288197839512482">"ប្រើ​តាំង​ពី​បញ្ចូល​ថ្ម​ពេញ​ចុងក្រោយ"</string>
     <string name="battery_since_unplugged" msgid="338073389740738437">"ថ្ម​ដែល​បាន​ប្រើ​តាំង​ពី​លែង​បញ្ចូល"</string>
     <string name="battery_since_reset" msgid="7464546661121187045">"ថ្មី​ប្រើ​តាំង​ពី​ពេល​កំណត់​ឡើង​វិញ"</string>
