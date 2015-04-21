@@ -1689,7 +1689,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"节电助手"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"自动开启"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"一律不"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"剩余%1$d%%电量时"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"电量剩余%1$s时"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"进程统计信息"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"运行中进程的相关技术统计信息"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"内存用量"</string>

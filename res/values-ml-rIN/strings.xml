@@ -1689,7 +1689,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"ബാറ്ററി സേവർ"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"ഓട്ടോമാറ്റിക്കായി ഓണാക്കുക"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"ഒരിക്കലുമില്ല"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"%1$d%% ബാറ്ററി"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"%1$s ബാറ്ററി"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"പ്രോസസ്സ് സ്ഥിതിവിവരക്കണക്കുകൾ"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"പ്രവർത്തന പ്രോസസ്സുകളെക്കുറിച്ചുള്ള Geeky സ്ഥിതിവിവരക്കണക്കുകൾ"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"മെമ്മറി ഉപയോഗം"</string>

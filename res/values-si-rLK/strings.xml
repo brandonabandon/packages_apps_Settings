@@ -1691,7 +1691,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"බැටරිය සුරකින්නා"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"ස්වයන්ක්‍රියව සක්‍රිය කරන්න"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"කවදාවත් නෑ"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"බැටරිය %1$d%% ක් විට"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"හි %1$s බැටරිය"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"ක්‍රියාවලි සංඛ්‍යා ලේඛන"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"ධාවන ක්‍රියාවලි පිළිබඳ ගීක සංඛ්‍යා ලේඛන"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"මතක භාවිතය"</string>

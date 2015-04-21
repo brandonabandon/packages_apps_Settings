@@ -1689,7 +1689,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"موفِّر طاقة البطارية"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"التشغيل تلقائيًا"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"أبدًا"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"‏على مستوى %1$d%% من البطارية"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"‏عند بلوغ %1$s من طاقة البطارية"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"إحصائيات العمليات"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"الإحصائيات التقنية حول العمليات الجارية"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"استخدام الذاكرة"</string>

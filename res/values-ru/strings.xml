@@ -1689,7 +1689,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"Режим энергосбережения"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"Включать автоматически"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"Никогда"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"При уровне заряда %1$d%%"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"при уровне заряда %1$s"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"Статистика процессов"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"Статистика запущенных процессов"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"Использование памяти"</string>

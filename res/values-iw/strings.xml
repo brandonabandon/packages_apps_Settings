@@ -1689,7 +1689,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"חיסכון בסוללה"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"הפעל אוטומטית"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"אף פעם"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"‏כשחיי סוללה בשיעור %1$d%%"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"‏בעוצמת סוללה של %1$s"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"סטטיסטיקה של תהליך"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"סטטיסטיקה של מומחי מחשבים על התהליכים הפועלים"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"זיכרון בשימוש"</string>

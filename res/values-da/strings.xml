@@ -1689,7 +1689,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"Batteribesparelse"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"Slå automatisk til"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"Aldrig"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"batteri på %1$d %%"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"ved %1$s batteri"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"Processtatistikker"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"Nørdede statistikker om kørende processer"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"hukommelse brugt"</string>

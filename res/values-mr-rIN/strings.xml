@@ -1689,7 +1689,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"बॅटरी सेव्हर"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"स्वयंचलितपणे चालू करा"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"कधीही नाही"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"%1$d%% बॅटरीवर"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"%1$s बॅटरी वर"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"प्रक्रिया आकडेवारी"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"चालत असलेल्या प्रक्रियांबद्दल गीकी आकडेवारी"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"मेमरी वापर"</string>

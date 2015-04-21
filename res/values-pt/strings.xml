@@ -1689,7 +1689,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"Economia de bateria"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"Ativar automaticamente"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"Nunca"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"com %1$d%% de bateria"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"com %1$s de bateria"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"Estatísticas de processo"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"Estatísticas detalhadas sobre os processos em execução"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"Uso da memória"</string>

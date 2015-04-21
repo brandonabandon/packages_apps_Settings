@@ -1689,7 +1689,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"بیٹری سیور"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"خود کار طور پر آن کریں"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"کبھی نہیں"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"‏%1$d%% بیٹری پر"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"‏‎%1$s‎ بیٹری پر"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"پروسیس کے اعداد و شمار"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"جاری پروسیسز کے بارے میں بے ڈھب اعداد و شمار"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"میموری کا استعمال"</string>

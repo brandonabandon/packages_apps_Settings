@@ -1691,7 +1691,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"バッテリーセーバー"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"自動的にON"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"使用しない"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"電池残量が%1$d%%"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"%1$sの電池"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"プロセスの統計情報"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"プロセスの実行に関する独自の統計情報"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"メモリ使用"</string>

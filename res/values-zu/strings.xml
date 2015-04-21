@@ -1696,7 +1696,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"Isilondolozi sebhethri"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"Vula ngokuzenzakalela"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"Akusoze"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"ku-%1$d%% ibhethri"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"kubhethri le-%1$s"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"Izibalo zenqubo"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"Izibalo ze-Geeky mayelana nezinqubo zokuqalisa"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"Ukusetshenziswa kwememori"</string>

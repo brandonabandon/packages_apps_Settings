@@ -1689,7 +1689,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"កម្មវិធី​សន្សំ​ថ្ម"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"បើក​ដោយ​ស្វ័យ​ប្រវត្តិ"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"កុំ"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"​ពេល​ថ្ម %1$d%%"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"​​នៅ​ថ្ម %1$s"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"ស្ថិតិ​​ដំណើរការ"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"ស្ថិតិ Geeky អំពី​ដំណើរការ​"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"ការ​ប្រើ​​អង្គ​ចងចាំ​"</string>

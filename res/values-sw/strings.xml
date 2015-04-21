@@ -1683,7 +1683,7 @@
     <string name="battery_saver" msgid="1426682272004907982">"Kiokoa betri"</string>
     <string name="battery_saver_turn_on_automatically_title" msgid="9023847300114669426">"Kijiwashe kiotomatiki"</string>
     <string name="battery_saver_turn_on_automatically_never" msgid="6610846456314373">"Isiwahi kuwashwa"</string>
-    <string name="battery_saver_turn_on_automatically_pct" msgid="3033681629861428940">"betri ikifika %1$d%%"</string>
+    <string name="battery_saver_turn_on_automatically_pct" msgid="7536784431655058267">"betri %1$s"</string>
     <string name="process_stats_summary_title" msgid="1144688045609771677">"Takwimu za Mchakato"</string>
     <string name="process_stats_summary" msgid="109387941605607762">"Takwimu za kitaalamu kuhusu michakato inayoendeshwa"</string>
     <string name="app_memory_use" msgid="7849258480392171939">"Kumbukumbu iliyotumika"</string>
