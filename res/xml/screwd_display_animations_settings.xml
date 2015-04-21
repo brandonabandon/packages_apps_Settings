@@ -22,7 +22,13 @@
             android:key="aokp_animation"
             android:title="@string/aokp_animation_title"
             android:summary="@string/aokp_animation_summary"
-            android:fragment="com.android.settings.screwd.AnimationControls" /> 
+            android:fragment="com.android.settings.screwd.AnimationControls" />
+	    
+	<PreferenceScreen
+            android:key="interface_animation_scroll"
+            android:fragment="com.android.settings.screwd.KeyboardAnimationInterfaceSettings"
+            android:title="@string/ime_animation_title"
+            android:summary="@string/ime_animation_summary" />    
      
         <ListPreference
             android:key="listview_animation"
