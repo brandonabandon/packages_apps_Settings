@@ -1584,4 +1584,8 @@
     <string name="ime_interpolator_title">Interpolator</string>
     <string name="ime_duration_title">IME duration</string>
     <string name="animation_duration_summary">Set duration</string>
+    
+    <!-- NavBar Enable IME button -->
+    <string name="navbar_ime_title">Hide IME switcher</string>
+    <string name="navbar_ime_summary">Hide the IME switcher button on NavBar</string>
 </resources>
