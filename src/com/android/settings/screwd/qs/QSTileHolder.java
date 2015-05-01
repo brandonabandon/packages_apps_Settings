@@ -185,6 +185,10 @@ public class QSTileHolder {
 			case QSConstants.TILE_GESTURE:
                 resourceName = "ic_qs_gestures_on";
                 stringId = R.string.qs_gesture_tile;
+                break;	
+			case QSConstants.TILE_TRDS:
+                resourceName = "ic_qs_trds_on";
+                stringId = R.string.qs_tile_trds;
                 break;		
             default:
                 return null;
