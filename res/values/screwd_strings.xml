@@ -1176,7 +1176,6 @@
     <string name="qs_ambient_display_tile">Ambient display</string>
     <string name="qs_gesture_tile">Gesture Anywhere</string>
     <string name="qs_tile_trds">TRDS</string>
-    <string name="qs_music_play_tile">Play</string>
             
     <!-- QuickSettings 4 columns -->
     <string name="qs_four_columns_title">Show four tiles per row</string>
