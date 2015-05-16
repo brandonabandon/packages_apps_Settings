@@ -58,6 +58,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	private static final String KEY_STATUS_BAR_GREETING = "status_bar_greeting";
 	private static final String KEY_STATUS_BAR_GREETING_TIMEOUT = "status_bar_greeting_timeout";
 	private static final String NETWORK_METER_ENABLED = "network_meter_enabled";
+	private static final String STATUS_BAR_POWER_MENU = "status_bar_power_menu";
 	
 	static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 	
@@ -68,6 +69,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	private SwitchPreference mStatusBarGreeting;
 	private SeekBarPreferenceCham mStatusBarGreetingTimeout;
 	private SwitchPreference mNetworkMeterEnabled;
+	private ListPreference mStatusBarPowerMenu;
 	
 	private String mCustomGreetingText = "";
 	
@@ -124,6 +126,14 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mNetworkMeterEnabled.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.NETWORK_METER_ENABLED, 1) == 1);
         mNetworkMeterEnabled.setOnPreferenceChangeListener(this);
+		
+		 // status bar power menu
+        mStatusBarPowerMenu = (ListPreference) findPreference(STATUS_BAR_POWER_MENU);
+        mStatusBarPowerMenu.setOnPreferenceChangeListener(this);
+        int statusBarPowerMenu = Settings.System.getInt(getContentResolver(),
+                STATUS_BAR_POWER_MENU, 0);
+        mStatusBarPowerMenu.setValue(String.valueOf(statusBarPowerMenu));
+        mStatusBarPowerMenu.setSummary(mStatusBarPowerMenu.getEntry());
 
     }
 
@@ -148,7 +158,17 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int timeout = (Integer) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_GREETING_TIMEOUT, timeout * 1);
-            return true;		
+            return true;
+		} else if (preference == mStatusBarPowerMenu) {
+            String statusBarPowerMenu = (String) newValue;
+            int statusBarPowerMenuValue = Integer.parseInt(statusBarPowerMenu);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_POWER_MENU, statusBarPowerMenuValue);
+            int statusBarPowerMenuIndex = mStatusBarPowerMenu
+                    .findIndexOfValue(statusBarPowerMenu);
+            mStatusBarPowerMenu
+                    .setSummary(mStatusBarPowerMenu.getEntries()[statusBarPowerMenuIndex]);
+            return true;			
 		}
         return false;
     }
