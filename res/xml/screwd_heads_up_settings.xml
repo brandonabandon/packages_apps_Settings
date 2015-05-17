@@ -32,7 +32,13 @@
         android:entries="@array/heads_up_time_out_entries"
         android:entryValues="@array/heads_up_time_out_values"
         android:persistent="false" />
-
+    
+    <PreferenceScreen
+        android:key="heads_up_colors"
+        android:fragment="com.android.settings.screwd.HeadsUpColors"
+        android:title="@string/heads_up_colors_title"
+        android:summary="@string/heads_up_colors_summary" />
+	
     <PreferenceCategory
             android:title="@string/heads_up_dnd_title"
             android:key="dnd_applications_list">

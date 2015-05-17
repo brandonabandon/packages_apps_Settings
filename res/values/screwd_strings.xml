@@ -831,6 +831,12 @@
     <string name="heads_up_touch_outside_summary_enabled">Hide notification on touch outside and on home button press</string>
     <string name="heads_up_touch_outside_summary_disabled">Do not hide notification after touch outside or on home button press</string>   
     
+    <!-- Heads up Color -->
+    <string name="heads_up_bg_color_title">Background color</string>
+    <string name="heads_up_text_color_title">Text color</string>
+    <string name="heads_up_colors_title">Custom Colors</string>
+    <string name="heads_up_colors_summary">Customize heads up text and background color</string>
+    
     <!-- Network traffic -->
     <string name="network_traffic_title">Network traffic</string>
     <string name="show_network_traffic_state">Status bar traffic monitor</string>
