@@ -145,6 +145,8 @@
   <string name="recents">Récents</string>
   <string name="sounds">Sons &amp; Volume</string>
   <string name="kernel_tweaker">Kernel Adiutor</string>
+  <string name="changelog_screwd_title">Changelog</string>
+  <string name="changelog_screwd_error">Impossible de charger le changelog</string>
   <string name="ok">OK</string>
   <string name="reset">Reset</string>
   <string name="help">Aide</string>
@@ -403,7 +405,8 @@
   <string name="battery_light_list_title">Couleurs</string>
   <string name="battery_light_low_color_title">Batterie faible</string>
   <string name="battery_light_medium_color_title">Charge</string>
-  <string name="battery_light_full_color_title">Chargée</string>
+  <string name="battery_light_full_color_title">Chargée (90 %)</string>
+  <string name="battery_light_really_full_color_title">Chargée (100 %)</string>
   <string name="notification_light_title">Voyant de notification</string>
   <string name="notification_light_general_title">Général</string>
   <string name="notification_light_applist_title">Applications</string>
@@ -539,6 +542,7 @@
   <string name="lock_numpad_random_always">Toujours</string>
   <string name="lock_numpad_random_on_request">Sur demande</string>
   <string name="shortcut_action_power_menu">Menu Marche/Arrêt</string>
+  <string name="shortcut_action_qs">Panneau des paramètres rapides</string>
   <string name="shortcut_action_power">Éteindre l\'écran</string>
   <string name="shortcut_action_screenshot">Capture d\'écran</string>
   <string name="shortcut_action_theme_switch">Sélecteur de thème</string>
@@ -866,6 +870,13 @@
   <string name="powermenu_soundpanel">Panneau du son</string>
   <string name="powermenu_screenrecord">Enregistrement d\'écran</string>
   <string name="powermenu_lockdown">Verrouiller</string>
+  <string name="carrier_options">Nom de l\'opérateur</string>
+  <string name="show_status_bar_carrier_title">Opérateur dans la barre de statut</string>
+  <string name="show_status_bar_carrier_summary">Voir l\'opérateur dans la barre d\'état</string>
+  <string name="custom_carrier_label_title">Nom de l\'opérateur personnalisé</string>
+  <string name="custom_carrier_label_explain">SVP saisir un nouveau nom. Laisser vide pour revenir au nom d\'origine.</string>
+  <string name="custom_carrier_label_notset">Nom personnalisé actuellement non défini</string>
+  <string name="status_bar_carrier_color">Couleur du nom de l\'opérateur</string>
   <string name="power_category">Menu Marche/Arrêt</string>
   <string name="lockscreen_enable_power_menu_title">Afficher le menu Marche/Arrêt sur l\'écran de verrouillage</string>
   <string name="lockscreen_enable_power_menu_summary">Cette option désactivera uniquement le menu MarcheArrêt sur les écrans de verrouillage sécurisés</string>
@@ -1046,6 +1057,9 @@
   <string name="navigation_menu_always_show">Toujours afficher</string>
   <string name="navigation_menu_never_show">Ne pas afficher</string>
   <string name="navigation_menu_default_jb_behavior">Afficher sur demande (par défaut)</string>
+  <string name="pie_disable_ime_triggers_title">Réduire la taille de la gâchette sur le clavier</string>
+  <string name="pie_disable_ime_triggers_summary">Réduit la taille de la gâchette gauche et à droite si le clavier est actif</string>
+  <string name="pie_trigger_sensitivity_title">Sensibilité de déclenchement\"</string>
   <string name="kill_app_longpress_timeout_title">Délai appui long</string>
   <string name="timeout_2000">2 secondes (par défaut)</string>
   <string name="timeout_1500">1,5 secondes</string>
@@ -1184,8 +1198,19 @@ pour mettre en veille</string>
   <string name="no_home_key">Vous n\'avez aucun bouton assigné à l\'action « Home » !\n\nCela peut rendre l\'appareil inutilisable !</string>
   <string name="aokp_animation_title">Animations système</string>
   <string name="aokp_animation_summary">Animation personnalisée AOKP</string>
+  <string name="animation_exit_only_title">Entrez uniquement l\'animation</string>
+  <string name="animation_reverse_exit_title">Animation sortie inversée</string>
   <string name="activity_open_title">Animation d\'ouverture d\'activité</string>
   <string name="activity_close_title">Animation de fermeture d\'activité</string>
   <string name="task_open_title">Animation ouverture de tâche</string>
   <string name="task_close_title">Animation de fermeture de tâche</string>
+  <string name="task_move_to_front_title">Passer à l\'animation avant</string>
+  <string name="task_move_to_back_title">Passer à l\'animation arrière</string>
+  <string name="omniswitch_category">OmniSwitch</string>
+  <string name="omniswitch_settings_title">OmniSwitch</string>
+  <string name="recents_use_omniswitch_title">Utilisation pour recents</string>
+  <string name="recents_use_omniswitch_summary">Utilisez OmniSwitch au lieu de la vue recents par défaut</string>
+  <string name="omniswitch_start_settings_summary">Ouvrez paramètres OmniSwitch</string>
+  <string name="omniswitch_first_time_title">Information</string>
+  <string name="shortcut_action_theme_switch">Sélecteur de thème</string>
 </resources>
