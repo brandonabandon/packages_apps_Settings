@@ -41,6 +41,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.android.settings.util.Helpers;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.widget.SeekBarPreferenceCham;
@@ -58,6 +59,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	private static final String KEY_STATUS_BAR_GREETING_TIMEOUT = "status_bar_greeting_timeout";
 	private static final String NETWORK_METER_ENABLED = "network_meter_enabled";
 	private static final String STATUS_BAR_POWER_MENU = "status_bar_power_menu";
+	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
 	
 	static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 	
@@ -68,6 +70,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	private SeekBarPreferenceCham mStatusBarGreetingTimeout;
 	private SwitchPreference mNetworkMeterEnabled;
 	private ListPreference mStatusBarPowerMenu;
+	private SwitchPreference mEnableTaskManager;
 	
 	private String mCustomGreetingText = "";
 	
@@ -124,6 +127,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 STATUS_BAR_POWER_MENU, 0);
         mStatusBarPowerMenu.setValue(String.valueOf(statusBarPowerMenu));
         mStatusBarPowerMenu.setSummary(mStatusBarPowerMenu.getEntry());
+		
+		// Task manager
+        mEnableTaskManager = (SwitchPreference) findPreference(PREF_ENABLE_TASK_MANAGER);
+        mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
+
 
     }
 
@@ -191,6 +200,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 Settings.System.putString(getActivity().getContentResolver(),
                                 Settings.System.STATUS_BAR_GREETING, "");
             }   
+        } else if  (preference == mEnableTaskManager) {
+            boolean enabled = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.ENABLE_TASK_MANAGER, enabled ? 1:0);
+            Helpers.restartSystemUI();
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

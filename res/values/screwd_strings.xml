@@ -1734,5 +1734,8 @@
     <string name="weather_condition_icon_vclouds_title">VClouds</string>
     <string name="weather_colorize_all_icons_title">Colorize all icons</string>
     <string name="weather_colorize_all_icons_summary">Enable to colorize all icons, disable to colorize only the monochrome icons</string>
-
+    
+    <!-- Task Manager -->
+    <string name="enable_task_manager_title">Task Manager</string>
+    <string name="enable_task_manager_summary">Enable/Disable action for the task manager button in the expanded statusbar area.\nChanging this option will trigger SystemUI restart!</string>
 </resources>
