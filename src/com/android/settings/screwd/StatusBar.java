@@ -54,7 +54,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
     private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
-    private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker_enabled";
 	private static final String KEY_STATUS_BAR_GREETING = "status_bar_greeting";
 	private static final String KEY_STATUS_BAR_GREETING_TIMEOUT = "status_bar_greeting_timeout";
 	private static final String NETWORK_METER_ENABLED = "network_meter_enabled";
@@ -65,7 +64,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
     private SwitchPreference mStatusBarBrightnessControl;
     private PreferenceScreen mClockStyle;
-    private SwitchPreference mTicker;
 	private SwitchPreference mStatusBarGreeting;
 	private SeekBarPreferenceCham mStatusBarGreetingTimeout;
 	private SwitchPreference mNetworkMeterEnabled;
@@ -92,14 +90,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Log.e(TAG, "can't access systemui resources",e);
             return;
         }
-
-        mTicker = (SwitchPreference) prefSet.findPreference(KEY_STATUS_BAR_TICKER);
-        final boolean tickerEnabled = systemUiResources.getBoolean(systemUiResources.getIdentifier(
-                    "com.android.systemui:bool/enable_ticker", null, null));
-        mTicker.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.STATUS_BAR_TICKER_ENABLED, tickerEnabled ? 1 : 0) == 1);
-        mTicker.setOnPreferenceChangeListener(this);
-
 
         mStatusBarBrightnessControl =
             (SwitchPreference) prefSet.findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
@@ -142,11 +132,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         if (preference == mStatusBarBrightnessControl) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
-                    (Boolean) newValue ? 1 : 0);
-            return true;
-        } else if (preference == mTicker) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.STATUS_BAR_TICKER_ENABLED,
                     (Boolean) newValue ? 1 : 0);
             return true;	
 		} else if (preference == mNetworkMeterEnabled) {
