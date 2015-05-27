@@ -806,6 +806,7 @@
         <item>@string/shortcut_action_recent</item>
         <item>@string/shortcut_action_power</item>
         <item>@string/shortcut_action_search</item>
+	<item>@string/shortcut_action_smart</item>
         <item>@string/shortcut_action_none</item>
 	<!--<item>@string/shortcut_action_theme_switch</item>-->
     </string-array>
@@ -820,6 +821,7 @@
         <item>**recents**</item>
         <item>**power**</item>
         <item>**search**</item>
+	<item>**smart_pulldown**</item>
         <item>**null**</item>
 	<!--<item>**theme_switch**</item>-->
     </string-array>
@@ -1227,6 +1229,7 @@
         <!--<item>@string/shortcut_action_theme_switch</item>-->
         <item>@string/shortcut_action_torch</item>
         <item>@string/shortcut_action_screenshot</item>
+	<item>@string/shortcut_action_smart</item>
     </string-array>
 
     <string-array name="shortcut_action_launcher_values" translatable="false">
@@ -1246,6 +1249,7 @@
         <!--<item>**theme_switch**</item>-->
         <item>**torch**</item>
         <item>**screenshot**</item>
+	<item>**smart_pulldown**</item>
     </string-array>
     
     <string-array name="shortcut_action_tile_entries">
