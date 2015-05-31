@@ -51,6 +51,12 @@
             android:dependency="show_clear_all_recents" />        
 
     </PreferenceCategory>
+    
+    <!-- Slim recents -->
+    <PreferenceScreen
+        android:key="recent_panel"
+        android:fragment="com.android.settings.screwd.RecentPanel"
+        android:title="@string/recent_panel_category" />
 
     <PreferenceScreen
     	android:key="omniswitch"
