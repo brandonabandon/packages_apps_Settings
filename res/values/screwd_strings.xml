@@ -1781,6 +1781,10 @@
     <string name="overscroll_weight_title">Over scrolling weight</string>
     <string name="overscroll_weight_summary">Select the weight of the scrollable objects</string>
     
+    <!-- Custom Recents Toggle -->
+    <string name="custom_recent_title">Enable Slim Recents</string>
+    <string name="custom_recent_summary">Choose between Slim/Stock RecentApps</string>
+    
     <!-- Recent panel -->
     <string name="recent_panel_category">Slim Recent apps panel</string>
     <string name="recent_panel_scale_title">Size</string>

@@ -51,6 +51,13 @@
             android:dependency="show_clear_all_recents" />        
 
     </PreferenceCategory>
+    
+    <!-- Custom Recents Toggle -->
+    <SwitchPreference
+        android:key="custom_recent_mode"
+        android:title="@string/custom_recent_title"
+        android:summary="@string/custom_recent_summary"
+        android:persistent="false" />
 
     <PreferenceScreen
     	android:key="omniswitch"
@@ -60,6 +67,7 @@
     <PreferenceScreen
         android:key="recent_panel"
         android:fragment="com.android.settings.screwd.RecentPanel"
-        android:title="@string/recent_panel_category" />
+        android:title="@string/recent_panel_category"
+	android:dependency="custom_recent_mode" />
 	
 </PreferenceScreen>

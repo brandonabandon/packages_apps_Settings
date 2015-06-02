@@ -48,15 +48,19 @@ import java.util.List;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.settings.util.Helpers;
+
 public class Recents extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 		
 
 	private static final String SHOW_CLEAR_ALL_RECENTS = "show_clear_all_recents";
 	private static final String RECENTS_CLEAR_ALL_LOCATION = "recents_clear_all_location";
+	private static final String CUSTOM_RECENT_MODE = "custom_recent_mode";
 	
 	private SwitchPreference mRecentsClearAll;
 	private ListPreference mRecentsClearAllLocation;
+	private SwitchPreference mRecentsCustom;
 	
 	private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 	
@@ -81,7 +85,13 @@ public class Recents extends SettingsPreferenceFragment implements
 			Settings.System.RECENTS_CLEAR_ALL_LOCATION, 0, UserHandle.USER_CURRENT);
 		mRecentsClearAllLocation.setValue(String.valueOf(location));
 		mRecentsClearAllLocation.setOnPreferenceChangeListener(this);
-		updateRecentsLocation(location);		
+		updateRecentsLocation(location);
+		
+		boolean enableRecentsCustom = Settings.System.getBoolean(getContentResolver(),
+                                      Settings.System.CUSTOM_RECENT, false);
+        mRecentsCustom = (SwitchPreference) findPreference(CUSTOM_RECENT_MODE);
+        mRecentsCustom.setChecked(enableRecentsCustom);
+        mRecentsCustom.setOnPreferenceChangeListener(this);		
 
     }
 
@@ -101,7 +111,13 @@ public class Recents extends SettingsPreferenceFragment implements
             Settings.System.putIntForUser(getActivity().getContentResolver(),
                     Settings.System.RECENTS_CLEAR_ALL_LOCATION, location, UserHandle.USER_CURRENT);
             updateRecentsLocation(location);
-            return true;	
+            return true;
+		} else if (preference == mRecentsCustom) {
+            Settings.System.putBoolean(getActivity().getContentResolver(),
+                    Settings.System.CUSTOM_RECENT,
+                    ((Boolean) newValue) ? true : false);
+            Helpers.restartSystemUI();
+            return true;		
 		}	
         return false;
     }
