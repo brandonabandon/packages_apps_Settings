@@ -1581,7 +1581,7 @@
     <string name="omniswitch_category">OmniSwitch</string>
     <string name="omniswitch_settings_title">OmniSwitch</string>
     <string name="recents_use_omniswitch_title">Use for recents</string>
-    <string name="recents_use_omniswitch_summary">Use OmniSwitch instead of default recents view</string>
+    <string name="recents_use_omniswitch_summary">Use OmniSwitch instead of default recents view\nOmniSwitch OVERRIDES AOSP and Slim Recents</string>
     <string name="omniswitch_start_settings_title">Settings</string>
     <string name="omniswitch_start_settings_summary">Open OmniSwitch settings</string>
     <string name="omniswitch_first_time_title">Information</string>
@@ -1783,7 +1783,7 @@
     
     <!-- Custom Recents Toggle -->
     <string name="custom_recent_title">Enable Slim Recents</string>
-    <string name="custom_recent_summary">Choose between Slim/Stock RecentApps</string>
+    <string name="custom_recent_summary">Choose between Slim/Stock RecentApps\nChanging this option will trigger SystemUI restart!</string>
     
     <!-- Recent panel -->
     <string name="recent_panel_category">Slim Recent apps panel</string>
