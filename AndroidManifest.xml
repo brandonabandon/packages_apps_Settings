@@ -2179,7 +2179,6 @@
         </activity>
 	
 	<!-- Screw'd Activities -->
-	<activity android:name=".screwd.InitD" />
 	<activity android:name=".screwd.Density" />
 	<activity android:name=".screwd.SpamList" />
 	<activity android:name=".screwd.OmniSwitch" />

@@ -37,12 +37,6 @@
         android:title="@string/lcd_density_title"
         android:fragment="com.android.settings.screwd.Density" />    
 
-    <!-- Init.d tweaks -->	
-    <Preference
-    	android:key="initD"
-    	android:fragment="com.android.settings.screwd.InitD"
-    	android:title="@string/init_d_title" />
-    
      <!-- Wakelock Blocker -->	
      <PreferenceScreen
      	android:key="wakelock_blocker"
