@@ -2216,16 +2216,6 @@
                 <action android:name="android.provider.Contacts.PROFILE_CHANGED" />
             </intent-filter>
         </receiver>
-	
-	<activity android:name="com.android.settings.screwd.hfm.HfmWhitelist" />
-
-        <receiver android:name="com.android.settings.screwd.hfm.IntentReceiver" >
-            <intent-filter>
-                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name="com.android.settings.screwd.hfm.CheckHosts" />
 
         <receiver android:name=".sim.SimBootReceiver">
             <intent-filter>
