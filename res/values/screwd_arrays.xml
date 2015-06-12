@@ -807,7 +807,7 @@
         <item>@string/shortcut_action_power</item>
         <item>@string/shortcut_action_search</item>
         <item>@string/shortcut_action_none</item>
-	<item>@string/shortcut_action_theme_switch</item>
+	<!--<item>@string/shortcut_action_theme_switch</item>-->
     </string-array>
 
     <string-array name="shortcut_action_values" translatable="false">
@@ -821,7 +821,7 @@
         <item>**power**</item>
         <item>**search**</item>
         <item>**null**</item>
-	<item>**theme_switch**</item>
+	<!--<item>**theme_switch**</item>-->
     </string-array>
 
      <string-array name="shortcut_action_screen_off_entries">
@@ -1253,6 +1253,10 @@
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_screenshot</item>
         <item>@string/shortcut_action_recent</item>
+	<item>@string/shortcut_action_assist</item>
+	<item>@string/shortcut_action_voice_search</item>
+	<item>@string/shortcut_action_camera</item>
+	<item>@string/shortcut_action_pie</item>
     </string-array>
 
     <string-array name="shortcut_action_tile_values" translatable="false">
@@ -1260,6 +1264,10 @@
         <item>**power_menu**</item>
         <item>**screenshot**</item>
         <item>**recents**</item>
+	<item>**assist**</item>
+	<item>**voice_search**</item>
+	<item>**camera**</item>
+	<item>**pie**</item>
     </string-array>
     
     <!-- Slim HW Key -->
