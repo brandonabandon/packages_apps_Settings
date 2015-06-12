@@ -39,6 +39,7 @@ import android.provider.SearchIndexableResource;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.android.settings.util.Helpers;
 
 import com.android.internal.util.cm.QSUtils;
 
@@ -59,14 +60,16 @@ public class Misc extends SettingsPreferenceFragment implements
 	private static final String KILL_APP_LONGPRESS_TIMEOUT = "kill_app_longpress_timeout";
 	private static final String DISABLE_IMMERSIVE_MESSAGE = "disable_immersive_message";
 	private static final String DISABLE_TORCH_ON_SCREEN_OFF = "disable_torch_on_screen_off";
-    private static final String DISABLE_TORCH_ON_SCREEN_OFF_DELAY = "disable_torch_on_screen_off_delay";
+    	private static final String DISABLE_TORCH_ON_SCREEN_OFF_DELAY = "disable_torch_on_screen_off_delay";
+	private static final String RESTART_SYSTEMUI = "restart_systemui";
 	
 	private SwitchPreference mKillAppLongpressBack;
 	private ListPreference mKillAppLongpressTimeout;
 	private SwitchPreference mDisableIM;
 	private ListPreference mRecentsClearAllLocation;
-    private SwitchPreference mTorchOff;
+    	private SwitchPreference mTorchOff;
 	private ListPreference mTorchOffDelay;
+	private Preference mRestartSystemUI;
 	
 	private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 	
@@ -107,7 +110,9 @@ public class Misc extends SettingsPreferenceFragment implements
         if (!QSUtils.deviceSupportsFlashLight(activity)) {
             prefSet.removePreference(mTorchOff);
             prefSet.removePreference(mTorchOffDelay);
-        }	
+        }
+		
+	mRestartSystemUI = findPreference(RESTART_SYSTEMUI);	
 
     }
 
@@ -119,7 +124,7 @@ public class Misc extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-		if  (preference == mDisableIM) {  
+	if  (preference == mDisableIM) {  
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.DISABLE_IMMERSIVE_MESSAGE,
 					(Boolean) newValue ? 1 : 0);
@@ -159,7 +164,7 @@ public class Misc extends SettingsPreferenceFragment implements
             getActivity().getContentResolver(), Settings.Secure.KILL_APP_LONGPRESS_BACK, 0) != 0);
     }
 	
-	private void writeKillAppLongpressTimeoutOptions(Object newValue) {
+    private void writeKillAppLongpressTimeoutOptions(Object newValue) {
         int index = mKillAppLongpressTimeout.findIndexOfValue((String) newValue);
         int value = Integer.valueOf((String) newValue);
         Settings.Secure.putInt(getActivity().getContentResolver(),
@@ -186,17 +191,19 @@ public class Misc extends SettingsPreferenceFragment implements
         mKillAppLongpressTimeout.setSummary(mKillAppLongpressTimeout.getEntries()[0]);
     }
 	
-	private ListPreference addListPreference(String prefKey) {
+    private ListPreference addListPreference(String prefKey) {
         ListPreference pref = (ListPreference) findPreference(prefKey);
         mAllPrefs.add(pref);
         pref.setOnPreferenceChangeListener(this);
         return pref;
     }
 	
-	@Override
+    @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mKillAppLongpressBack) {
             writeKillAppLongpressBackOptions();
+	} else if (preference == mRestartSystemUI) {
+            Helpers.restartSystemUI();	
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
