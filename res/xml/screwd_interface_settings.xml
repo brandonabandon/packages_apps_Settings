@@ -73,6 +73,11 @@
     <PreferenceScreen
         android:key="app_circle_bar"
         android:fragment="com.android.settings.screwd.AppCircleBar"
-        android:title="@string/app_circle_bar_title"/>							    	
+        android:title="@string/app_circle_bar_title"/>
+	
+    <PreferenceScreen
+        android:key="app_sidebar"
+        android:fragment="com.android.settings.screwd.AppSidebar"
+        android:title="@string/app_sidebar_title"/>								    	
 
 </PreferenceScreen>
