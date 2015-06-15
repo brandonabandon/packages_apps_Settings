@@ -1716,4 +1716,8 @@
     <!-- Restart SystemUI -->
     <string name="restart_systemui">Restart SystemUI</string>
     <string name="restart_systemui_summary">Instantly kill SystemUI, for debugging purposes ONLY</string>
+    
+    <!-- Doze brightness -->
+    <string name="doze_brightness_title">Doze brightness level</string>
+    <string name="doze_brightness_summary">Brightness level of doze pulse screen (% of max allowed brightness)</string>
 </resources>
