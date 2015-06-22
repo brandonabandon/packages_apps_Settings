@@ -1938,4 +1938,9 @@
     <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
     <string name="reset_lockscreen_wallpaper">Set to default</string>
     
+    <!-- Keep screen on strings -->
+    <string name="keep_screen_on_never">Never</string>
+    <string name="keep_screen_on_debugging">While USB debugging</string>
+    <string name="keep_screen_on_charging">While charging</string>
+    
 </resources>
