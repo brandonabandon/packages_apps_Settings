@@ -1749,4 +1749,12 @@
     <string name="trigger_bottom_title">Trigger height</string>
     <string name="trigger_bottom_summary">Adjust the height of the trigger area</string>
 
+    <string name="restart_systemui_summary">Instantly kill SystemUI, for debugging purposes ONLY</string>
+    
+    <!-- Doze brightness -->
+    <string name="doze_brightness_title">Doze brightness level</string>
+    <string name="doze_brightness_summary">Brightness level of doze pulse screen (% of max allowed brightness)</string>
+    
+    <string name="slim_action_floats">Slim Actions and Pie</string>	
+    <string name="slim_action_floats_summary">Launch Slim and Pie Actions in Floating Window Mode</string>
 </resources>
