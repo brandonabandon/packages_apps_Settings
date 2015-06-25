@@ -120,6 +120,8 @@ import com.android.settings.screwd.qs.QSTiles;
 import com.android.settings.screwd.HeadsUpSettings;
 import com.android.settings.screwd.AmbientSettings;
 import com.android.settings.screwd.gestureanywhere.GestureAnywhereSettings;
+import com.android.settings.WifiCallingSettings;
+
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -317,7 +319,8 @@ public class SettingsActivity extends Activity
             ExpandedDesktopPreferenceFragment.class.getName(),
 	    	HeadsUpSettings.class.getName(),
 			AmbientSettings.class.getName(),
-			GestureAnywhereSettings.class.getName()
+			GestureAnywhereSettings.class.getName(),
+            WifiCallingSettings.class.getName()
     };
 
 

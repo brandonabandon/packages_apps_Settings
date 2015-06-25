@@ -109,5 +109,6 @@ public class Settings extends SettingsActivity {
 	public static class ExpandedDesktopSettingsActivity extends SettingsActivity { /* empty */ }
 	public static class AmbientDisplaySettingsActivity extends SettingsActivity { /* empty */ }
 	public static class GestureActivity extends SettingsActivity { /* empty */ }
+    public static class WifiCallingSettingsActivity extends SettingsActivity { /* empty */ }
 }
 
