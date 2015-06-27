@@ -190,6 +190,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_media_play";
                 stringId = R.string.qs_music_play_tile;
                 break;
+			case QSConstants.TILE_SLIM_FLOATS:
+                resourceName = "ic_qs_floating_on";
+                stringId = R.string.qs_tile_slim_floats;
+                break;	
             default:
                 return null;
         }
