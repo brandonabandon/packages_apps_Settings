@@ -49,14 +49,18 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.screwd.NumberPickerPreference;
 
+import com.android.internal.util.cm.QSUtils;
+
 public class PowerMenu extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 		
 		private static final String KEY_ADVANCED_REBOOT = "advanced_reboot";
         private static final String SCREENSHOT_DELAY = "screenshot_delay";
+		private static final String POWERMENU_TORCH = "powermenu_torch";
 		
 		private ListPreference mAdvancedReboot;
         private NumberPickerPreference mScreenshotDelay;
+		private SwitchPreference mPowermenuTorch;
 
         private static final int MIN_DELAY_VALUE = 1;
         private static final int MAX_DELAY_VALUE = 30;
@@ -82,6 +86,15 @@ public class PowerMenu extends SettingsPreferenceFragment implements
         int ssDelay = Settings.System.getInt(getContentResolver(),
                 Settings.System.SCREENSHOT_DELAY, 1);
         mScreenshotDelay.setCurrentValue(ssDelay);
+		
+		mPowermenuTorch = (SwitchPreference) findPreference(POWERMENU_TORCH);
+        mPowermenuTorch.setOnPreferenceChangeListener(this);
+        if (!QSUtils.deviceSupportsFlashLight(getActivity())) {
+            mPrefSet.removePreference(mPowermenuTorch);
+        } else {
+        mPowermenuTorch.setChecked((Settings.System.getInt(resolver,
+                Settings.System.POWERMENU_TORCH, 0) == 1));
+        }
     }
 
     @Override
@@ -100,7 +113,12 @@ public class PowerMenu extends SettingsPreferenceFragment implements
             int value = Integer.parseInt(newValue.toString());
             Settings.System.putInt(getContentResolver(), Settings.System.SCREENSHOT_DELAY,
                     value);
-            return true;	
+            return true;
+		} else if (preference == mPowermenuTorch) {
+            boolean checked = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.POWERMENU_TORCH, checked ? 1:0);
+            return true;		
 		}	
         return false;
     }

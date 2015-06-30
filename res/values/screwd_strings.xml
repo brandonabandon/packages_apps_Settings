@@ -1049,6 +1049,7 @@
     <string name="powermenu_soundpanel">Sound Panel</string>
     <string name="powermenu_screenrecord">Screen Record</string>
     <string name="powermenu_lockdown">Lock Down</string>
+    <string name="powermenu_torch">Torch</string>
     
     <!-- Show carrier label and custom -->
     <string name="carrier_options">Carrier Label</string>
