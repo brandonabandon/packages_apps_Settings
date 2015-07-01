@@ -90,7 +90,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
 		mPowermenuTorch = (SwitchPreference) findPreference(POWERMENU_TORCH);
         mPowermenuTorch.setOnPreferenceChangeListener(this);
         if (!QSUtils.deviceSupportsFlashLight(getActivity())) {
-            mPrefSet.removePreference(mPowermenuTorch);
+            getPreferenceScreen().removePreference(mPowermenuTorch);
         } else {
         mPowermenuTorch.setChecked((Settings.System.getInt(resolver,
                 Settings.System.POWERMENU_TORCH, 0) == 1));
