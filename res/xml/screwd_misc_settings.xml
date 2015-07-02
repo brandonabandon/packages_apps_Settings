@@ -51,12 +51,6 @@
         android:entries="@array/torch_screen_off_delay_entries"
         android:entryValues="@array/torch_screen_off_delay_values"
         android:dependency="disable_torch_on_screen_off" />
-	
-      <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-      	android:key="slim_action_floats"
-	android:title="@string/slim_action_floats"
-	android:summary="@string/slim_action_floats_summary"
-	android:defaultValue="false" />	
 
       <Preference android:key="restart_systemui"
             android:title="@string/restart_systemui"
