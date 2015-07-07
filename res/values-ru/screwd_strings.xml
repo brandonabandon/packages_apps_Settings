@@ -483,6 +483,7 @@
   <string name="shortcut_action_torch">Фонарик</string>
   <string name="shortcut_action_voice_search">Голосовой поиск</string>
   <string name="shortcut_action_pie">Pie</string>
+  <string name="shortcut_action_smart">\"Умный\" доступ</string>
   <string name="shortcut_action_none">Нет</string>
   <string name="shortcut_action_app">Пользовательские приложения</string>
   <string name="shortcut_action_home">Домой</string>
@@ -1192,6 +1193,11 @@
   <string name="navbar_ime_title">Скрыть IME переключатель</string>
   <string name="reset_default_message">Сбросить по умолчанию</string>
   <string name="navigation_bar_category">Панель навигации</string>
+  <string name="navbar_force_enable_title">Включить панель навигации</string>
+  <string name="navbar_force_enable_summary">ВНИМАНИЕ: Для устройств с на экранной панелью навигации, это позволит настроить панель. Для устройств с аппаратными кнопками навигации может потребоваться перезагрузка</string>
+  <string name="buttons_and_options_title">Настройка кнопок и поведения</string>
+  <string name="choose_action_double_tap_title">Выбрать действие двойного нажатия</string>
+  <string name="choose_action_title">Выбрать действие</string>
   <string name="choose_action_short_title">Выбрать действие короткого</string>
   <string name="choose_action_long_title">Выбрать действие длительного</string>
   <string name="action_long_save">установить действие длительного</string>
@@ -1212,6 +1218,14 @@
   <string name="alternate_key_layouts_enabled_partial_summary">из 5</string>
   <string name="alternate_key_layouts_all_enabled_summary">В настоящее время включены все 5 макетов панели навигации</string>
   <string name="layouts_dialog_title">Количество включенных макетов</string>
+  <string name="navigation_bar_width_text">Горизонтальная ширина бара</string>
+  <string name="enable_ime_layout">Дополнительные кнопки IME</string>
+  <string name="ime_layout_ime">Переключатель IME</string>
+  <string name="ime_layout_home">кнопка домой</string>
+  <string name="save">Сохранить</string>
+  <string name="screwd_navbar_title">Панель навигации</string>
+  <string name="group_applications">Приложения</string>
+  <string name="lock_clock_color_title">Цвет часов на экране блокировки</string>
   <string name="icons_title">Значки</string>
   <string name="lock_screen_weather_settings_title">Погода</string>
   <string name="lock_screen_weather_settings_summary">Настройка погоды</string>
@@ -1219,6 +1233,11 @@
   <string name="lock_screen_color_settings_summary">Настроить цвета</string>
   <string name="weather_show_weather_summary">Включить отображение информации о погоде</string>
   <string name="weather_show_location_title">Отображать местоположение</string>
+  <string name="weather_show_location_summary">Включить отображение местоположения</string>
+  <string name="weather_condition_icon_title">Значок состояния</string>
+  <string name="weather_condition_icon_dlg_title">Выберите значок для отображения состояния погоды</string>
+  <string name="weather_condition_icon_monochrome_title">Монохромные</string>
+  <string name="weather_condition_icon_colored_title">Цветные</string>
   <string name="recent_panel_scale_title">Размер</string>
   <string name="recent_panel_scale_summary">Размер панели недавних приложений в процентах</string>
   <string name="recent_panel_100">100% (по умолчанию)</string>
@@ -1234,4 +1253,11 @@
   <string name="recent_panel_lefty_mode_title">Отображать с левой стороны</string>
   <string name="recent_panel_lefty_mode_summary">Отображать панель недавних приложений с левой стороны</string>
   <string name="restart_systemui">Перезапустить SystemUI</string>
+  <string name="trigger_category">Область триггера</string>
+  <string name="trigger_width_title">Ширина триггера</string>
+  <string name="trigger_width_summary">Отрегулируйте ширину области триггера</string>
+  <string name="trigger_top_title">Положение переключателя</string>
+  <string name="trigger_top_summary">Отрегулируйте вертикальное положение области триггера</string>
+  <string name="trigger_bottom_title">Высота триггера</string>
+  <string name="trigger_bottom_summary">Отрегулируйте высоту области триггера</string>
 </resources>
