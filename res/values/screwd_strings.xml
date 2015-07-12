@@ -1157,6 +1157,7 @@
     <string name="qs_tile_trds">TRDS</string>
     <string name="qs_music_play_tile">Play</string>
     <string name="qs_tile_slim_floats">Slim Floats</string>
+    <string name="qs_tile_slimpie">Pie Control</string>
             
     <!-- QuickSettings 4 columns -->
     <string name="qs_four_columns_title">Show four tiles per row</string>
