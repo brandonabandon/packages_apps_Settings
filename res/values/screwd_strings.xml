@@ -1588,6 +1588,17 @@
     <string name="volume_steps_15">15</string>
     <string name="volume_steps_7">7</string>
     <string name="volume_steps_5">5</string>
+    
+    <!-- Screwd actions and utilities -->
+    <string name="shortcut_label">Actions &amp; Utilities</string>
+    <string name="toggle_flushmemory">GC memory</string>
+    <string name="toggle_ring_vib">Ring/Vib</string>
+    <string name="toggle_ring_silent">Ring/Silent</string>
+    <string name="toggle_ring_vib_silent">Ring/Vib/Silent</string>
+    <string name="toggle_profile">Profiles</string>
+    <string name="toggle_profile_toast">Profiles are currently disabled</string>
+    <string name="toggle_dream">Screensaver</string>
+    <string name="toggle_dream_failed">Dreams are off or disabled</string>
 
     <!-- Navigation bar -->
     <string name="navigation_bar_category">Navigation bar</string>
