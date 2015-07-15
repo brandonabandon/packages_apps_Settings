@@ -1399,20 +1399,6 @@
         <item>@string/volume_steps_5</item>
     </string-array> 
     
-    <string-array name="navbar_dialog_entries" translatable="false">
-        <item>@string/action_short</item>
-        <item>@string/action_long</item>
-        <item>@string/action_double</item>
-        <item>@string/action_icon</item>
-    </string-array>
-
-    <string-array name="navbar_dialog_values" translatable="false">
-        <item>**short**</item>
-        <item>**long**</item>
-        <item>**double**</item>
-        <item>**icon**</item>
-    </string-array>
-    
     <!-- Weather settings -->
     <string-array name="weather_condition_icon_entries">
         <item>@string/weather_condition_icon_monochrome_title</item>

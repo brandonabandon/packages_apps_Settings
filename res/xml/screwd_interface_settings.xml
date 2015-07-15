@@ -44,15 +44,10 @@
         android:id="@+id/disp_anim_settings"
         android:title="@string/disp_anim_settings_title"
         android:fragment="com.android.settings.screwd.DisplayAnimationsSettings" />
-
-    <PreferenceScreen
-        android:key="navbar"
-        android:title="@string/screwd_navbar_title"
-        android:fragment="com.android.settings.screwd.NavBarSettings" />	
 	
     <PreferenceScreen
         android:key="nav_bar"
-        android:fragment="com.android.settings.screwd.NavRings"
+        android:fragment="com.android.settings.screwd.NavBar"
         android:title="@string/navbar_navring" />   
 
     <PreferenceScreen
