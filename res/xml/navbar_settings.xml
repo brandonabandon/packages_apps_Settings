@@ -100,7 +100,7 @@
 						          
     <PreferenceScreen
             android:key="navigation_bar_ring"
-            android:fragment="com.android.settings.cyanogenmod.NavRing"
+            android:fragment="com.android.settings.screwd.NavRing"
             android:title="@string/navigation_ring_title"
             android:dependency="search_panel_enabled" />
             
