@@ -648,6 +648,7 @@
     <string name="shortcut_action_media_previous">Music - previous track</string>
     <string name="shortcut_action_wake_device">Wake up device</string>
     <string name="shortcut_action_voice_search">Voice search</string>
+    <string name="shortcut_action_settings_panel">Settings panel</string>
 
     <string name="shortcut_action_longpress">Longpress:</string>
     <string name="shortcut_action_select_action_longpress">Choose longpress action:</string>
