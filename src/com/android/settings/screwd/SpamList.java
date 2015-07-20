@@ -117,7 +117,7 @@ public class SpamList extends ListFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.add(0, MENU_NOTIFICATIONS, 0, R.string.volume_notification_description)
-                .setIcon(R.drawable.ic_settings_notifications)
+                .setIcon(R.drawable.ic_settings_notifications_wht)
                 .setAlphabeticShortcut('n')
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
                 MenuItem.SHOW_AS_ACTION_WITH_TEXT);
