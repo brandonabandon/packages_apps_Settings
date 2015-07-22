@@ -64,7 +64,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
-=======
+
 import android.view.IWindowManager;
 import android.view.WindowManagerGlobal;
 
@@ -97,6 +97,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_TAP_TO_WAKE = "double_tap_wake_gesture";
     private static final String CATEGORY_ADVANCED = "advanced_display_prefs";
+	
+	private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
     private static final String ROTATION_ANGLE_0 = "0";
     private static final String ROTATION_ANGLE_90 = "90";
