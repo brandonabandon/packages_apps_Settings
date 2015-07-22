@@ -14,6 +14,9 @@ LOCAL_SRC_FILES := \
         $(call all-java-files-under, src) \
         src/com/android/settings/EventLogTags.logtags
 
+LOCAL_SRC_FILES += \
+        $(call all-java-files-under, ../../services/AntiPiracy/src)
+
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res \
     frameworks/support/v7/cardview/res
 
@@ -28,7 +31,8 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 LOCAL_AAPT_FLAGS := \
     --auto-add-overlay \
-    --extra-packages android.support.v7.cardview
+    --extra-packages android.support.v7.cardview \
+    --extra-packages org.antipiracy.support
 
 LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
 
