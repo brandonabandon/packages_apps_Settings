@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64.000000dp"
+    android:height="64.000000dp"
+    android:viewportWidth="64.000000"
+    android:viewportHeight="64.000000">
+
+    <group
+            android:translateY="64.000000"
+            android:scaleX="0.100000"
+            android:scaleY="-0.100000">
+        <path
+            android:fillColor="@*android:color/material_deep_teal_500"
+            android:pathData="M413 589 c-93 -46 -123 -109 -123 -256 0 -83 -5 -117 -19 -149 -21 -46 -63 -83
+-103 -91 -23 -4 -28 -11 -28 -34 0 -19 5 -29 15 -29 29 0 90 31 123 63 57 54 65 80
+69 212 3 66 9 132 15 148 13 33 70 84 103 93 19 5 25 13 25 35 0 36 -18 37 -77 8z" />
+        <path
+            android:fillColor="@*android:color/material_deep_teal_500"
+            android:pathData="M230 585 c-56 -18 -122 -73 -156 -131 -53 -90 -41 -225 27 -307 35 -42 51 -45 96
+-17 50 30 60 61 65 195 5 132 16 170 67 227 17 20 31 38 31 42 0 11 -84 5 -130 -9z" />
+        <path
+            android:fillColor="@*android:color/material_deep_teal_500"
+            android:pathData="M443 514 c-56 -28 -66 -55 -73 -199 -7 -146 -14 -167 -66 -224 -42 -48 -33 -58 44
+-47 72 10 147 51 187 103 36 47 65 125 65 173 0 74 -71 210 -108 210 -10 0 -31 -8
+-49 -16z" />
+    </group>
+</vector>

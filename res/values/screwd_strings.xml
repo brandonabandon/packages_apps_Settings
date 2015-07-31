@@ -1588,6 +1588,7 @@
     <string name="theme_reset_message">Reset theme state to default?</string>
     <string name="reset_default_message">Reset default</string>
     <string name="shortcut_action_theme_switch">Theme switcher</string>
+    <string name="trds">T.R.D.S.</string>
     
     <!-- Silent mode -->
     <string name="none_is_silent_title">None is Silent mode</string>
