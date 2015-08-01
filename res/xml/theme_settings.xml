@@ -19,7 +19,7 @@
 
     <SwitchPreference
         android:key="pref_theme_mode"
-        android:title="@string/theme_settings_title" />
+        android:title="@string/trds" />
 
     <ListPreference
         android:key="pref_theme_auto_mode"
