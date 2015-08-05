@@ -106,10 +106,6 @@ public class QSTileHolder {
                 resourceName = "ic_qs_ringer_audible";
                 stringId = R.string.qs_tile_notifications;
                 break;
-            case QSConstants.TILE_LTE:
-                resourceName = "ic_qs_lte_on";
-                stringId = R.string.qs_tile_lte;
-                break;
             case QSConstants.TILE_NFC:
                 resourceName = "ic_qs_nfc_on";
                 stringId = R.string.qs_tile_nfc;
