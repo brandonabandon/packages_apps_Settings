@@ -48,17 +48,6 @@ public class QSTileHolder {
             return null;
         }
 
-        // We need to filter out the LTE tile manually, because
-        // filtering via getAvailableTiles during fwb init
-        // disallows reading our system prop
-        // Hide the tile if device doesn't support LTE
-        // or it supports Dual Sim Dual Active.
-        // TODO: Should be spawning off a tile per sim
-        if (TextUtils.equals(QSConstants.TILE_LTE, tileType)
-                && (!QSUtils.deviceSupportsLte(context))) {
-            return null;
-        }
-
         switch (tileType) {
             case TILE_ADD_DELETE:
                 break;
