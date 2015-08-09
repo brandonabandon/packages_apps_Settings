@@ -48,16 +48,20 @@ import android.widget.Switch;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class ThemeSettings extends SettingsPreferenceFragment {
+public class ThemeSettings extends SettingsPreferenceFragment
+    implements OnPreferenceChangeListener {
 
     private static final String THEME_AUTO_MODE =
         "pref_theme_auto_mode";
     private static final String THEME_MODE =
         "pref_theme_mode";
+    private static final String OVERRIDE_CUSTOM_COLORS =
+        "pref_override_custom_colors";
 
     private ListPreference mThemeAutoMode;
     private SwitchPreference mThemeMode;
     private ThemeEnabler mThemeEnabler;
+    private SwitchPreference mOverrideCustomColor;
 
     private int mCurrentState = 0;
     private static final int MENU_RESET = Menu.FIRST;
@@ -95,6 +99,11 @@ public class ThemeSettings extends SettingsPreferenceFragment {
 
         mThemeMode = (SwitchPreference) prefSet.findPreference(THEME_MODE);
 
+        mOverrideCustomColor = (SwitchPreference) prefSet.findPreference(OVERRIDE_CUSTOM_COLORS);
+        mOverrideCustomColor.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.OVERRIDE_CUSTOM_COLORS, 1) == 1));
+        mOverrideCustomColor.setOnPreferenceChangeListener(this);
+
         final Activity activity = getActivity();
 
         mThemeEnabler = new ThemeEnabler(activity, mThemeMode);
@@ -116,6 +125,16 @@ public class ThemeSettings extends SettingsPreferenceFragment {
         if (mThemeEnabler != null) {
             mThemeEnabler.pause();
         }
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mOverrideCustomColor) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.OVERRIDE_CUSTOM_COLORS, value ? 1 : 0);
+            return true;
+        }
+        return false;
     }
 
     @Override

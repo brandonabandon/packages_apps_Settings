@@ -21,6 +21,11 @@
         android:key="pref_theme_mode"
         android:title="@string/trds" />
 
+    <SwitchPreference
+        android:key="pref_override_custom_colors"
+        android:title="@string/theme_override_custom_colors_title"
+        android:summary="@string/theme_override_custom_colors_summary" />
+
     <ListPreference
         android:key="pref_theme_auto_mode"
         android:entries="@array/theme_auto_mode_entries"

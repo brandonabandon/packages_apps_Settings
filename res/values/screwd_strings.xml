@@ -1568,9 +1568,11 @@
     <string name="navbar_ime_title">Hide IME switcher</string>
     <string name="navbar_ime_summary">Hide the IME switcher button on NavBar</string>
     
-    <!-- Themes -->
+    <!-- TRDS 5.1 -->
     <string name="theme_settings_title">Something dark side..</string>
     <string name="theme_auto_mode_title">Switch theme</string>
+    <string name="theme_override_custom_colors_title">Override custom colors</string>
+    <string name="theme_override_custom_colors_summary">Override custom notification and qs colors</string>
     <string name="theme_auto_mode_off">Manual</string>
     <string name="theme_auto_mode_lightsensor">On light condition change (experimental)</string>
     <string name="theme_auto_mode_twilight">On daytime</string>
@@ -1921,5 +1923,6 @@
     <string name="notification_icon_color_mode_greyscale_title">If the icon is an greyscale icon</string>
     <string name="notification_bg_color_mode_no_color_title">If the notification doesn\`t include an own color</string>
     <string name="notification_color_mode_always_title">Always</string>
+    <string name="notification_drawer_clear_all_icon_color_title">Clear all icon</string>
     
 </resources>
