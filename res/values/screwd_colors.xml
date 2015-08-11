@@ -32,4 +32,7 @@ limitations under the License.
 
     <color name="screencolor_background">#50000000</color>
     <drawable name="transparent_background">#00000000</drawable>
+    
+    <!-- Dashboard category title text color -->
+    <color name="dashboard_category_title_text">@color/theme_accent</color>
 </resources>
