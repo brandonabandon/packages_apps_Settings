@@ -45,6 +45,12 @@
 	android:summary="@string/slim_action_floats_summary"
 	android:defaultValue="false" />	
 
+      <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+      	android:key="three_finger_gesture"
+        android:title="@string/three_finger_gesture"
+        android:summary="@string/three_finger_gesture_summary"
+        android:defaultValue="false" />
+      
       <Preference android:key="restart_systemui"
             android:title="@string/restart_systemui"
 	    android:summary="@string/restart_systemui_summary" />
