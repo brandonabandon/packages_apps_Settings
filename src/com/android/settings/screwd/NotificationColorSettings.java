@@ -179,16 +179,6 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
         //mIconColor.setDefaultColors(WHITE, HOLO_BLUE_LIGHT);
         mIconColor.setOnPreferenceChangeListener(this);
 
-        mClearAllIconColor =
-                (ColorPickerPreference) findPreference(PREF_CLEAR_ALL_ICON_COLOR);
-        intColor = Settings.System.getInt(mResolver,
-                Settings.System.NOTIFICATION_DRAWER_CLEAR_ALL_ICON_COLOR, WHITE); 
-        mClearAllIconColor.setNewPreviewColor(intColor);
-        hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mClearAllIconColor.setSummary(hexColor);
-        //mClearAllIconColor.setDefaultColors(WHITE, HOLO_BLUE_LIGHT);
-        mClearAllIconColor.setOnPreferenceChangeListener(this);
-
         setHasOptionsMenu(true);
     }
 
@@ -277,14 +267,6 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
                 Settings.System.NOTIFICATION_ICON_COLOR, intHex);
             preference.setSummary(hex);
             return true;
-        } else if (preference == mClearAllIconColor) {
-            hex = ColorPickerPreference.convertToARGB(
-                Integer.valueOf(String.valueOf(newValue)));
-            intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(mResolver,
-                Settings.System.NOTIFICATION_DRAWER_CLEAR_ALL_ICON_COLOR, intHex);
-            preference.setSummary(hex);
-            return true;
         }
         return false;
     }
@@ -340,9 +322,6 @@ public class NotificationColorSettings extends SettingsPreferenceFragment implem
                                     Settings.System.NOTIFICATION_TEXT_COLOR, BLACK);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.NOTIFICATION_ICON_COLOR, BLACK);
-                            Settings.System.putInt(getOwner().mResolver,
-                                    Settings.System.NOTIFICATION_DRAWER_CLEAR_ALL_ICON_COLOR,
-                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })

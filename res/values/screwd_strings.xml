@@ -173,6 +173,8 @@
     <string name="reset_android">Android</string>
     <string name="reset_screwd">Screw\'d</string>
     <string name="positive_done">Done</string>
+    <string name="dlg_reset_values_message">Reset values to default?</string>
+    <string name="dlg_reset_android">Ok</string>
 
     <!-- Slim settings screens -->
     <string name="interface_settings_title">Interface</string>
