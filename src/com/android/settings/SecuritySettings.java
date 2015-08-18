@@ -92,7 +92,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_MANAGE_TRUST_AGENTS = "manage_trust_agents";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
-    private static final String KEY_LOCKSCREEN_CATEGORY = "lockscreen_category";
     private static final String KEY_LOCKSCREEN_WALLPAPER = "lockscreen_wallpaper";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
@@ -438,14 +437,12 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }
 
         // Lockscreen wallpaper
-        PreferenceCategory lockscreenCategory = (PreferenceCategory)
-            root.findPreference(KEY_LOCKSCREEN_CATEGORY);
-        PreferenceScreen lockscreenWallpaper = (PreferenceScreen)
-            lockscreenCategory.findPreference(KEY_LOCKSCREEN_WALLPAPER);
+        PreferenceScreen lockscreenWallpaper = (PreferenceScreen) 
+			findPreference(KEY_LOCKSCREEN_WALLPAPER);
         try {
             getActivity().getPackageManager().getPackageInfo("com.slim.wallpaperpicker", 0);
         } catch (PackageManager.NameNotFoundException e) {
-            lockscreenCategory.removePreference(lockscreenWallpaper);
+            getPreferenceScreen().removePreference(lockscreenWallpaper);
         }
 
         // The above preferences come and go based on security state, so we need to update
