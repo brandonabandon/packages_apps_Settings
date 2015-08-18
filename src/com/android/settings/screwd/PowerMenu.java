@@ -49,10 +49,13 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.screwd.NumberPickerPreference;
 
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
+
 import com.android.internal.util.cm.QSUtils;
 
 public class PowerMenu extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Indexable {
 		
 		private static final String KEY_ADVANCED_REBOOT = "advanced_reboot";
         private static final String SCREENSHOT_DELAY = "screenshot_delay";
@@ -128,5 +131,27 @@ public class PowerMenu extends SettingsPreferenceFragment implements
 	
         return false;
     }
+	
+public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+        @Override
+        public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                    boolean enabled) {
+            ArrayList<SearchIndexableResource> result =
+                new ArrayList<SearchIndexableResource>();
+
+            SearchIndexableResource sir = new SearchIndexableResource(context);
+            sir.xmlResId = R.xml.screwd_powermenu_settings;
+            result.add(sir);
+
+            return result;
+        }
+
+        @Override
+        public List<String> getNonIndexableKeys(Context context) {
+            ArrayList<String> result = new ArrayList<String>();
+            return result;
+        }
+    };
 	
 }

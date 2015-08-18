@@ -16,8 +16,14 @@
 
 package com.android.settings.screwd;
 
+import android.provider.SearchIndexableResource;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -26,13 +32,18 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.cyanogenmod.ShortcutPickHelper;
+
+import com.android.settings.search.Indexable;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class LegacyMenuSettings extends SettingsPreferenceFragment implements
-        OnPreferenceChangeListener, ShortcutPickHelper.OnPickListener {
+        OnPreferenceChangeListener, ShortcutPickHelper.OnPickListener, Indexable {
 
     private ShortcutPickHelper mPicker;
 
@@ -262,4 +273,26 @@ public class LegacyMenuSettings extends SettingsPreferenceFragment implements
         }
         return false;
     }
+	
+	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+        @Override
+        public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                    boolean enabled) {
+            ArrayList<SearchIndexableResource> result =
+                new ArrayList<SearchIndexableResource>();
+
+            SearchIndexableResource sir = new SearchIndexableResource(context);
+            sir.xmlResId = R.xml.navbar_legacy_menu_settings;
+            result.add(sir);
+
+            return result;
+        }
+
+        @Override
+        public List<String> getNonIndexableKeys(Context context) {
+            ArrayList<String> result = new ArrayList<String>();
+            return result;
+        }
+    };
 }

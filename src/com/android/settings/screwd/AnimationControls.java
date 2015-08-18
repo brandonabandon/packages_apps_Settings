@@ -19,7 +19,12 @@
 
 package com.android.settings.screwd;
 
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
+
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -27,6 +32,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.screwd.AnimBarPreference;
@@ -35,8 +41,10 @@ import com.android.settings.R;
 import com.android.internal.util.screwd.AwesomeAnimationHelper;
 
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-public class AnimationControls extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
+public class AnimationControls extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Indexable {
 
     private static final String ANIMATION_CONTROLS_EXIT_ONLY = "animation_controls_exit_only";
     private static final String ANIMATION_CONTROLS_REVERSE_EXIT = "animation_controls_reverse_exit";
@@ -281,4 +289,26 @@ public class AnimationControls extends SettingsPreferenceFragment implements OnP
 
         mAnimReverseExit.setEnabled(!enabled);
     }
+	
+	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.animation_controls;
+                    result.add(sir);
+
+                    return result;
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    ArrayList<String> result = new ArrayList<String>();
+                    return result;
+                }
+    };
 }

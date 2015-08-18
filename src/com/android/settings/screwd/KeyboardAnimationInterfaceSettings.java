@@ -21,6 +21,9 @@ package com.android.settings.screwd;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
 
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
+
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -32,6 +35,7 @@ import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,11 +43,14 @@ import android.view.MenuItem;
 import android.util.Log;
 import android.text.TextUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.android.settings.widget.SeekBarPreferenceCham;
 import com.android.internal.util.screwd.AwesomeAnimationHelper;
 
 public class KeyboardAnimationInterfaceSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Indexable {
     private static final String TAG = "KeyboardAnimationInterfaceSettings";
 
 
@@ -245,5 +252,27 @@ public class KeyboardAnimationInterfaceSettings extends SettingsPreferenceFragme
     	String[] str = getActivity().getResources().getStringArray(R.array.listview_interpolator_entries);
     	return str[index];
     }
+	
+	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+        @Override
+        public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                    boolean enabled) {
+            ArrayList<SearchIndexableResource> result =
+                new ArrayList<SearchIndexableResource>();
+
+            SearchIndexableResource sir = new SearchIndexableResource(context);
+            sir.xmlResId = R.xml.keyboard_animation_interface_settings;
+            result.add(sir);
+
+            return result;
+        }
+
+        @Override
+        public List<String> getNonIndexableKeys(Context context) {
+            ArrayList<String> result = new ArrayList<String>();
+            return result;
+        }
+    };
 
 }

@@ -19,6 +19,7 @@ package com.android.settings.screwd;
 
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.content.Context;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -37,13 +38,19 @@ import com.android.settings.screwd.qs.QSTiles;
 
 import com.android.internal.widget.LockPatternUtils;
 
+import android.provider.SearchIndexableResource;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
+
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class QsSettings extends SettingsPreferenceFragment
-            implements OnPreferenceChangeListener  {		
+            implements OnPreferenceChangeListener, Indexable  {		
 
     public static final String TAG = "QsSettings";
 
@@ -174,6 +181,28 @@ public class QsSettings extends SettingsPreferenceFragment
             mQuickPulldown.setSummary(res.getString(R.string.summary_quick_pulldown, direction));
         }
     }
+	
+	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+        new BaseSearchIndexProvider() {
+        @Override
+        public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                                                                    boolean enabled) {
+            ArrayList<SearchIndexableResource> result =
+                new ArrayList<SearchIndexableResource>();
+
+            SearchIndexableResource sir = new SearchIndexableResource(context);
+            sir.xmlResId = R.xml.screwd_qs_settings;
+            result.add(sir);
+
+            return result;
+        }
+
+        @Override
+        public List<String> getNonIndexableKeys(Context context) {
+            ArrayList<String> result = new ArrayList<String>();
+            return result;
+        }
+    };
 
 }
 

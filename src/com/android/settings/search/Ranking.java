@@ -29,6 +29,39 @@ import com.android.settings.SecuritySettings;
 import com.android.settings.WallpaperTypeSettings;
 import com.android.settings.WirelessSettings;
 import com.android.settings.accessibility.AccessibilitySettings;
+import com.android.settings.screwd.AnimationControls;
+import com.android.settings.screwd.AppCircleBar;
+import com.android.settings.screwd.AppSidebar;
+import com.android.settings.screwd.CarrierLabel;
+import com.android.settings.screwd.HeadsUpSettings;
+import com.android.settings.screwd.InterfaceSettings;
+import com.android.settings.screwd.KeyboardAnimationInterfaceSettings;
+import com.android.settings.screwd.LegacyMenuSettings;
+import com.android.settings.screwd.LockScreenColorSettings;
+import com.android.settings.screwd.LockScreenWeatherSettings;
+import com.android.settings.screwd.Misc;
+import com.android.settings.screwd.NavBarButtonStyle;
+import com.android.settings.screwd.NavbarSettings;
+import com.android.settings.screwd.NetworkTraffic;
+import com.android.settings.screwd.NotificationColorSettings;
+import com.android.settings.screwd.Notifications;
+import com.android.settings.screwd.OmniSwitch;
+import com.android.settings.screwd.OverscrollEffects;
+import com.android.settings.screwd.PieButtonStyleSettings;
+import com.android.settings.screwd.PieControl;
+import com.android.settings.screwd.PieStyleSettings;
+import com.android.settings.screwd.PieTriggerSettings;
+import com.android.settings.screwd.PowerMenu;
+import com.android.settings.screwd.QSColors;
+import com.android.settings.screwd.QsSettings;
+import com.android.settings.screwd.RecentPanel;
+import com.android.settings.screwd.Recents;
+import com.android.settings.screwd.ScrewdSettings;
+import com.android.settings.screwd.SoundSettings;
+import com.android.settings.screwd.StatusBar;
+import com.android.settings.screwd.StatusBarWeather;
+import com.android.settings.screwd.System;
+import com.android.settings.screwd.VolumeSteps;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.deviceinfo.Memory;
 import com.android.settings.deviceinfo.UsbSettings;
@@ -63,20 +96,55 @@ public final class Ranking {
     public static final int RANK_WIRELESS = 5;
     public static final int RANK_HOME = 6;
     public static final int RANK_DISPLAY = 7;
-    public static final int RANK_WALLPAPER = 8;
-    public static final int RANK_NOTIFICATIONS = 9;
-    public static final int RANK_STORAGE = 10;
-    public static final int RANK_POWER_USAGE = 11;
-    public static final int RANK_USERS = 12;
-    public static final int RANK_LOCATION = 13;
-    public static final int RANK_SECURITY = 14;
-    public static final int RANK_IME = 15;
-    public static final int RANK_PRIVACY = 16;
-    public static final int RANK_DATE_TIME = 17;
-    public static final int RANK_ACCESSIBILITY = 18;
-    public static final int RANK_PRINTING = 19;
-    public static final int RANK_DEVELOPEMENT = 20;
-    public static final int RANK_DEVICE_INFO = 21;
+	public static final int RANK_ANIMATIONS = 8;
+	public static final int RANK_APPCIRCLEBAR = 9;
+	public static final int RANK_APPSIDEBAR = 10;
+	public static final int RANK_CARRIERLABEL = 11;
+	public static final int RANK_HEADSUP = 12;
+	public static final int RANK_INTERFACE = 13;
+	public static final int RANK_SCREWDSETTINGS = 14;
+	public static final int RANK_KEYBOARDANI = 15;
+	public static final int RANK_LEGACYMENU = 16;
+	public static final int RANK_LOCKCOLORS = 17;
+	public static final int RANK_LOCKWEATHER = 18;
+	public static final int RANK_MISC = 19;
+	public static final int RANK_NAVBARBUTTON = 20;
+	public static final int RANK_NAVBARSETTINGS = 21;
+	public static final int RANK_NETTRAFFIC = 22;
+	public static final int RANK_NOTCOLOR = 23;
+	public static final int RANK_NOTS = 24;
+	public static final int RANK_OMNISWITCH = 25;
+	public static final int RANK_OVERSCROLL = 26;
+	public static final int RANK_PIESTYLE = 27;
+    public static final int RANK_PIECONTROL = 28;
+    public static final int RANK_PIEBUTTON = 29;
+    public static final int RANK_PIETRIGGER = 29;
+	public static final int RANK_POWERMENU = 30;
+	public static final int RANK_QSCOLOR = 31;
+	public static final int RANK_QSSETTINGS = 32;
+	public static final int RANK_RECENTPAN = 33;
+	public static final int RANK_RECENTS = 34;
+	
+	public static final int RANK_SOUNDSETT = 35;
+	public static final int RANK_STATUSBAR = 36;
+	public static final int RANK_STATUSWEATHER = 37;
+	public static final int RANK_SYSTEM= 38;
+	public static final int RANK_VOLUMESTEPS = 39;
+    public static final int RANK_WALLPAPER = 40;
+    public static final int RANK_NOTIFICATIONS = 41;
+    public static final int RANK_STORAGE = 42;
+    public static final int RANK_POWER_USAGE = 43;
+    public static final int RANK_USERS = 44;
+    public static final int RANK_LOCATION = 45;
+    public static final int RANK_SECURITY = 46;
+    public static final int RANK_IME = 47;
+    public static final int RANK_PRIVACY = 48;
+    public static final int RANK_DATE_TIME = 49;
+    public static final int RANK_ACCESSIBILITY = 50;
+    public static final int RANK_PRINTING = 51;
+    public static final int RANK_DEVELOPEMENT = 52;
+    public static final int RANK_DEVICE_INFO = 53;
+	
 
     public static final int RANK_UNDEFINED = -1;
     public static final int RANK_OTHERS = 1024;
@@ -105,7 +173,101 @@ public final class Ranking {
 
         // Other wireless settinfs
         sRankMap.put(WirelessSettings.class.getName(), RANK_WIRELESS);
-        sRankMap.put(WifiCallingSettings.class.getName(), RANK_WIRELESS);
+		//Animations
+        sRankMap.put(AnimationControls.class.getName(), RANK_ANIMATIONS);
+
+        // App CircleBar
+        sRankMap.put(AppCircleBar.class.getName(), RANK_APPCIRCLEBAR);
+
+        // App CircleBar
+        sRankMap.put(AppSidebar.class.getName(), RANK_APPSIDEBAR);
+
+        // Carrier Label
+        sRankMap.put(CarrierLabel.class.getName(), RANK_CARRIERLABEL);
+
+        // Heads Up
+        sRankMap.put(HeadsUpSettings.class.getName(), RANK_HEADSUP);
+
+        // Screw'd Interface
+        sRankMap.put(InterfaceSettings.class.getName(), RANK_INTERFACE);
+
+        // Keyboard settings
+        sRankMap.put(KeyboardAnimationInterfaceSettings.class.getName(), RANK_KEYBOARDANI);
+
+        // Legacy Menu
+        sRankMap.put(LegacyMenuSettings.class.getName(), RANK_LEGACYMENU);
+
+        // Lockscreen Color Settings
+        sRankMap.put(LockScreenColorSettings.class.getName(), RANK_LOCKCOLORS);
+
+        // Lockscreen Weather
+        sRankMap.put(LockScreenWeatherSettings.class.getName(), RANK_LOCKWEATHER);
+
+        // Screw'd Misc
+        sRankMap.put(Misc.class.getName(), RANK_MISC);
+
+        // Navbar Button style
+        sRankMap.put(NavBarButtonStyle.class.getName(), RANK_NAVBARBUTTON);
+
+        // Navbar Settings
+        sRankMap.put(NavbarSettings.class.getName(), RANK_NAVBARSETTINGS);
+		
+		// Network traffic
+        sRankMap.put(NetworkTraffic.class.getName(), RANK_NETTRAFFIC);
+		
+		// Notification colors
+        sRankMap.put(NotificationColorSettings.class.getName(), RANK_NOTCOLOR);
+		
+		// Navbar Settings
+        sRankMap.put(Notifications.class.getName(), RANK_NOTS);
+		
+		// Omniswitch
+        sRankMap.put(OmniSwitch.class.getName(), RANK_OMNISWITCH);
+		
+		// Omniswitch
+        sRankMap.put(OverscrollEffects.class.getName(), RANK_OVERSCROLL);
+
+        // PIE Button Style
+        sRankMap.put(PieButtonStyleSettings.class.getName(), RANK_PIEBUTTON);
+
+        // PIE Control
+        sRankMap.put(PieControl.class.getName(), RANK_PIECONTROL);
+
+        // PIE Style
+        sRankMap.put(PieStyleSettings.class.getName(), RANK_PIESTYLE);
+
+        // PIE Trigger
+        sRankMap.put(PieStyleSettings.class.getName(), RANK_PIETRIGGER);
+
+        // QS Colors
+        sRankMap.put(QSColors.class.getName(), RANK_QSCOLOR);
+		
+		// QS Settings
+        sRankMap.put(QsSettings.class.getName(), RANK_QSSETTINGS);
+
+        // Recents Panel
+        sRankMap.put(RecentPanel.class.getName(), RANK_RECENTPAN);
+		
+		// Screw'd Recents
+        sRankMap.put(Recents.class.getName(), RANK_RECENTS);
+
+        // Statusbar Weather
+        sRankMap.put(StatusBarWeather.class.getName(), RANK_STATUSWEATHER);
+
+        // Screw'd Settings
+        sRankMap.put(ScrewdSettings.class.getName(), RANK_SCREWDSETTINGS);
+
+        // Volume Steps
+        sRankMap.put(VolumeSteps.class.getName(), RANK_VOLUMESTEPS);
+
+        // StatusBar
+        sRankMap.put(StatusBar.class.getName(), RANK_STATUSBAR);
+		
+		// System
+        sRankMap.put(System.class.getName(), RANK_SYSTEM);
+
+        // Screwd Sound
+        sRankMap.put(SoundSettings.class.getName(), RANK_SOUNDSETT);
 
         // Home
         sRankMap.put(HomeSettings.class.getName(), RANK_HOME);
