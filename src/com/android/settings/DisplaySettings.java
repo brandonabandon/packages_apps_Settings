@@ -88,7 +88,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_LIFT_TO_WAKE = "lift_to_wake";
     private static final String KEY_DOZE_FRAGMENT = "doze_fragment";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
-    private static final String KEY_AUTO_ROTATE = "auto_rotate";
     private static final String KEY_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
     private static final String KEY_WAKEUP_CATEGORY = "category_wakeup_options";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
@@ -293,10 +292,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     }
 
     private void updateDisplayRotationPreferenceDescription() {
-        if (mDisplayRotationPreference == null) {
+        PreferenceScreen preference = mDisplayRotationPreference;
+        if (preference == null) {
             return;
         }
-        PreferenceScreen preference = mDisplayRotationPreference;
+        preference.setEnabled(RotationPolicy.isRotationLockToggleVisible(getActivity()));
         StringBuilder summary = new StringBuilder();
         Boolean rotationEnabled = Settings.System.getInt(getContentResolver(),
                 Settings.System.ACCELEROMETER_ROTATION, 0) != 0;
@@ -582,9 +582,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     }
                     if (!isDozeAvailable(context)) {
                         result.add(KEY_DOZE_FRAGMENT);
-                    }
-                    if (!RotationPolicy.isRotationLockToggleVisible(context)) {
-                        result.add(KEY_AUTO_ROTATE);
                     }
                     return result;
                 }
