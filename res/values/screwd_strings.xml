@@ -1942,13 +1942,13 @@
     <string name="keep_screen_on_never">Never</string>
     <string name="keep_screen_on_debugging">While USB debugging</string>
     <string name="keep_screen_on_charging">While charging</string>
-    
-<<<<<<< HEAD
-    <string name="shake_clear_recents">Shake to clear</string>
-    <string name="shake_clear_recents_summary">Clear recents by shaking your phone</string>
-
+ 
     <!-- Lock screen rotation -->
     <string name="display_lockscreen_rotation_title">Lock screen</string>
-=======
->>>>>>> parent of 50bddd1... Settings:Clean recent task by shake(2/2)
+    
+    <string name="shake_clean_recent">Clean recents</string>
+    <string name="shake_clean_recent_summary">Clean recent task by shake</string>
+    <string name="shake_clean_notification">Clean notifications</string>
+    <string name="shake_clean_notification_summary">Clean notification by shake</string>
+
 </resources>

@@ -48,7 +48,13 @@
             android:title="@string/recents_clear_all_dismiss_all_title"
             android:summary="@string/recents_clear_all_dismiss_all_summary"
             android:defaultValue="true"
-            android:dependency="show_clear_all_recents" />        
+            android:dependency="show_clear_all_recents" />
+	    
+	<com.android.settings.screwd.SystemSettingSwitchPreference
+            android:key="shake_to_clean_recents"
+            android:title="@string/shake_clean_recent"
+            android:summary="@string/shake_clean_recent_summary"
+            android:defaultValue="false" />          
 
     </PreferenceCategory>
     

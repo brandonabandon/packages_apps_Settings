@@ -60,5 +60,11 @@
             android:id="@+id/notification_colors"
             android:title="@string/cat_colors_title"
             android:fragment="com.android.settings.screwd.NotificationColorSettings" />      		
-
+	
+	<com.android.settings.screwd.SystemSettingSwitchPreference
+            android:key="shake_to_clean_notifications"
+       	    android:title="@string/shake_clean_notification"
+            android:summary="@string/shake_clean_notification_summary"
+            android:defaultValue="false" />
+	    
 </PreferenceScreen>
