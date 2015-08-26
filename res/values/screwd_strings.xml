@@ -1079,6 +1079,7 @@
     <string name="powermenu_screenrecord">Screen Record</string>
     <string name="powermenu_lockdown">Lock Down</string>
     <string name="powermenu_torch">Torch</string>
+    <string name="powermenu_lockscreen_title">Show power menu lock screen</string>
     
     <!-- Show carrier label and custom -->
     <string name="carrier_options">Carrier Label</string>
