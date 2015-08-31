@@ -35,10 +35,12 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
+import android.graphics.PorterDuff.Mode;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -63,8 +65,10 @@ import com.android.internal.util.slim.ActionConfig;
 import com.android.internal.util.slim.ActionConstants;
 import com.android.internal.util.slim.ActionHelper;
 import com.android.internal.util.slim.ImageHelper;
-import com.android.internal.util.slim.DeviceUtils;
-import com.android.internal.util.slim.DeviceUtils.FilteredDeviceFeaturesArray;
+import com.android.internal.util.screwd.ActionUtils;
+import com.android.internal.util.screwd.ActionUtils.FilteredDeviceFeaturesArray;
+import com.android.internal.util.screwd.QSBarHelper;
+import com.android.internal.util.screwd.QSColorHelper;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
@@ -99,7 +103,8 @@ public class ActionListViewSettings extends ListFragment implements
     private static final int POWER_MENU_SHORTCUT   = 5;
     private static final int SHAKE_EVENTS_DISABLED = 6;
     private static final int QUICKTILE             = 7;
-    private static final int RECENT_APP_SIDEBAR    = 8;
+    private static final int QUICK_SETTINGS_BAR    = 8;
+    private static final int RECENT_APP_SIDEBAR    = 9;
 
     private static final int DEFAULT_MAX_ACTION_NUMBER = 5;
     private static final int DEFAULT_NUMBER_OF_ACTIONS = 3;
@@ -212,7 +217,7 @@ public class ActionListViewSettings extends ListFragment implements
         mDisableMessage = (TextView) view.findViewById(R.id.disable_message);
 
         FilteredDeviceFeaturesArray finalActionDialogArray = new FilteredDeviceFeaturesArray();
-        finalActionDialogArray = DeviceUtils.filterUnsupportedDeviceFeatures(mActivity,
+        finalActionDialogArray = ActionUtils.filterUnsupportedDeviceFeatures(mActivity,
             res.getStringArray(res.getIdentifier(
                     mActionValuesKey, "array", "com.android.settings")),
             res.getStringArray(res.getIdentifier(
@@ -570,6 +575,9 @@ public class ActionListViewSettings extends ListFragment implements
                     mActivity, mActionValuesKey, mActionEntriesKey);
             case SHAKE_EVENTS_DISABLED:
                 return ActionHelper.getDisabledShakeApps(mActivity);*/
+            case QUICK_SETTINGS_BAR:
+                return QSBarHelper.getQSBarConfigWithDescription(
+                    mActivity, mActionValuesKey, mActionEntriesKey);
             case RECENT_APP_SIDEBAR:
                 return ActionHelper.getRecentAppSidebarConfigWithDescription(
                         mActivity, mActionValuesKey, mActionEntriesKey);
@@ -609,6 +617,10 @@ public class ActionListViewSettings extends ListFragment implements
             case SHAKE_EVENTS_DISABLED:
                 ActionHelper.setDisabledShakeApps(mActivity, actionConfigs, reset);
                 break;*/
+            case QUICK_SETTINGS_BAR:
+                QSBarHelper.setQSBarConfig(mActivity, actionConfigs, reset);
+                updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
+                break;
             case RECENT_APP_SIDEBAR:
                 ActionHelper.setRecentAppSidebarConfig(mActivity, actionConfigs, reset);
                 updateFabVisibility(reset ? mDefaultNumberOfActions : actionConfigs.size());
@@ -625,6 +637,7 @@ public class ActionListViewSettings extends ListFragment implements
     }
 
     private class ViewHolder {
+        public TextView clickActionDescriptionView;
         public TextView longpressActionDescriptionView;
         public ImageView iconView;
     }
@@ -642,9 +655,13 @@ public class ActionListViewSettings extends ListFragment implements
             if (v != convertView && v != null) {
                 ViewHolder holder = new ViewHolder();
 
+                TextView clickActionDescription =
+                    (TextView) v.findViewById(R.id.click_action_description);
                 TextView longpressActionDecription =
                     (TextView) v.findViewById(R.id.longpress_action_description);
                 ImageView icon = (ImageView) v.findViewById(R.id.icon);
+
+                holder.clickActionDescriptionView = clickActionDescription;
 
                 if (mDisableLongpress) {
                     longpressActionDecription.setVisibility(View.GONE);
@@ -692,6 +709,15 @@ public class ActionListViewSettings extends ListFragment implements
                     d = ImageHelper.getColoredDrawable(d, getResources()
                             .getColor(R.color.dslv_icon_dark));
                 }
+            } else if (mActionMode == QUICK_SETTINGS_BAR) {
+                d = ImageHelper.resize(
+                        mActivity, QSBarHelper.getQSBarIconImage(mActivity,
+                        getItem(position).getClickAction()), 32);
+                final int iconColor = QSColorHelper.getIconColor(mActivity);
+                holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
+                holder.iconView.setColorFilter(iconColor, Mode.MULTIPLY);
+            } else {
+                holder.iconView.setImageDrawable(d);
             }
             holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
 
@@ -796,6 +822,7 @@ public class ActionListViewSettings extends ListFragment implements
                         case NAV_RING:
                         case PIE:
                         case PIE_SECOND:
+                        case QUICK_SETTINGS_BAR:
                         case RECENT_APP_SIDEBAR:
                         default:
                             actionMode = res.getString(R.string.shortcut_action_help_button);

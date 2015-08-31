@@ -175,6 +175,11 @@
     <string name="positive_done">Done</string>
     <string name="dlg_reset_values_message">Reset values to default?</string>
     <string name="dlg_reset_android">Ok</string>
+    <string name="hidden_title">Hidden</string>
+    <string name="customize_title">Customize</string>
+    <string name="ripple_title">Ripple effect</string>
+    <string name="colorize_ripple_title">Colorize ripple effect</string>
+    <string name="colorize_ripple_dialog_title">Choose how to colorize the ripple effect</string>
 
     <!-- Slim settings screens -->
     <string name="interface_settings_title">Interface</string>
@@ -1151,6 +1156,7 @@
     <string name="qs_tile_compass">Compass</string>
     <string name="qs_tile_lockscreen">Lock screen</string>
     <string name="qs_tile_lte">Lte</string>
+    <string name="qs_tile_mobile_data">Mobile data</string>
     <string name="qs_tile_screen_timeout">Screen timeout</string>
     <string name="qs_screentimeout_mode_title">Screen timeout modes</string>
     <string name="qs_tile_headsup">Heads up</string>
@@ -1172,6 +1178,12 @@
     <string name="qs_music_play_tile">Play</string>
     <string name="qs_tile_slim_floats">Slim Floats</string>
     <string name="qs_tile_slimpie">Pie Control</string>
+    <string name="qs_type_title">Type</string>
+    <string name="qs_type_dlg_title">Choose the quick settings type</string>
+    <string name="qs_type_panel">Panel</string>
+    <string name="qs_type_bar">Bar</string>
+    <string name="qs_panel_tiles_summary">Arrange the tiles, and choose the tiles to display on the panel</string>
+    <string name="qs_bar_buttons_summary">Arrange the buttons, and choose the buttons to display on the bar</string>
             
     <!-- QuickSettings 4 columns -->
     <string name="qs_four_columns_title">Show four tiles per row</string>

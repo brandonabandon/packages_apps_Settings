@@ -53,6 +53,7 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import com.android.internal.util.cm.QSUtils;
+import com.android.internal.util.screwd.DeviceUtils;
 
 public class PowerMenu extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
@@ -92,7 +93,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
 		
 		mPowermenuTorch = (SwitchPreference) findPreference(POWERMENU_TORCH);
         mPowermenuTorch.setOnPreferenceChangeListener(this);
-        if (!QSUtils.deviceSupportsFlashLight(getActivity())) {
+        if (!DeviceUtils.deviceSupportsFlashLight(getActivity())) {
             getPreferenceScreen().removePreference(mPowermenuTorch);
         } else {
         mPowermenuTorch.setChecked((Settings.System.getInt(resolver,

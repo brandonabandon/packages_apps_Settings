@@ -45,6 +45,7 @@ import android.widget.Toast;
 import com.android.settings.util.Helpers;
 
 import com.android.internal.util.cm.QSUtils;
+import com.android.internal.util.screwd.DeviceUtils;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -95,7 +96,7 @@ public class Misc extends SettingsPreferenceFragment implements
         mTorchOffDelay.setSummary(mTorchOffDelay.getEntry());
         mTorchOffDelay.setOnPreferenceChangeListener(this);
 
-        if (!QSUtils.deviceSupportsFlashLight(activity)) {
+        if (!DeviceUtils.deviceSupportsFlashLight(activity)) {
             prefSet.removePreference(mTorchOff);
             prefSet.removePreference(mTorchOffDelay);
         }

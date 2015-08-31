@@ -57,11 +57,12 @@ public class QsSettings extends SettingsPreferenceFragment
     private static final String PREF_QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
+	private static final String PREF_QS_TYPE = "qs_type";
 
     ListPreference mQuickPulldown;
     ListPreference mSmartPulldown;
     SwitchPreference mBlockOnSecureKeyguard;
-	private Preference mQSTiles;
+	private ListPreference mQSType;
 
 
     @Override
@@ -89,6 +90,14 @@ public class QsSettings extends SettingsPreferenceFragment
         mSmartPulldown.setValue(String.valueOf(smartPulldown));
         updateSmartPulldownSummary(smartPulldown);
 		
+		//QS Bar
+		mQSType = (ListPreference) findPreference(PREF_QS_TYPE);
+        int type = Settings.System.getInt(getContentResolver(),
+               Settings.System.QS_TYPE, 0);
+        mQSType.setValue(String.valueOf(type));
+        mQSType.setSummary(mQSType.getEntry());
+        mQSType.setOnPreferenceChangeListener(this);
+		
 		/*
         final LockPatternUtils lockPatternUtils = new LockPatternUtils(getActivity());
         mBlockOnSecureKeyguard = (SwitchPreference) findPreference(PREF_BLOCK_ON_SECURE_KEYGUARD);
@@ -100,23 +109,21 @@ public class QsSettings extends SettingsPreferenceFragment
             prefs.removePreference(mBlockOnSecureKeyguard);
         }
 		*/
-		
-		 mQSTiles = findPreference("qs_order");
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-		
-		int qsTileCount = QSTiles.determineTileCount(getActivity());
-        mQSTiles.setSummary(getResources().getQuantityString(R.plurals.qs_tiles_summary,
-                    qsTileCount, qsTileCount));
-    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mQuickPulldown) {
+        int intValue;
+		if (preference == mQSType) {
+            intValue = Integer.valueOf((String) newValue);
+            int index = mQSType.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                Settings.System.QS_TYPE, intValue);
+            preference.setSummary(mQSType.getEntries()[index]);
+            return true;
+		} else if (preference == mQuickPulldown) {
             int statusQuickPulldown = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN,

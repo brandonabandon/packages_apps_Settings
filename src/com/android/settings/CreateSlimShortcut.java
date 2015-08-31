@@ -23,8 +23,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.android.internal.util.slim.ActionHelper;
-import com.android.internal.util.slim.DeviceUtils;
-import com.android.internal.util.slim.DeviceUtils.FilteredDeviceFeaturesArray;
+import com.android.internal.util.screwd.ActionUtils;
+import com.android.internal.util.screwd.ActionUtils.FilteredDeviceFeaturesArray;
 import com.android.internal.util.slim.ImageHelper;
 import com.android.settings.screwd.SlimActionShortcut;
 
@@ -43,7 +43,7 @@ public class CreateSlimShortcut extends Activity {
         FilteredDeviceFeaturesArray
                 finalActionDialogArray = new FilteredDeviceFeaturesArray();
         finalActionDialogArray =
-            DeviceUtils.filterUnsupportedDeviceFeatures(this,
+            ActionUtils.filterUnsupportedDeviceFeatures(this,
             getResources().getStringArray(getResources().getIdentifier(
             "shortcut_action_launcher_values", "array", "com.android.settings")),
             getResources().getStringArray(getResources().getIdentifier(

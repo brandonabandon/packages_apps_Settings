@@ -20,11 +20,34 @@
     	<PreferenceCategory
            android:title="@string/qs_category_tiles">
 	
+	   <ListPreference
+                android:key="qs_type"
+                android:title="@string/qs_type_title"
+                android:dialogTitle="@string/qs_type_dlg_title"
+        	android:entries="@array/qs_type_entries"
+        	android:entryValues="@array/qs_type_values" />
+	   
 	   <PreferenceScreen
-        	android:key="qs_order"
-        	android:title="@string/qs_order_title"
+            	android:key="qs_panel_tiles"
+            	android:title="@string/customize_title"
+            	android:summary="@string/qs_panel_tiles_summary"
         	android:fragment="com.android.settings.screwd.qs.QSTiles" />
 		
+	   <PreferenceScreen
+            android:key="qs_bar_buttons"
+            android:title="@string/customize_title"
+            android:summary="@string/qs_bar_buttons_summary"
+            android:fragment="com.android.settings.screwd.dslv.ActionListViewSettings">
+                <extra android:name="actionMode" android:value="8" />
+                <extra android:name="maxAllowedActions" android:value="12" />
+                <extra android:name="defaultNumberOfActions" android:value="6" />
+                <extra android:name="disableLongpress" android:value="true" />
+                <extra android:name="disableIconPicker" android:value="true" />
+                <extra android:name="disableDeleteLastEntry" android:value="true" />
+                <extra android:name="actionValues" android:value="qs_bar_button_values" />
+                <extra android:name="actionEntries" android:value="qs_bar_button_entries" />
+            </PreferenceScreen>
+	   
 	   <PreferenceScreen
             	android:key="navbar_targets_settings"
             	android:fragment="com.android.settings.screwd.dslv.ActionListViewSettings"

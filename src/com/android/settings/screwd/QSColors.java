@@ -56,6 +56,7 @@ public class QSColors extends SettingsPreferenceFragment implements
             "qs_transparent_shade";
     private static final String PREF_QS_COLOR_SWITCH =
             "qs_color_switch";
+    private static final String PREF_QS_RIPPLE_COLOR = "qs_ripple_color";
 
     private static final int DEFAULT_BACKGROUND_COLOR = 0xff263238;
     private static final int WHITE = 0xffffffff;
@@ -69,6 +70,7 @@ public class QSColors extends SettingsPreferenceFragment implements
     private ColorPickerPreference mQSTextColor;
     private SwitchPreference mQSShadeTransparency;
     private SwitchPreference mQSSSwitch;
+    private ColorPickerPreference mQSRippleColor;
 
     private ContentResolver mResolver;
 
@@ -128,6 +130,14 @@ public class QSColors extends SettingsPreferenceFragment implements
         mQSSSwitch.setChecked((Settings.System.getInt(mResolver,
                 Settings.System.QS_COLOR_SWITCH, 0) == 1));
         mQSSSwitch.setOnPreferenceChangeListener(this);
+        mQSRippleColor =
+                (ColorPickerPreference) findPreference(PREF_QS_RIPPLE_COLOR);
+        intColor = Settings.System.getInt(mResolver,
+                Settings.System.QS_RIPPLE_COLOR, WHITE); 
+        mQSRippleColor.setNewPreviewColor(intColor);
+        hexColor = String.format("#%08x", (0xffffffff & intColor));
+        mQSRippleColor.setSummary(hexColor);
+        mQSRippleColor.setOnPreferenceChangeListener(this);
 
         setHasOptionsMenu(true);
     }
@@ -189,6 +199,14 @@ public class QSColors extends SettingsPreferenceFragment implements
                     Settings.System.QS_COLOR_SWITCH, value ? 1 : 0);
             refreshSettings();
 			return true;
+        } else if (preference == mQSRippleColor) {
+            hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(mResolver,
+               Settings.System.QS_RIPPLE_COLOR, intHex);
+            preference.setSummary(hex);
+            return true;
         }
         return false;
     }
@@ -234,6 +252,9 @@ public class QSColors extends SettingsPreferenceFragment implements
                                     Settings.System.QS_TEXT_COLOR, WHITE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_TRANSPARENT_SHADE, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.QS_RIPPLE_COLOR,
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
@@ -251,6 +272,9 @@ public class QSColors extends SettingsPreferenceFragment implements
                                     SCREWD_PURPLE);
                             Settings.System.putInt(getOwner().mResolver,
                                     Settings.System.QS_TRANSPARENT_SHADE, 0);
+                            Settings.System.putInt(getOwner().mResolver,
+                                    Settings.System.QS_RIPPLE_COLOR,
+                                    WHITE);
                             getOwner().refreshSettings();
                         }
                     })
