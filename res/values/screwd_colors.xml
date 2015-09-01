@@ -35,4 +35,9 @@ limitations under the License.
     
     <!-- Dashboard category title text color -->
     <color name="dashboard_category_title_text">@color/theme_accent</color>
+    
+    <!-- DSLV colors -->
+    <color name="dslv_divider">#1fffffff</color>
+    <color name="dslv_icon_dark">#ff009688</color>
+    <color name="dslv_float_background_color">#ff1b1f23</color>
 </resources>
