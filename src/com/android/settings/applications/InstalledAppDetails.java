@@ -639,8 +639,10 @@ public class InstalledAppDetails extends Fragment
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        packagePath.setText(mApplicationInfo.publicSourceDir);
-        packagePath.setVisibility(View.VISIBLE);
+        if (mApplicationInfo != null) {
+            packagePath.setText(mApplicationInfo.publicSourceDir);
+            packagePath.setVisibility(View.VISIBLE);
+        }
         // Version number of application
         mAppVersion = (TextView) appSnippet.findViewById(R.id.app_size);
 
