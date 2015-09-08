@@ -15,10 +15,12 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:key="qs_settings">
     
-    	<PreferenceCategory
-           android:title="@string/qs_category_tiles">
+    <PreferenceCategory
+    	android:title="@string/qs_category_title" 
+	android:key="qs_type_cat">
 	
 	   <ListPreference
                 android:key="qs_type"
@@ -47,6 +49,13 @@
                 <extra android:name="actionValues" android:value="qs_bar_button_values" />
                 <extra android:name="actionEntries" android:value="qs_bar_button_entries" />
             </PreferenceScreen>
+		
+    </PreferenceCategory> 
+	
+    <PreferenceCategory
+           android:title="@string/qs_category_tiles"
+	   android:key="qs_tile_op_cat">
+	    
 	   
 	   <PreferenceScreen
             	android:key="navbar_targets_settings"
@@ -77,7 +86,8 @@
     </PreferenceCategory>
     
     <PreferenceCategory
-           android:title="@string/qs_category_options">
+           android:title="@string/qs_category_options"
+	   android:key="qs_ops">
 	   
 	   <PreferenceScreen
             	android:key="qs_colors"

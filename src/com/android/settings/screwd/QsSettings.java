@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
@@ -52,17 +53,40 @@ import java.util.Locale;
 public class QsSettings extends SettingsPreferenceFragment
             implements OnPreferenceChangeListener, Indexable  {		
 
-    public static final String TAG = "QsSettings";
+    	public static final String TAG = "QsSettings";
 
-    private static final String PREF_QUICK_PULLDOWN = "quick_pulldown";
-    private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
-    private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
+    	private static final String PREF_QUICK_PULLDOWN = "quick_pulldown";
+    	private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
+    	private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
 	private static final String PREF_QS_TYPE = "qs_type";
+	private static final String PREF_QS_TYPE_CATEGORY = "qs_type_cat";
+	private static final String PREF_QS_TILES_CATEGORY = "qs_tile_op_cat";
+	private static final String PREF_QS_BAR_CONFIG = "qs_bar_buttons";
+	private static final String PREF_QS_TILE_CONFIG = "qs_panel_tiles";
+	private static final String PREF_QS_SETTINGS = "qs_settings";
+	
+	private static final String PREF_QS_OPTIONS_CATEGORY = "qs_ops";
+	
+	private static final String PREF_ADV_LOC = "qs_location_advanced";
+	private static final String PREF_AUTO_CLOSE = "quick_settings_collapse_panel";
+	private static final String PREF_VIB_TOUCH = "quick_settings_vibrate";
+	private static final String PREF_BRIGHTNESS = "qs_show_brightness_slider";
 
-    ListPreference mQuickPulldown;
-    ListPreference mSmartPulldown;
-    SwitchPreference mBlockOnSecureKeyguard;
+    	ListPreference mQuickPulldown;
+    	ListPreference mSmartPulldown;
+    	SwitchPreference mBlockOnSecureKeyguard;
 	private ListPreference mQSType;
+	PreferenceScreen mQSTileConfig;
+	PreferenceScreen mQSBarConfig;
+	PreferenceCategory mQSTypeCat;
+	PreferenceCategory mQSTilesCat;
+	PreferenceScreen mQSSettings;
+	
+	SwitchPreference mQSAdvLoc;
+	SwitchPreference mQSAutoClosePanel;
+	SwitchPreference mQSVibOnTouch;
+	SwitchPreference mQSBrightnessSlider;
+	PreferenceCategory mQSOptions;
 
 
     @Override
@@ -72,9 +96,17 @@ public class QsSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.screwd_qs_settings);
 
         PreferenceScreen prefs = getPreferenceScreen();
+		
+	mQSSettings = (PreferenceScreen) findPreference(PREF_QS_SETTINGS);
 
         mQuickPulldown = (ListPreference) findPreference(PREF_QUICK_PULLDOWN);
         mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
+		
+	mQSAdvLoc = (SwitchPreference) findPreference(PREF_ADV_LOC);
+	mQSAutoClosePanel = (SwitchPreference) findPreference(PREF_AUTO_CLOSE);
+	mQSVibOnTouch = (SwitchPreference) findPreference(PREF_VIB_TOUCH);
+	mQSBrightnessSlider = (SwitchPreference) findPreference(PREF_BRIGHTNESS);
+	mQSOptions = (PreferenceCategory) findPreference(PREF_QS_OPTIONS_CATEGORY);
 
         // Quick Pulldown
         mQuickPulldown.setOnPreferenceChangeListener(this);
@@ -90,7 +122,7 @@ public class QsSettings extends SettingsPreferenceFragment
         mSmartPulldown.setValue(String.valueOf(smartPulldown));
         updateSmartPulldownSummary(smartPulldown);
 		
-		//QS Bar
+		//QS Type
 		mQSType = (ListPreference) findPreference(PREF_QS_TYPE);
         int type = Settings.System.getInt(getContentResolver(),
                Settings.System.QS_TYPE, 0);
@@ -98,6 +130,17 @@ public class QsSettings extends SettingsPreferenceFragment
         mQSType.setSummary(mQSType.getEntry());
         mQSType.setOnPreferenceChangeListener(this);
 		
+	mQSTypeCat = (PreferenceCategory) findPreference(PREF_QS_TYPE_CATEGORY);
+	mQSTilesCat = (PreferenceCategory) findPreference(PREF_QS_TILES_CATEGORY);
+	mQSTileConfig = (PreferenceScreen) findPreference(PREF_QS_TILE_CONFIG);
+	mQSBarConfig = (PreferenceScreen) findPreference(PREF_QS_BAR_CONFIG);
+		
+	int blah = Settings.System.getInt(mContext.getContentResolver(),
+		Settings.System.QS_TYPE, 0);
+				
+	updateQSOptions(blah);		
+				
+				
 		/*
         final LockPatternUtils lockPatternUtils = new LockPatternUtils(getActivity());
         mBlockOnSecureKeyguard = (SwitchPreference) findPreference(PREF_BLOCK_ON_SECURE_KEYGUARD);
@@ -122,6 +165,7 @@ public class QsSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getContentResolver(),
                 Settings.System.QS_TYPE, intValue);
             preference.setSummary(mQSType.getEntries()[index]);
+	    updateQSOptions(index);	
             return true;
 		} else if (preference == mQuickPulldown) {
             int statusQuickPulldown = Integer.valueOf((String) newValue);
@@ -146,6 +190,41 @@ public class QsSettings extends SettingsPreferenceFragment
 		}
 		
         return false;
+    }
+	
+    private void updateQSOptions (int value) {
+	Resources res = getResources();
+		
+	if (value == 0) { //QS panel selected
+		/* REMOVE */
+		mQSTypeCat.removePreference(mQSBarConfig); // QS bar customization
+		/* ADD */
+		mQSTypeCat.addPreference(mQSTileConfig); //add QS tile customization
+		mQSSettings.addPreference(mQSTilesCat); //ADD ENTIRE TILE LAYOUT CATEGORY
+		mQSOptions.addPreference(mQSAdvLoc); // Advanced location
+		mQSOptions.addPreference(mQSAutoClosePanel); //auto-collapse
+		mQSOptions.addPreference(mQSVibOnTouch); // vibrate on touch
+		mQSOptions.addPreference(mQSBrightnessSlider); // brightness slider
+	} else if (value == 1) { //QS bar selected
+		/* REMOVE */
+		mQSTypeCat.removePreference(mQSTileConfig); // QS tile customization			
+		mQSSettings.removePreference(mQSTilesCat); // ENTIRE TILE LAYOUT CATEGORY
+		mQSOptions.removePreference(mQSAdvLoc); // Advanced location
+		mQSOptions.removePreference(mQSAutoClosePanel); //auto-collapse
+		mQSOptions.removePreference(mQSVibOnTouch); // vibrate on touch
+		mQSOptions.removePreference(mQSBrightnessSlider); // brightness slider
+		/* ADD */
+		mQSTypeCat.addPreference(mQSBarConfig); //add QS bar customization
+	} else if (value == 2) { //QS hidden
+		/* REMOVE */
+		mQSTypeCat.removePreference(mQSBarConfig); // QS bar customization
+		mQSTypeCat.removePreference(mQSTileConfig); // QS tile customization
+		mQSSettings.removePreference(mQSTilesCat); // ENTIRE TILE LAYOUT CATEGORY
+		mQSOptions.removePreference(mQSAdvLoc); // Advanced location
+		mQSOptions.removePreference(mQSAutoClosePanel); //auto-collapse
+		mQSOptions.removePreference(mQSVibOnTouch); // vibrate on touch
+		mQSOptions.removePreference(mQSBrightnessSlider); // brightness slider
+	}
     }
 
     private void updateSmartPulldownSummary(int value) {
