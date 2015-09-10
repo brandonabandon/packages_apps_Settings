@@ -699,11 +699,8 @@ public class ActionListViewSettings extends ListFragment implements
             if (d != null) {
                 if ((iconUri.equals(ActionConstants.ICON_EMPTY) &&
                         getItem(position).getClickAction().startsWith("**")) ||
-                    iconUri.startsWith(ActionConstants.SYSTEM_ICON_IDENTIFIER)) {
-                    d = ImageHelper.getColoredDrawable(d, getResources()
-                            .getColor(R.color.dslv_icon_dark));
-                }
-            holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
+                    iconUri.startsWith(ActionConstants.SYSTEM_ICON_IDENTIFIER))
+                    holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
             } else if (mActionMode == PIE) {
                 ActionHelper.useSystemUI = true;
                 d = ImageHelper.resize(
@@ -715,11 +712,8 @@ public class ActionListViewSettings extends ListFragment implements
             if (d != null) {
                 if ((iconUri.equals(ActionConstants.ICON_EMPTY) &&
                         getItem(position).getClickAction().startsWith("**")) ||
-                    iconUri.startsWith(ActionConstants.SYSTEM_ICON_IDENTIFIER)) {
-                    d = ImageHelper.getColoredDrawable(d, getResources()
-                            .getColor(R.color.dslv_icon_dark));
-                }
-            holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
+                    iconUri.startsWith(ActionConstants.SYSTEM_ICON_IDENTIFIER))
+                    holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
             } else if (mActionMode == PIE_SECOND) {
                 ActionHelper.useSystemUI = true;
                 d = ImageHelper.resize(
@@ -731,11 +725,8 @@ public class ActionListViewSettings extends ListFragment implements
             if (d != null) {
                 if ((iconUri.equals(ActionConstants.ICON_EMPTY) &&
                         getItem(position).getClickAction().startsWith("**")) ||
-                    iconUri.startsWith(ActionConstants.SYSTEM_ICON_IDENTIFIER)) {
-                    d = ImageHelper.getColoredDrawable(d, getResources()
-                            .getColor(R.color.dslv_icon_dark));
-                }
-            holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
+                    iconUri.startsWith(ActionConstants.SYSTEM_ICON_IDENTIFIER))
+                    holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
             } else if (mActionMode == LOCKSCREEN_SHORTCUT) {
                 d = ImageHelper.resize(
                         mActivity, ActionHelper.getActionIconImage(mActivity,
@@ -752,11 +743,8 @@ public class ActionListViewSettings extends ListFragment implements
             if (d != null) {
                 if ((iconUri.equals(ActionConstants.ICON_EMPTY) &&
                         getItem(position).getClickAction().startsWith("**")) ||
-                    iconUri.startsWith(ActionConstants.SYSTEM_ICON_IDENTIFIER)) {
-                    d = ImageHelper.getColoredDrawable(d, getResources()
-                            .getColor(R.color.dslv_icon_dark));
-                }
-            holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
+                    iconUri.startsWith(ActionConstants.SYSTEM_ICON_IDENTIFIER))
+                    holder.iconView.setImageBitmap(ImageHelper.drawableToBitmap(d));
             } else if (mActionMode == RECENT_APP_SIDEBAR) {
                 d = ImageHelper.resize(
                         mActivity, ActionHelper.getActionIconImage(mActivity,
@@ -1070,7 +1058,7 @@ public class ActionListViewSettings extends ListFragment implements
             public IconAdapter() {
                 labels = getResources().getStringArray(R.array.shortcut_icon_picker_labels);
                 icons = getResources().obtainTypedArray(R.array.shortcut_icon_picker_icons);
-                color = getResources().getColor(R.color.dslv_icon_dark);
+
             }
 
             @Override
@@ -1105,7 +1093,6 @@ public class ActionListViewSettings extends ListFragment implements
                 TextView tt = (TextView) iView.findViewById(android.R.id.text1);
                 tt.setText(labels[position]);
                 Drawable ic = ((Drawable) getItem(position)).mutate();
-                ic.setTint(color);
                 tt.setCompoundDrawablePadding(15);
                 tt.setCompoundDrawablesWithIntrinsicBounds(ic, null, null, null);
                 return iView;
