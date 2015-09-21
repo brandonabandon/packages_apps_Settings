@@ -2078,7 +2078,7 @@
     <string name="status_bar_custom_header_title">Custom header image</string>
     <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
     <string name="status_bar_custom_header_default_title">Use poly HD images</string>
-    <string name="status_bar_custom_header_default_summary">Enable for poly hd images. Disable for original images.</string>
+    <string name="status_bar_custom_header_default_summary">Enable for poly hd images. Disable for original images.\nChanging this option will trigger SystemUI restart!</string>
     
     <!-- LTO download data over wi-fi only -->
     <string name="lto_download_data_wifi_only">GPS assisted data download</string>
