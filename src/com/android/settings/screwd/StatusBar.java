@@ -68,6 +68,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	private static final String NETWORK_METER_ENABLED = "network_meter_enabled";
 	private static final String STATUS_BAR_POWER_MENU = "status_bar_power_menu";
 	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
+	private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
 	
 	static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
 	
@@ -79,6 +80,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	private SwitchPreference mNetworkMeterEnabled;
 	private ListPreference mStatusBarPowerMenu;
 	private SwitchPreference mEnableTaskManager;
+	private SwitchPreference mCustomHeader;
 	
 	private String mCustomGreetingText = "";
 	
@@ -140,7 +142,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mEnableTaskManager = (SwitchPreference) findPreference(PREF_ENABLE_TASK_MANAGER);
         mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
-
+		
+		// Status bar custom header default
+        mCustomHeader = (SwitchPreference) prefSet.findPreference(PREF_CUSTOM_HEADER_DEFAULT);
+        mCustomHeader.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0) == 1));
 
     }
 
@@ -212,6 +218,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             boolean enabled = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.ENABLE_TASK_MANAGER, enabled ? 1:0);
+		} else if (preference == mCustomHeader) {
+           boolean customHeader = ((SwitchPreference)preference).isChecked();
+           Settings.System.putInt(getActivity().getContentResolver(),
+                   Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeader ? 1:0);
+           Helpers.restartSystemUI();
+ 			
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
