@@ -32,6 +32,7 @@ import android.graphics.Color;
 import android.database.ContentObserver;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -82,7 +83,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	private ListPreference mStatusBarPowerMenu;
 	private SwitchPreference mEnableTaskManager;
 	private SwitchPreference mCustomHeader;
-	private SwitchPreference mCustomHeaderDefault;
+	private ListPreference  mCustomHeaderDefault;
 	
 	private String mCustomGreetingText = "";
 	
@@ -152,10 +153,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mCustomHeader.setOnPreferenceChangeListener(this);
 
         // Status bar custom header default
-        mCustomHeaderDefault = (SwitchPreference) prefSet.findPreference(PREF_CUSTOM_HEADER_DEFAULT);
-        mCustomHeaderDefault.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0) == 1));
+        mCustomHeaderDefault = (ListPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
         mCustomHeaderDefault.setOnPreferenceChangeListener(this);
+        int customHeaderDefault = Settings.System.getInt(getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0);
+        mCustomHeaderDefault.setValue(String.valueOf(customHeaderDefault));
 
     }
 
@@ -192,9 +194,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                     (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mCustomHeaderDefault) {
-            Settings.System.putInt(getContentResolver(),
+            int customHeaderDefault = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(getContentResolver(), 
                     Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT,
-                    (Boolean) newValue ? 1 : 0);
+                    customHeaderDefault, UserHandle.USER_CURRENT);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_CUSTOM_HEADER,
                     0);
