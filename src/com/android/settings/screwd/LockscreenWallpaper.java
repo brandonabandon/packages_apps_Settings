@@ -18,33 +18,73 @@
 package com.android.settings.screwd;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.WallpaperManager;
+import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.UserHandle;
+import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
+import android.text.Spannable;
+import android.text.TextUtils;
+import android.provider.Settings.SettingNotFoundException;
+import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.widget.SeekBarPreferenceCham;
 
-public class LockscreenWallpaper extends SettingsPreferenceFragment {
+public class LockscreenWallpaper extends SettingsPreferenceFragment implements OnPreferenceChangeListener{
     public static final int IMAGE_PICK = 1;
 
     private static final String KEY_WALLPAPER_SET = "lockscreen_wallpaper_set";
     private static final String KEY_WALLPAPER_CLEAR = "lockscreen_wallpaper_clear";
+	private static final String KEY_LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";
 
     private Preference mSetWallpaper;
     private Preference mClearWallpaper;
+	private SeekBarPreferenceCham mBlurRadius;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.lockscreen_wallpaper);
+		ContentResolver resolver = getActivity().getContentResolver();
 
         mSetWallpaper = (Preference) findPreference(KEY_WALLPAPER_SET);
         mClearWallpaper = (Preference) findPreference(KEY_WALLPAPER_CLEAR);
+		
+		mBlurRadius = (SeekBarPreferenceCham) findPreference(KEY_LOCKSCREEN_BLUR_RADIUS);
+        mBlurRadius.setValue(Settings.System.getInt(resolver,
+                Settings.System.LOCKSCREEN_BLUR_RADIUS, 14));
+        mBlurRadius.setOnPreferenceChangeListener(this);
+    }
+	
+	 @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
+         if (preference == mBlurRadius) {
+            int width = ((Integer)newValue).intValue();
+            Settings.System.putInt(resolver,
+                    Settings.System.LOCKSCREEN_BLUR_RADIUS, width);
+            return true;
+         }
+         return false;
     }
 
     @Override
