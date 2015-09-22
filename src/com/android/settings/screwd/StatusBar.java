@@ -68,6 +68,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	private static final String NETWORK_METER_ENABLED = "network_meter_enabled";
 	private static final String STATUS_BAR_POWER_MENU = "status_bar_power_menu";
 	private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
+	private static final String PREF_CUSTOM_HEADER = "status_bar_custom_header";
 	private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
 	
 	static final int DEFAULT_STATUS_CARRIER_COLOR = 0xffffffff;
@@ -81,6 +82,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 	private ListPreference mStatusBarPowerMenu;
 	private SwitchPreference mEnableTaskManager;
 	private SwitchPreference mCustomHeader;
+	private SwitchPreference mCustomHeaderDefault;
 	
 	private String mCustomGreetingText = "";
 	
@@ -143,10 +145,17 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
 		
-		// Status bar custom header default
-        mCustomHeader = (SwitchPreference) prefSet.findPreference(PREF_CUSTOM_HEADER_DEFAULT);
+		// Status bar custom header
+        mCustomHeader = (SwitchPreference) prefSet.findPreference(PREF_CUSTOM_HEADER);
         mCustomHeader.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1));
+        mCustomHeader.setOnPreferenceChangeListener(this);
+
+        // Status bar custom header default
+        mCustomHeaderDefault = (SwitchPreference) prefSet.findPreference(PREF_CUSTOM_HEADER_DEFAULT);
+        mCustomHeaderDefault.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0) == 1));
+        mCustomHeaderDefault.setOnPreferenceChangeListener(this);
 
     }
 
@@ -176,7 +185,23 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                     .findIndexOfValue(statusBarPowerMenu);
             mStatusBarPowerMenu
                     .setSummary(mStatusBarPowerMenu.getEntries()[statusBarPowerMenuIndex]);
-            return true;			
+            return true;
+		} else if (preference == mCustomHeader) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER,
+                    (Boolean) newValue ? 1 : 0);
+            return true;
+        } else if (preference == mCustomHeaderDefault) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT,
+                    (Boolean) newValue ? 1 : 0);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER,
+                    0);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER,
+                    1);
+            return true;				
 		}
         return false;
     }
@@ -217,13 +242,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         } else if  (preference == mEnableTaskManager) {
             boolean enabled = ((SwitchPreference)preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.ENABLE_TASK_MANAGER, enabled ? 1:0);
-		} else if (preference == mCustomHeader) {
-           boolean customHeader = ((SwitchPreference)preference).isChecked();
-           Settings.System.putInt(getActivity().getContentResolver(),
-                   Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeader ? 1:0);
-           Helpers.restartSystemUI();
- 			
+                    Settings.System.ENABLE_TASK_MANAGER, enabled ? 1:0);	
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

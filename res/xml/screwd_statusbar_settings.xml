@@ -44,7 +44,7 @@
             android:title="@string/status_bar_temperature_title"
             android:fragment="com.android.settings.screwd.StatusBarWeatherTemp" />
 	 
-	<com.android.settings.screwd.SystemSettingSwitchPreference
+	<SwitchPreference
             android:key="status_bar_custom_header"
             android:title="@string/status_bar_custom_header_title"
             android:summary="@string/status_bar_custom_header_summary"
