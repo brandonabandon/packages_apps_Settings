@@ -163,6 +163,8 @@
   <string name="reset_android">Android</string>
   <string name="reset_screwd">Screw\'d</string>
   <string name="positive_done">Fait</string>
+  <string name="dlg_reset_values_message">Réinitialiser les valeurs par défaut ?</string>
+  <string name="dlg_reset_android">Ok</string>
   <string name="interface_settings_title">Interface</string>
   <string name="dialog_color_picker">Sélecteur de couleurs</string>
   <string name="press_color_to_apply">Appuyez sur la couleur ci-dessous pour l\'appliquer</string>
@@ -845,6 +847,7 @@
   <string name="powermenu_screenrecord">Enregistrement d\'écran</string>
   <string name="powermenu_lockdown">Verrouiller</string>
   <string name="powermenu_torch">Torche</string>
+  <string name="powermenu_lockscreen_title">Afficher le menu Marche/Arrêt sur l\'écran de verrouillage</string>
   <string name="carrier_options">Nom de l\'opérateur</string>
   <string name="show_status_bar_carrier_title">Opérateur dans la barre de statut</string>
   <string name="show_status_bar_carrier_summary">Voir l\'opérateur dans la barre d\'état</string>
@@ -1129,8 +1132,11 @@
   <string name="volume_panel_time_out_15sec">15 secondes</string>
   <string name="background_title">Fond</string>
   <string name="icon_title">Icône</string>
+  <string name="qs_colors_title">Options de couleur des réglages rapides</string>
+  <string name="qs_colors_summary">Changer les couleurs de l\'arrière-plan, de l\'icône et du texte pour les tuiles</string>
   <string name="colors_title">Couleurs</string>
   <string name="category_colors_title">Personnaliser les couleurs</string>
+  <string name="cat_colors_title">Personnaliser les couleurs de notification</string>
   <string name="text_title">Texte</string>
   <string name="qs_transparent_shade_summary">Possibilité d\'appliquer la valeur alpha de la couleur et rendre l\'ombre de notification transparente.</string>
   <string name="qs_color_switch_title">Sélecteur de couleur personnalisée</string>
@@ -1139,9 +1145,6 @@
   <string name="slim_shortcut_picker">Actions Slim</string>
   <string name="qs_slim_action_summary">Ajouter ou définir l\'ordre des SlimActions pour la tuile SlimAction</string>
   <string name="qs_slim_action_title">SlimActions</string>
-  <string name="longpress_lock_icon_to_sleep_title">Appuyez longuement sur l\'icône de verrouillage a
-pour mettre en veille</string>
-  <string name="longpress_lock_icon_to_sleep_summary">Cette option ne fonctionnera pas si smart lock et l\'exploration tactile d\'accessibilité sont activés</string>
   <string name="notification_force_expand_title">Forcer les notifications étendues</string>
   <string name="notification_force_expand_summary">Forcer les notifications sur toutes les applications compatibles</string>
   <string name="interruptions_ignore_while_media_title">Prévenir l\'atténuation audio</string>
@@ -1184,6 +1187,8 @@ pour mettre en veille</string>
   <string name="task_move_to_back_title">Passer à l\'animation arrière</string>
   <string name="wallpaper_open_title">Animation d\'ouverture du fond d\'écran</string>
   <string name="wallpaper_close_title">Animation de fermeture du fond d\'écran</string>
+  <string name="wallpaper_intra_open_title">Animation d\'ouverture du fond d\'écran</string>
+  <string name="wallpaper_intra_close_title">Animation de fermeture du fond d\'écran</string>
   <string name="animation_duration_title">Durée animation</string>
   <string name="animation_duration_default">Par défaut</string>
   <string name="omniswitch_category">OmniSwitch</string>
@@ -1205,6 +1210,7 @@ pour mettre en veille</string>
   <string name="ime_animation_summary">Définir des animations personnalisées pour le clavier système</string>
   <string name="animation_settings_reset_message">Réinitialiser les animations ?</string>
   <string name="animation_default">Par défaut</string>
+  <string name="animation_translucent">Translucide</string>
   <string name="animation_random">Aléatoire</string>
   <string name="ime_animation_test_title">Test animation IME</string>
   <string name="ime_enter_animation_title">Animation d\'entrée</string>
@@ -1254,6 +1260,22 @@ pour mettre en veille</string>
   <string name="weather_show_location_summary">Activer pour afficher le lieu</string>
   <string name="weather_show_timestamp_title">Afficher la date</string>
   <string name="weather_show_timestamp_summary">Activer pour afficher la date</string>
+  <string name="weather_condition_icon_monochrome_title">Monochrome</string>
+  <string name="weather_condition_icon_colored_title">Coloré</string>
+  <string name="weather_condition_icon_vclouds_title">VClouds</string>
+  <string name="weather_colorize_all_icons_title">Colorer toutes les icônes</string>
+  <string name="enable_task_manager_title">Gestionnaire de tâches</string>
+  <string name="enable_task_manager_summary">Activer/désactiver l\'action du gestionnaire de tâches dans la zone étendue de la barre d\'état.</string>
+  <string name="chamber_title">Chambre des secrets</string>
+  <string name="chamber_toast">La chambre des secrets est ouverte</string>
+  <string name="disable_torch_screen_off_title">Désactiver la torche si écran éteint</string>
+  <string name="disable_torch_screen_off_delay_title">Délai</string>
+  <string name="torch_screen_off_one_second">1 seconde</string>
+  <string name="torch_screen_off_ten_second">10 secondes (par défaut)</string>
+  <string name="torch_screen_off_thirty_second">30 secondes</string>
+  <string name="torch_screen_off_one_minute">1 minute</string>
+  <string name="torch_screen_off_five_minutes">5 minutes</string>
+  <string name="torch_screen_off_ten_minutes">10 minutes</string>
   <string name="recents_max_apps_title">Applis max permises</string>
   <string name="recent_panel_scale_title">Taille</string>
   <string name="recent_panel_100">100% (par défaut)</string>
