@@ -31,6 +31,10 @@
            	android:targetClass="com.fusionjack.screwdota.MainActivity" />
 	</PreferenceScreen>
 	
+	<PreferenceScreen android:key="changelog"
+                android:title="@string/changelog_screwd_title"
+                android:fragment="com.android.settings.screwd.Changelog" />
+	
 	<!-- Screw'd Share -->
         <Preference
             android:key="share"
