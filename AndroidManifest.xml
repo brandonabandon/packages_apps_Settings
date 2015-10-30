@@ -1920,6 +1920,8 @@
 	<activity android:name=".screwd.NavBarDimen" />
         <activity android:name=".screwd.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".screwd.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+	<!-- Hide Apps from Recents (HAFR) -->
+        <activity android:name=".screwd.recentshidden.HAFRAppListActivity" />
 	
 	<activity android:name=".cyanogenmod.SpamList" />
 	
