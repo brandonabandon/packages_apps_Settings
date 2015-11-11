@@ -36,5 +36,7 @@
     <color name="list_item_title">#ffeeeeee</color>
     <color name="cardlayout_bg">#ff424242</color>
     <color name="background_color_gray">#ddd</color>
+    
+    <color name="theme_accent">#ff009688</color>
 
 </resources>
