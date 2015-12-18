@@ -25,14 +25,6 @@
         android:title="@string/statusbar_general_cat" >
 	
 	<PreferenceScreen
-                android:title="@string/quick_settings_title"
-                android:summary="@string/quick_settings_summary" >
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.android.systemui"
-                    android:targetClass="com.android.systemui.tuner.QsActivity" />
-        </PreferenceScreen>
-	
-	<PreferenceScreen
             android:title="@string/status_bar_icon_blacklist_title"
             android:summary="@string/status_bar_icon_blacklist_summary" >
         <intent android:action="android.intent.action.MAIN"
