@@ -57,5 +57,7 @@
     <color name="qs_tile_tint_color">@color/col_accnt</color>
     <color name="qs_text_color">@color/list_item_title</color>
     <color name="qs_tile_default_background_color">@color/cardlayout_bg</color>
+    <color name="col_accnt">#ff0288d1</color>
+    <color name="list_item_title">#ffeeeeee</color>
 
 </resources>
