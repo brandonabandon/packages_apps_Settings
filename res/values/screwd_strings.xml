@@ -15,7 +15,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-  <!-- Screw'd Settings -->
+    <string name="purple_sprite">Under Construction</string>
+
+    <!-- Screw'd Settings -->
     <string name="header_customize">Customize</string>
     <string name="header_category_screwd">Screw\'d Settings</string>
     <string name="ui">User Interface</string>

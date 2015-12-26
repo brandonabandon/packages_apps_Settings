@@ -281,7 +281,8 @@ public class SettingsActivity extends Activity
             R.id.nfc_payment_settings,
             R.id.home_settings,
             R.id.dashboard,
-            R.id.bitsyko_layers
+            R.id.bitsyko_layers,
+			R.id.purple_sprite,
     };
 
     private static final String[] ENTRY_FRAGMENTS = {
@@ -1336,6 +1337,15 @@ public class SettingsActivity extends Activity
                     if (!supported) {
                         removeTile = true;
                     }
+				} else if (id == R.id.purple_sprite) {
+                    boolean supported = false;
+                    try {
+                        supported = (getPackageManager().getPackageInfo("com.mrapocalypse.purplesprite3", 0).versionCode > 0);
+                    } catch (PackageManager.NameNotFoundException e) {
+                    }
+                    if (!supported) {
+                        removeTile = true;
+                    }	
                 }
 
                 if (UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
