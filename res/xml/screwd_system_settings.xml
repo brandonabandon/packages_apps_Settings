@@ -18,13 +18,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/misc"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-    
-    <!-- Power Menu -->
-    <PreferenceScreen
-    	android:key="power_menu"
-        android:title="@string/power_menu"
-        android:fragment="com.android.settings.screwd.PowerMenuActions" /> 				
-	
+
     <!-- Battery light -->
     <PreferenceScreen
     	android:key="battery_light"

@@ -216,29 +216,6 @@
     <string name="hex_hint">#ff000000</string>
     <string name="set">Set</string>
     
-    <!-- Advanced reboot options -->
-    <string name="advanced_reboot_title">Advanced reboot</string>
-    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery, bootloader or performing a soft reboot</string>
-	
-    <!-- Advanced reboot options -->
-    <string name="advanced_reboot_title">Advanced reboot</string>
-    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery, bootloader or performing a soft reboot</string>
-
-    <!-- Power menu -->
-    <string name="power_menu_title">Power menu</string>
-    <string name="power_menu_power_title">Power off</string>
-    <string name="power_menu_reboot_title">Reboot menu</string>
-    <string name="power_menu_screenshot_title">Screenshot</string>
-    <string name="power_menu_screenrecord_title">Screenrecord</string>
-    <string name="power_menu_airplane_title">Airplane mode</string>
-    <string name="power_menu_users_title">User switcher</string>
-    <string name="power_menu_settings_title">Settings shortcut</string>
-    <string name="power_menu_lockdown_title">Device lockdown</string>
-    <string name="power_menu_bug_report_title">Bug report</string>
-    <string name="power_menu_sound_title">Sound panel</string>
-    <string name="power_menu_bug_report_disabled">Bug reporting is disabled in development settings</string>
-    <string name="powermenu_screenshot_delay_title">Set screenshot delay</string>
-    
     <!-- Navigation bar -->
     <string name="navigation_bar_category">Navigation bar</string>
     <string name="navbar_enable_bar">Enable</string>
@@ -845,11 +822,6 @@
     <!-- Toast Icons -->
     <string name="toast_icon_title">Toast icon</string>
     <string name="toast_icon_summary">Display the app icon corresponding with the toast</string>
-
-    <!--Power menu on lockscreen -->
-    <string name="power_category">Power menu</string>
-    <string name="lockscreen_enable_power_menu_title">Show power menu lock screen</string>
-    <string name="lockscreen_enable_power_menu_summary">This option will only disable the power menu on secure lock screens</string>
     
     <!-- Media ducking -->
     <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
@@ -1063,11 +1035,6 @@
     <string name="pa_pie_button_color_title">Buttons Color</string>
     <string name="pa_pie_always_right_title">Pie always on the right</string>
     <string name="pa_pie_always_right_summary">Pie will be always shown on the right while in landscape</string>
-    
-    <!-- On-The-Go -->
-    <string name="power_menu_onthego_title">On-The-Go Mode</string>
-    <string name="onthego_alpha_title">On-The-Go Alpha</string>
-    <string name="onthego_alpha_summary">Alpha value of the On-The-Go overlay.</string>
     
     <!-- Volume Steps -->
     <string name="volume_steps_title">Volume steps</string>
