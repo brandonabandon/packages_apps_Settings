@@ -49,12 +49,7 @@
      	android:key="gesture_anywhere"
         android:fragment="com.android.settings.screwd.gestureanywhere.GestureAnywhereSettings"
         android:title="@string/gesture_anywhere_title" />	  							    	
-    
-    <ListPreference
-    	android:key="lcd_density"
-        android:title="@string/lcd_density"
-        android:persistent="false" />
-	
+
     <PreferenceScreen
          android:key="app_sidebar"
          android:fragment="com.android.settings.screwd.AppCircleBar"

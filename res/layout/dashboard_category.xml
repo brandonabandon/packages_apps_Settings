@@ -16,13 +16,12 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/category"
-        android:theme="@style/DashboardCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/dashboard_category_padding_start"
         android:paddingEnd="@dimen/dashboard_category_padding_end"
         android:orientation="vertical"
-        android:background="@drawable/dashboard_background"
+        android:background="@color/dashboard_category_background_color"
         android:layout_marginBottom="8dip"
         android:elevation="@dimen/dashboard_category_elevation">
 

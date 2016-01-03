@@ -16,7 +16,6 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/dashboard"
-    android:theme="@style/Dashboard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarStyle="outsideOverlay"
@@ -24,7 +23,6 @@
 
         <LinearLayout
                 android:id="@+id/dashboard_container"
-                android:theme="@style/DashboardContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"

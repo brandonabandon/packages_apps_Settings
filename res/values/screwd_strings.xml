@@ -32,7 +32,7 @@
     <string name="statusbar">Statusbar</string>
     <string name="sounds">Sounds &amp; Volume</string>
     <string name="kernel_tweaker">Kernel Adiutor</string>
-    <string name="bitsyko_layers">Layers</string>
+    <string name="bitsyko_layers">Layers Manager</string>
     
     <!-- Screw'd Settings cats-->
     <string name="sound_buttons_cat">Buttons</string>
@@ -826,13 +826,10 @@
     <!-- Media ducking -->
     <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
     <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
-    
-    <!-- LCD Density -->
-    <string name="lcd_density">LCD density</string>
-    <string name="dialog_title_lcd_density">LCD density</string>
-    <string name="lcd_density_value_format">%d DPI</string>
-    <string name="lcd_density_default_value_format">%d DPI (default)</string>
-    <string name="restarting_ui">Restarting UI\u2026</string>
+
+    <!-- Navbar cursor buttons -->
+    <string name="show_ime_arrows_title">Show arrow keys while typing</string>
+    <string name="show_ime_arrows_summary">Display left and right cursor buttons for IME.</string>
 
     <!-- Disable animations -->
     <string name="disable_animations">Disable animations</string>
@@ -1088,11 +1085,30 @@
     <string name="recent_panel_bg_color_title">Panel background color</string>
     <string name="recent_card_bg_color_title">Card background color</string>
     <string name="recent_card_text_color_title">Card text color</string>
-
     <!-- ATTENTION: RTL languages need to replace left with right -->
     <string name="recent_panel_lefty_mode_title">Show on the left edge</string>
     <string name="recent_panel_lefty_mode_summary">Show recent apps panel on the left edge</string>
-
     <string name="default_string">Default</string>
+    <string name="recent_panel_category">Slim Recents</string>
+    <string name="recent_app_sidebar_title">App sidebar</string>
+    <string name="recent_app_sidebar_summary">Show app shortcuts on the other edge</string>
+    <string name="recent_app_sidebar_style_title">Sidebar style</string>
+    <string name="recent_app_sidebar_style_summary">Change recent app sidebar style</string>
+    <string name="recent_app_sidebar_hide_labels_title">Hide icon labels</string>
+    <string name="recent_app_sidebar_label_color_title">Label color</string>
+    <string name="recent_app_sidebar_bg_color_title">Background color</string>
+    <string name="recent_app_sidebar_scale_title">Size</string>
+    
+    <!-- Volume button music seek -->
+    <string name="volbtn_music_controls_title">Music control</string>
+    <string name="volbtn_music_controls_summary">When the screen is off, long pressing the volume keys will seek music tracks</string>
+    
+    <!-- Power menu Animations  -->
+    <string name="power_menu_animation_title">Power menu animation</string>
+    <string name="power_menu_animation_summary">Change the enter/exit animation of the power menu</string>
+    <string name="power_menu_animation_dialog_title">Select power menu animation</string>
+    <string name="power_menu_animation_aosp">AOSP (default)</string>
+    <string name="power_menu_animation_bottom">Bottom</string>
+    <string name="power_menu_animation_top">Top</string>
 
 </resources>

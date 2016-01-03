@@ -102,18 +102,20 @@
                 android:title="@string/header_category_screwd"
                 />
 	
-	<!-- Themes -->
-	<dashboard-tile
-                android:id="@+id/bitsyko_layers"
-                android:icon="@drawable/ic_bitsyko_layers"
-                android:title="@string/bitsyko_layers">
-		<intent
-                    android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.lovejoy777.rroandlayersmanager"
-                    android:targetClass="com.lovejoy777.rroandlayersmanager.menu" />
-        </dashboard-tile>
 
-        <!-- Blacklist and App Ops -->
+        <!-- Themes -->
+        <!-- NOTE: Intent.parseIntent looks for "categories" tag and not "category" -->
+        <dashboard-tile
+            android:id="@+id/theme_settings"
+            android:title="@string/themes_settings_title"
+            android:icon="@drawable/ic_settings_themes">
+            <intent
+                android:action="android.intent.action.MAIN" >
+                <categories android:name="cyanogenmod.intent.category.APP_THEMES" />
+            </intent>
+        </dashboard-tile>
+	
+	<!-- Blacklist and App Ops -->
         <dashboard-tile
                 android:id="@+id/privacy_settings_cyanogenmod"
                 android:title="@string/privacy_settings_cyanogenmod_title"
