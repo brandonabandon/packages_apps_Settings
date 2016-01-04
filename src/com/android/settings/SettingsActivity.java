@@ -76,6 +76,7 @@ import com.android.settings.screwd.HeadsUpSettings;
 import com.android.settings.screwd.Navbar;
 import com.android.settings.screwd.SmartbarSettings;
 import com.android.settings.paranoid.PieControl;
+import com.android.settings.screwd.FloatingWindows;
 import com.android.settings.applications.InstalledAppDetails;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.applications.ManageAssist;
@@ -371,6 +372,7 @@ public class SettingsActivity extends Activity
             Navbar.class.getName(),
             FlingSettings.class.getName(),
             SmartbarSettings.class.getName(),
+	    FloatingWindows.class.getName(),
             HeadsUpSettings.class.getName()
     };
 
