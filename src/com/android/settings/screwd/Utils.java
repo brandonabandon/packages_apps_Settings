@@ -14,7 +14,7 @@
  * under the License.
  */
 
-package com.android.settings.broken;
+package com.android.settings.screwd;
 
 import static android.content.Intent.EXTRA_USER;
 

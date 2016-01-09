@@ -43,9 +43,7 @@ import com.android.internal.logging.MetricsLogger;
 
 public class Notifications extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
-    private static final String QUICK_PULLDOWN = "quick_pulldown";
 
-    private ListPreference mQuickPulldown;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,13 +58,6 @@ public class Notifications extends SettingsPreferenceFragment implements
 
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
-
-        mQuickPulldown = (ListPreference) prefSet.findPreference(QUICK_PULLDOWN);
-        mQuickPulldown.setOnPreferenceChangeListener(this);
-        int quickPulldownValue = Settings.System.getIntForUser(resolver,
-                Settings.System.QS_QUICK_PULLDOWN, 0, UserHandle.USER_CURRENT);
-        mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
-        mQuickPulldown.setSummary(mQuickPulldown.getEntry());
     }
 
     @Override
@@ -76,14 +67,6 @@ public class Notifications extends SettingsPreferenceFragment implements
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getContentResolver();
-        if (preference == mQuickPulldown) {
-            int quickPulldownValue = Integer.valueOf((String) newValue);
-            int index = mQuickPulldown.findIndexOfValue((String) newValue);
-            Settings.System.putIntForUser(resolver, Settings.System.QS_QUICK_PULLDOWN,
-                    quickPulldownValue, UserHandle.USER_CURRENT);
-            mQuickPulldown.setSummary(mQuickPulldown.getEntries()[index]);
-            return true;
-        }
 		return false;
     }
 	

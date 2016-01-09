@@ -309,7 +309,7 @@ public class StatusbarClock extends SettingsPreferenceFragment
 
     @Override
     protected int getMetricsCategory() {
-        return MetricsLogger.DIRTYTWEAKS;
+        return MetricsLogger.SCREWD_SETTINGS;
     }
 
     @Override
