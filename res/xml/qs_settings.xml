@@ -23,7 +23,7 @@
         <PreferenceScreen
             android:key="qs_order"
             android:title="@string/qs_order_title"
-            android:fragment="com.android.settings.broken.qs.QSTiles" />
+            android:fragment="com.android.settings.screwd.qs.QSTiles" />
 
         <com.android.settings.screwd.SystemSettingSwitchPreference
             android:key="sysui_qs_main_tiles"
