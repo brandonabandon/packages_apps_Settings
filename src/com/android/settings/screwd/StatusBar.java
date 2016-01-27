@@ -69,23 +69,24 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String TAG = "StatusBarSettings";
 	
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
-	private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
+    private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
     private static final String STATUS_BAR_TEMPERATURE = "status_bar_temperature";
     private static final String STATUS_BAR_TEMPERATURE_STYLE = "status_bar_temperature_style";
-	private static final String ENABLE_TASK_MANAGER = "enable_task_manager";
+    private static final String ENABLE_TASK_MANAGER = "enable_task_manager";
 	
-	private static final String CATEGORY_WEATHER = "statusbar_weather_category";
+    private static final String CATEGORY_WEATHER = "statusbar_weather_category";
     private static final String WEATHER_ICON_PACK = "weather_icon_pack";
     private static final String DEFAULT_WEATHER_ICON_PACKAGE = "org.omnirom.omnijaws";
     private static final String WEATHER_SERVICE_PACKAGE = "org.omnirom.omnijaws";
+    private static final String CHRONUS_ICON_PACK_INTENT = "com.dvtonder.chronus.ICON_PACK";
     private static final String LOCK_CLOCK_PACKAGE="com.cyanogenmod.lockclock";
 
     private ListPreference mCustomHeaderDefault;
-	private SeekBarPreferenceCham mHeaderShadow;
-	private ListPreference mStatusBarTemperature;
-	private ListPreference mStatusBarTemperatureStyle;
-	private SwitchPreference mEnableTaskManager;
-	private PreferenceCategory mWeatherCategory;
+    private SeekBarPreferenceCham mHeaderShadow;
+    private ListPreference mStatusBarTemperature;
+    private ListPreference mStatusBarTemperatureStyle;
+    private SwitchPreference mEnableTaskManager;
+    private PreferenceCategory mWeatherCategory;
     private ListPreference mWeatherIconPack;
 	
 
@@ -97,13 +98,13 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         PreferenceScreen prefSet = getPreferenceScreen();
 		
-		ContentResolver resolver = getActivity().getContentResolver();
+	ContentResolver resolver = getActivity().getContentResolver();
 
         PackageManager pm = getPackageManager();
 
     }
 	
-	@Override
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
@@ -138,17 +139,17 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         enableStatusBarTemperatureDependents();
 		
-		mEnableTaskManager = (SwitchPreference) findPreference(ENABLE_TASK_MANAGER);
+	mEnableTaskManager = (SwitchPreference) findPreference(ENABLE_TASK_MANAGER);
         mEnableTaskManager.setChecked((Settings.System.getInt(resolver,
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
 
-		mHeaderShadow = (SeekBarPreferenceCham) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
+	mHeaderShadow = (SeekBarPreferenceCham) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
         int headerShadow = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 0);
         mHeaderShadow.setValue(headerShadow);
         mHeaderShadow.setOnPreferenceChangeListener(this);
 		
-		mWeatherCategory = (PreferenceCategory) prefSet.findPreference(CATEGORY_WEATHER);
+	mWeatherCategory = (PreferenceCategory) prefSet.findPreference(CATEGORY_WEATHER);
         if (mWeatherCategory != null && !isOmniJawsServiceInstalled()) {
             prefSet.removePreference(mWeatherCategory);
         } else {
@@ -158,8 +159,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 settingHeaderPackage = DEFAULT_WEATHER_ICON_PACKAGE;
             }
             mWeatherIconPack = (ListPreference) findPreference(WEATHER_ICON_PACK);
-            mWeatherIconPack.setEntries(getAvailableWeatherIconPacksEntries());
-            mWeatherIconPack.setEntryValues(getAvailableWeatherIconPacksValues());
+            List<String> entrieswi = new ArrayList<String>();
+            List<String> valueswi = new ArrayList<String>();
+            getAvailableWeatherIconPacks(entrieswi, valueswi);
+            mWeatherIconPack.setEntries(entrieswi.toArray(new String[entrieswi.size()]));
+            mWeatherIconPack.setEntryValues(valueswi.toArray(new String[valueswi.size()]));
 
             int valueIndex = mWeatherIconPack.findIndexOfValue(settingHeaderPackage);
             if (valueIndex == -1) {
@@ -262,32 +266,50 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         return headerPacks.toArray(new String[headerPacks.size()]);
     }
 
-    private String[] getAvailableWeatherIconPacksEntries() {
-        List<String> headerPacks = new ArrayList<String>();
+    private void getAvailableWeatherIconPacks(List<String> entrieswi, List<String> valueswi) {
         Intent i = new Intent();
         PackageManager packageManager = getPackageManager();
         i.setAction("org.omnirom.WeatherIconPack");
         for (ResolveInfo r : packageManager.queryIntentActivities(i, 0)) {
             String packageName = r.activityInfo.packageName;
+            if (packageName.equals(DEFAULT_WEATHER_ICON_PACKAGE)) {
+                valueswi.add(0, r.activityInfo.name);
+            } else {
+                valueswi.add(r.activityInfo.name);
+            }
             String label = r.activityInfo.loadLabel(getPackageManager()).toString();
             if (label == null) {
                 label = r.activityInfo.packageName;
             }
             if (packageName.equals(DEFAULT_WEATHER_ICON_PACKAGE)) {
-                headerPacks.add(0, label);
+                entrieswi.add(0, label);
             } else {
-                headerPacks.add(label);
+                entrieswi.add(label);
             }
         }
-        if (isLockClockInstalled()) {
-            headerPacks.add("LockClock (white)");
-            headerPacks.add("LockClock (color)");
-            headerPacks.add("LockClock (vclouds)");
+        i = new Intent(Intent.ACTION_MAIN);
+        i.addCategory(CHRONUS_ICON_PACK_INTENT);
+        for (ResolveInfo r : packageManager.queryIntentActivities(i, 0)) {
+            String packageName = r.activityInfo.packageName;
+            valueswi.add(packageName + ".weather");
+            String label = r.activityInfo.loadLabel(getPackageManager()).toString();
+            if (label == null) {
+                label = r.activityInfo.packageName;
+            }
+            entrieswi.add(label);
         }
-        return headerPacks.toArray(new String[headerPacks.size()]);
+        if (isLockClockInstalled()) {
+            valueswi.add(LOCK_CLOCK_PACKAGE + ".weather");
+            valueswi.add(LOCK_CLOCK_PACKAGE + ".weather_color");
+            valueswi.add(LOCK_CLOCK_PACKAGE + ".weather_vclouds");
+
+            entrieswi.add("LockClock (white)");
+            entrieswi.add("LockClock (color)");
+            entrieswi.add("LockClock (vclouds)");
+        }
     }
 	
-	public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
         new BaseSearchIndexProvider() {
         @Override
         public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
