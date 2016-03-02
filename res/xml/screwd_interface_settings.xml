@@ -30,7 +30,6 @@
         android:title="@string/qs_settings_title"
         android:fragment="com.android.settings.screwd.QsSettings" />
     
-<<<<<<< HEAD
     <PreferenceScreen
         android:key="navbar"
         android:fragment="com.android.settings.screwd.Navbar"
@@ -60,18 +59,6 @@
          android:key="app_sidebar"
          android:fragment="com.android.settings.screwd.AppCircleBar"
          android:title="@string/app_circle_bar_title"/>
-	
-=======
-    <PreferenceCategory
-        android:key="navbar_cat"
-        android:title="@string/interface_navbar_cat" >
-
-        <com.android.settings.screwd.SystemSettingSwitchPreference
-            android:key="double_tap_sleep_navbar"
-            android:title="@string/double_tap_sleep_nav_bar_title"
-            android:summary="@string/double_tap_sleep_nav_bar_summary"
-            android:defaultValue="false" />
->>>>>>> parent of e34e2e7... Settings: Navigation bar options (2/2)
 	
     <PreferenceScreen
     	android:key="pa_pie_control"
