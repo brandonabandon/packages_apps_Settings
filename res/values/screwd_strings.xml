@@ -1302,14 +1302,6 @@
     <string name="hide_lockscreen_clock_title">Show lockscreen clock</string>
     <string name="hide_lockscreen_date_title">Show lockscreen date</string>
     
-    <!-- Selinux Switch -->
-    <string name="selinux_switch_title">Selinux Switch options</string>
-    <string name="selinux_switch_summary">SELinux is a set of kernel modifications and user-space tools. Changing modes can cause unwanted effects. Use at your own risk.</string>
-    <string name="selinux_title">Selinux Mode</string>
-    <string name="selinux_permissive_title">Permissive</string>
-    <string name="selinux_enforcing_title">Enforcing</string>
-    <string name="selinux_permissive_toast_title">Selinux set to permissive</string>
-    
     <!-- Smart Pulldown -->
     <string name="smart_pulldown_title">Smart pulldown</string>
     <string name="smart_pulldown_summary">Open Quick Settings when there are %1$s notifications present</string>

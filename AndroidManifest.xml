@@ -1907,13 +1907,7 @@
 	<!-- Screw'd Activities -->
 	<activity android:name=".screwd.NavBarDimen" />
         <activity android:name=".screwd.gestureanywhere.GestureAnywhereBuilderActivity" />
-        <activity android:name=".screwd.gestureanywhere.GestureAnywhereCreateGestureActivity" />   
-	
-	<receiver android:name="com.android.settings.screwd.OnBoot">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            </intent-filter>
-        </receiver>
+        <activity android:name=".screwd.gestureanywhere.GestureAnywhereCreateGestureActivity" />
 	
 	<activity android:name=".cyanogenmod.SpamList" />
 	

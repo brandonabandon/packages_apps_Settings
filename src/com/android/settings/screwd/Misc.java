@@ -39,10 +39,6 @@ import android.preference.PreferenceCategory;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.SwitchPreference;
 
-import com.android.internal.util.du.AbstractAsyncSuCMDProcessor;
-import com.android.internal.util.du.CMDProcessor;
-import com.android.internal.util.du.Helpers;
-
 import android.text.TextUtils;
 import android.widget.Toast;
 

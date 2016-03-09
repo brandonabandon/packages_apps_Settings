@@ -40,20 +40,5 @@
             	android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
 		
     </PreferenceScreen>
-    
-        <PreferenceCategory
-            android:key="selinux_switch_category"
-            android:title="@string/selinux_switch_title" />
 
-        <Preference
-            android:key="selinux_switch"
-            android:title="@string/selinux_switch_title"
-            android:summary="@string/selinux_switch_summary"
-            android:selectable="false"/>
-
-        <SwitchPreference
-            android:key="selinux"
-            android:title="@string/selinux_title"
-            android:defaultValue="true" />
-		    	
 </PreferenceScreen>
