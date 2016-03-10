@@ -37,12 +37,6 @@
             android:dependency="notification_light_pulse" />
 	
 	<com.android.settings.screwd.SystemSettingSwitchPreference
-            android:key="notification_light_color_auto"
-            android:title="@string/notification_light_automagic"
-            android:dependency="notification_light_pulse"
-            android:defaultValue="true" />
-	
-	<com.android.settings.screwd.SystemSettingSwitchPreference
             android:key="notification_light_pulse_custom_enable"
             android:title="@string/notification_light_use_custom"
             android:dependency="notification_light_pulse" />

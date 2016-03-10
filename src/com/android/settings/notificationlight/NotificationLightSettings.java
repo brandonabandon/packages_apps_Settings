@@ -25,7 +25,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
@@ -52,8 +52,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.android.internal.util.screwd.ColorUtils;
 
 public class NotificationLightSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, AdapterView.OnItemLongClickListener {
@@ -84,7 +82,6 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     private SystemSettingSwitchPreference mEnabledPref;
     private SystemSettingSwitchPreference mCustomEnabledPref;
     private SystemSettingSwitchPreference mScreenOnLightsPref;
-    private SystemSettingSwitchPreference mAutoGenerateColors;
     private ApplicationLightPreference mDefaultPref;
     private ApplicationLightPreference mCallPref;
     private ApplicationLightPreference mVoicemailPref;
@@ -92,7 +89,6 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     private PackageListAdapter mPackageAdapter;
     private String mPackageList;
     private Map<String, Package> mPackages;
-    private boolean mMultiColorLed;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -111,7 +107,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
 
         // Get the system defined default notification color
         mDefaultColor =
-                resources.getColor(com.android.internal.R.color.config_defaultNotificationColor, null);
+                resources.getColor(com.android.internal.R.color.config_defaultNotificationColor);
 
         mDefaultLedOn = resources.getInteger(
                 com.android.internal.R.integer.config_defaultNotificationLedOn);
@@ -124,10 +120,6 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
 
         mDefaultPref = (ApplicationLightPreference) findPreference(DEFAULT_PREF);
         mDefaultPref.setOnPreferenceChangeListener(this);
-
-        mAutoGenerateColors = (SystemSettingSwitchPreference)
-                findPreference(Settings.System.NOTIFICATION_LIGHT_COLOR_AUTO);
-		mAutoGenerateColors.setOnPreferenceChangeListener(this);
 
         // Advanced light settings
         mScreenOnLightsPref = (SystemSettingSwitchPreference)
@@ -164,7 +156,6 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
             mGeneralPrefs.removePreference(mCustomEnabledPref);
             prefSet.removePreference(mPhonePrefs);
             prefSet.removePreference(mApplicationPrefList);
-			prefSet.removePreference(mAutoGenerateColors);
             resetColors();
         }
     }
@@ -284,26 +275,10 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
         }
     }
 
-    private int getInitialColorForPackage(String packageName) {
-        boolean autoColor = Settings.System.getInt(getContentResolver(),
-                Settings.System.NOTIFICATION_LIGHT_COLOR_AUTO, mMultiColorNotificationLed ? 1 : 0) == 1;
-        int color = mDefaultColor;
-        if (autoColor) {
-            try {
-                Drawable icon = mPackageManager.getApplicationIcon(packageName);
-                color = ColorUtils.generateAlertColorFromDrawable(icon);
-            } catch (NameNotFoundException e) {
-                // shouldn't happen, but just return default
-            }
-        }
-        return color;
-    }
-
     private void addCustomApplicationPref(String packageName) {
         Package pkg = mPackages.get(packageName);
         if (pkg == null) {
-            int color = getInitialColorForPackage(packageName);
-            pkg = new Package(packageName, color, mDefaultLedOn, mDefaultLedOff);
+            pkg = new Package(packageName, mDefaultColor, mDefaultLedOn, mDefaultLedOff);
             mPackages.put(packageName, pkg);
             savePackageList(false);
             refreshCustomApplicationPrefs();
@@ -441,8 +416,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mEnabledPref || preference == mCustomEnabledPref ||
-                preference == mScreenOnLightsPref ||
-                preference == mAutoGenerateColors) {
+                preference == mScreenOnLightsPref) {
             getActivity().invalidateOptionsMenu();
         } else {
             ApplicationLightPreference lightPref = (ApplicationLightPreference) preference;
