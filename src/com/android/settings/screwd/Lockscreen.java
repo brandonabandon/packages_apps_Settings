@@ -55,12 +55,14 @@ public class Lockscreen extends SettingsPreferenceFragment implements
 	private static final String LOCKSCREEN_ALPHA = "lockscreen_alpha";
     private static final String LOCKSCREEN_SECURITY_ALPHA = "lockscreen_security_alpha";
 	private static final String PREF_LS_BOUNCER = "lockscreen_bouncer";
+	private static final String KEY_BLUR_RADIUS = "lockscreen_blur_radius";
 
     private Preference mSetWallpaper;
     private Preference mClearWallpaper;
 	private SeekBarPreference mLsAlpha;
     private SeekBarPreference mLsSecurityAlpha;
 	ListPreference mLsBouncer;
+	private SeekBarPreference mBlurRadius;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,6 +92,16 @@ public class Lockscreen extends SettingsPreferenceFragment implements
                 Settings.System.LOCKSCREEN_SECURITY_ALPHA, 0.75f);
         mLsSecurityAlpha.setValue((int)(100 * alpha2));
         mLsSecurityAlpha.setOnPreferenceChangeListener(this);
+		
+		// Blur
+        mBlurRadius =
+                (SeekBarPreference) findPreference(KEY_BLUR_RADIUS);
+        if (mBlurRadius != null) {
+            int blurRadius = Settings.System.getInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_BLUR_RADIUS, 14);
+            mBlurRadius.setValue(blurRadius);
+            mBlurRadius.setOnPreferenceChangeListener(this);
+        }
     }
 
     @Override
@@ -122,6 +134,11 @@ public class Lockscreen extends SettingsPreferenceFragment implements
             Settings.System.putFloat(resolver,
                     Settings.System.LOCKSCREEN_SECURITY_ALPHA, alpha2 / 100.0f);
             return true;
+		} else if (preference == mBlurRadius) {
+            int bluRadius = (Integer) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.LOCKSCREEN_BLUR_RADIUS, bluRadius);
+			return true;
         }
         return false;
     }
