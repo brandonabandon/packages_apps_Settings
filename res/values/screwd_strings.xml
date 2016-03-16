@@ -1504,5 +1504,10 @@
     <!-- Heads Up button -->
     <string name="enable_headsup_button_extended_statusbar_title">Extended statusbar button</string>
     <string name="enable_headsup_button_extended_statusbar_summary">Enable/Disable action for the heads up button in the expanded statusbar area</string>
+
+    <!-- Header image shadow -->
+    <string name="status_bar_custom_header_shadow_title">Header image shadow</string>
+    <string name="status_bar_custom_header_shadow_summary">For better visibility on bright images</string>
+    <string name="unit_percent">\u0025</string>
     
 </resources>

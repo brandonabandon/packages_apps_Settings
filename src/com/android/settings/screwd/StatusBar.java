@@ -56,6 +56,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.android.internal.logging.MetricsLogger;
+import com.android.settings.widget.SeekBarPreferenceCham;
 
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Indexable {
@@ -63,11 +64,13 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String TAG = "StatusBarSettings";
 	
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
+	private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
     private static final String STATUS_BAR_TEMPERATURE = "status_bar_temperature";
     private static final String STATUS_BAR_TEMPERATURE_STYLE = "status_bar_temperature_style";
 	private static final String ENABLE_TASK_MANAGER = "enable_task_manager";
 
     private ListPreference mCustomHeaderDefault;
+	private SeekBarPreferenceCham mHeaderShadow;
 	private ListPreference mStatusBarTemperature;
 	private ListPreference mStatusBarTemperatureStyle;
 	private SwitchPreference mEnableTaskManager;
@@ -126,6 +129,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mEnableTaskManager.setChecked((Settings.System.getInt(resolver,
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
 
+		mHeaderShadow = (SeekBarPreferenceCham) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
+        final int headerShadow = Settings.System.getInt(getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 0);
+        mHeaderShadow.setValue((int)((headerShadow / 255) * 100));
+        mHeaderShadow.setOnPreferenceChangeListener(this);
+
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -137,6 +146,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeaderDefault);
             mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntries()[index]);
             return true;
+		} else if (preference == mHeaderShadow) {
+         	Integer headerShadow = (Integer) newValue;
+         	int realHeaderValue = (int) (((double) headerShadow / 100) * 255);
+         	Settings.System.putInt(getContentResolver(),
+                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, realHeaderValue);
+         return true;
         } else if (preference == mStatusBarTemperature) {
             int temperatureShow = Integer.valueOf((String) newValue);
             int index = mStatusBarTemperature.findIndexOfValue((String) newValue);
