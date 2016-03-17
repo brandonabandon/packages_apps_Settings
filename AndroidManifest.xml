@@ -1905,6 +1905,18 @@
         </activity>
 	
 	<!-- Screw'd Activities -->
+	<activity android:name="Settings$ScrewdSettingsActivity"
+             android:label="@string/header_category_screwd"
+             android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.screwd.ScrewdSettings" />
+        </activity>
+	
+	<activity android:name=".screwd.ScrewdSettings" />
 	<activity android:name=".screwd.NavBarDimen" />
         <activity android:name=".screwd.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".screwd.gestureanywhere.GestureAnywhereCreateGestureActivity" />
