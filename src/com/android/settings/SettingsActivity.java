@@ -72,6 +72,7 @@ import com.android.settings.accounts.AccountSettings;
 import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.applications.DrawOverlayDetails;
 import com.android.settings.screwd.FlingSettings;
+import com.android.settings.screwd.HeadsUpSettings;
 import com.android.settings.screwd.Navbar;
 import com.android.settings.screwd.SmartbarSettings;
 import com.android.settings.applications.InstalledAppDetails;
@@ -367,7 +368,8 @@ public class SettingsActivity extends Activity
 			ScrewdSettings.class.getName(),
             Navbar.class.getName(),
             FlingSettings.class.getName(),
-            SmartbarSettings.class.getName()
+            SmartbarSettings.class.getName(),
+            HeadsUpSettings.class.getName()
     };
 
 

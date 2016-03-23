@@ -2596,6 +2596,20 @@
             </intent-filter>
         </receiver>
 
+        <!-- Heads up settings activity. -->
+        <activity android:name="Settings$HeadsUpSettingsActivity"
+                android:uiOptions="splitActionBarWhenNarrow"
+                android:label="@string/headsup"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.screwd.HeadsUpSettings" />
+        </activity>
+
+
         <!-- Watch for ContactsContract.Profile changes and update the user's photo.  -->
         <receiver android:name=".users.ProfileUpdateReceiver">
             <intent-filter>
