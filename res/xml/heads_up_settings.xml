@@ -23,6 +23,13 @@
             android:summaryOff="@string/summary_heads_up_disabled"
             android:defaultValue="true" />
 
+    <ListPreference
+        android:key="heads_up_time_out"
+        android:title="@string/heads_up_time_out_title"
+        android:entries="@array/heads_up_time_out_entries"
+        android:entryValues="@array/heads_up_time_out_values"
+        android:persistent="false" />
+    
     <com.android.settings.screwd.SystemSettingSwitchPreference
         android:key="heads_up_force_all"
         android:title="@string/force_headsup_title"
@@ -59,8 +66,7 @@
     <PreferenceCategory
             android:title="@string/heads_up_whitelist_title"
             android:key="whitelist_applications"
-            android:dependency="heads_up_notifications_enabled"
-	    android:dependency="heads_up_force_all" >
+            android:dependency="heads_up_notifications_enabled">
         <Preference
             android:key="add_whitelist_packages"
             android:icon="@drawable/ic_menu_add_dark"

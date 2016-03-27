@@ -1303,6 +1303,16 @@
     <string name="force_headsup_title">Force heads up</string>
     <string name="force_headsup_summary">Force heads up in all applications</string>
     
+    <!-- Heads up timeout -->
+    <string name="heads_up_time_out_title">Time out</string>
+    <string name="heads_up_time_out_summary">Notification will show for <xliff:g id="number">%d</xliff:g> seconds</string>
+    <string name="heads_up_time_out_2sec">2 seconds</string>
+    <string name="heads_up_time_out_4sec">4 seconds</string>
+    <string name="heads_up_time_out_5sec">5 seconds</string>
+    <string name="heads_up_time_out_6sec">6 seconds</string>
+    <string name="heads_up_time_out_8sec">8 seconds</string>
+    <string name="heads_up_time_out_10sec">10 seconds</string>
+    
     <!-- Hide lockscreen clock & date -->
     <string name="hide_lockscreen_clock_title">Show lockscreen clock</string>
     <string name="hide_lockscreen_date_title">Show lockscreen date</string>
