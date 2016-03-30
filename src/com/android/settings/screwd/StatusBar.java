@@ -130,9 +130,9 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
 
 		mHeaderShadow = (SeekBarPreferenceCham) findPreference(CUSTOM_HEADER_IMAGE_SHADOW);
-        final int headerShadow = Settings.System.getInt(getContentResolver(),
+        int headerShadow = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, 0);
-        mHeaderShadow.setValue((int)((headerShadow / 255) * 100));
+        mHeaderShadow.setValue(headerShadow);
         mHeaderShadow.setOnPreferenceChangeListener(this);
 
     }
@@ -145,13 +145,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getActivity().getContentResolver(), 
                 Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeaderDefault);
             mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntries()[index]);
-            return true;
 		} else if (preference == mHeaderShadow) {
-         	Integer headerShadow = (Integer) newValue;
-         	int realHeaderValue = (int) (((double) headerShadow / 100) * 255);
-         	Settings.System.putInt(getContentResolver(),
-                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, realHeaderValue);
-         return true;
+         int headerShadow = (Integer) newValue;
+         Settings.System.putInt(getActivity().getContentResolver(),
+                 Settings.System.STATUS_BAR_CUSTOM_HEADER_SHADOW, headerShadow);
         } else if (preference == mStatusBarTemperature) {
             int temperatureShow = Integer.valueOf((String) newValue);
             int index = mStatusBarTemperature.findIndexOfValue((String) newValue);
@@ -161,7 +158,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             mStatusBarTemperature.setSummary(
                     mStatusBarTemperature.getEntries()[index]);
             enableStatusBarTemperatureDependents();
-            return true;
         } else if (preference == mStatusBarTemperatureStyle) {
             int temperatureStyle = Integer.valueOf((String) newValue);
             int index = mStatusBarTemperatureStyle.findIndexOfValue((String) newValue);
@@ -170,9 +166,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                     UserHandle.USER_CURRENT);
             mStatusBarTemperatureStyle.setSummary(
                     mStatusBarTemperatureStyle.getEntries()[index]);
-            return true;
         }
-        return false;
+        return true;
     }
 	
 	@Override
