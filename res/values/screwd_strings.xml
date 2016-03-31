@@ -365,6 +365,7 @@
     <string name="custom_header_image_0">Default</string>
     <string name="custom_header_image_1">Modern</string>
     <string name="custom_header_image_2">Poly HD</string>
+    <string name="custom_header_image_3">Screw\'d HD</string>
 
     <!-- Lock screen wallpaper -->
     <string name="lockscreen_settings_title">Lockscreen wallpaper</string>
