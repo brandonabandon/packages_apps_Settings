@@ -29,12 +29,7 @@
             android:defaultValue="0xffffff"
             android:dependency="status_bar_show_clock" />
 
-        <com.android.settings.screwd.SystemSettingSwitchPreference
-            android:key="clock_use_second"
-            android:title="@string/status_bar_show_clock_second_title"
-            android:defaultValue="false" />
-	
-	<ListPreference
+        <ListPreference
             android:key="clock_style"
             android:entries="@array/clock_style_entries"
             android:entryValues="@array/clock_style_values"
