@@ -30,7 +30,7 @@
   <string name="statusbar">Statusbalk</string>
   <string name="sounds">Geluiden &amp; Volume</string>
   <string name="kernel_tweaker">Kernel Adiutor</string>
-  <string name="bitsyko_layers">Layers manager</string>
+  <string name="bitsyko_layers">Layers Manager</string>
   <string name="themes_settings_title">Themes</string>
   <!-- Screw'd Settings cats-->
   <string name="sound_buttons_cat">Knoppen</string>
@@ -41,7 +41,6 @@
   <string name="battery2_summary">Batterijpictogrammen en percentage aanpassen</string>
   <string name="notification_drawer_cat">Meldingenpaneel</string>
   <string name="lockscreen_options_title">Vergrendelscherm opties</string>
-  <string name="navbar_slimdim_cat">SlimDim</string>
   <string name="lockscreen_shortcuts_cat">Snelkoppelingen</string>
   <string name="statusbar_clock_cat">Klok opties</string>
   <string name="statusbar_notif_cat">Meldingsopties</string>
@@ -121,7 +120,7 @@
   <string name="kill_app_longpress_back">Terugknop forceert afsluiten</string>
   <string name="kill_app_longpress_back_summary">App op de voorgrond geforceerd afsluiten door de terugknop lang ingedrukt te houden</string>
   <!-- Double Tap Navbar to Sleep -->
-  <string name="double_tap_sleep_nav_bar_title">Dubbel tikken om te slapen</string>
+  <string name="double_tap_sleep_nav_bar_title">Navigatiebalk</string>
   <string name="double_tap_sleep_nav_bar_summary">Tik twee keer op navigatiebalk om het apparaat in slaapstand te brengen</string>
   <!-- Double tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Dubbel tikken om te slapen</string>
@@ -164,7 +163,8 @@
   <string name="battery_low_pulse_title">Knipper indien de batterij bijna leeg is</string>
   <string name="battery_light_list_title">Kleuren</string>
   <string name="battery_light_low_color_title">Batterij bijna leeg</string>
-  <string name="battery_light_medium_color_title">Opladen</string>
+  <string name="battery_light_medium_color_title">Opladen - langzaam of normaal</string>
+  <string name="battery_light_medium_fast_color_title">Opladen - snel</string>
   <string name="battery_light_full_color_title">Opgeladen (90%)</string>
   <string name="battery_light_really_full_color_title">Opgeladen (100%)</string>
   <!-- Lights settings screen, notification light settings -->
@@ -200,6 +200,9 @@
   <string name="hex">Hexcode:</string>
   <string name="hex_hint">#ff000000</string>
   <string name="set">Instellen</string>
+  <!-- Clang version -->
+  <string name="dtc_version">Clang</string>
+  <string name="dtc_version_default">Geen</string>
   <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Advanced reboot</string>
   <string name="advanced_reboot_summary">Indien ontgrendeld, reboot opties weergeven in het power menu voor recovery, bootloader of een soft reboot</string>
@@ -220,8 +223,7 @@
   <string name="power_menu_sound_title">Geluidspaneel</string>
   <string name="power_menu_bug_report_disabled">Bug rapportering is uitgeschakeld in ontwikkelaars instellingen</string>
   <string name="powermenu_screenshot_delay_title">Stel schermafbeelding vertraging in</string>
-  <string name="navigation_bar_left_title">Linkshandige modus</string>
-  <string name="navigation_bar_left_summary">Plaats de navigatiebalk aan de linkerkant van het scherm in landscape-modus</string>
+  <string name="powermenu_torch">Zaklamp</string>
   <!-- Doze options -->
   <string name="display_category_doze_options_title">Omgevingsdisplay</string>
   <string name="doze_settings_title">Geavanceerde Doze opties</string>
@@ -326,6 +328,7 @@
   <string name="custom_header_image_0">Standaard</string>
   <string name="custom_header_image_1">Modern</string>
   <string name="custom_header_image_2">Poly HD</string>
+  <string name="custom_header_image_3">Screw\'d HD</string>
   <!-- Lock screen wallpaper -->
   <string name="lockscreen_settings_title">Vergrendelscherm achtergrond</string>
   <string name="lockscreen_wallpaper_title">Achtergrond</string>
@@ -504,21 +507,6 @@
   <string name="battery_bar_animate_summary">Oplaad animatie kan leiden tot een slechte gebruikservaring. Inschakelen op eigen risico.</string>
   <!-- Restart SystemUI -->
   <string name="restart_systemui">SystemUI herstarten</string>
-  <!-- SlimDim -->
-  <string name="dim_nav_buttons_category">SlimDim</string>
-  <string name="dim_nav_buttons_title">Dim knoppen na inactiviteit</string>
-  <string name="dim_nav_buttons_summary">Dim navigatiebalkknoppen na geen interactie met navigatiebalk gedurende een bepaalde tijd</string>
-  <string name="dim_nav_buttons_timeout_title">Time-out voor dimmen</string>
-  <string name="dim_nav_buttons_timeout_summary">Tijd (in milliseconden) moet worden gewacht voordat knoppen dimmen</string>
-  <string name="dim_nav_buttons_alpha_title">Dim alpha</string>
-  <string name="dim_nav_buttons_alpha_summary">Alpha-waarde om knoppen te dimmen</string>
-  <string name="dim_nav_buttons_animate_title">Dim animatie</string>
-  <string name="dim_nav_buttons_animate_summary">Animatie voor de Alpha fade</string>
-  <string name="dim_nav_buttons_animate_duration_title">Animatieduur</string>
-  <string name="dim_nav_buttons_animate_duration_summary">Duur van de alpha animatie (in milliseconden)</string>
-  <string name="dim_nav_buttons_touch_anywhere_title">Luisteren naar aanrakingen op volledige scherm</string>
-  <string name="dim_nav_buttons_touch_anywhere_summary_on">Tik ergens op het scherm om de knoppen te un-dimmen</string>
-  <string name="dim_nav_buttons_touch_anywhere_summary_off">Tik op de navigitiebalk om de knoppen te un-dimmen</string>
   <!-- Slim DSLV -->
   <string name="shortcut_action_none">Geen</string>
   <string name="shortcut_action_longpress">Lang indrukken:</string>
@@ -607,89 +595,24 @@
   <string name="shortcut_action_media_play_pause">Muziek - afspelen/pauzeren</string>
   <string name="shortcut_action_media_previous">Muziek - vorige track</string>
   <string name="shortcut_action_wake_device">Apparaat ontwaken</string>
+  <string name="shortcut_action_none">Geen</string>
   <string name="shortcut_action_app">Aangepaste app</string>
-  <string name="shortcut_action_expanded_desktop">Expanded desktop</string>
   <string name="shortcut_action_home">Home</string>
-  <string name="shortcut_action_kill">Sluit app</string>
-  <string name="shortcut_action_lastapp">Laatste app</string>
-  <string name="shortcut_action_menu_big">Menu groot</string>
-  <string name="shortcut_action_navbar">Navigatiebalk</string>
-  <string name="shortcut_action_notifications">Meldingen</string>
-  <string name="shortcut_action_menu_big">Menu groot</string>
+  <string name="shortcut_action_back">Terug</string>
+  <string name="shortcut_action_menu">Menu</string>
   <string name="shortcut_action_ime">Open IME schakelaar</string>
   <string name="shortcut_action_power_menu">Power-menu</string>
-  <string name="shortcut_action_qs">Snelle instellingen paneel</string>
-  <string name="shortcut_action_smart">Slim openen</string>
   <string name="shortcut_action_recent">Recents</string>
+  <string name="shortcut_action_power">Scherm uit</string>
+  <string name="shortcut_action_search">Zoeken in app</string>
   <string name="shortcut_action_ring_vib">Ring/Vib</string>
   <string name="shortcut_action_ring_silent">Geluid/stil</string>
   <string name="shortcut_action_ring_vib_silent">Ring/Vib/Stil</string>
-  <string name="shortcut_action_now_on_tap">Now on Tap</string>
-  <string name="shortcut_action_power">Scherm uit</string>
-  <string name="shortcut_action_screenshot">Schermafbeelding</string>
-  <string name="shortcut_action_assist">Zoeken</string>
-  <string name="shortcut_action_search">Zoeken in app</string>
-  <string name="shortcut_action_theme_switch">Theme wisselaar</string>
-  <string name="shortcut_action_torch">Zaklamp</string>
-  <string name="shortcut_action_voice_search">Gesproken zoekopdrachten</string>
-  <string name="shortcut_action_none">Geen</string>
-  <!-- Navigation bar -->
-  <string name="navigation_bar_size_42_dp_default">42 dp (standaard)</string>
-  <string name="navigation_bar_size_36_dp">36 dp</string>
-  <string name="navigation_bar_size_30_dp">30 dp</string>
-  <string name="navigation_bar_size_24_dp">24 dp</string>
-  <string name="navigation_bar_size_48_dp_default">48 dp (standaard)</string>
-  <string name="navigation_bar_size_44_dp">44 dp</string>
-  <string name="navigation_bar_size_40_dp">40 dp</string>
-  <string name="navigation_bar_size_42_dp">42 dp</string>
-  <string name="navigation_bar_size_0_dp">0 dp (uitgeschakeld)</string>
-  <string name="navigation_menu_right">Rechts</string>
-  <string name="navigation_menu_left">Links</string>
-  <string name="navigation_menu_both">Beide</string>
-  <string name="navigation_menu_default_jb_behavior">Toon op verzoek (standaard)</string>
-  <string name="navigation_menu_never_show">Nooit tonen</string>
-  <string name="navigation_menu_always_show">Altijd tonen</string>
-  <string name="navigation_bar">Navigatiebalk</string>
-  <string name="navbar_button_cat">Navigatiebalk knoppen</string>
-  <string name="title_pref_menu_location">Menupositie</string>
-  <string name="summary_pref_menu_location">Waar wilt u de menuknoppen laten verschijnen?</string>
-  <string name="title_pref_menu_display">Menu zichtbaarheid</string>
-  <string name="summary_pref_menu_display">Hoe en wanneer u wilt de menuknoppen laten verschijnen?</string>
-  <string name="navbar_enable_bar">Navigatiebalk inschakelen</string>
-  <string name="navbar_enable_bar_summary">Inschakelen van de navigatiebalk</string>
-  <string name="navigation_bar_height_title">Navigatiebalk hoogte</string>
-  <string name="navigation_bar_height_summary">Hoogte van de navigatiebalk bij scherm in verticale stand.</string>
-  <string name="navigation_bar_height_landscape_title">Navigatiebalk hoogte horizontaal</string>
-  <string name="navigation_bar_height_landscape_summary">Hoogte van de navigatiebalk bij scherm in horizontale stand.</string>
-  <string name="navigation_bar_width_title">Navigatiebalk breedte</string>
-  <string name="navigation_bar_width_summary">Hoogte van de navigatiebalk als deze aan een zijkant geplaatst is.</string>
-  <string name="navbar_can_move">Toon landschap</string>
-  <string name="navbar_can_move_summary">Toon navigatiebalk aan de onderkant bij scherm in horizontale stand</string>
-  <string name="navbar_style_dimen_title">Afmetingen</string>
-  <string name="navbar_button_title">Knoppen</string>
-  <string name="navbar_cat">Navigatiebalk</string>
-  <string name="navbar_dimensions_reset_message">Alle afmetingen naar beginwaarden herstellen?</string>
-  <string name="navbar_button_style_reset_message">Alle stijlen herstellen naar standaard?</string>
-  <string name="shortcut_action_required_warning_message">Het is niet mogelijk om de vereiste knoppen te verwijderen</string>
-  <!-- Navigation bar button style -->
-  <string name="nav_bar_button_style">Knopstijl</string>
-  <string name="nav_bar_button_style_summary">Knopstijl van de navigatiebalk wijzigen</string>
-  <string name="button_transparency_title">Knop transparantie</string>
-  <string name="navigation_bar_icon_tint_title">Knop Kleur</string>
-  <string name="nav_button_color_mode_title">Kleurmodus</string>
-  <string name="nav_button_color_mode_dialog_title">Inkleuren</string>
-  <string name="nav_button_color_mode_summary">De navigatiebalk knop kleurmodus wijzigen</string>
-  <string name="navigation_bar_glow_tint_title">Knop gloedkleur</string>
-  <string name="icon_color_mode_all_icons">Alle iconen</string>
-  <string name="icon_color_mode_system_icons">Systeem iconen</string>
-  <string name="icon_color_mode_system_custom_icons">Systeem en custom iconen</string>
-  <string name="shortcuts_applications">Apps</string>
-  <string name="shortcuts_select_custom_app_title">Selecteer aangepaste app</string>
-  <string name="shortcuts_icon_picker_type">Selecteer icoon type:</string>
-  <string name="shortcuts_icon_default">Standaard</string>
-  <string name="shortcuts_icon_presets">Systeem iconen</string>
-  <string name="shortcuts_icon_custom">Galerij</string>
-  <string name="shortcuts_icon_picker_choose_icon_title">Icoon kiezen</string>
+  <string name="shortcut_action_camera">Camera</string>
+  <string name="shortcut_action_media_next">Muziek - volgende track</string>
+  <string name="shortcut_action_media_play_pause">Muziek - afspelen/pauzeren</string>
+  <string name="shortcut_action_media_previous">Muziek - vorige track</string>
+  <string name="shortcut_action_wake_device">Apparaat ontwaken</string>
   <string name="shortcut_action_longpress">Lang indrukken:</string>
   <string name="shortcut_action_select_action_longpress">Kies langdruk actie:</string>
   <string name="shortcut_action_select_action">Actie selecteren:</string>
@@ -723,6 +646,7 @@
   <string name="activity_open_title">Animatie voor openen activiteit</string>
   <string name="activity_close_title">Animatie voor sluiten van activiteit</string>
   <string name="task_open_title">Animatie voor openen taak</string>
+  <string name="task_open_behind_title">Taak open achter animatie</string>
   <string name="task_close_title">Animatie voor sluiten taak</string>
   <string name="task_move_to_front_title">Animatie voor bewegen naar voor</string>
   <string name="task_move_to_back_title">Animatie voor bewegen naar achteren</string>
@@ -1229,9 +1153,6 @@
   <string name="maintainer_default">Onbekend</string>
   <string name="maintainer_default_summary">Helaas, er is geen maintainer voor dit apparaat!</string>
   <string name="devs">Ontwikkelaars</string>
-  <!-- Navbar cursor buttons -->
-  <string name="show_ime_arrows_title">Toon pijltoetsen tijdens het typen</string>
-  <string name="show_ime_arrows_summary">Toon linker en rechter cursor knoppen voor IME.</string>
   <!-- Keyguard notifications options -->
   <string name="app_notification_show_on_keyguard_title">Weergave op vergrendelscherm</string>
   <string name="app_notification_show_on_keyguard_summary">Toon meldingen van deze app op vergrendelscherm</string>
@@ -1246,8 +1167,6 @@
   <string name="enable_task_manager_summary">In-/Uitschakelen van de taakbeheer knop in de uitgebreide statusbalk</string>
   <!--Heads Up -->
   <string name="heads_up_notifications">Heads-up</string>
-  <string name="heads_up_snooze">Sluimeren</string>
-  <string name="heads_up_timeout">Time-out</string>
   <string name="add_heads_up_package">App toevoegen</string>
   <string name="add_heads_up_dnd_summary">Heads up in deze apps niet weergeven</string>
   <string name="add_heads_up_whitelist_summary">Geef alle notificaties van deze apps weer in heads up</string>
@@ -1256,16 +1175,20 @@
   <string name="heads_up_blacklist_title">Blacklist</string>
   <string name="heads_up_whitelist_title">Whitelist</string>
   <string name="heads_up_contains_key">Deze app is al toegevoegd aan de lijst</string>
+  <string name="force_headsup_title">Forceer heads-up</string>
+  <string name="force_headsup_summary">Forceer heads-up in alle apps</string>
+  <!-- Heads up timeout -->
+  <string name="heads_up_time_out_title">Time-out</string>
+  <string name="heads_up_time_out_summary">Notificatie zal <xliff:g id="number">%d </xliff:g> seconden zichtbaar zijn</string>
+  <string name="heads_up_time_out_2sec">2 seconden</string>
+  <string name="heads_up_time_out_4sec">4 seconden</string>
+  <string name="heads_up_time_out_5sec">5 seconden</string>
+  <string name="heads_up_time_out_6sec">6 seconden</string>
+  <string name="heads_up_time_out_8sec">8 seconden</string>
+  <string name="heads_up_time_out_10sec">10 seconden</string>
   <!-- Hide lockscreen clock & date -->
   <string name="hide_lockscreen_clock_title">Geef vergrendelscherm klok weer</string>
   <string name="hide_lockscreen_date_title">Geef vergrendelscherm datum weer</string>
-  <!-- Selinux Switch -->
-  <string name="selinux_switch_title">Selinux schakelopties</string>
-  <string name="selinux_switch_summary">SELinux is een set kernel wijzigingen en hulpmiddelen van de user-space. Veranderen van modus kan ongewenste effecten veroorzaken. Gebruik op eigen risico.</string>
-  <string name="selinux_title">Selinux modus</string>
-  <string name="selinux_permissive_title">Permissive</string>
-  <string name="selinux_enforcing_title">Enforcing</string>
-  <string name="selinux_permissive_toast_title">Selinux ingesteld op permissive</string>
   <!-- Smart Pulldown -->
   <string name="smart_pulldown_title">Slim openen</string>
   <string name="smart_pulldown_summary">Open snelle instellingen als er %1$s notificaties zijn</string>
@@ -1307,4 +1230,137 @@
   <string name="dashboard_switches_on">Schakelaars aan</string>
   <string name="dashboard_switches_summary">De positie van de dashboard schakelaars wijzigen</string>
   <string name="dashboard_switches_dialog_title">Selecteer schakelaar status</string>
+  <!-- Sizes for pattern lockscreen -->
+  <string name="lock_pattern_size_3">3 x 3</string>
+  <string name="lock_pattern_size_4">4 x 4</string>
+  <string name="lock_pattern_size_5">5 x 5</string>
+  <string name="lock_pattern_size_6">6 x 6</string>
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
+  <string name="lockpattern_settings_enable_error_path_title">Toon patroon fout</string>
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
+  <string name="lockpattern_settings_enable_dots_title">Toon patroon stippen</string>
+  <!-- Lock screen vibrate settings -->
+  <string name="lockscreen_vibrate_enabled_title">Trillen</string>
+  <string name="lockscreen_vibrate_enabled_head">Trillen tijdens ontgrendelen</string>
+  <!-- Navigation Bar -->
+  <string name="navbar_interface_title">Interface</string>
+  <string name="navbar_size">Balk grootte</string>
+  <string name="navbar_mode">Navigatie modus</string>
+  <string name="navbar_visibility">Navigatiebalk inschakelen</string>
+  <string name="navigationbar_settings_title">Navigatie</string>
+  <string name="aosp_navigation_bar">Navigatiebalk</string>
+  <string name="aosp_navigation_bar_settings">Navigatiebalk instellingen</string>
+  <string name="navigationbar_settings_summary">Navigatie stijl en gedrag aanpassen</string>
+  <string name="navbar_general_title">Geavanceerd</string>
+  <string name="navigation_bar_left_title">Linkshandige modus</string>
+  <string name="navigation_bar_left_summary">Plaats de navigatiebalk aan de linkerkant van het scherm in landscape-modus</string>
+  <string name="info_pref_note_title">Notitie</string>
+  <string name="smartbar_interface">SmartBar</string>
+  <string name="icon_pack_picker_dialog_title">Icon packs</string>
+  <!-- Actions dialog and default task values set in ActionPreference xml-->
+  <string name="choose_action_title">Actie selecteren</string>
+  <string name="action_entry_default_action">Standaardinstellingen</string>
+  <string name="action_entry_select_app">App selecteren</string>
+  <string name="action_entry_custom_action">Selecteer aangepaste actie</string>
+  <string name="action_value_default_action">actie_standaard</string>
+  <string name="action_value_select_app">actie_app</string>
+  <string name="action_value_custom_action">actie_aangepast</string>
+  <string name="action_value_default_action">actie_standaard</string>
+  <string name="action_value_select_app">actie_app</string>
+  <string name="action_value_back">taak_terug</string>
+  <string name="action_value_home">taak_home</string>
+  <string name="action_value_search_assist">taak_assist</string>
+  <string name="action_value_recent_apps">taak_recents</string>
+  <string name="action_value_voice_search">taak_voice_search</string>
+  <string name="action_value_menu">taak_menu</string>
+  <!-- Fling -->
+  <string name="fling_settings">Fling instellingen</string>
+  <string name="fling_interface">Fling gebaar interface</string>
+  <string name="fling_enable_title">Fling inschakelen</string>
+  <string name="fling_back_home_policy">Terug en Home moeten altijd worden ingesteld. Stel eerst de gewenste toewijzing in, alvorens Back of Home te wijzigen</string>
+  <string name="fling_split_bar_policy">Wanneer alleen een rwchter of linkeractie is toegewezen, is de actie van toepassing op de volledige balk</string>
+  <string name="fling_def_summary">Geen actie ingesteld</string>
+  <string name="fling_swipe_actions">Swipe gebaren</string>
+  <string name="fling_tap_actions">Tap gebaren</string>
+  <string name="fling_short_swipe_right">Korte rechter swipe</string>
+  <string name="fling_short_swipe_left">Korte linker swipe</string>
+  <string name="fling_long_swipe_right">Lange rechter swipe</string>
+  <string name="fling_long_swipe_left">Lange linker swipe</string>
+  <string name="fling_single_tap">Enkele tap rechts</string>
+  <string name="fling_double_tap">Dubbele tap rechts</string>
+  <string name="fling_long_press">Lang drukken rechts</string>
+  <string name="fling_single_left_tap">Enkele tap links</string>
+  <string name="fling_double_left_tap">Dubbele tap links</string>
+  <string name="fling_long_left_press">Lang drukken links</string>
+  <string name="long_swipe_portrait_title">Portret</string>
+  <string name="long_swipe_landscape_title">Landschap</string>
+  <string name="right_swipe_title">Swipe rechts</string>
+  <string name="left_swipe_title">Swipe links</string>
+  <string name="up_swipe_title">Swipe omhoog</string>
+  <string name="down_swipe_title">Swipe omlaag</string>
+  <string name="long_swipe_reset">Reset</string>
+  <string name="fling_advanced">Geavanceerd</string>
+  <string name="fling_long_swipe_title">Lange swipe grens</string>
+  <string name="fling_long_swipe_summary">Fine-tunen van lange swipe grens gebaseerd op een percentage van de Fling interface breedte of hoogte</string>
+  <string name="fling_trails_enable_title">Gebaar spoor inschakelen</string>
+  <string name="fling_trails_enable_summary">Toon een spoor bij swipe gebaren</string>
+  <string name="fling_trails_color_title">Spoor kleur</string>
+  <string name="fling_appearance">Uiterlijk</string>
+  <string name="fling_show_logo_title">Toon Fling logo</string>
+  <string name="fling_animate_logo_title">Logo animatie</string>
+  <string name="fling_animate_logo_summary">Logo animatie bij aanrakingen</string>
+  <string name="fling_logo_color">Logo kleur</string>
+  <string name="fling_logo_custom_logo_pick_title">Aangepast logo icoon</string>
+  <string name="fling_logo_custom_logo_image_pick_title">Aangepaste logo afbeelding</string>
+  <string name="fling_logo_custom_logo_reset_title">Reset logo icoon</string>
+  <string name="fling_show_ripple_title">Toon rimpel</string>
+  <string name="fling_show_ripple_summary">Rimpel effect bij aanrakingen</string>
+  <string name="fling_ripple_color">Rimpel kleur</string>
+  <string name="fling_longpress_timeout_label_left">Minder vertraging</string>
+  <string name="fling_longpress_timeout_label_right">Meer vertraging</string>
+  <string name="fling_longpress_title">Lang drukken vertraging</string>
+  <string name="fling_longpress_summary">Vergroten of verkleinen van de tijd die nodig is voor het uitvoeren van een lange druk</string>
+  <!-- Pulse navigation bar music visualizer -->
+  <string name="pulse_help_policy_notice_title">Over Pulse</string>
+  <string name="pulse_help_policy_notice_summary">Pulse is briljante equalizer bar stijl audio-visualisering op de navigatiebalk wanneer muziek wordt gespeeld. Pulse werkt niet met sommige audio bronnen bij het luisteren via apparaat luidspreker</string>
+  <string name="pulse_settings">Pulse</string>
+  <string name="pulse_settings_summary">Navigatiebalk audio-visualisatie</string>
+  <string name="fling_show_pulse_title">Toon Pulse</string>
+  <string name="fling_show_pulse_summary">Audio-visualisatie op de navigatiebalk</string>
+  <string name="fling_pulse_color">Pulse kleur</string>
+  <string name="eos_fling_lavalamp_title">Lavalamp inschakelen</string>
+  <string name="eos_fling_lavalamp_summary">Pulse toont een vloeiende lavalamp stijl kleurenmix</string>
+  <!-- Navbar height -->
+  <string name="navigation_bar_size_title">Balk grootte</string>
+  <string name="portrait_title">Portret hoogte</string>
+  <string name="land_vert_title">Landschap breedte</string>
+  <string name="land_hor_title">Landschap hoogte</string>
+  <string name="positive_done">Gereed</string>
+  <!-- SmartBar -->
+  <string name="smartbar_category">Smartbar</string>
+  <string name="smartbar_settings_title">Smartbar instellingen</string>
+  <string name="smartbar_editor_title">Toggle knopbewerker</string>
+  <string name="smartbar_editor_summary">Medium indrukken en sleep om de positie wijzigen. Lang indrukken om bewerkingsmenu weer te geven. Knop positie kan worden gewijzigd terwijl het menu wordt weergegeven.</string>
+  <string name="smartbar_context_menu_position_title">Context knoppen lay-out</string>
+  <string name="smartbar_context_menu_position_summary">Stel de positie van contextuele knoppen in zoals menu en ime selector</string>
+  <string name="smartbar_right">Rechts</string>
+  <string name="smartbar_left">Links</string>
+  <string name="smartbar_button_animation_title">Knop aanraak animatie</string>
+  <string name="smartbar_button_animation_summary">De animatiestijl van de primaire knoppen instellen wanneer ze worden ingedrukt</string>
+  <string name="smartbar_button_animation_ripple">Rimpel</string>
+  <string name="smartbar_button_animation_spring">Veer</string>
+  <string name="smartbar_factory_reset_title">Reset naar standaard</string>
+  <string name="smartbar_factory_reset_confirm">Weet u zeker dat u de Smartbar instellingen wilt resetten?</string>
+  <string name="smartbar_ime_action_title">Invoermethode acties</string>
+  <string name="smartbar_ime_action_summary">Instellen welke knoppen zichtbaar zijn wanneer een on-screen toetsenbord wordt weergegeven</string>
+  <string name="smartbar_ime_action_none">Geen</string>
+  <string name="smartbar_ime_action_arrows">Input pijlen</string>
+  <string name="smartbar_ime_action_switcher">Toetsenbord switcher</string>
+  <!-- Heads Up button -->
+  <string name="enable_headsup_button_extended_statusbar_title">Extended statusbalk knop</string>
+  <string name="enable_headsup_button_extended_statusbar_summary">Actie voor de heads up knop in het gebied uitgebreide statusbalk in-/ uitschakelen</string>
+  <!-- Header image shadow -->
+  <string name="status_bar_custom_header_shadow_title">Header image schaduw</string>
+  <string name="status_bar_custom_header_shadow_summary">Voor betere zichtbaarheid op heldere afbeeldingen</string>
+  <string name="unit_percent">\u0025</string>
 </resources>

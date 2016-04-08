@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Screw'd Settings -->
   <string name="header_customize">Tùy chỉnh</string>
-  <string name="header_category_screwd">Cài đặt Screw\'d</string>
+  <string name="header_category_screwd">Screw\'d Settings</string>
   <string name="ui">Giao diện người dùng</string>
   <string name="system">Hệ thống</string>
   <string name="notifications">Các thông báo</string>
@@ -28,32 +28,31 @@
   <string name="recents">Ứng dụng vừa dùng</string>
   <string name="lockscreen">Màn hình khóa</string>
   <string name="statusbar">Thanh trạng thái</string>
-  <string name="sounds">Âm thanh &amp; khối lượng</string>
-  <string name="kernel_tweaker">Hạt nhân Adiutor</string>
+  <string name="sounds">Âm thanh &amp; Âm lượng</string>
+  <string name="kernel_tweaker">Kernel Adiutor</string>
   <string name="bitsyko_layers">Quản lý lớp</string>
   <string name="themes_settings_title">Chủ đề</string>
   <!-- Screw'd Settings cats-->
-  <string name="sound_buttons_cat">Nút</string>
+  <string name="sound_buttons_cat">Các nút</string>
   <string name="sound_sounds_cat">Âm thanh</string>
   <string name="interface_navbar_cat">tùy chọn NavBar</string>
   <string name="display_category_led_title">Đèn LED</string>
   <string name="battery_title">Pin</string>
   <string name="battery2_summary">Tùy chỉnh biểu tượng pin và tỷ lệ phần trăm</string>
   <string name="notification_drawer_cat">Ngăn kéo thông báo</string>
-  <string name="lockscreen_options_title"> tùy chọn Lockscreen</string>
-  <string name="navbar_slimdim_cat">SlimDim</string>
+  <string name="lockscreen_options_title">Tùy chọn màn hình khóa</string>
   <string name="lockscreen_shortcuts_cat">Lối tắt</string>
-  <string name="statusbar_clock_cat">Tùy chọn đồng hồ</string>
-  <string name="statusbar_notif_cat">Tùy chọn thông báo</string>
+  <string name="statusbar_clock_cat">Tùy chỉnh đồng hồ</string>
+  <string name="statusbar_notif_cat">Tùy chỉnh các thông báo</string>
   <string name="recents_alternate_cat">Alternative panels</string>
-  <string name="statusbar_battery_cat">Tùy chọn pin</string>
-  <string name="statusbar_header_cat"> tùy chọn Tiêu đề</string>
-  <string name="statusbar_weather_cat">Tùy chọn thời tiết</string>
-  <string name="statusbar_general_cat">Tùy chọn chung</string>
-  <string name="maintainer_category">Builds cho thiết bị này được duy trì bởi</string>
+  <string name="statusbar_battery_cat">Tùy chỉnh pin</string>
+  <string name="statusbar_header_cat">Tùy chỉnh Tiêu đề</string>
+  <string name="statusbar_weather_cat">Tùy chỉnh thời tiết</string>
+  <string name="statusbar_general_cat">Tùy chỉnh chung</string>
+  <string name="maintainer_category">Các xây dựng cho thiết bị này được duy trì bởi</string>
   <!-- Changelog -->
   <string name="changelog_screwd_title">Những thay đổi</string>
-  <string name="changelog_screwd_error">Không thể nạp thay đổi</string>
+  <string name="changelog_screwd_error">Không thể nạp các thay đổi</string>
   <!-- General strings -->
   <string name="ok">Đồng ý</string>
   <string name="ok_string">Đồng ý</string>
@@ -64,23 +63,23 @@
   <string name="attention">Chú ý</string>
   <string name="enabled">Đã Kích hoạt</string>
   <string name="default_string">Mặc định</string>
-  <string name="delete">đã Xoá</string>
-  <string name="general">Tổng quát</string>
+  <string name="delete">Xoá</string>
+  <string name="general">Chung</string>
   <string name="add">Thêm</string>
   <string name="choose_app">Chọn ứng dụng</string>
   <string name="reset_message">Đặt lại tất cả các mục về mặc định?</string>
   <string name="reset_android">Android</string>
   <string name="reset_screwd">Screw\'d</string>
-  <string name="positive_done">Đã xong</string>
-  <string name="dlg_reset_values_message">Đặt lại các giá trị về mặc định?</string>
+  <string name="positive_done">Xong</string>
+  <string name="dlg_reset_values_message">Đặt lại tất cả các mục về mặc định?</string>
   <string name="dlg_reset_android">OK</string>
   <string name="hidden_title">Ẩn</string>
   <string name="customize_title">Tùy chỉnh</string>
-  <string name="ripple_title">Có hiệu lực gợn</string>
-  <string name="colorize_ripple_title">Màu sắc có hiệu lực gợn</string>
-  <string name="colorize_ripple_dialog_title">Chọn cách màu sắc có hiệu lực gợn</string>
+  <string name="ripple_title">Hiệu ứng gợn sóng</string>
+  <string name="colorize_ripple_title">Tô màu hiệu ứng gợn sóng</string>
+  <string name="colorize_ripple_dialog_title">Chọn cách để tô màu hiệu ứng gợn sóng</string>
   <string name="dlg_dslv_reset_message">Đặt lại tất cả các mục về mặc định?</string>
-  <string name="dlg_reset_values_message">Đặt lại các giá trị về mặc định?</string>
+  <string name="dlg_reset_values_message">Đặt lại tất cả các mục về mặc định?</string>
   <string name="dlg_reset_colors_message">Đặt lại màu sắc to\nAndroid - hoặc Screwd mặc định?</string>
   <string name="dlg_reset_android">OK</string>
   <string name="dlg_reset_screwd">Screwd</string>
@@ -89,21 +88,21 @@
   <string name="position_title">Vị trí</string>
   <string name="position_right_title">Phải</string>
   <string name="position_centered_title">Trung tâm</string>
-  <string name="reset_paranoid">Hoang tưởng</string>
+  <string name="reset_paranoid">Paranoid</string>
   <string name="reset_android">Android</string>
   <!-- About phone screen, Screw'd version name-->
-  <string name="mod_version">Phiên bản Screw\'d</string>
+  <string name="mod_version">Screw\'d version</string>
   <!-- About phone screen, Screw'd unknown name-->
   <string name="mod_version_default">không xác định</string>
   <!-- About phone screen, build date of ROM -->
-  <string name="build_date">Ngày tạo phiên bản</string>
+  <string name="build_date">Build date</string>
   <string name="build_date_default">2012-01-01-0000</string>
   <!--  About device screen, Hardware info -->
   <string name="hardware_info">Thông tin phần cứng</string>
   <!--  About device Screen, hardware info, rear camera -->
   <string name="device_rear_camera">máy ảnh Phía sau </string>
   <!--  About device Screen, hardware info, front camera -->
-  <string name="device_front_camera">camera trước</string>
+  <string name="device_front_camera">Máy ảnh phía trước</string>
   <!--  About device Screen, hardware info, screen res -->
   <string name="device_screen_resolution">Độ phân giải màn hình</string>
   <!--  About device Screen, hardware info, GPU info -->
@@ -115,34 +114,33 @@
   <!-- About phone screen, Free memory info -->
   <string name="mem_info">Bộ nhớ</string>
   <!-- Volume rocker wake -->
-  <string name="volume_rocker_wake_title">Cách nhấn phím âm lượng lên/xuống sẽ đánh thức thiết bị</string>
+  <string name="volume_rocker_wake_title">Volume rocker wake</string>
   <string name="volume_rocker_wake_summary">Nhấn các phím âm lượng sẽ đánh thức điện thoại của bạn</string>
   <!-- kill app long press back -->
-  <string name="kill_app_longpress_back">Giết nút quay lại ứng dụng</string>
+  <string name="kill_app_longpress_back">Kill app back button</string>
   <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back key</string>
   <!-- Double Tap Navbar to Sleep -->
-  <string name="double_tap_sleep_nav_bar_title">Nhấp đúp vào để ngủ</string>
-  <string name="double_tap_sleep_nav_bar_summary">Đôi bấm vào thanh menu để đưa thiết bị vào giấc ngủ</string>
+  <string name="double_tap_sleep_nav_bar_summary">Nhấp đúp vào thanh điều hướng để đưa thiết bị vào giấc ngủ</string>
   <!-- Double tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Nhấp đúp vào để ngủ</string>
-  <string name="double_tap_to_sleep_summary">Nhấp đúp vào trên thanh trạng thái hoặc thứ ba và dưới lối tắt khu vực trên màn hình khóa để tắt màn hình</string>
+  <string name="double_tap_to_sleep_summary">Double-tap on the status bar or top third and bottom shortcut area of the lock screen to turn off the display</string>
   <!-- Status bar - Battery -->
-  <string name="status_bar_battery_style_title">Pin trạng thái phong cách</string>
-  <string name="status_bar_battery_style_icon_portrait">Chân dung biểu tượng</string>
-  <string name="status_bar_battery_style_icon_landscape">Biểu tượng cảnh quan</string>
-  <string name="status_bar_battery_style_circle">Vòng tròn</string>
-  <string name="status_bar_battery_style_dotted_circle">Vòng chấm</string>
-  <string name="status_bar_battery_style_text">Văn bản</string>
-  <string name="status_bar_battery_style_hidden">Ẩn</string>
+  <string name="status_bar_battery_style_title">Kiểu biểu tượng Pin</string>
+  <string name="status_bar_battery_style_icon_portrait">Icon portrait</string>
+  <string name="status_bar_battery_style_icon_landscape">Icon landscape</string>
+  <string name="status_bar_battery_style_circle">Circle</string>
+  <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
+  <string name="status_bar_battery_style_text">Text</string>
+  <string name="status_bar_battery_style_hidden">Hidden</string>
   <!-- Battery percentage -->
-  <string name="status_bar_battery_percentage_title">Hiển thị pin tỷ lệ phần trăm</string>
+  <string name="status_bar_battery_percentage_title">Hiển thị tỷ lệ phần trăm pin</string>
   <string name="status_bar_battery_percentage_dialog_title">Tỷ lệ phần trăm pin</string>
   <string name="status_bar_battery_percentage_default">Ẩn (mặc định)</string>
   <string name="status_bar_battery_percentage_text_inside">Bên trong biểu tượng</string>
   <string name="status_bar_battery_percentage_text_next">Bên cạnh biểu tượng</string>
   <!-- Notification light dialogs -->
-  <string name="edit_light_settings">Chỉnh sửa cài đặt ánh sáng</string>
-  <string name="pulse_speed_title">Độ dài xung và tốc độ</string>
+  <string name="edit_light_settings">Edit light settings</string>
+  <string name="pulse_speed_title">Pulse length and speed</string>
   <string name="default_time">Bình thường</string>
   <string name="custom_time">Tuỳ chỉnh</string>
   <string name="dialog_delete_title">Xóa</string>
@@ -152,8 +150,8 @@
   <string name="pulse_length_very_short">Rất ngắn</string>
   <string name="pulse_length_short">Ngắn</string>
   <string name="pulse_length_normal">Bình thường</string>
-  <string name="pulse_length_long">Dài</string>
-  <string name="pulse_length_very_long">Rất dài</string>
+  <string name="pulse_length_long">Lâu</string>
+  <string name="pulse_length_very_long">Rất lâu</string>
   <string name="pulse_speed_very_fast">Rất nhanh</string>
   <string name="pulse_speed_fast">Nhanh</string>
   <string name="pulse_speed_normal">Bình thường</string>
@@ -161,10 +159,9 @@
   <string name="pulse_speed_very_slow">Rất chậm</string>
   <!-- Battery light settings -->
   <string name="battery_light_title">Đèn báo pin</string>
-  <string name="battery_low_pulse_title">phát Xung nếu pin yếu</string>
+  <string name="battery_low_pulse_title">Phát xung nếu pin yếu</string>
   <string name="battery_light_list_title">Màu sắc</string>
   <string name="battery_light_low_color_title">Pin yếu</string>
-  <string name="battery_light_medium_color_title">Đang sạc</string>
   <string name="battery_light_full_color_title">Đã sạc (90%)</string>
   <string name="battery_light_really_full_color_title">Đã sạc (100%)</string>
   <!-- Lights settings screen, notification light settings -->
@@ -176,7 +173,7 @@
   <string name="notification_light_default_value">Mặc định</string>
   <string name="notification_light_missed_call_title">Cuộc gọi nhỡ</string>
   <string name="notification_light_voicemail_title">Thư thoại</string>
-  <string name="notification_light_screen_on">Đèn báo sáng với màn hình mở</string>
+  <string name="notification_light_screen_on">Đèn báo sáng với màn hình bật</string>
   <!-- Profiles -->
   <string name="profile_reset_title">Đặt lại</string>
   <string name="profiles_add">Thêm</string>
@@ -185,7 +182,7 @@
   <string name="picker_activities">Hoạt động</string>
   <string name="select_custom_app_title">Chọn ứng dụng tùy chỉnh</string>
   <string name="select_custom_activity_title">Chọn hoạt động tùy chỉnh</string>
-  <string name="systemuituner">Hệ thống giao diện người dùng</string>
+  <string name="systemuituner">System UI Tuner</string>
   <!-- Color Picker -->
   <string name="dialog_color_picker_title">Chọn màu</string>
   <string name="press_color_to_apply">Bấm vào màu sắc dưới đây để áp dụng</string>
@@ -200,81 +197,80 @@
   <string name="hex">Hex:</string>
   <string name="hex_hint">#ff000000</string>
   <string name="set">Đặt</string>
+  <!-- Clang version -->
   <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Khởi động lại nâng cao</string>
-  <string name="advanced_reboot_summary">Khi mở khóa, bao gồm tùy chọn trong trình đơn điện cho khởi động lại vào phục hồi, bộ nạp khởi động hoặc thực hiện một khởi động lại mềm</string>
+  <string name="advanced_reboot_summary">Khi mở khóa, bao gồm tùy chọn trong trình đơn nguồn để khởi động lại vào phục hồi, bộ nạp khởi động hoặc thực hiện một khởi động lại mềm</string>
   <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Khởi động lại nâng cao</string>
-  <string name="advanced_reboot_summary">Khi mở khóa, bao gồm tùy chọn trong trình đơn điện cho khởi động lại vào phục hồi, bộ nạp khởi động hoặc thực hiện một khởi động lại mềm</string>
+  <string name="advanced_reboot_summary">Khi mở khóa, bao gồm tùy chọn trong trình đơn nguồn để khởi động lại vào phục hồi, bộ nạp khởi động hoặc thực hiện một khởi động lại mềm</string>
   <!-- Power menu -->
   <string name="power_menu_title">Trình đơn nguồn</string>
   <string name="power_menu_power_title">Tắt nguồn</string>
-  <string name="power_menu_reboot_title">Khởi động lại trình đơn</string>
+  <string name="power_menu_reboot_title">Tùy chọn Khởi động lại</string>
   <string name="power_menu_screenshot_title">Chụp màn hình</string>
   <string name="power_menu_screenrecord_title">Ghi lại màn hình</string>
   <string name="power_menu_airplane_title">Chế độ máy bay</string>
   <string name="power_menu_users_title">Chuyển người dùng</string>
   <string name="power_menu_settings_title">Lối tắt cài đặt</string>
-  <string name="power_menu_lockdown_title">Thiết bị khoá cứng</string>
+  <string name="power_menu_lockdown_title">Device lockdown</string>
   <string name="power_menu_bug_report_title">Báo cáo lỗi</string>
   <string name="power_menu_sound_title">Bảng điều khiển âm thanh</string>
   <string name="power_menu_bug_report_disabled">Báo cáo lỗi bị vô hiệu hóa trong cài đặt phát triển</string>
   <string name="powermenu_screenshot_delay_title">Thiết lập độ trễ ảnh chụp màn hình</string>
-  <string name="navigation_bar_left_title">Chế độ thuận tay trái</string>
-  <string name="navigation_bar_left_summary">Đặt thanh điều hướng bên trái của màn hình ở chế độ ngang</string>
   <!-- Doze options -->
-  <string name="display_category_doze_options_title">Môi trường hiển thị xung quanh</string>
-  <string name="doze_settings_title">Tùy chọn bộ nâng cao</string>
-  <string name="doze_timeout_title">Bộ xung timeout</string>
-  <string name="doze_timeout_summary">Thời gian màn hình ở cho thông báo xung</string>
-  <string name="doze_trigger_pickup_title">Nhấc cử chỉ kích hoạt</string>
-  <string name="doze_trigger_pickup_summary_on">Bộ xung sẽ được kích hoạt bởi nhận cử chỉ cảm biến sự kiện</string>
-  <string name="doze_trigger_pickup_summary_off">Nhận cử chỉ cảm biến sẽ không được sử dụng như một cơ chế kích hoạt</string>
-  <string name="doze_trigger_sigmotion_title">Theo chuyển động đáng kể hay quan trọng</string>
-  <string name="doze_trigger_sigmotion_summary_on">Bộ xung sẽ được kích hoạt bởi sự kiện bộ cảm biến chuyển động quan trọng</string>
-  <string name="doze_trigger_sigmotion_summary_off">Cảm biến chuyển động quan trọng sẽ không được sử dụng như một cơ chế kích hoạt</string>
-  <string name="doze_trigger_notification_title">Thông báo kích hoạt</string>
-  <string name="doze_trigger_notification_summary_on">Bộ xung sẽ được kích hoạt bởi thông báo</string>
-  <string name="doze_trigger_notification_summary_off">Thông báo sẽ không được sử dụng như là một kích hoạt</string>
-  <string name="doze_schedule_title">lịch trình Doze</string>
-  <string name="doze_schedule_summary_on">Được xác định trước khoảng thời gian lặp lại bộ (bình thường [1s, 10s, độ tuổi 30, năm 60, 120s]) sẽ sử dụng (mặc định)</string>
-  <string name="doze_schedule_summary_off">Doze chỉ sẽ chỉ phát xung một lần cho một thông báo</string>
-  <string name="doze_brightness_title">Cấp độ sáng Doze</string>
-  <string name="doze_brightness_summary">Cấp độ sáng của màn hình xung Doze (% độ sáng tối đa được phép)</string>
+  <string name="display_category_doze_options_title">Ambient display</string>
+  <string name="doze_settings_title">Advanced doze options</string>
+  <string name="doze_timeout_title">Doze pulse timeout</string>
+  <string name="doze_timeout_summary">Time that the screen stays on for notification pulse</string>
+  <string name="doze_trigger_pickup_title">Pick up gesture trigger</string>
+  <string name="doze_trigger_pickup_summary_on">Doze pulse will be triggered by pick up gesture sensor events</string>
+  <string name="doze_trigger_pickup_summary_off">Pick up gesture sensor will not be utilized as a triggering mechanism</string>
+  <string name="doze_trigger_sigmotion_title">Significant motion trigger</string>
+  <string name="doze_trigger_sigmotion_summary_on">Doze pulse will be triggered by significant motion sensor events</string>
+  <string name="doze_trigger_sigmotion_summary_off">Significant motion sensor will not be utilized as a triggering mechanism</string>
+  <string name="doze_trigger_notification_title">Notification trigger</string>
+  <string name="doze_trigger_notification_summary_on">Doze pulse will be triggered by notifications</string>
+  <string name="doze_trigger_notification_summary_off">Notifications will not be utilized as a trigger</string>
+  <string name="doze_schedule_title">Doze schedule</string>
+  <string name="doze_schedule_summary_on">Predefined doze repeat intervals (normally [1s,10s,30s,60s,120s]) will be used (default)</string>
+  <string name="doze_schedule_summary_off">Doze will only pulse once per notification</string>
+  <string name="doze_brightness_title">Doze brightness level</string>
+  <string name="doze_brightness_summary">Brightness level of doze pulse screen (% of max allowed brightness)</string>
   <!-- Recents panel -->
-  <string name="recents_panel_category"> bảng Recents</string>
+  <string name="recents_panel_category">Recents panel</string>
   <string name="show_clear_all_recents_button_title">Clear all button</string>
-  <string name="show_clear_all_recents_button_summary">Hiển thị nút Làm sạch tất cả</string>
-  <string name="recents_clear_all_location_title">Làm sạch các vị trí</string>
-  <string name="recents_clear_all_location_top_right">Trên bên phải</string>
-  <string name="recents_clear_all_location_top_left">Đầu trang bên trái</string>
-  <string name="recents_clear_all_location_top_center">Hàng đầu Trung tâm</string>
-  <string name="recents_clear_all_location_bottom_right">Góc dưới bên phải</string>
-  <string name="recents_clear_all_location_bottom_left">Dưới cùng bên trái</string>
-  <string name="recents_clear_all_location_bottom_center">Phía dưới trung tâm</string>
-  <string name="recents_clear_all_dismiss_all_title">Làm sạch tất cả các tác vụ</string>
-  <string name="recents_clear_all_dismiss_all_summary">Bao gồm tác vụ nền trước khi làm sạch tất cả</string>
+  <string name="show_clear_all_recents_button_summary">Show clear all button</string>
+  <string name="recents_clear_all_location_title">Clear all location</string>
+  <string name="recents_clear_all_location_top_right">Top right</string>
+  <string name="recents_clear_all_location_top_left">Top left</string>
+  <string name="recents_clear_all_location_top_center">Top center</string>
+  <string name="recents_clear_all_location_bottom_right">Bottom right</string>
+  <string name="recents_clear_all_location_bottom_left">Bottom left</string>
+  <string name="recents_clear_all_location_bottom_center">Bottom center</string>
+  <string name="recents_clear_all_dismiss_all_title">Clear all tasks</string>
+  <string name="recents_clear_all_dismiss_all_summary">Include foreground task when clearing all</string>
   <string name="recents_searchbar_title">Thanh tìm kiếm</string>
-  <string name="recents_searchbar_summary">Hiển thị thanh tìm kiếm Google trong màn hình recents</string>
-  <string name="recents_show_membar_title">Thanh Bộ nhớ</string>
-  <string name="recents_show_membar_summary">Hiển thị một thanh với các thiết bị có sẵn bộ nhớ khả dụng</string>
-  <string name="recents_clear_all_dismiss_all_title">Làm sạch tất cả các tác vụ</string>
-  <string name="recents_clear_all_dismiss_all_summary">Bao gồm tác vụ nền trước khi làm sạch tất cả</string>
+  <string name="recents_searchbar_summary">Hiển thị thanh tìm kiếm của Google trong màn hình recents</string>
+  <string name="recents_show_membar_title">Memory bar</string>
+  <string name="recents_show_membar_summary">Show a bar with the device\'s available memory</string>
+  <string name="recents_clear_all_dismiss_all_title">Clear all tasks</string>
+  <string name="recents_clear_all_dismiss_all_summary">Include foreground task when clearing all</string>
   <!-- Preference category for LAN development settings. [CHAR LIMIT=25] -->
-  <string name="debug_LAN_category">Cài đặt mạng LAN</string>
+  <string name="debug_LAN_category">LAN Settings</string>
   <!-- Hostname setting -->
-  <string name="device_hostname">Địa chỉ thiết bị</string>
+  <string name="device_hostname">Device hostname</string>
   <!-- Bluetooth settings. A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
-  <string name="bluetooth_accept_all_files">Chấp nhận tất cả các loại tập tin</string>
+  <string name="bluetooth_accept_all_files">Accept all file types</string>
   <!-- Quick settings quick pull down -->
-  <string name="quick_pulldown_title">Kéo xuống nhanh</string>
-  <string name="quick_pulldown_summary">%1$s cạnh của thanh trạng thái để mở Cài đặt nhanh</string>
-  <string name="quick_pulldown_summary_always">Luôn hiển thị cài đặt nhanh trên thanh trạng thái kéo xuống</string>
-  <string name="quick_pulldown_summary_left">Trái</string>
-  <string name="quick_pulldown_summary_right">Phải</string>
-  <string name="quick_pulldown_off">Tắt</string>
-  <string name="quick_pulldown_left">Trái</string>
-  <string name="quick_pulldown_right">Phải</string>
+  <string name="quick_pulldown_title">Quick pulldown</string>
+  <string name="quick_pulldown_summary">%1$s edge of the status bar pulls down Quick Settings</string>
+  <string name="quick_pulldown_summary_always">Always show Quick Settings on status bar pulldown</string>
+  <string name="quick_pulldown_summary_left">Left</string>
+  <string name="quick_pulldown_summary_right">Right</string>
+  <string name="quick_pulldown_off">Off</string>
+  <string name="quick_pulldown_left">Left</string>
+  <string name="quick_pulldown_right">Right</string>
   <string name="quick_pulldown_always">Luôn bật</string>
   <!-- Quick Settings brightness slider -->
   <string name="qs_brightness_slider_title_eos">Trượt điều chỉnh độ sáng</string>
@@ -504,21 +500,6 @@
   <string name="battery_bar_animate_summary">Các hiệu ứng sạc có thể dẫn tới trải nghiệm không tốt cho người dùng. Cho phép tùy theo quyết định của bạn.</string>
   <!-- Restart SystemUI -->
   <string name="restart_systemui">Khởi động lại giao diện hệ thống</string>
-  <!-- SlimDim -->
-  <string name="dim_nav_buttons_category">SlimDim</string>
-  <string name="dim_nav_buttons_title">Mờ nút sau khi không hoạt động</string>
-  <string name="dim_nav_buttons_summary">Nút thanh mờ điều hướng sau khi không tương tác với thanh điều hướng cho một thời gian nhất định</string>
-  <string name="dim_nav_buttons_timeout_title">Thời gian chờ trước khi mờ</string>
-  <string name="dim_nav_buttons_timeout_summary">Thời gian (trong mili giây) để chờ đợi trước khi mờ nút</string>
-  <string name="dim_nav_buttons_alpha_title">Mờ alpha</string>
-  <string name="dim_nav_buttons_alpha_summary">Các giá trị Alpha để mờ nút để</string>
-  <string name="dim_nav_buttons_animate_title">Hoạt hình mờ</string>
-  <string name="dim_nav_buttons_animate_summary">Animate các phai alpha</string>
-  <string name="dim_nav_buttons_animate_duration_title">Thời gian hoạt hình</string>
-  <string name="dim_nav_buttons_animate_duration_summary">Thời gian (trong mili giây) của các hình ảnh động alpha</string>
-  <string name="dim_nav_buttons_touch_anywhere_title">Nghe cho chạm vào toàn bộ màn hình</string>
-  <string name="dim_nav_buttons_touch_anywhere_summary_on">Chạm vào bất cứ nơi nào trên màn hình sẽ gây ra nút để bỏ mờ</string>
-  <string name="dim_nav_buttons_touch_anywhere_summary_off">Chỉ chạm vào navbar sẽ gây ra nút để bỏ mờ</string>
   <!-- Slim DSLV -->
   <string name="shortcut_action_none">Không chọn</string>
   <string name="shortcut_action_longpress">Longpress:</string>
@@ -607,89 +588,23 @@
   <string name="shortcut_action_media_play_pause">Âm nhạc - phát/tạm dừng</string>
   <string name="shortcut_action_media_previous">Âm nhạc - bài trước</string>
   <string name="shortcut_action_wake_device">Đánh thức thiết bị</string>
+  <string name="shortcut_action_none">Không chọn</string>
   <string name="shortcut_action_app">Tùy chỉnh các ứng dụng</string>
-  <string name="shortcut_action_expanded_desktop">Mở rộng màn hình</string>
   <string name="shortcut_action_home">Màn hình chính</string>
-  <string name="shortcut_action_kill">Kill app</string>
-  <string name="shortcut_action_lastapp">Ứ. dụng cuối vừa dùng</string>
-  <string name="shortcut_action_menu_big">Menu lớn</string>
-  <string name="shortcut_action_navbar">Thanh điều hướng</string>
-  <string name="shortcut_action_notifications">Các thông báo</string>
-  <string name="shortcut_action_menu_big">Menu lớn</string>
+  <string name="shortcut_action_back">Quay Lại</string>
   <string name="shortcut_action_ime">Chuyển đổi bộ gõ</string>
   <string name="shortcut_action_power_menu">Trình đơn nguồn</string>
-  <string name="shortcut_action_qs">Bảng cài đặt nhanh</string>
-  <string name="shortcut_action_smart">Kéo xuống thông minh</string>
   <string name="shortcut_action_recent">Ứng dụng vừa dùng</string>
+  <string name="shortcut_action_power">Tắt Màn hình</string>
+  <string name="shortcut_action_search">Tìm kiếm trong ứng dụng</string>
   <string name="shortcut_action_ring_vib">Chuông/Rung</string>
   <string name="shortcut_action_ring_silent">Chuông/Im lặng</string>
   <string name="shortcut_action_ring_vib_silent">Chuông/Rung/Im lặng</string>
-  <string name="shortcut_action_now_on_tap">Now on Tap</string>
-  <string name="shortcut_action_power">Tắt Màn hình</string>
-  <string name="shortcut_action_screenshot">Chụp màn hình</string>
-  <string name="shortcut_action_assist">Tìm kiếm</string>
-  <string name="shortcut_action_search">Tìm kiếm trong ứng dụng</string>
-  <string name="shortcut_action_theme_switch">Đổi chủ đề</string>
-  <string name="shortcut_action_torch">Đèn pin</string>
-  <string name="shortcut_action_voice_search">Tìm kiếm bằng giọng nói</string>
-  <string name="shortcut_action_none">Không chọn</string>
-  <!-- Navigation bar -->
-  <string name="navigation_bar_size_42_dp_default">42 dp (mặc định)</string>
-  <string name="navigation_bar_size_36_dp">36 dp</string>
-  <string name="navigation_bar_size_30_dp">30 dp</string>
-  <string name="navigation_bar_size_24_dp">24 dp</string>
-  <string name="navigation_bar_size_48_dp_default">48 dp (mặc định)</string>
-  <string name="navigation_bar_size_44_dp">44 dp</string>
-  <string name="navigation_bar_size_40_dp">40 dp</string>
-  <string name="navigation_bar_size_42_dp">42 dp</string>
-  <string name="navigation_bar_size_0_dp">0 dp (tắt)</string>
-  <string name="navigation_menu_right">Phải</string>
-  <string name="navigation_menu_left">Trái</string>
-  <string name="navigation_menu_both">Cả hai</string>
-  <string name="navigation_menu_default_jb_behavior">Hiển thị theo yêu cầu (mặc định)</string>
-  <string name="navigation_menu_never_show">Không bao giờ hiển thị</string>
-  <string name="navigation_menu_always_show">Luôn hiển thị</string>
-  <string name="navigation_bar">Thanh điều hướng</string>
-  <string name="navbar_button_cat">Các nút trên thanh điều hướng</string>
-  <string name="title_pref_menu_location">Vị trí Trình đơn</string>
-  <string name="summary_pref_menu_location">Nơi bạn muốn nút trình đơn xuất hiện?</string>
-  <string name="title_pref_menu_display">Khả năng hiển thị Trình đơn</string>
-  <string name="summary_pref_menu_display">Bạn muốn các nút trình đơn xuất hiện khi nào và như thế nào?</string>
-  <string name="navbar_enable_bar">Cho phép thanh điều hướng</string>
-  <string name="navbar_enable_bar_summary">Cho phép thanh điều hướng</string>
-  <string name="navigation_bar_height_title">Chiều cao thanh điều hướng</string>
-  <string name="navigation_bar_height_summary">Chiều cao thanh điều hướng trong khi ở chiều thẳng đứng.</string>
-  <string name="navigation_bar_height_landscape_title">Chiều cao thanh điều hướng khi xoay ngang</string>
-  <string name="navigation_bar_height_landscape_summary">Chiều cao thanh điều hướng trong khi ở chiều ngang.</string>
-  <string name="navigation_bar_width_title">chiều rộng thanh điều hướng</string>
-  <string name="navigation_bar_width_summary">Chiều cao thanh điều hướng nếu như thanh nằm dọc theo một bên.</string>
-  <string name="navbar_can_move">Hiển thị ngang</string>
-  <string name="navbar_can_move_summary">Hiển thị thanh điều hướng chiều ngang ở dưới cùng</string>
-  <string name="navbar_style_dimen_title">Kích thước</string>
-  <string name="navbar_button_title">Các nút</string>
-  <string name="navbar_cat">Thanh điều hướng</string>
-  <string name="navbar_dimensions_reset_message">Đặt lại tất cả kích thước mục mặc định?</string>
-  <string name="navbar_button_style_reset_message">Đặt lại tất cả các mục theo kiểu mặc định?</string>
-  <string name="shortcut_action_required_warning_message">Nó là không thể xóa nút yêu cầu</string>
-  <!-- Navigation bar button style -->
-  <string name="nav_bar_button_style">Kiểu nút bấm</string>
-  <string name="nav_bar_button_style_summary">Thay đổi kiểu thanh nút thanh điều hướng</string>
-  <string name="button_transparency_title">Nút trong suốt</string>
-  <string name="navigation_bar_icon_tint_title">Màu các Nút</string>
-  <string name="nav_button_color_mode_title">Chế độ màu</string>
-  <string name="nav_button_color_mode_dialog_title">Màu sắc</string>
-  <string name="nav_button_color_mode_summary">Thay đổi màu của nút trên thanh điều hướng</string>
-  <string name="navigation_bar_glow_tint_title">Màu nút phát sáng</string>
-  <string name="icon_color_mode_all_icons">Tất cả các biểu tượng</string>
-  <string name="icon_color_mode_system_icons">Biểu tượng Hệ thống</string>
-  <string name="icon_color_mode_system_custom_icons">Hệ thống và biểu tượng tuỳ chỉnh</string>
-  <string name="shortcuts_applications">Ứng dụng</string>
-  <string name="shortcuts_select_custom_app_title">Chọn ứng dụng</string>
-  <string name="shortcuts_icon_picker_type">Chọn loại biểu tượng:</string>
-  <string name="shortcuts_icon_default">Mặc định</string>
-  <string name="shortcuts_icon_presets">Biểu tượng Hệ thống</string>
-  <string name="shortcuts_icon_custom">Thư viện</string>
-  <string name="shortcuts_icon_picker_choose_icon_title">Chọn biểu tượng</string>
+  <string name="shortcut_action_camera">Máy ảnh</string>
+  <string name="shortcut_action_media_next">Âm nhạc - bài kế tiếp</string>
+  <string name="shortcut_action_media_play_pause">Âm nhạc - phát/tạm dừng</string>
+  <string name="shortcut_action_media_previous">Âm nhạc - bài trước</string>
+  <string name="shortcut_action_wake_device">Đánh thức thiết bị</string>
   <string name="shortcut_action_longpress">Longpress:</string>
   <string name="shortcut_action_select_action_longpress">Chọn hành động longpress:</string>
   <string name="shortcut_action_select_action">Chọn hành động:</string>
@@ -1229,9 +1144,6 @@
   <string name="maintainer_default">Không xác định</string>
   <string name="maintainer_default_summary">Xin lỗi, thiết bị này không được duy trì!</string>
   <string name="devs">Nhà phát triển</string>
-  <!-- Navbar cursor buttons -->
-  <string name="show_ime_arrows_title">Phím mũi tên hiển thị trong khi gõ</string>
-  <string name="show_ime_arrows_summary">Hiển thị con trỏ chuột trái và bên phải nút IME.</string>
   <!-- Keyguard notifications options -->
   <string name="app_notification_show_on_keyguard_title">Hiển thị trên màn hình khóa</string>
   <string name="app_notification_show_on_keyguard_summary">Hiển thị các thông báo từ ứng dụng này trên màn hình khóa</string>
@@ -1246,8 +1158,6 @@
   <string name="enable_task_manager_summary">Bật/tắt các hành động cho các nút quản lý tác vụ trong khu vực mở rộng thanh trạng thái</string>
   <!--Heads Up -->
   <string name="heads_up_notifications">Heads up</string>
-  <string name="heads_up_snooze">Báo lại</string>
-  <string name="heads_up_timeout">Thời gian chờ</string>
   <string name="add_heads_up_package">Thêm ứng dụng</string>
   <string name="add_heads_up_dnd_summary">Không hiển thị heads-up trong các ứng dụng</string>
   <string name="add_heads_up_whitelist_summary">Đăng tất cả các thông báo từ các ứng dụng để heads-up</string>
@@ -1256,16 +1166,10 @@
   <string name="heads_up_blacklist_title">Danh sách đen</string>
   <string name="heads_up_whitelist_title">Danh sách trắng</string>
   <string name="heads_up_contains_key">Đã thêm vào ứng dụng này vào danh sách</string>
+  <!-- Heads up timeout -->
   <!-- Hide lockscreen clock & date -->
   <string name="hide_lockscreen_clock_title">Hiển thị đồng hồ màn hình khóa</string>
   <string name="hide_lockscreen_date_title">Hiển thị ngày màn hình khóa</string>
-  <!-- Selinux Switch -->
-  <string name="selinux_switch_title">Tùy chọn chuyển đổi Selinux</string>
-  <string name="selinux_switch_summary">SELinux là một tập hợp các hạt nhân cải tiến và các công cụ không gian người dùng. Thay đổi chế độ có thể gây ra tác dụng không mong muốn. Sử dụng là tại rủi ro của riêng bạn.</string>
-  <string name="selinux_title">Chế độ Selinux</string>
-  <string name="selinux_permissive_title">Cho phép</string>
-  <string name="selinux_enforcing_title">Thực thi</string>
-  <string name="selinux_permissive_toast_title">Selinux thiết lập để cho phép</string>
   <!-- Smart Pulldown -->
   <string name="smart_pulldown_title">Kéo xuống thông minh</string>
   <string name="smart_pulldown_summary">Mở cài đặt nhanh chóng khi có thông báo %1$s hiện tại</string>
@@ -1306,4 +1210,19 @@
   <string name="dashboard_switches_on">Công tắc bật</string>
   <string name="dashboard_switches_summary">Thay đổi vị trí của công tắc bảng điều khiển</string>
   <string name="dashboard_switches_dialog_title">Chọn chuyển đổi trạng thái</string>
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
+  <!-- Lock screen vibrate settings -->
+  <!-- Navigation Bar -->
+  <string name="navigation_bar_left_title">Chế độ thuận tay trái</string>
+  <string name="navigation_bar_left_summary">Place the navigation bar on the left side of the screen in landscape mode</string>
+  <!-- Actions dialog and default task values set in ActionPreference xml-->
+  <!-- Fling -->
+  <!-- Pulse navigation bar music visualizer -->
+  <!-- Navbar height -->
+  <string name="positive_done">Xong</string>
+  <!-- SmartBar -->
+  <!-- Heads Up button -->
+  <!-- Header image shadow -->
 </resources>
