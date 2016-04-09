@@ -114,7 +114,7 @@
   <!-- About phone screen, Free memory info -->
   <string name="mem_info">Memoria</string>
   <!-- Volume rocker wake -->
-  <string name="volume_rocker_wake_title">Accendi il display con i tasti del volume</string>
+  <string name="volume_rocker_wake_title">Accendi il display con Vol +/-</string>
   <string name="volume_rocker_wake_summary">Premendo il bilanciere del volume si accenderà lo schermo</string>
   <!-- kill app long press back -->
   <string name="kill_app_longpress_back">Termina app con tasto indietro</string>
@@ -160,7 +160,7 @@
   <string name="pulse_speed_very_slow">Molto lento</string>
   <!-- Battery light settings -->
   <string name="battery_light_title">LED batteria</string>
-  <string name="battery_low_pulse_title">Lampeggia se la batteria è quasi scarica</string>
+  <string name="battery_low_pulse_title">Pulsa se la batteria è scarsa</string>
   <string name="battery_light_list_title">Colori</string>
   <string name="battery_light_low_color_title">Batteria scarica</string>
   <string name="battery_light_medium_color_title">Ricarica - lenta o normale</string>
@@ -393,11 +393,11 @@
   <string name="status_bar_notif_count_summary">Visualizza il numero di notifiche in sospeso</string>
   <!-- Keyboard and Input methods  -->
   <string name="title_keyboard_input">Impostazioni IME</string>
-  <string name="disable_fullscreen_keyboard_title">Disabilita la tastiera a schermo intero</string>
+  <string name="disable_fullscreen_keyboard_title">Disabilita tastiera a schermo intero</string>
   <string name="disable_fullscreen_keyboard_summary">La tastiera in orizzontale non occuperà mai tutto lo schermo</string>
   <string name="volume_key_cursor_control_title">Controllo cursore con tasti volume</string>
   <string name="volume_key_cursor_control_on">Volume +/- muove il cursore sinistra/destra</string>
-  <string name="volume_key_cursor_control_on_reverse">I tasti volume +/- muovono il cursore a destra/sinistra</string>
+  <string name="volume_key_cursor_control_on_reverse">Volume +/- muove il cursore destra/sinistra</string>
   <string name="keyboard_rotation_toggle_title">Rotazione automatica tastiera</string>
   <string name="keyboard_rotation_toggle_summary">Forza rotazione automatica quando viene visualizzata la tastiera</string>
   <string name="keyboard_rotation_timeout_title">Timeout rotazione automatica</string>
@@ -1038,7 +1038,7 @@
   <string name="default_string">Predefinito</string>
   <string name="reset">Resetta</string>
   <!-- QS -->
-  <string name="qs_settings_title">Impostazioni TIle</string>
+  <string name="qs_settings_title">Impostazioni Tile</string>
   <string name="qs_category_title">Impostazioni Rapide</string>
   <string name="qs_order_title">Scegli e ordina i tile</string>
   <string name="add_qs">Aggiungi nuovo file</string>
@@ -1069,14 +1069,14 @@
   <string name="set">Imposta</string>
   <string name="color_default">Predefinita</string>
   <!-- Instant reboot -->
-  <string name="advanced_reboot_oneclick">Riavvio di un click</string>
-  <string name="advanced_reboot_oneclick_summary">Azione istantanea innesco riavvio</string>
+  <string name="advanced_reboot_oneclick">Riavvio in un tocco</string>
+  <string name="advanced_reboot_oneclick_summary">Riavvio senza bisogno di conferme</string>
   <!--Fingerprint auth vibration -->
   <string name="fprint_sucess_vib_title">Vibrazione autenticazione impronte digitali</string>
   <string name="fprint_sucess_vib_summary">Vibrazione all\'autenticazione con impronte digitali</string>
   <!-- Lockscreen Torch toggle -->
   <string name="keyguard_torch_title">Torcia a schermo spento</string>
-  <string name="keyguard_torch_summary">La pressione prolungata del pulsante accensione a schermo spento accenderà la torcia</string>
+  <string name="keyguard_torch_summary">La pressione prolungata del pulsante accensione a schermo spento avvierà la torcia</string>
   <!-- Disable OS on LS -->
   <string name="block_on_secure_keyguard_title">Disabilita nella schermata di blocco</string>
   <string name="block_on_secure_keyguard_summary">Impostazioni rapide disattivate nella schermata di blocco sicura</string>
@@ -1116,7 +1116,7 @@
   <!-- Power menu and dialogs transparency -->
   <string name="power_menu_transparency">Trasparenza menu di spegnimento/riavvio</string>
   <!-- Lock cLock -->
-  <string name="lock_clock_title">Opzioni Sblocco Orologio</string>
+  <string name="lock_clock_title">Opzioni Widget Orologio</string>
   <string name="lock_clock_summary">Visualizza o cambia la visualizzazione del widget \'cLock\'.</string>
   <!-- Dashboard settings -->
   <string name="dashboard_category">Menu impostazioni</string>
@@ -1126,7 +1126,7 @@
   <string name="dashboard_columns_one">Uno</string>
   <string name="dashboard_columns_two">Due</string>
   <string name="dashboard_columns_three">Tre</string>
-  <string name="dashboard_tileview_double_lines_title">Visualizzazione titoli nelle impostazioni</string>
+  <string name="dashboard_tileview_double_lines_title">Visualizzazione titoli Impostazioni</string>
   <string name="dashboard_tileview_double_lines_summary">Visualizza titoli delle impostazioni in 2 righe</string>
   <string name="dashboard_tileview_dividers_title">Divisori impostazioni</string>
   <string name="dashboard_tileview_dividers_summary">Nascondi i divisori delle impostazioni</string>
@@ -1187,8 +1187,8 @@
   <string name="heads_up_time_out_8sec">8 secondi</string>
   <string name="heads_up_time_out_10sec">10 secondi</string>
   <!-- Hide lockscreen clock & date -->
-  <string name="hide_lockscreen_clock_title">Mostra orologio nella schermata di blocco</string>
-  <string name="hide_lockscreen_date_title">Mostra la data nella schermata di blocco</string>
+  <string name="hide_lockscreen_clock_title">Mostra orologio</string>
+  <string name="hide_lockscreen_date_title">Mostra data</string>
   <!-- Smart Pulldown -->
   <string name="smart_pulldown_title">Pulldown intelligente</string>
   <string name="smart_pulldown_summary">Apri Impostazioni rapide quando non ci sono notifiche %1$s presenti</string>
@@ -1245,7 +1245,7 @@
   <!-- Navigation Bar -->
   <string name="navbar_interface_title">Interfaccia</string>
   <string name="navbar_size">Dimensione barra</string>
-  <string name="navbar_mode">Modalità Navigazione</string>
+  <string name="navbar_mode">Modalità di Navigazione</string>
   <string name="navbar_visibility">Abilita barra di navigazione</string>
   <string name="navigationbar_settings_title">Navigazione</string>
   <string name="aosp_navigation_bar">Barra di navigazione</string>
