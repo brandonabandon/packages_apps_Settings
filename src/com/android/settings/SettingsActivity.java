@@ -75,6 +75,7 @@ import com.android.settings.screwd.FlingSettings;
 import com.android.settings.screwd.HeadsUpSettings;
 import com.android.settings.screwd.Navbar;
 import com.android.settings.screwd.SmartbarSettings;
+import com.android.settings.paranoid.PieControl;
 import com.android.settings.applications.InstalledAppDetails;
 import com.android.settings.applications.ManageApplications;
 import com.android.settings.applications.ManageAssist;
@@ -285,7 +286,7 @@ public class SettingsActivity extends Activity
             R.id.print_settings,
             R.id.nfc_payment_settings,
             R.id.home_settings,
-			R.id.screwd_settings,
+	    R.id.screwd_settings,
             R.id.dashboard
     };
 
@@ -362,10 +363,11 @@ public class SettingsActivity extends Activity
             ProcessStatsSummary.class.getName(),
             DrawOverlayDetails.class.getName(),
             WriteSettingsDetails.class.getName(),
-			com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
+	    com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
             BlacklistSettings.class.getName(),
+	    PieControl.class.getName(),
             DisplayRotation.class.getName(),
-			ScrewdSettings.class.getName(),
+	    ScrewdSettings.class.getName(),
             Navbar.class.getName(),
             FlingSettings.class.getName(),
             SmartbarSettings.class.getName(),
