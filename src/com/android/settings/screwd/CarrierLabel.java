@@ -49,9 +49,12 @@ public class CarrierLabel extends SettingsPreferenceFragment implements OnPrefer
 
     private static final String STATUS_BAR_CARRIER = "status_bar_carrier";
     private static final String CUSTOM_CARRIER_LABEL = "custom_carrier_label";
+	private static final String MAX_ICONS =
+            "carrier_label_number_of_notification_icons";
 
     private ListPreference mShowCarrierLabel;
     private PreferenceScreen mCustomCarrierLabel;
+	private ListPreference mNumberOfNotificationIcons;
 
     private String mCustomCarrierLabelText;
 
@@ -70,6 +73,13 @@ public class CarrierLabel extends SettingsPreferenceFragment implements OnPrefer
         mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntry());
         mShowCarrierLabel.setOnPreferenceChangeListener(this);
         mCustomCarrierLabel = (PreferenceScreen) prefSet.findPreference(CUSTOM_CARRIER_LABEL);
+		
+	mNumberOfNotificationIcons = (ListPreference) findPreference(MAX_ICONS);
+        int numberOfNotificationIcons = Settings.System.getInt(resolver,
+                           Settings.System.HIDE_CARRIER_MAX_ICONS_NUMBER_OF_NOTIFICATION_ICONS, 1);
+        mNumberOfNotificationIcons.setValue(String.valueOf(numberOfNotificationIcons));
+        mNumberOfNotificationIcons.setSummary(mNumberOfNotificationIcons.getEntry());
+        mNumberOfNotificationIcons.setOnPreferenceChangeListener(this);
 
         updatepreferences();
 
@@ -107,6 +117,13 @@ public class CarrierLabel extends SettingsPreferenceFragment implements OnPrefer
                     resolver, Settings.System.STATUS_BAR_SHOW_CARRIER, showCarrierLabel);
             mShowCarrierLabel.setSummary(mShowCarrierLabel.getEntries()[index]);
             updatepreferences();
+            return true;
+	} else if (preference == mNumberOfNotificationIcons) {
+            int intValue = Integer.valueOf((String) newValue);
+            int index = mNumberOfNotificationIcons.findIndexOfValue((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.HIDE_CARRIER_MAX_ICONS_NUMBER_OF_NOTIFICATION_ICONS,
+                    intValue);
+            preference.setSummary(mNumberOfNotificationIcons.getEntries()[index]);
             return true;
          }
          return false;

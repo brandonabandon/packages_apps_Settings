@@ -1539,5 +1539,16 @@
     <string name="header_weather_title">Header view weather</string>
     <string name="header_weather_summary">Enable notification panel header weather display</string>
     <string name="weather_icon_pack_title">Condition icon pack</string>
+
+    <string name="text_title">Text</string>
+    <string name="number_of_notifications_title">Number of notifications</string>
+    <string name="number_of_notifications_one_title">1 (Hide on all notification)</string>
+    <string name="number_of_notifications_two_title">2</string>
+    <string name="number_of_notifications_three_title">3</string>
+    <string name="number_of_notifications_four_title">4</string>
+    <string name="number_of_notifications_five_title">5</string>
+    <string name="number_of_notifications_six_title">6</string>
+    <string name="carrier_label_hide_label_title">Hide on notifications</string>
+    <string name="carrier_label_number_of_notification_icons_title">Max Number of icons before hiding</string>
     
 </resources>

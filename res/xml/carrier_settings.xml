@@ -30,6 +30,18 @@
         android:key="custom_carrier_label"
         android:title="@string/custom_carrier_label_title"
         android:dependency="status_bar_carrier" />
+	
+    <com.android.settings.screwd.SystemSettingSwitchPreference
+         android:key="hide_carrier_max_icons"
+         android:title="@string/carrier_label_hide_label_title"
+	 android:dependency="status_bar_carrier" />
+    
+    <ListPreference
+    	 android:key="carrier_label_number_of_notification_icons"
+         android:title="@string/carrier_label_number_of_notification_icons_title"
+         android:entries="@array/number_of_notifications_entries"
+         android:entryValues="@array/number_of_notifications_values"
+	 android:dependency="hide_carrier_max_icons" />
 
 </PreferenceScreen>
 
