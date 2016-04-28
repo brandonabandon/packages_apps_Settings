@@ -17,7 +17,7 @@
 
   <!-- Screw'd Settings -->
     <string name="header_customize">Customize</string>
-    <string name="header_category_screwd">Screw\'d Settings</string>
+    <string name="header_category_screwd">Screw\'d settings</string>
     <string name="ui">User Interface</string>
     <string name="system">System</string>
     <string name="notifications">Notifications</string>
@@ -173,7 +173,7 @@
     <string name="pulse_speed_very_slow">Very slow</string>
 
     <!-- Battery light settings -->
-    <string name="battery_light_title">Battery light</string>
+    <string name="battery_light_title">Battery Light</string>
     <string name="battery_low_pulse_title">Pulse if battery low</string>
     <string name="battery_light_list_title">Colors</string>
     <string name="battery_light_low_color_title">Battery low</string>
@@ -811,8 +811,8 @@
     <string name="show_ime_arrows_summary">Display left and right cursor buttons for IME.</string>
     
     <!-- LCD Density -->
-    <string name="lcd_density">LCD density</string>
-    <string name="dialog_title_lcd_density">LCD density</string>
+    <string name="lcd_density">LCD Density</string>
+    <string name="dialog_title_lcd_density">LCD Density</string>
     <string name="lcd_density_value_format">%d DPI</string>
     <string name="lcd_density_default_value_format">%d DPI (default)</string>
     <string name="restarting_ui">Restarting UI\u2026</string>
@@ -827,7 +827,7 @@
     <string name="keep_screen_on_charging">While charging</string>
     
     <!-- CM Lockscreen shortcuts -->
-    <string name="lockscreen_targets_message">Bottom shortcuts</string>
+    <string name="lockscreen_targets_message">Bottom Shortcuts</string>
     
     <!-- AOSP MultiWindow -->
     <string name="multiwindow_settings_title">Multi-window</string>
@@ -872,7 +872,7 @@
     <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when connecting or disconnecting a power source</string>
     
     <!-- Carrier label -->
-    <string name="carrier_title">Carrier Label</string>
+    <string name="carrier_title">Carrier label</string>
     <string name="carrier_options_summary">Customize the carrier label</string>
     <string name="custom_carrier_label_title">Custom carrier label</string>
     <string name="custom_carrier_label_explain">Please enter a new label. Leave blank to revert to stock label.</string>
@@ -1029,7 +1029,7 @@
     
     <!-- App Circle sidebar -->
     <string name="category_app_circle_bar_title">App launcher</string>
-    <string name="app_circle_bar_title">App circle bar</string>
+    <string name="app_circle_bar_title">App Circle Bar</string>
     <string name="app_circle_bar_summary">Show circle app launcher after touching right side of screen</string>
     <string name="app_circle_bar_included_apps_title">Included apps</string>
     <string name="app_circle_bar_included_apps_summary">Apps will show in app circle bar</string>
@@ -1245,13 +1245,13 @@
     <!-- About Screw'd -->
     <string name="about_screwd">About Screw\'d</string>
     <string name="screwdota_title">OTA Updates</string>
-    <string name="screwdota_missing">ScrewdOTA not detected!!</string>
+    <string name="screwdota_missing">ScrewdOTA not detected!</string>
 
     <!-- Share Screwd -->
     <string name="screwd_website_title">Website</string>
     <string name="screwd_website_summary">Check out our website for more info!</string>
     <string name="share_screwd_title">Share Screw\'d</string>
-    <string name="share_screwd_summary">Let others know about Screw\'d</string>
+    <string name="share_screwd_summary">Let others know about Screw\'d ROM</string>
     <string name="share_message">Visit us on Google+ https://plus.google.com/communities/109777359391119326629</string>
     <string name="share_chooser_title">Share Screwd\'d</string>
     
@@ -1281,7 +1281,7 @@
     <string name="increasing_ring_ramp_up_time_title">Ramp-up time</string>
     
     <!-- Task Manager -->
-    <string name="enable_task_manager_title">Task Manager</string>
+    <string name="enable_task_manager_title">Task manager</string>
     <string name="enable_task_manager_summary">Enable/Disable action for the task manager button in the expanded statusbar area</string>
     
     <!--Heads Up -->
@@ -1377,9 +1377,9 @@
     <string name="navbar_interface_title">Interface</string>
     <string name="navbar_size">Bar size</string>
     <string name="navbar_mode">Navigation mode</string>
-    <string name="navbar_visibility">Enable navigation bar</string>
+    <string name="navbar_visibility">Enable Navigation Bar</string>
     <string name="navigationbar_settings_title">Navigation</string>
-    <string name="aosp_navigation_bar">Navigation bar</string>
+    <string name="aosp_navigation_bar">SmartBar</string>
     <string name="aosp_navigation_bar_settings">Navigation bar settings</string>
     <string name="navigationbar_settings_summary">Customize navigation style and behavior</string>
     <string name="navbar_general_title">Advanced</string>
@@ -1409,7 +1409,7 @@
 
     <!-- Fling -->
     <string name="fling_settings">Fling settings</string>
-    <string name="fling_interface">Fling gesture interface</string>
+    <string name="fling_interface">Fling Gesture Interface</string>
     <string name="fling_enable_title">Enable Fling</string>
     <string name="fling_back_home_policy">Back and Home are required to be set at all times. To change a Back or Home assignment, set the desired assignment first</string>
     <string name="fling_split_bar_policy">When only a right or left action is assigned, the action applies to the full bar</string>
@@ -1477,7 +1477,7 @@
     
     <!-- SmartBar -->
     <string name="smartbar_category">Smartbar</string>
-    <string name="smartbar_settings_title">Smartbar settings</string>
+    <string name="smartbar_settings_title">SmartBar settings</string>
     <string name="smartbar_editor_title">Toggle button editor</string>
     <string name="smartbar_editor_summary">Medium press and drag to change position. Long press to show edit menu. Button position may be changed while menu is showing.</string>
     <string name="smartbar_context_menu_position_title">Context buttons layout position</string>
@@ -1506,7 +1506,7 @@
     <string name="unit_percent">\u0025</string>
 
     <!-- Hide Apps from Recents -->
-    <string name="hide_apps_from_recents_title">Hidden Apps</string>
+    <string name="hide_apps_from_recents_title">Hidden apps</string>
     <string name="hide_from_recents_add_app">Add App</string>
     <string name="hide_apps_from_recents_summary">Pick which apps to exclude from the recents panel.</string>
     
@@ -1526,7 +1526,7 @@
     <string name="floating_master_switch">Master Switch</string>
     <string name="floating_additional_options">Additional Float Options</string>
     <string name="floating_windows">Floating Windows</string>
-    <string name="floating_windows_switch">Whether to allow global use of float mode, if this is off none of the below options will work DUH!!!</string>
+    <string name="floating_windows_switch">Whether to allow global use of float mode</string>
     <string name="slim_action_floats">Slim Actions &amp; Pie</string>
     <string name="slim_action_floats_summary">Launch Slim &amp; Pie Actions in Floating Window Mode</string>
     <string name="gesture_anywhere_floating">Gesture Anywhere</string>
