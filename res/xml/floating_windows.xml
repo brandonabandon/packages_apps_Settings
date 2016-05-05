@@ -46,6 +46,7 @@
             android:key="qs_float_mode"
             android:title="@string/qs_float_mode"
             android:summary="@string/qs_float_mode_summary"
+	    android:dependency="floating_window_mode"
 			android:defaultValue="false" />
 
         <!-- Slim  and Pie Actions Floating Switch -->
