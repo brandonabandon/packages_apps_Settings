@@ -17,7 +17,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Screw'd Settings -->
   <string name="header_customize">カスタマイズ</string>
-  <string name="header_category_screwd">Screw\'d 設定</string>
   <string name="ui">ユーザーインタフェース</string>
   <string name="system">システム</string>
   <string name="notifications">通知</string>
@@ -44,16 +43,31 @@
   <string name="lockscreen_shortcuts_cat">ショートカット</string>
   <string name="statusbar_clock_cat">時計のオプション</string>
   <string name="statusbar_notif_cat">通知オプション</string>
+  <string name="statusbar_battery_cat">バッテリーオプション</string>
+  <string name="statusbar_header_cat">ヘッダーオプション</string>
   <string name="statusbar_weather_cat">天気のオプション</string>
+  <string name="statusbar_general_cat">一般オプション</string>
   <!-- Changelog -->
   <string name="changelog_screwd_title">Changelog</string>
   <string name="changelog_screwd_error">更新履歴をロードできませんでした</string>
   <!-- General strings -->
+  <string name="help">ヘルプ</string>
+  <string name="add">追加</string>
+  <string name="help">ヘルプ</string>
+  <string name="attention">注意</string>
+  <string name="enabled">有効</string>
+  <string name="delete">削除</string>
+  <string name="add">追加</string>
+  <string name="choose_app">アプリを選択</string>
   <string name="reset_message">すべてのエントリを既定にリセットしますか。</string>
   <string name="reset_android">Android</string>
   <string name="reset_screwd">Screw\'d</string>
+  <string name="hidden_title">非表示</string>
   <string name="customize_title">カスタマイズ</string>
   <string name="dlg_reset_screwd">Screwd</string>
+  <string name="hidden_title">非表示</string>
+  <string name="position_right_title">右側</string>
+  <string name="position_centered_title">中央</string>
   <string name="reset_paranoid">Paranoid</string>
   <string name="reset_android">Android</string>
   <!-- About phone screen, Screw'd version name-->
@@ -85,6 +99,7 @@
   <string name="kill_app_longpress_back">バックキー長押しでアプリ終了</string>
   <string name="kill_app_longpress_back_summary">バックキー長押しでアプリを終了します</string>
   <!-- Double Tap Navbar to Sleep -->
+  <string name="double_tap_sleep_nav_bar_title">ナビゲーションバー</string>
   <string name="double_tap_sleep_nav_bar_summary">ナビゲーションバーのダブルタップでスリープにします</string>
   <!-- Double tap-to-sleep -->
   <string name="double_tap_to_sleep_title">ダブルタップでスリープ</string>
@@ -103,14 +118,47 @@
   <string name="pulse_speed_title">点滅の長さと速度</string>
   <string name="dialog_delete_message">選択したアイテムを削除しますか？</string>
   <!-- Values for the notification light pulse spinners -->
+  <string name="pulse_length_very_short">とても短く</string>
+  <string name="pulse_length_short">短く</string>
+  <string name="pulse_length_normal">通常</string>
+  <string name="pulse_length_long">長く</string>
+  <string name="pulse_length_very_long">とても長く</string>
+  <string name="pulse_speed_very_fast">とても速く</string>
+  <string name="pulse_speed_fast">速く</string>
+  <string name="pulse_speed_normal">通常</string>
+  <string name="pulse_speed_slow">遅く</string>
+  <string name="pulse_speed_very_slow">とても遅く</string>
   <!-- Battery light settings -->
+  <string name="battery_low_pulse_title">電池が少なくなったら点滅</string>
+  <string name="battery_light_low_color_title">低残量時</string>
+  <string name="battery_light_full_color_title">充電 (90%)</string>
+  <string name="battery_light_really_full_color_title">充電 (100%)</string>
   <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">通知LED</string>
   <string name="notification_light_applist_title">アプリ</string>
+  <string name="notification_light_use_custom">カスタム値を使用</string>
+  <string name="notification_light_missed_call_title">不在着信</string>
+  <string name="notification_light_voicemail_title">ボイスメール</string>
+  <string name="notification_light_screen_on">画面オン時に点灯</string>
   <!-- Profiles -->
+  <string name="profile_reset_title">リセット</string>
+  <string name="profiles_add">追加</string>
+  <string name="profile_choose_app">アプリの選択</string>
+  <string name="profile_applist_title">アプリ</string>
+  <string name="picker_activities">アクティビティ</string>
+  <string name="select_custom_app_title">任意のアプリを選択</string>
+  <string name="select_custom_activity_title">任意のアクティビティを選択</string>
+  <string name="systemuituner">システムUI調整ツール</string>
   <!-- Color Picker -->
+  <string name="dialog_color_picker_title">カラーピッカー</string>
   <string name="palette_screwd_title">Screwd</string>
+  <string name="palette_material_title">マテリアル</string>
+  <string name="palette_rgb_title">RGB</string>
+  <string name="reset_android_title">Android デフォルト</string>
+  <string name="reset_screwd_title">Screwd デフォルト</string>
   <!-- Clang version -->
+  <string name="dtc_version">Clang</string>
+  <string name="dtc_version_default">なし</string>
   <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">高度な再起動</string>
   <!-- Advanced reboot options -->
@@ -120,25 +168,74 @@
   <string name="power_menu_power_title">電源を切る</string>
   <string name="power_menu_reboot_title">再起動メニュー</string>
   <string name="power_menu_screenshot_title">スクリーンショット</string>
+  <string name="power_menu_screenrecord_title">画面の録画</string>
   <string name="power_menu_airplane_title">機内モード</string>
+  <string name="power_menu_users_title">ユーザー切り替え</string>
   <string name="power_menu_settings_title">設定へのショートカット</string>
+  <string name="power_menu_lockdown_title">端末のロックダウン</string>
+  <string name="power_menu_bug_report_title">バグレポート</string>
+  <string name="power_menu_sound_title">サウンドパネル</string>
+  <string name="power_menu_bug_report_disabled">バグレポートは開発者設定で無効になっています</string>
+  <string name="powermenu_screenshot_delay_title">スクリーンショットの遅延</string>
+  <string name="powermenu_torch">トーチ</string>
   <!-- Doze options -->
   <string name="display_category_doze_options_title">アンビエントディスプレイ</string>
   <string name="doze_settings_title">高度なDoze設定</string>
   <!-- Recents panel -->
+  <string name="recents_panel_category">履歴パネル</string>
+  <string name="show_clear_all_recents_button_title">全履歴クリアボタン</string>
+  <string name="show_clear_all_recents_button_summary">全履歴クリアボタンを表示</string>
+  <string name="recents_clear_all_location_title">全履歴クリアボタンの位置</string>
+  <string name="recents_clear_all_location_top_right">右上</string>
+  <string name="recents_clear_all_location_top_left">左上</string>
+  <string name="recents_clear_all_location_top_center">中央上</string>
+  <string name="recents_clear_all_location_bottom_right">右下</string>
+  <string name="recents_clear_all_location_bottom_left">左下</string>
+  <string name="recents_clear_all_location_bottom_center">中央下</string>
+  <string name="recents_clear_all_dismiss_all_title">すべてのタスクをクリア</string>
+  <string name="recents_clear_all_dismiss_all_summary">すべてのタスクを消去するときに実行中のタスクも含める</string>
   <string name="recents_searchbar_title">検索バー</string>
+  <string name="recents_searchbar_summary">最近使ったアプリの画面にGoogle検索バーを表示する</string>
   <string name="recents_show_membar_title">メモリバー</string>
+  <string name="recents_clear_all_dismiss_all_title">すべてのタスクをクリア</string>
+  <string name="recents_clear_all_dismiss_all_summary">すべてのタスクを消去するときに実行中のタスクも含める</string>
   <!-- Preference category for LAN development settings. [CHAR LIMIT=25] -->
+  <string name="debug_LAN_category">LAN の設定</string>
   <!-- Hostname setting -->
+  <string name="device_hostname">端末のホスト名</string>
   <!-- Bluetooth settings. A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
+  <string name="bluetooth_accept_all_files">すべてのファイル形式を許可</string>
   <!-- Quick settings quick pull down -->
+  <string name="quick_pulldown_title">クイックプルダウン</string>
+  <string name="quick_pulldown_summary">ステータスバーの%1$s端をプルダウンしてクイック設定パネルを開く</string>
+  <string name="quick_pulldown_summary_left">左側</string>
+  <string name="quick_pulldown_summary_right">右側</string>
+  <string name="quick_pulldown_left">左側</string>
+  <string name="quick_pulldown_right">右側</string>
   <!-- Quick Settings brightness slider -->
+  <string name="qs_brightness_slider_title_eos">明るさ調整スライダー</string>
+  <string name="qs_brightness_slider_summary">明るさ調整スライダーをクイック設定パネル内に表示</string>
   <!-- QuickSettings haptic feedback -->
+  <string name="quick_settings_vibrate_title">タッチ操作バイブ</string>
+  <string name="quick_settings_vibrate_summary">タイルに触れたときに振動します。</string>
   <!-- QuickSettings 4 columns -->
+  <string name="qs_four_columns_title">行ごとに4 つのタイルを表示</string>
   <!-- QuickSettings main tiles -->
+  <string name="qs_main_tiles_title">最初の行を拡大</string>
+  <string name="qs_main_tiles_summary_on">最初の行に2つのメインタイルを置く</string>
   <!-- Display : Rotation -->
+  <string name="display_rotation_title">画面の回転</string>
+  <string name="display_rotation_disabled">無効</string>
+  <string name="display_rotation_unit">度</string>
+  <string name="display_rotation_category_title">回転モード</string>
+  <string name="display_rotation_0_title">0度</string>
+  <string name="display_rotation_90_title">90度</string>
+  <string name="display_rotation_180_title">180度</string>
+  <string name="display_rotation_270_title">270度</string>
   <!-- EdgeGesture service -->
   <!-- Expanded desktop -->
+  <string name="power_menu_expanded_desktop">拡張デスクトップ</string>
+  <string name="expanded_hide_nothing">非表示にしない</string>
   <string name="expanded_hide_status">ステータスバーを非表示</string>
   <string name="expanded_hide_navigation">ナビゲーションバーを非表示</string>
   <string name="expanded_hide_both">両方を非表示</string>
@@ -150,8 +247,13 @@
   <string name="expanded_desktop_style_description">既定の拡張デスクトップ スタイルを選択します</string>
   <string name="expanded_desktop_title">拡張デスクトップのオプション</string>
   <!-- Heads up -->
+  <string name="headsup_section_header">ヘッドアップ通知</string>
   <string name="heads_up_notifications">ヘッドアップ</string>
   <!-- Time-context headers in notification header -->
+  <string name="status_bar_custom_header_summary">通知パネルのヘッダー画像を有効にします。</string>
+  <string name="custom_header_image_1">モダン</string>
+  <string name="custom_header_image_2">ポリHD</string>
+  <string name="custom_header_image_3">Screw\'d HD</string>
   <!-- Lock screen wallpaper -->
   <string name="lockscreen_settings_title">ロック画面の壁紙</string>
   <string name="lockscreen_wallpaper_title">壁紙</string>
@@ -166,56 +268,158 @@
   <!-- Lockscreen weather -->
   <string name="lockscreen_weather_title">天気</string>
   <string name="lock_screen_weather_settings_title">天気のオプション</string>
+  <string name="weather_cat_notifications_title">通知</string>
   <string name="weather_show_weather_title">天気を表示</string>
+  <string name="weather_show_location_title">場所を表記</string>
+  <string name="weather_show_timestamp_title">タイムスタンプを表示</string>
+  <string name="weather_condition_icon_monochrome_title">モノクロ</string>
+  <string name="weather_condition_icon_colored_title">カラー</string>
+  <string name="weather_condition_icon_vclouds_title">VClouds</string>
+  <string name="icons_title">アイコン</string>
+  <string name="position_right_title">右側</string>
+  <string name="position_centered_title">中央</string>
+  <string name="hidden_title">非表示</string>
+  <string name="weather_hide_panel_title">天気パネルを非表示</string>
+  <string name="weather_hide_panel_dlg_title">天気パネルを非表示にするときに選択します。</string>
   <!-- Lockscreen blur/see through -->
   <string name="lockscreen_see_through_title">ぼかし効果</string>
   <string name="lockscreen_blur_radius">ぼかし効果の強さ</string>
   <!-- Status bar temperature -->
+  <string name="status_bar_weather_cat">天気</string>
+  <string name="status_bar_temperature_title">温度</string>
   <!-- Scramble pin -->
-  <!-- Weather in status bar -->
+  <string name="unlock_scramble_pin_layout_summary">アンロック時のPINキー配列をランダムに入れ替えます</string>
   <!-- Notification counters -->
+  <string name="status_bar_notif_count_title">通知数を表示する</string>
+  <string name="status_bar_notif_count_summary">保留中の通知数を表示します</string>
   <!-- Keyboard and Input methods  -->
+  <string name="disable_fullscreen_keyboard_title">フルスクリーンキーボードを無効</string>
+  <string name="disable_fullscreen_keyboard_summary">横画面時にキーボードが画面全体を占有することはありません</string>
+  <string name="volume_key_cursor_control_title">音量キーでのカーソル移動</string>
+  <string name="volume_key_cursor_control_on">ボリュームキーの上/下操作でカーソルが左/右に移動</string>
+  <string name="volume_key_cursor_control_on_reverse">ボリュームキーの上/下操作でカーソルが右/左に移動</string>
+  <string name="keyboard_rotation_toggle_title">キーボードの自動回転</string>
+  <string name="keyboard_rotation_toggle_summary">キーボードが表示されているときは強制的に画面を自動回転する</string>
+  <string name="keyboard_rotation_timeout_title">自動回転タイムアウト</string>
+  <string name="keyboard_rotation_timeout_summary">キーボードが非表示になった<xliff:g id="rotate_timeout">%1$s</xliff:g>秒後に自動回転を無効にする</string>
+  <string name="ime_switcher_notify">入力方法セレクタの通知</string>
+  <string name="ime_switcher_notify_summary">入力方法セレクタを通知バーに表示する</string>
+  <string name="attention">注意</string>
   <!-- Status bar | Network Traffic -->
+  <string name="network_traffic_title">ネットワーク トラフィック</string>
+  <string name="show_network_traffic_state">ステータスバーのトラフィックモニター</string>
+  <string name="show_network_traffic_unit">表示単位</string>
+  <string name="show_network_traffic_frequency">更新間隔</string>
+  <string name="show_network_traffic_disable">無効</string>
+  <string name="show_network_traffic_up">送信</string>
+  <string name="show_network_traffic_down">受信</string>
+  <string name="show_network_traffic_all">送信と受信</string>
+  <string name="show_network_traffic_bit">ビット/秒</string>
+  <string name="show_network_traffic_byte">バイト/秒</string>
+  <string name="show_network_traffic_500">500 ms</string>
+  <string name="show_network_traffic_1000">1000 ms</string>
+  <string name="show_network_traffic_1500">1500 ms</string>
+  <string name="show_network_traffic_2000">2000 ms</string>
+  <string name="network_traffic_autohide">自動的に隠す</string>
+  <string name="network_traffic_autohide_summary">アクティビティがない時はトラフィックモニターを非表示にします</string>
+  <string name="network_traffic_autohide_threshold">非アクティブのしきい値</string>
   <!-- Force expand notifications -->
   <!-- Media art -->
+  <string name="media_art_title">メディアカバーアート</string>
+  <string name="media_art_summary">ロックスクリーン上でのメディアカバーアートを有効にする</string>
   <!-- Gesture Anywhere -->
+  <string name="gesture_anywhere_position_left">左端</string>
+  <string name="gesture_anywhere_position_right">右端</string>
   <string name="gesture_anywhere_gestures_title">ジェスチャー</string>
   <!-- Label, button used to add a gesture -->
+  <string name="ga_button_add">ジェスチャーを追加</string>
   <!-- Label, button used to reload all gestures -->
+  <string name="ga_button_reload">再読み込み</string>
   <!-- Label, button used to cancel the operation of adding a gesture -->
+  <string name="ga_button_discard">破棄する</string>
   <!-- Label, button used to save a gesture newly created -->
+  <string name="ga_button_done">完了</string>
   <!-- Label, prompt asking the user to enter the name of the gesture -->
+  <string name="ga_prompt_gesture_name">名前</string>
   <!-- Error message, informs the user he needs to enter a name before saving a gesture -->
+  <string name="ga_error_missing_name">名前を入力しなければなりません</string>
   <!-- success message, tells the user where the gesture was saved -->
   <!-- Buttons in Rename gesture dialog box -->
   <!-- Buttons in Rename gesture dialog box -->
   <!-- Message displayed when the user opens the gestures settings screen -->
+  <string name="ga_gestures_loading">ジェスチャーを読み込んでいます</string>
   <!-- Message displayed when the user has no gestures -->
   <!-- Title of the screen used to view/manage gestures -->
+  <string name="ga_gestures_activity">ジェスチャー</string>
   <!-- Noun, menu item used to edit a gesture -->
   <!-- Noun, menu item used to remove a gesture -->
   <!-- Message displayed when a gesture is successfully deleted -->
   <!-- Title of dialog box -->
   <!-- Label of gesture name field in Rename gesture dialog box -->
   <!-- Message, displayed when the sdcard cannot be found, 1st parameter is the name of the file that stores the gestures.  CHAR LIMIT=80 -->
+  <string name="picker_activities">アクティビティ</string>
+  <string name="select_custom_app_title">任意のアプリを選択</string>
+  <string name="select_custom_activity_title">任意のアクティビティを選択</string>
+  <string name="profile_applist_title">アプリ</string>
   <!-- Lock screen rotation -->
   <string name="display_lockscreen_rotation_title">ロック画面</string>
   <!-- Battery Bar -->
+  <string name="battery_icon">バッテリーアイコンのスタイル</string>
+  <string name="battery_bar_location">バッテリー バーの場所</string>
+  <string name="battery_bar_color">バッテリー バーの色</string>
+  <string name="battery_bar">バッテリーバー</string>
+  <string name="battery_bar_summary">バッテリーバーの位置と色のカスタマイズ</string>
+  <string name="battery_bar_style_title">バッテリーバーのスタイル</string>
+  <string name="battery_bar_thickness_title">バッテリーバーの厚さ</string>
   <string name="battery_bar_animate_title">充電中のアニメーション</string>
   <!-- Restart SystemUI -->
   <string name="restart_systemui">SystemUI を再起動します。</string>
   <!-- Slim DSLV -->
+  <string name="shortcut_action_warning">警告</string>
+  <string name="shortcut_action_help_shortcut">ショートカット</string>
+  <string name="shortcut_action_help_button">ボタン</string>
+  <string name="shortcuts_icon_presets">システムアイコン</string>
+  <string name="shortcuts_icon_custom">ギャラリー</string>
+  <string name="shortcuts_icon_picker_choose_icon_title">アイコンを選択</string>
+  <string name="shortcuts_icon_picker_alarm">アラーム</string>
+  <string name="shortcuts_icon_picker_calendar">カレンダー</string>
+  <string name="shortcuts_icon_picker_camera">カメラ</string>
+  <string name="shortcuts_icon_picker_cloud">クラウド</string>
+  <string name="shortcuts_icon_picker_contact">連絡先</string>
+  <string name="shortcuts_icon_picker_directmessage">ダイレクトメッセージ</string>
+  <string name="shortcuts_icon_picker_dropbox">Dropbox</string>
+  <string name="shortcuts_icon_picker_fitness">フィットネス</string>
+  <string name="shortcuts_icon_picker_gallery">ギャラリー</string>
+  <string name="shortcuts_icon_picker_google_small">Google</string>
+  <string name="shortcuts_icon_picker_gplus">Google Plus</string>
+  <string name="shortcuts_icon_picker_help">ヘルプ</string>
+  <string name="shortcuts_icon_picker_joystick">ジョイスティック</string>
   <!-- Button shorcut actions -->
+  <string name="shortcut_action_camera">カメラ</string>
   <string name="shortcut_action_home">ホーム</string>
+  <string name="shortcut_action_power_menu">電源メニュー</string>
+  <string name="shortcut_action_recent">最近使ったアプリ</string>
+  <string name="shortcut_action_power">画面オフ</string>
+  <string name="shortcut_action_camera">カメラ</string>
+  <string name="shortcut_action_warning">警告</string>
+  <string name="shortcut_action_help_shortcut">ショートカット</string>
+  <string name="shortcut_action_help_button">ボタン</string>
   <!-- Lockscreen shortcuts -->
+  <string name="lockscreen_shortcuts_title">ロック画面のショートカット</string>
+  <string name="lockscreen_shortcuts_single_tap">クリック</string>
+  <string name="lockscreen_shortcuts_double_tap">ダブルタップ</string>
   <!-- AOKP custom system animations -->
   <!-- Toast Animation -->
+  <string name="shortcut_picker_icon_type_system_title">システムアイコン</string>
+  <string name="shortcut_picker_icon_type_custom_title">ギャラリー</string>
   <!-- ListView animation -->
+  <string name="listview_off">既定値</string>
   <!-- ListView interpolator -->
   <!-- Disabling FC notifications -->
   <!-- Doze notification color invert -->
   <!-- Breathing Notifications -->
   <!-- Toast Icons -->
+  <string name="toast_icon_title">トーストアイコン</string>
   <!--Power menu on lockscreen -->
   <string name="power_category">電源メニュー</string>
   <string name="lockscreen_enable_power_menu_title">ロック画面で電源メニューを表示します</string>
@@ -232,22 +436,75 @@
   <string name="unlock_quick_unlock_control_title">クイックロック解除</string>
   <!-- OmniSwitch -->
   <string name="omniswitch_category">OmniSwitch</string>
+  <string name="omniswitch_start_settings_title">設定</string>
   <string name="omniswitch_settings_title">OmniSwitch</string>
   <!-- Swap volume buttons when the screen is rotated -->
   <!-- Option to enable/disable scrolling cache -->
   <!-- Android debugging over WiFi -->
   <string name="adb_over_network">ネットワーク経由のADB</string>
   <!-- Warning for Adb over Network -->
+  <string name="adb_over_network_warning">警告: ネットワーク経由でのADBを有効にすると、あなたの携帯電話はGSMデータネットワークを含む接続しているすべてのネットワークから侵入できるようになります。\n\nこの機能は信頼されたネットワークに接続しているときにのみ使用して下さい。\n\nこの機能を本当に有効にしますか？</string>
   <!-- Wake on Plug -->
+  <string name="wake_when_plugged_or_unplugged_title">電源接続で復帰</string>
+  <string name="wake_when_plugged_or_unplugged_summary">電源に接続した時/電源から切断された時 画面をオンにする</string>
   <!-- Carrier label -->
+  <string name="carrier_options_summary">キャリアラベルをカスタマイズ</string>
+  <string name="custom_carrier_label_title">カスタムキャリアラベル</string>
+  <string name="custom_carrier_label_explain">新しいラベルを入力してください。デフォルトに戻すには空のままにします。</string>
+  <string name="custom_carrier_label_notset">カスタムラベルは現在設定されていません</string>
+  <string name="show_carrier_title">キャリアラベル</string>
+  <string name="show_carrier_disabled">無効</string>
+  <string name="show_carrier_keyguard">ロック画面のみ</string>
+  <string name="show_carrier_statusbar">ステータスバーのみ</string>
+  <string name="show_carrier_enabled">ロック画面とステータスバー</string>
   <!-- Volume Keys Media Control -->
+  <string name="volume_keys_control_media_stream">メディアコントロール</string>
   <!-- Immersive Recents-->
+  <string name="immersive_recents_title">没入式の履歴画面</string>
+  <string name="immersive_recents_default">標準設定</string>
+  <string name="immersive_recents_fullscreen">全画面表示</string>
+  <string name="immersive_recents_statusbar">ステータスバーのみ</string>
+  <string name="immersive_recents_navbar">ナビゲーションバーのみ</string>
   <!-- Blacklist preferences -->
+  <string name="blacklist_title">着信拒否リスト</string>
+  <string name="blacklist_edit_dialog_title">拒否された電話番号を編集</string>
+  <string name="blacklist_prefs">設定</string>
+  <string name="blacklist_button_delete">削除</string>
+  <string name="blacklist_summary_disabled">無効</string>
+  <string name="blacklist_summary">着信拒否リストにある電話番号からの着信やメッセージを受け取らないようにする</string>
+  <string name="blacklist_notify">通知を表示</string>
+  <string name="blacklist_private_numbers_title">非通知</string>
+  <string name="blacklist_private_numbers_summary_disabled">非通知からの呼び出しを拒否しません。</string>
+  <string name="blacklist_private_numbers_summary">非通知からの着信 <xliff:g id="type">%s </xliff:g> をブロックします。</string>
+  <string name="blacklist_unknown_numbers_title">非通知</string>
+  <string name="blacklist_unknown_numbers_summary_disabled">電話または連絡先リストにない番号からのメッセージをブロックしません。</string>
+  <string name="blacklist_unknown_numbers_summary">連絡先リストにない番号から着信 <xliff:g id="type">%s </xliff:g> を拒否します。</string>
+  <string name="blacklist_summary_type_calls_only">通話</string>
+  <string name="blacklist_summary_type_messages_only">メッセージ</string>
+  <string name="blacklist_summary_type_calls_and_messages">通話とメッセージ</string>
+  <string name="blacklist_regex_title">ワイルドカードを使用</string>
+  <string name="blacklist_policy_block_calls">電話の着信を拒否</string>
+  <string name="blacklist_policy_block_messages">メッセージをブロックします。</string>
+  <string name="blacklist_bad_number_add">無効な電話番号は着信拒否リストに追加することはできません。</string>
   <!-- Blacklist management -->
+  <string name="remove_blacklist_number_title">番号を削除します。</string>
+  <string name="remove_blacklist_entry">この拒否された電話番号を削除しますか？</string>
+  <string name="select_contact">連絡先を選択</string>
   <!-- Privacy Settings Header item -->
+  <string name="privacy_settings_cyanogenmod_title">プライバシー</string>
   <!-- Linked / unlinked notification volume -->
+  <string name="link_volume_option_title">着信音と通知音をリンクさせる</string>
+  <string name="notification_volume_option_title">通知の音量</string>
+  <string name="ring_notification_volume_option_title">着信音と通知音の音量</string>
   <!-- Volume buttons for DND -->
+  <string name="volbtn_down_zen_title">ボリュームダウンでサイレントにする</string>
+  <string name="volbtn_down_zen_summary">ボリュームダウンで通知の非表示モードを開始します</string>
+  <string name="volbtn_up_zen_title">ボリュームアップで通知の非表示を終了</string>
+  <string name="volbtn_up_zen_summary">ボリュームアップで通知の非表示モードを終了します</string>
   <!-- PA Pie control -->
+  <string name="pa_pie_notifications_title">通知</string>
+  <string name="pa_pie_settings_panel_title">クイック設定パネル</string>
+  <string name="pa_pie_screenshot_title">スクリーンショット</string>
   <!-- On-The-Go -->
   <!-- Volume Steps -->
   <string name="volume_steps_title">ボリュームステップ</string>
@@ -258,27 +515,65 @@
   <string name="volume_steps_ring_title">ボリュームステップ: 着信音</string>
   <string name="volume_steps_system_title">ボリュームステップ: システム</string>
   <string name="volume_steps_voice_call_title">ボリュームステップ: 音声通話</string>
+  <string name="volume_steps_60">60</string>
+  <string name="volume_steps_45">45</string>
+  <string name="volume_steps_30">30</string>
+  <string name="volume_steps_15">15</string>
+  <string name="volume_steps_7">7</string>
+  <string name="volume_steps_5">5</string>
   <!-- App Circle sidebar -->
+  <string name="category_app_circle_bar_title">アプリランチャー</string>
   <!-- Break SystemUI Tuner into two parts -->
   <string name="status_bar_icon_blacklist_title">ステータスバーアイコン</string>
   <!-- Recent panel -->
   <!-- ATTENTION: RTL languages need to replace left with right -->
+  <string name="recent_app_sidebar_title">アプリサイドバー</string>
+  <string name="recent_app_sidebar_style_title">サイドバーのスタイル</string>
+  <string name="recent_app_sidebar_hide_labels_title">アイコンラベル非表示</string>
   <!-- Volume button music seek -->
   <!-- Power menu Animations  -->
+  <string name="power_menu_animation_card">3D</string>
   <!-- Statusbar Clock options -->
+  <string name="status_bar_title">ステータスバー</string>
+  <string name="status_bar_style_title">スタイル</string>
+  <string name="status_bar_clock">時計と日付</string>
+  <string name="status_bar_clock_title">時計と日付のスタイル</string>
+  <string name="clock_title_enable">行揃え</string>
+  <string name="status_bar_show_clock_title">日付と時計を表示</string>
+  <string name="status_bar_am_pm_info">24時間表示が有効です</string>
+  <string name="clock_date_style">日付スタイル</string>
+  <string name="clock_date_position">日付位置</string>
+  <string name="clock_date_format">日付の形式</string>
+  <string name="clock_date_string_edittext_title">日付形式である必要があります 例: MM/dd/yy</string>
+  <string name="clock_date_string_edittext_summary">文字列を入力</string>
+  <string name="clock_date_right">時刻の右</string>
+  <string name="clock_date_left">時刻の左</string>
+  <string name="am_pm_clock_none">表示しない</string>
+  <string name="clock_date_display_none">表示しない</string>
   <!-- QS -->
+  <string name="qs_main_tiles_title">最初の行を拡大</string>
+  <string name="qs_main_tiles_summary_on">最初の行に2つのメインタイルを置く</string>
+  <string name="qs_four_columns_title">行ごとに4 つのタイルを表示</string>
+  <string name="qs_advanced_location_title">詳細な所在地の設定</string>
+  <string name="qs_advanced_location_summary">クイック設定上での詳細な位置情報の設定を有効にする</string>
+  <string name="quick_settings_reset_message">クイック設定のタイルをリセットしますか?</string>
   <!-- Color Picker -->
   <!-- Instant reboot -->
   <!--Fingerprint auth vibration -->
+  <string name="fprint_sucess_vib_title">指紋認証による振動</string>
+  <string name="fprint_sucess_vib_summary">指紋認証の成功時に振動させます</string>
   <!-- Lockscreen Torch toggle -->
+  <string name="keyguard_torch_title">ロック画面 トーチ</string>
+  <string name="keyguard_torch_summary">電源ボタンを長押しで画面オフの後にトーチを起動する</string>
   <!-- Disable OS on LS -->
   <!-- Less notification sounds -->
+  <string name="advanced_sound_title">詳細設定</string>
   <string name="safe_headset_volume_title">安全なヘッドセット音量</string>
   <string name="camera_sounds_title">カメラのシャッター音</string>
   <string name="camera_sounds_summary">カメラのシャッター音を有効にします。</string>
+  <string name="camera_sound_warning_dialog_text">カメラのシャッター音の無効化は一部地域では違法となります。お住まいの国の法律を確認してください。</string>
   <!-- Screenshot sound -->
   <string name="screenshot_sound_title">スクリーン ショットの音</string>
-  <!-- Seconds clock -->
   <!-- QS shade transparency -->
   <!-- QS header transparency -->
   <!-- Volume dialog transparency -->
@@ -297,24 +592,34 @@
   <!-- Share Screwd -->
   <string name="screwd_website_title">Website</string>
   <!-- Screw'd Sites -->
+  <string name="sites_screwd">役に立つリンク</string>
   <string name="screwd_source_title">Github</string>
   <string name="screwd_google_plus_title">Google +</string>
   <!-- Keyguard notifications options -->
   <!-- Increasing ring tone volume -->
   <!-- Task Manager -->
-  <string name="enable_task_manager_title">タスク マネージャー</string>
   <!--Heads Up -->
   <string name="heads_up_notifications">ヘッドアップ</string>
   <string name="heads_up_dnd_title">通知を非表示</string>
   <string name="heads_up_blacklist_title">ブラックリスト</string>
   <string name="heads_up_whitelist_title">ホワイト リスト</string>
   <!-- Heads up timeout -->
+  <string name="heads_up_time_out_title">タイムアウト</string>
   <!-- Hide lockscreen clock & date -->
   <!-- Smart Pulldown -->
   <string name="smart_pulldown_title">スマート プルダウン</string>
+  <string name="smart_pulldown_dismissable">キャンセル不可</string>
+  <string name="smart_pulldown_persistent">永続不可</string>
+  <string name="smart_pulldown_all">キャンセルまたは維持は不可</string>
   <!-- Statusbar SCREW'D logo -->
+  <string name="statusbar_logo_off">ロゴ無し</string>
+  <string name="statusbar_logo_static">非アニメーション</string>
+  <string name="statusbar_logo_animated">アニメーション</string>
   <!-- Flashlight notification -->
   <!--Secure lockscreen bouncer -->
+  <string name="ls_bouncer_dismissable">キャンセル不可</string>
+  <string name="ls_bouncer_persistent">永続不可</string>
+  <string name="ls_bouncer_all">キャンセルまたは維持は不可</string>
   <!-- Notification spamfilter -->
   <!-- Optional Dashboard Switches -->
   <string name="dashboard_switches_title">ダッシュ ボードのスイッチ</string>
@@ -324,7 +629,9 @@
   <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
   <!-- Whether the dots will be drawn when using the lockscreen pattern -->
   <!-- Lock screen vibrate settings -->
+  <string name="lockscreen_vibrate_enabled_head">ロック解除時にバイブさせる</string>
   <!-- Navigation Bar -->
+  <string name="navbar_size">バーのサイズ</string>
   <string name="navigation_bar_left_title">左利きモード</string>
   <string name="smartbar_interface">スマートバー</string>
   <string name="icon_pack_picker_dialog_title">アイコンパック</string>
@@ -333,7 +640,18 @@
   <!-- Fling -->
   <!-- Pulse navigation bar music visualizer -->
   <!-- Navbar height -->
+  <string name="navigation_bar_size_title">バーのサイズ</string>
   <!-- SmartBar -->
   <!-- Heads Up button -->
   <!-- Header image shadow -->
+  <string name="status_bar_custom_header_shadow_title">ヘッダー画像の影</string>
+  <string name="unit_percent">\u0025</string>
+  <!-- Hide Apps from Recents -->
+  <!-- Heads up snooze -->
+  <!-- Floating Windows -->
+  <!-- Omni Weather -->
+  <!-- Slim Shortcuts -->
+  <!-- Chamber of Secrets -->
+  <!-- Advanced storage settings -->
+  <!-- USB data automatic unlock -->
 </resources>

@@ -385,9 +385,6 @@
   <!-- Scramble pin -->
   <string name="unlock_scramble_pin_layout_title">Layout random</string>
   <string name="unlock_scramble_pin_layout_summary">Disordina il layout del PIN allo sblocco del telefono</string>
-  <!-- Weather in status bar -->
-  <string name="status_bar_show_weather_title">Visualizza meteo</string>
-  <string name="status_bar_show_weather_summary">Visualizza il meteo nell\'intestazione della barra di stato</string>
   <!-- Notification counters -->
   <string name="status_bar_notif_count_title">Visualizza il contatore notifiche</string>
   <string name="status_bar_notif_count_summary">Visualizza il numero di notifiche in sospeso</string>
@@ -936,7 +933,7 @@
   <string name="volume_steps_5">5</string>
   <!-- App Circle sidebar -->
   <string name="category_app_circle_bar_title">App launcher</string>
-  <string name="app_circle_bar_title">App circle bar</string>
+  <string name="app_circle_bar_title">App Circle Bar</string>
   <string name="app_circle_bar_summary">Visualizza la Circle Bar dopo aver toccato il lato destro dello schermo</string>
   <string name="app_circle_bar_included_apps_title">Applicazioni incluse</string>
   <string name="app_circle_bar_included_apps_summary">Apps mostrate nella Circle Bar</string>
@@ -1105,8 +1102,6 @@
   <!-- Screenshot sound -->
   <string name="screenshot_sound_title">Suono screenshot</string>
   <string name="screenshot_sound_summary">Riproduci effetto sonoro quando si effettua uno screenshot</string>
-  <!-- Seconds clock -->
-  <string name="status_bar_show_clock_second_title">Secondi orologio</string>
   <!-- QS shade transparency -->
   <string name="qs_transparent_shade">Trasparenza shade QS</string>
   <!-- QS header transparency -->
@@ -1133,12 +1128,12 @@
   <!-- About Screw'd -->
   <string name="about_screwd">Riguardo Screw\'d</string>
   <string name="screwdota_title">Aggiornamenti OTA</string>
-  <string name="screwdota_missing">ScrewdOTA non rilevato!!</string>
+  <string name="screwdota_missing">ScrewdOTA non rilevato!</string>
   <!-- Share Screwd -->
   <string name="screwd_website_title">Sito web</string>
   <string name="screwd_website_summary">Controlla il nostro sito web per altre info!</string>
   <string name="share_screwd_title">Condividi Screw\'d</string>
-  <string name="share_screwd_summary">Permetti agli altri di conoscere Screw\'d</string>
+  <string name="share_screwd_summary">Lascia che gli altri conoscano Screw\'d</string>
   <string name="share_message">Vieni a trovarci su Google + https://plus.google.com/communities/109777359391119326629</string>
   <string name="share_chooser_title">Condividi Screw\'d</string>
   <!-- Screw'd Sites -->
@@ -1163,7 +1158,7 @@
   <string name="increasing_ring_min_volume_title">Volume iniziale</string>
   <string name="increasing_ring_ramp_up_time_title">Tempo di incremento</string>
   <!-- Task Manager -->
-  <string name="enable_task_manager_title">Task Manager</string>
+  <string name="enable_task_manager_title">Gestione attività</string>
   <string name="enable_task_manager_summary">Attiva/Disattiva azione per il pulsante di gestione attività nella statusbar espansa</string>
   <!--Heads Up -->
   <string name="heads_up_notifications">Heads up</string>
@@ -1248,7 +1243,7 @@
   <string name="navbar_mode">Modalità di Navigazione</string>
   <string name="navbar_visibility">Abilita barra di navigazione</string>
   <string name="navigationbar_settings_title">Navigazione</string>
-  <string name="aosp_navigation_bar">Barra di navigazione</string>
+  <string name="aosp_navigation_bar">SmartBar</string>
   <string name="aosp_navigation_bar_settings">Impostazioni barra di navigazione</string>
   <string name="navigationbar_settings_summary">Personalizza comportamento e stile della barra di navigazione</string>
   <string name="navbar_general_title">Avanzate</string>
@@ -1262,9 +1257,20 @@
   <string name="action_entry_default_action">Impostazioni predefinite</string>
   <string name="action_entry_select_app">Seleziona applicazione</string>
   <string name="action_entry_custom_action">Seleziona azione personalizzata</string>
+  <string name="action_value_default_action">action_default</string>
+  <string name="action_value_select_app">action_app</string>
+  <string name="action_value_custom_action">action_custom</string>
+  <string name="action_value_default_action">action_default</string>
+  <string name="action_value_select_app">action_app</string>
+  <string name="action_value_back">task_back</string>
+  <string name="action_value_home">task_home</string>
+  <string name="action_value_search_assist">task_assist</string>
+  <string name="action_value_recent_apps">task_recents</string>
+  <string name="action_value_voice_search">task_voice_search</string>
+  <string name="action_value_menu">task_menu</string>
   <!-- Fling -->
-  <string name="fling_settings">Impostazioni fling</string>
-  <string name="fling_interface">Interfaccia fling gesture</string>
+  <string name="fling_settings">Impostazioni Fling</string>
+  <string name="fling_interface">Fling gesture</string>
   <string name="fling_enable_title">Attiva Fling</string>
   <string name="fling_back_home_policy">I tasti Indietro e Home devono essere sempre settati. Se vuoi modificare questi due pulsanti, reimpostali da subito</string>
   <string name="fling_split_bar_policy">Quando viene assegnata solo un\'azione destra o sinistra, l\'azione si applica su tutta la barra</string>
@@ -1275,6 +1281,8 @@
   <string name="fling_short_swipe_left">Scorrimento corto a sinistra</string>
   <string name="fling_long_swipe_right">Scorrimento lungo a destra</string>
   <string name="fling_long_swipe_left">Scorrimento lungo a sinistra</string>
+  <string name="fling_right_up_swipe">Scorri in alto nella parte destra</string>
+  <string name="fling_left_up_swipe">Scorri in alto nella parte sinistra</string>
   <string name="fling_single_tap">Tocco singolo a destra</string>
   <string name="fling_double_tap">Doppio tocco a destra</string>
   <string name="fling_long_press">Pressione lunga a destra</string>
@@ -1311,7 +1319,7 @@
   <string name="fling_longpress_summary">Aumenta o diminuisci il tempo impiegato per eseguire una lunga pressione</string>
   <!-- Pulse navigation bar music visualizer -->
   <string name="pulse_help_policy_notice_title">Che cos\'è Pulse</string>
-  <string name="pulse_help_policy_notice_summary">Pulse è un brillante equalizzatore che visualizza fasci colorati sulla barra di navigazione quando ascolti musica. Pulse potrebbe non funzionare con alcuni lettori multimediali</string>
+  <string name="pulse_help_policy_notice_summary">Pulse è un brillante equalizzatore che visualizza fasci colorati sulla barra di navigazione quando ascolti musica. Pulse potrebbe non funzionare con alcuni lettori multimediali. Assicurarsi di utilizzare Play/Pausa di nuovo dopo aver modificato le dimensioni Pulse.</string>
   <string name="pulse_settings">Pulse</string>
   <string name="pulse_settings_summary">Visualizzazione audio su barra di navigazione</string>
   <string name="fling_show_pulse_title">Visualizza Pulse</string>
@@ -1319,6 +1327,55 @@
   <string name="fling_pulse_color">Colore pulse</string>
   <string name="eos_fling_lavalamp_title">Attiva colori misti</string>
   <string name="eos_fling_lavalamp_summary">Pulse viene animata con fasci di colore misto</string>
+  <string name="pulse_custom_dimen">Larghezza Barra Pulse</string>
+  <string name="pulse_dimen0">Predefinita</string>
+  <string name="pulse_dimen1">7dp</string>
+  <string name="pulse_dimen2">8dp</string>
+  <string name="pulse_dimen3">9dp</string>
+  <string name="pulse_dimen4">10dp</string>
+  <string name="pulse_dimen5">11dp</string>
+  <string name="pulse_dimen6">12dp</string>
+  <string name="pulse_dimen7">13dp</string>
+  <string name="pulse_dimen8">15dp</string>
+  <string name="pulse_dimen9">16dp</string>
+  <string name="pulse_dimen10">17dp</string>
+  <string name="pulse_dimen11">18dp</string>
+  <string name="pulse_dimen12">19dp</string>
+  <string name="pulse_dimen13">20dp</string>
+  <string name="pulse_dimen14">21dp</string>
+  <string name="pulse_dimen15">22dp</string>
+  <string name="pulse_dimen16">23dp</string>
+  <string name="pulse_dimen17">24dp</string>
+  <string name="pulse_dimen18">25dp</string>
+  <string name="pulse_dimen19">26dp</string>
+  <string name="pulse_custom_div">Spaziatura Barra Pulse</string>
+  <string name="default_div">Predefinita</string>
+  <string name="div1">18</string>
+  <string name="div2">20</string>
+  <string name="div3">22</string>
+  <string name="div4">24</string>
+  <string name="div5">26</string>
+  <string name="div6">28</string>
+  <string name="div7">30</string>
+  <string name="div8">32</string>
+  <string name="default_fill">4dp (predefinito)</string>
+  <string name="pulse_bar_style">Stile Barra Pulse</string>
+  <string name="default_pulse_empty">1dp(predefinito)</string>
+  <string name="pulse_filled_block_size">Dimensione blocco</string>
+  <string name="pulse_empty_block_size">Spaziatura blocco</string>
+  <string name="pulse_fill1">5dp</string>
+  <string name="pulse_fill2">6dp</string>
+  <string name="pulse_fill3">7dp</string>
+  <string name="pulse_fill4">8dp</string>
+  <string name="pulse_empty1">2dp</string>
+  <string name="pulse_empty2">3dp</string>
+  <string name="pulse_empty3">4dp</string>
+  <string name="pulse_empty4">0 (nessuna spaziatura)</string>
+  <string name="factor0">Normale</string>
+  <string name="factor1">Rilassato</string>
+  <string name="factor2">Lento</string>
+  <string name="factor3">Veloce</string>
+  <string name="factor4">Velocissimo</string>
   <!-- Navbar height -->
   <string name="navigation_bar_size_title">Dimensione barra</string>
   <string name="portrait_title">Altezza in verticale</string>
@@ -1352,4 +1409,56 @@
   <string name="status_bar_custom_header_shadow_title">Ombra immagine header</string>
   <string name="status_bar_custom_header_shadow_summary">Per una migliore visibilità su immagini luminose</string>
   <string name="unit_percent">\u0025</string>
+  <!-- Hide Apps from Recents -->
+  <string name="hide_apps_from_recents_title">Applicazioni nascoste</string>
+  <string name="hide_from_recents_add_app">Aggiungi app</string>
+  <string name="hide_apps_from_recents_summary">Scegli quali app da escludere dal pannello recenti.</string>
+  <!-- Heads up snooze -->
+  <string name="heads_up_snooze_title">Timer di sospensione</string>
+  <string name="heads_up_snooze_summary">Strisciare verso l\'alto su una notifica Heads up la sospenderà per <xliff:g id="number">%d</xliff:g> minuti</string>
+  <string name="heads_up_snooze_disabled_summary">La sospensione del timer è disabilitata</string>
+  <string name="heads_up_snooze_1min">1 minuto</string>
+  <string name="heads_up_snooze_3min">3 minuti</string>
+  <string name="heads_up_snooze_5min">5 minuti</string>
+  <string name="heads_up_snooze_10min">10 minuti</string>
+  <string name="heads_up_snooze_15min">15 minuti</string>
+  <string name="heads_up_snooze_20min">20 minuti</string>
+  <!-- Floating Windows -->
+  <string name="shortcut_action_floating_windows">Modalità Float</string>
+  <string name="floating_master_switch">Interruttore Principale</string>
+  <string name="floating_additional_options">Opzioni aggiuntive</string>
+  <string name="floating_windows">Modalità Float</string>
+  <string name="floating_windows_switch">Opzione per abilitare le finestre fluttuanti</string>
+  <string name="slim_action_floats">Azioni Slim &amp; Pie</string>
+  <string name="slim_action_floats_summary">Lancia Azioni Slim &amp; Pie in Modalità Float</string>
+  <string name="gesture_anywhere_floating">Gesture Ovunque</string>
+  <string name="gesture_anywhere_floating_summary">Lancia le gesture ovunque in modalità Float</string>
+  <string name="qs_float_mode">Impostazioni Rapide</string>
+  <string name="qs_float_mode_summary">Lancia le impostazioni rapide e le azioni da header espanso in modalità Float</string>
+  <!-- Omni Weather -->
+  <string name="weather_title">Meteo</string>
+  <string name="weather_config_title">Impostazioni di servizio</string>
+  <string name="header_weather_title">Vista meteo header</string>
+  <string name="header_weather_summary">Mostra icona meteo nel pannello header</string>
+  <string name="weather_icon_pack_title">Pack icone condizioni</string>
+  <string name="text_title">Testo</string>
+  <string name="number_of_notifications_title">Numero delle notifiche</string>
+  <string name="number_of_notifications_one_title">1 (Nascondi su tutte le notifiche)</string>
+  <string name="number_of_notifications_two_title">2</string>
+  <string name="number_of_notifications_three_title">3</string>
+  <string name="number_of_notifications_four_title">4</string>
+  <string name="number_of_notifications_five_title">5</string>
+  <string name="number_of_notifications_six_title">6</string>
+  <string name="carrier_label_hide_label_title">Nascondi sulle notifiche</string>
+  <string name="carrier_label_number_of_notification_icons_title">Numero massimo di icone prima di nascondere</string>
+  <!-- Slim Shortcuts -->
+  <string name="slim_shortcut_picker">Scorciatoie Slim</string>
+  <!-- Chamber of Secrets -->
+  <!-- Advanced storage settings -->
+  <string name="storage_advanced_titlebar">Storage Avanzato</string>
+  <string name="storage_menu_advanced">Avanzate</string>
+  <!-- USB data automatic unlock -->
+  <string name="usb_data_auto_unlock_title">Sblocca dati USB</string>
+  <string name="usb_data_auto_unlock_summary">Consente l\'accesso sbloccato dei dati di archiviazione del telefono tramite USB (MTP, PTP)</string>
+  <string name="usb_data_auto_unlock_warning_summary">Il dispositivo stabilirà connessioni non protette, ogni volta che si collega ad un PC. Le schermate di blocco sicure disabiliteranno questa opzione automaticamente.\n\nQuesta è una funzione ancora sperimentale, usare con cautela.</string>
 </resources>

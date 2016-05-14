@@ -17,7 +17,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Screw'd Settings -->
   <string name="header_customize">Personnalisation</string>
-  <string name="header_category_screwd">Paramètres Screw\'d</string>
   <string name="ui">Interface utilisateur</string>
   <string name="system">Système</string>
   <string name="notifications">Notifications</string>
@@ -385,9 +384,6 @@
   <!-- Scramble pin -->
   <string name="unlock_scramble_pin_layout_title">Mise en page du clavier aléatoire</string>
   <string name="unlock_scramble_pin_layout_summary">Clavier aléatoire pour le déverrouillage par code PIN</string>
-  <!-- Weather in status bar -->
-  <string name="status_bar_show_weather_title">Afficher la météo</string>
-  <string name="status_bar_show_weather_summary">Afficher la météo dans l\'en-tête de la barre de statut</string>
   <!-- Notification counters -->
   <string name="status_bar_notif_count_title">Afficher le compteur de notification</string>
   <string name="status_bar_notif_count_summary">Afficher le nombre de notifications en attente</string>
@@ -741,8 +737,8 @@
   <string name="show_ime_arrows_title">Afficher les flèches lors de la frappe</string>
   <string name="show_ime_arrows_summary">Afficher des flèches de chaque côté de la barre de navigation permettant de faire bouger le curseur lors d\'une saisie. Un appui long permet de naviguer vers le haut/bas</string>
   <!-- LCD Density -->
-  <string name="lcd_density">Densité écran</string>
-  <string name="dialog_title_lcd_density">Densité écran</string>
+  <string name="lcd_density">Densité de l\'écran</string>
+  <string name="dialog_title_lcd_density">Densité de l\'écran</string>
   <string name="lcd_density_value_format">%d DPI</string>
   <string name="lcd_density_default_value_format">%d DPI (par défaut)</string>
   <string name="restarting_ui">Redémarrage de l\'interface utilisateur\u2026</string>
@@ -936,7 +932,7 @@
   <string name="volume_steps_5">5</string>
   <!-- App Circle sidebar -->
   <string name="category_app_circle_bar_title">Lanceur d\'applications</string>
-  <string name="app_circle_bar_title">Bar circulaire d\'applications</string>
+  <string name="app_circle_bar_title">Cercle d\'applications</string>
   <string name="app_circle_bar_summary">Afficher le cercle lanceur d\'applications après avoir appuyé sur le côté droit de l\'écran</string>
   <string name="app_circle_bar_included_apps_title">Applications incluses</string>
   <string name="app_circle_bar_included_apps_summary">Les applications s\'afficheront dans la barre circulaire d\'applications</string>
@@ -1105,8 +1101,6 @@
   <!-- Screenshot sound -->
   <string name="screenshot_sound_title">Capture d\'écran</string>
   <string name="screenshot_sound_summary">Émettre un son lors de la capture d\'écran</string>
-  <!-- Seconds clock -->
-  <string name="status_bar_show_clock_second_title">Secondes de l\'horloge</string>
   <!-- QS shade transparency -->
   <string name="qs_transparent_shade">Transparence des réglages rapides</string>
   <!-- QS header transparency -->
@@ -1133,12 +1127,12 @@
   <!-- About Screw'd -->
   <string name="about_screwd">À propos de Screw\'d </string>
   <string name="screwdota_title">Mises à jour OTA</string>
-  <string name="screwdota_missing">Mise à jour OTA non détectée !!</string>
+  <string name="screwdota_missing">ScrewdOTA non détecté !</string>
   <!-- Share Screwd -->
   <string name="screwd_website_title">Site internet</string>
   <string name="screwd_website_summary">Consultez notre site Web pour plus d\'informations !</string>
   <string name="share_screwd_title">Partager Screw\'d</string>
-  <string name="share_screwd_summary">Informer les autres de la ROM</string>
+  <string name="share_screwd_summary">Informer les autres de Screw\'d ROM</string>
   <string name="share_message">Retrouvez-nous sur Google + https://plus.google.com/communities/109777359391119326629</string>
   <string name="share_chooser_title">Partager Screw\'d</string>
   <!-- Screw'd Sites -->
@@ -1248,7 +1242,7 @@
   <string name="navbar_mode">Mode de navigation</string>
   <string name="navbar_visibility">Activer la barre de navigation</string>
   <string name="navigationbar_settings_title">Barre de navigation</string>
-  <string name="aosp_navigation_bar">Barre de navigation</string>
+  <string name="aosp_navigation_bar">SmartBar</string>
   <string name="aosp_navigation_bar_settings">Paramètres barre de navigation</string>
   <string name="navigationbar_settings_summary">Style et comportement de la barre de navigation</string>
   <string name="navbar_general_title">Options avancées</string>
@@ -1285,9 +1279,45 @@
   <string name="fling_short_swipe_right">Glissement vers la droite</string>
   <string name="fling_short_swipe_left">Glissement vers la gauche</string>
   <string name="fling_long_swipe_right">Glissement prolongé vers la droite</string>
+  <string name="fling_long_swipe_left">Glissement prolongé vers la gauche</string>
+  <string name="fling_right_up_swipe">Glissement vers le haut (Côté droit)</string>
+  <string name="fling_left_up_swipe">Glissement vers le haut (Côté gauche)</string>
+  <string name="fling_single_tap">Simple appui à droite</string>
+  <string name="fling_double_tap">Double appui à gauche</string>
+  <string name="fling_long_press">Appui long à droite</string>
+  <string name="fling_single_left_tap">Simple appui à gauche</string>
+  <string name="fling_double_left_tap">Double appui à gauche</string>
+  <string name="fling_long_left_press">Appui long à gauche</string>
+  <string name="long_swipe_portrait_title">Portrait</string>
+  <string name="long_swipe_landscape_title">Paysage</string>
+  <string name="right_swipe_title">Glissement à droite</string>
+  <string name="left_swipe_title">Glissement à gauche</string>
+  <string name="up_swipe_title">Glissez vers le haut</string>
+  <string name="down_swipe_title">Glissement vers le bas</string>
+  <string name="long_swipe_reset">Réinitialiser </string>
+  <string name="fling_advanced">Options avancées</string>
+  <string name="fling_long_swipe_title">Seuil du glissement prolongé</string>
+  <string name="fling_long_swipe_summary">Définir la zone de déclenchement selon un pourcentage de la hauteur ou de la largeur</string>
+  <string name="fling_trails_enable_title">Tracé des gestes</string>
+  <string name="fling_trails_enable_summary">Afficher le tracé des gestes par glissement</string>
+  <string name="fling_trails_color_title">Couleur du tracé</string>
+  <string name="fling_appearance">Apparence</string>
+  <string name="fling_show_logo_title">Afficher le logo de Fling</string>
+  <string name="fling_animate_logo_title">Animer le logo</string>
+  <string name="fling_animate_logo_summary">Le logo s\'anime lors des appuis</string>
+  <string name="fling_logo_color">Couleur du logo</string>
+  <string name="fling_logo_custom_logo_pick_title">Définir l\'icône du logo (pack d\'icônes)</string>
+  <string name="fling_logo_custom_logo_image_pick_title">Définir l\'icône du logo (image personnalisée)</string>
+  <string name="fling_logo_custom_logo_reset_title">Réinitialiser l\'icône du logo</string>
+  <string name="fling_show_ripple_title">Ondulation</string>
+  <string name="fling_show_ripple_summary">Effet d\'ondulation lors des appuis</string>
+  <string name="fling_ripple_color">Couleur de l\'ondulation</string>
+  <string name="fling_longpress_timeout_label_left">Diminution du délai</string>
+  <string name="fling_longpress_timeout_label_right">Augmentation du délai</string>
+  <string name="fling_longpress_title">Délai d\'appui prolongé</string>
+  <string name="fling_longpress_summary">Augmenter ou diminuer délai d\'appui prolongé</string>
   <!-- Pulse navigation bar music visualizer -->
   <string name="pulse_help_policy_notice_title">À propos Pulse</string>
-  <string name="pulse_help_policy_notice_summary">Pulse est une barre de visualisation au style d\'un égaliseur audio qui s\'affiche sur la barre de navigation lors de l\'écoute de musique. Pulse ne fonctionne pas avec certaines sources audio lors de l\'écoute de musique sur le(s) haut-parleur(s) de l\'appareil.</string>
   <string name="pulse_settings">Pulse</string>
   <string name="pulse_settings_summary">Égaliseur audio sur la barre de navigation</string>
   <string name="fling_show_pulse_title">Pulse</string>
@@ -1328,4 +1358,28 @@
   <string name="status_bar_custom_header_shadow_title">Ombre</string>
   <string name="status_bar_custom_header_shadow_summary">Appliquer une ombre sur l\'image d\'arrière-plan de l\'en-tête contextuel, pour une meilleure visibilité des images lumineuses</string>
   <string name="unit_percent">\u0025</string>
+  <!-- Hide Apps from Recents -->
+  <string name="hide_apps_from_recents_title">Applications masquées</string>
+  <string name="hide_from_recents_add_app">Ajouter une application</string>
+  <string name="hide_apps_from_recents_summary">Choisir quelles applications à exclure du panneau des applications récentes.</string>
+  <!-- Heads up snooze -->
+  <string name="heads_up_snooze_title">Délai de répétition</string>
+  <string name="heads_up_snooze_summary">Glisser vers le haut les notifications flottantes va mettre en veille les notifications flottantes de cette application durant <xliff:g id="number">%d</xliff:g> minutes</string>
+  <string name="heads_up_snooze_disabled_summary">La répétition du minuter désactivée</string>
+  <string name="heads_up_snooze_1min">1 minute</string>
+  <string name="heads_up_snooze_3min">3 minutes</string>
+  <string name="heads_up_snooze_5min">5 minutes</string>
+  <string name="heads_up_snooze_10min">10 minutes</string>
+  <string name="heads_up_snooze_15min">15 minutes</string>
+  <string name="heads_up_snooze_20min">20 minutes</string>
+  <!-- Floating Windows -->
+  <string name="shortcut_action_floating_windows">Fenêtres flottantes</string>
+  <string name="floating_master_switch">Interrupteur général</string>
+  <string name="floating_additional_options">Options supplémentaires des fenêtres flottantes</string>
+  <string name="floating_windows">Fenêtres flottantes</string>
+  <!-- Omni Weather -->
+  <!-- Slim Shortcuts -->
+  <!-- Chamber of Secrets -->
+  <!-- Advanced storage settings -->
+  <!-- USB data automatic unlock -->
 </resources>

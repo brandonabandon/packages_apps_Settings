@@ -17,7 +17,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Screw'd Settings -->
   <string name="header_customize">Dostosuj</string>
-  <string name="header_category_screwd">Ustawienia Screw\'d</string>
   <string name="ui">Interfejs użytkownika</string>
   <string name="system">System</string>
   <string name="notifications">Powiadomienia</string>
@@ -40,7 +39,6 @@
   <string name="battery2_summary">Dostosuj ikonę wskaźnika baterii</string>
   <string name="notification_drawer_cat">Pasek powiadomień</string>
   <string name="lockscreen_options_title">Ustawienia ekranu blokady</string>
-  <string name="navbar_slimdim_cat">SlimDim</string>
   <string name="lockscreen_shortcuts_cat">Skróty</string>
   <string name="statusbar_clock_cat">Opcje zegara</string>
   <string name="statusbar_notif_cat">Opcje powiadomień</string>
@@ -120,7 +118,6 @@
   <string name="kill_app_longpress_back">Zamykanie aplikacji przyciskiem Wstecz</string>
   <string name="kill_app_longpress_back_summary">Przytrzymanie przycisku wstecz zamyka aktywną aplikację</string>
   <!-- Double Tap Navbar to Sleep -->
-  <string name="double_tap_sleep_nav_bar_title">Dwukrotnie dotknij, aby uśpić</string>
   <string name="double_tap_sleep_nav_bar_summary">Dotknij dwukrotnie pasek nawigacji, aby uśpić urządzenie</string>
   <!-- Double tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Podwójne stuknięcie wygasza ekran</string>
@@ -159,11 +156,9 @@
   <string name="pulse_speed_slow">Wolne</string>
   <string name="pulse_speed_very_slow">Bardzo wolne</string>
   <!-- Battery light settings -->
-  <string name="battery_light_title">Kontrolka baterii</string>
   <string name="battery_low_pulse_title">Pulsuj, jeśli poziom baterii jest niski</string>
   <string name="battery_light_list_title">Ustawienia kolorów</string>
   <string name="battery_light_low_color_title">Bateria na wyczerpaniu</string>
-  <string name="battery_light_medium_color_title">Ładowanie</string>
   <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">Dioda powiadomień</string>
   <string name="notification_light_general_title">Główne</string>
@@ -197,6 +192,7 @@
   <string name="hex">Hex:</string>
   <string name="hex_hint">#ff000000</string>
   <string name="set">Ustaw</string>
+  <!-- Clang version -->
   <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Zaawansowany restart</string>
   <string name="advanced_reboot_summary">Kiedy odblokowany, pozwól na wyświetlanie opcji zaawansowanego restartu w menu zasilania</string>
@@ -217,8 +213,6 @@
   <string name="power_menu_sound_title">Panel dźwięku</string>
   <string name="power_menu_bug_report_disabled">Zgłaszanie błędów jest wyłączone w opcjach programistycznych</string>
   <string name="powermenu_screenshot_delay_title">Opóźnienie zrzutu ekranu</string>
-  <string name="navigation_bar_left_title">Tryb dla leworęcznych</string>
-  <string name="navigation_bar_left_summary">Umieść pasek nawigacji po lewej stronie ekranu w trybie poziomym</string>
   <!-- Doze options -->
   <string name="display_category_doze_options_title">Ekran dostosowany do otoczenia</string>
   <string name="doze_settings_title">Zaawansowane opcje Drzemki</string>
@@ -377,9 +371,6 @@
   <!-- Scramble pin -->
   <string name="unlock_scramble_pin_layout_title">Pomieszany układ</string>
   <string name="unlock_scramble_pin_layout_summary">Pomieszany układ cyfr przy odblokowywaniu urządzenia kodem PIN</string>
-  <!-- Weather in status bar -->
-  <string name="status_bar_show_weather_title">Pokaż prognozę pogody</string>
-  <string name="status_bar_show_weather_summary">Pokaż prognozę pogody w nagłówku paska stanu</string>
   <!-- Notification counters -->
   <string name="status_bar_notif_count_title">Pokaż licznik powiadomień</string>
   <string name="status_bar_notif_count_summary">Wyświetla ilość oczekujących powiadomień</string>
@@ -499,21 +490,6 @@
   <string name="battery_bar_animate_summary">Animacja ładowania może pogorszyć wrażenia z użytkowania. Włączasz na własne ryzyko.</string>
   <!-- Restart SystemUI -->
   <string name="restart_systemui">Uruchom ponownie SystemUI</string>
-  <!-- SlimDim -->
-  <string name="dim_nav_buttons_category">SlimDim</string>
-  <string name="dim_nav_buttons_title">Przyciemnij przyciski, kiedy nieaktywne</string>
-  <string name="dim_nav_buttons_summary">Przyciemna przyciski paska nawigacji po określonym czasie ich nieużytkowania</string>
-  <string name="dim_nav_buttons_timeout_title">Opóźnienie przyciemnienia</string>
-  <string name="dim_nav_buttons_timeout_summary">Czas (w milisekundach), po którym przyciski zostaną przyciemnione</string>
-  <string name="dim_nav_buttons_alpha_title">Przezroczystość przyciemnienia</string>
-  <string name="dim_nav_buttons_alpha_summary">Wartość przezroczystości</string>
-  <string name="dim_nav_buttons_animate_title">Animacja przyciemnienia</string>
-  <string name="dim_nav_buttons_animate_summary">Animuje przyciemnienie przycisków</string>
-  <string name="dim_nav_buttons_animate_duration_title">Długość animacji</string>
-  <string name="dim_nav_buttons_animate_duration_summary">Długość (w milisekundach) animacji</string>
-  <string name="dim_nav_buttons_touch_anywhere_title">Wykrywaj dotyk na całym ekranie</string>
-  <string name="dim_nav_buttons_touch_anywhere_summary_on">Dotknięcie jakiejkolwiek części ekranu spowoduje podświetlenie klawiszy</string>
-  <string name="dim_nav_buttons_touch_anywhere_summary_off">Tylko dotknięcie paska nawigacji spowoduje podświetlenie</string>
   <!-- Slim DSLV -->
   <string name="shortcut_action_none">Żaden</string>
   <string name="shortcut_action_longpress">Długie przyciśnięcie:</string>
@@ -597,89 +573,18 @@
   <string name="shortcuts_icon_picker_unlock">Odblokuj</string>
   <!-- Button shorcut actions -->
   <string name="shortcut_action_back">Wstecz</string>
+  <string name="shortcut_action_none">Żaden</string>
   <string name="shortcut_action_app">Niestandardowa aplikacja</string>
-  <string name="shortcut_action_expanded_desktop">Pulpit rozszerzony</string>
   <string name="shortcut_action_home">Domowy</string>
-  <string name="shortcut_action_kill">Zakończ aplikację</string>
-  <string name="shortcut_action_lastapp">Ostatnia aplikacja</string>
-  <string name="shortcut_action_menu_big">Menu duże</string>
-  <string name="shortcut_action_navbar">Pasek nawigacji</string>
-  <string name="shortcut_action_notifications">Powiadomienia</string>
-  <string name="shortcut_action_menu_big">Menu duże</string>
+  <string name="shortcut_action_back">Wstecz</string>
   <string name="shortcut_action_ime">Otwórz przełącznik metod wprowadzania</string>
   <string name="shortcut_action_power_menu">Menu zasilania</string>
-  <string name="shortcut_action_qs">Panel szybkich ustawień</string>
-  <string name="shortcut_action_smart">Inteligentne rozwijanie</string>
   <string name="shortcut_action_recent">Ostatnio używane aplikacje</string>
+  <string name="shortcut_action_power">Wygaś ekran</string>
+  <string name="shortcut_action_search">Szukaj w aplikacji</string>
   <string name="shortcut_action_ring_vib">Dzwonek/Wibracja</string>
   <string name="shortcut_action_ring_silent">Dzwonek/Wyciszony</string>
   <string name="shortcut_action_ring_vib_silent">Dzwonek/Wibracja/Wyciszony</string>
-  <string name="shortcut_action_now_on_tap">Now na dotknięcie</string>
-  <string name="shortcut_action_power">Wygaś ekran</string>
-  <string name="shortcut_action_screenshot">Zrzut ekranu</string>
-  <string name="shortcut_action_assist">Wyszukaj</string>
-  <string name="shortcut_action_search">Szukaj w aplikacji</string>
-  <string name="shortcut_action_theme_switch">Przełącznik motywów</string>
-  <string name="shortcut_action_torch">Torch</string>
-  <string name="shortcut_action_voice_search">Wyszukiwanie głosowe</string>
-  <string name="shortcut_action_none">Żaden</string>
-  <!-- Navigation bar -->
-  <string name="navigation_bar_size_42_dp_default">42 dp (domyślnie)</string>
-  <string name="navigation_bar_size_36_dp">36 dp</string>
-  <string name="navigation_bar_size_30_dp">30 dp</string>
-  <string name="navigation_bar_size_24_dp">24 dp</string>
-  <string name="navigation_bar_size_48_dp_default">48 dp (domyślnie)</string>
-  <string name="navigation_bar_size_44_dp">44 dp</string>
-  <string name="navigation_bar_size_40_dp">40 dp</string>
-  <string name="navigation_bar_size_42_dp">42 dp</string>
-  <string name="navigation_bar_size_0_dp">0 dp (wyłączony)</string>
-  <string name="navigation_menu_right">Prawa strona</string>
-  <string name="navigation_menu_left">Lewa strona</string>
-  <string name="navigation_menu_both">Obie strony</string>
-  <string name="navigation_menu_default_jb_behavior">Pokazuj na żądanie (domyślny)</string>
-  <string name="navigation_menu_never_show">Nigdy nie pokazuj</string>
-  <string name="navigation_menu_always_show">Zawsze pokazuj</string>
-  <string name="navigation_bar">Pasek nawigacji</string>
-  <string name="navbar_button_cat">Przyciski paska nawigacji</string>
-  <string name="title_pref_menu_location">Lokalizacja przycisku menu</string>
-  <string name="summary_pref_menu_location">Gdzie chcesz aby pojawiały się przyciski Menu?</string>
-  <string name="title_pref_menu_display">Widoczność przycisku menu</string>
-  <string name="summary_pref_menu_display">Jak i gdzie mają pojawiać się przyciski Menu?</string>
-  <string name="navbar_enable_bar">Włącz pasek nawigacji</string>
-  <string name="navbar_enable_bar_summary">Włącz pasek nawigacyjny</string>
-  <string name="navigation_bar_height_title">Wysokość paska nawigacji</string>
-  <string name="navigation_bar_height_summary">Wysokość paska nawigacji w orientacji pionowej.</string>
-  <string name="navigation_bar_height_landscape_title">Wysokość paska nawigacji w trybie poziomym</string>
-  <string name="navigation_bar_height_landscape_summary">Wysokość paska nawigacji przy poziomej orientacji ekranu.</string>
-  <string name="navigation_bar_width_title">Szerokość paska nawigacji</string>
-  <string name="navigation_bar_width_summary">Wysokość paska nawigacji, jeśli pasek jest wzdłuż bocznej krawędzi.</string>
-  <string name="navbar_can_move">Pokaż w trybie poziomym</string>
-  <string name="navbar_can_move_summary">Pokazuje pasek nawigacyjny w poziomie na dole</string>
-  <string name="navbar_style_dimen_title">Wymiary</string>
-  <string name="navbar_button_title">Przyciski</string>
-  <string name="navbar_cat">Pasek nawigacji</string>
-  <string name="navbar_dimensions_reset_message">Przywrócić wszystkie wymiary do wartości domyślnych?</string>
-  <string name="navbar_button_style_reset_message">Zresetować wszystkie ustawienia do wartości domyślnych?</string>
-  <string name="shortcut_action_required_warning_message">Nie jest możliwe, aby usunąć wymagane przyciski</string>
-  <!-- Navigation bar button style -->
-  <string name="nav_bar_button_style">Styl przycisku</string>
-  <string name="nav_bar_button_style_summary">Zmienia styl przycisków paska nawigacji</string>
-  <string name="button_transparency_title">Przezroczystość przyciksów</string>
-  <string name="navigation_bar_icon_tint_title">Kolor przycisku</string>
-  <string name="nav_button_color_mode_title">Tryb kolorów</string>
-  <string name="nav_button_color_mode_dialog_title">Koloruj</string>
-  <string name="nav_button_color_mode_summary">Zmień tryb koloru przycisku paska nawigacji</string>
-  <string name="navigation_bar_glow_tint_title">Kolor blasku przycisków</string>
-  <string name="icon_color_mode_all_icons">Wszystkie ikony</string>
-  <string name="icon_color_mode_system_icons">Ikony systemowe</string>
-  <string name="icon_color_mode_system_custom_icons">Ikony systemowe i niestadardowe</string>
-  <string name="shortcuts_applications">Aplikacje</string>
-  <string name="shortcuts_select_custom_app_title">Wybierz niestandardową aplikację</string>
-  <string name="shortcuts_icon_picker_type">Wybierz typ ikony:</string>
-  <string name="shortcuts_icon_default">Domyślny</string>
-  <string name="shortcuts_icon_presets">Ikony systemowe</string>
-  <string name="shortcuts_icon_custom">Galeria</string>
-  <string name="shortcuts_icon_picker_choose_icon_title">Wybierz ikonę</string>
   <string name="shortcut_action_longpress">Długie przyciśnięcie:</string>
   <string name="shortcut_action_select_action_longpress">Wybierz akcję długiego przyciśnięcia:</string>
   <string name="shortcut_action_select_action">Wybierz czynność:</string>
@@ -815,7 +720,6 @@
   <string name="keep_screen_on_debugging">Podczas debugowania USB</string>
   <string name="keep_screen_on_charging">Podczas ładowania</string>
   <!-- CM Lockscreen shortcuts -->
-  <string name="lockscreen_targets_message">Skróty na dole ekranu</string>
   <!-- AOSP MultiWindow -->
   <string name="multiwindow_settings_title">Wiele okien</string>
   <string name="enable_multi_window">Tryb wielu okien</string>
@@ -853,7 +757,6 @@
   <string name="wake_when_plugged_or_unplugged_title">Wybudź przy podłączaniu</string>
   <string name="wake_when_plugged_or_unplugged_summary">Włącz ekran przy podłączaniu lub odłączaniu źródła zasilania</string>
   <!-- Carrier label -->
-  <string name="carrier_title">Etykieta operatora</string>
   <string name="carrier_options_summary">Dostosuj nazwę operatora</string>
   <string name="custom_carrier_label_title">Własna nazwa operatora</string>
   <string name="custom_carrier_label_explain">Wprowadź nową nazwę. Pozostaw puste, aby przywrócić domyślną.</string>
@@ -998,7 +901,6 @@
   <string name="volume_steps_5">5</string>
   <!-- App Circle sidebar -->
   <string name="category_app_circle_bar_title">Launcher aplikacji</string>
-  <string name="app_circle_bar_title">Koło aplikacji</string>
   <string name="app_circle_bar_summary">Pokaż koło aplikacji po dotknięciu prawej krawędzi ekranu</string>
   <string name="app_circle_bar_included_apps_title">Załączone aplikacje</string>
   <string name="app_circle_bar_included_apps_summary">Aplikacje pokażą się w kole aplikacji</string>
@@ -1161,8 +1063,6 @@
   <!-- Screenshot sound -->
   <string name="screenshot_sound_title">Dźwięk zrzutu ekranu</string>
   <string name="screenshot_sound_summary">Włącza efekt dźwiękowy, gdy zrzut ekranu jest robiony</string>
-  <!-- Seconds clock -->
-  <string name="status_bar_show_clock_second_title">Sekundy na zegarze</string>
   <!-- QS shade transparency -->
   <string name="qs_transparent_shade">Widoczność cienia panelu powiadomień</string>
   <!-- QS header transparency -->
@@ -1187,7 +1087,6 @@
   <string name="screwd_website_title">Witryna</string>
   <string name="screwd_website_summary">Odwiedź naszą stronę, aby dowiedzieć się więcej!</string>
   <string name="share_screwd_title">Udostępnij Screw\'D</string>
-  <string name="share_screwd_summary">Pozwól innym dowiedzieć się o Screw\'D</string>
   <string name="share_message">Odwiedź nas na Google+ https://plus.google.com/communities/109777359391119326629</string>
   <string name="share_chooser_title">Udostępnij Screw\'D</string>
   <!-- Screw'd Sites -->
@@ -1202,20 +1101,40 @@
   <string name="maintainer_default">Nieznane</string>
   <string name="maintainer_default_summary">Przepraszamy, twoje urządzenie nie posiada opiekuna!</string>
   <string name="devs">Programiści</string>
-  <!-- Navbar cursor buttons -->
-  <string name="show_ime_arrows_title">Pokaż klawisze strzałek podczas pisania</string>
-  <string name="show_ime_arrows_summary">Wyświetlić przyciski kursora: lewy i prawy dla edytora IME.</string>
   <!-- Keyguard notifications options -->
   <!-- Increasing ring tone volume -->
   <!-- Task Manager -->
   <!--Heads Up -->
   <string name="heads_up_notifications">Powiadomienia Heads Up</string>
+  <!-- Heads up timeout -->
   <!-- Hide lockscreen clock & date -->
-  <!-- Selinux Switch -->
   <!-- Smart Pulldown -->
   <!-- Statusbar SCREW'D logo -->
   <!-- Flashlight notification -->
   <!--Secure lockscreen bouncer -->
   <!-- Notification spamfilter -->
   <!-- Optional Dashboard Switches -->
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
+  <!-- Lock screen vibrate settings -->
+  <!-- Navigation Bar -->
+  <string name="navigation_bar_left_title">Tryb dla leworęcznych</string>
+  <string name="navigation_bar_left_summary">Umieść pasek nawigacji po lewej stronie ekranu w trybie poziomym</string>
+  <!-- Actions dialog and default task values set in ActionPreference xml-->
+  <!-- Fling -->
+  <!-- Pulse navigation bar music visualizer -->
+  <!-- Navbar height -->
+  <string name="positive_done">Gotowe</string>
+  <!-- SmartBar -->
+  <!-- Heads Up button -->
+  <!-- Header image shadow -->
+  <!-- Hide Apps from Recents -->
+  <!-- Heads up snooze -->
+  <!-- Floating Windows -->
+  <!-- Omni Weather -->
+  <!-- Slim Shortcuts -->
+  <!-- Chamber of Secrets -->
+  <!-- Advanced storage settings -->
+  <!-- USB data automatic unlock -->
 </resources>

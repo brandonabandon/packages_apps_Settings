@@ -17,7 +17,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Screw'd Settings -->
   <string name="header_customize">Aanpassen</string>
-  <string name="header_category_screwd">Screw\'d Instellingen</string>
   <string name="ui">Gebruikersinterface</string>
   <string name="system">Systeem</string>
   <string name="notifications">Meldingen</string>
@@ -159,7 +158,6 @@
   <string name="pulse_speed_slow">Langzaam</string>
   <string name="pulse_speed_very_slow">Zeer langzaam</string>
   <!-- Battery light settings -->
-  <string name="battery_light_title">Batterij LED</string>
   <string name="battery_low_pulse_title">Knipper indien de batterij bijna leeg is</string>
   <string name="battery_light_list_title">Kleuren</string>
   <string name="battery_light_low_color_title">Batterij bijna leeg</string>
@@ -385,9 +383,6 @@
   <!-- Scramble pin -->
   <string name="unlock_scramble_pin_layout_title">Scramble lay-out</string>
   <string name="unlock_scramble_pin_layout_summary">Scramble PIN lay-out wanneer apparaat wordt ontgrendeld</string>
-  <!-- Weather in status bar -->
-  <string name="status_bar_show_weather_title">Toon weer</string>
-  <string name="status_bar_show_weather_summary">Toon het weer in de statusbalk header</string>
   <!-- Notification counters -->
   <string name="status_bar_notif_count_title">Toon aantal meldingen</string>
   <string name="status_bar_notif_count_summary">Toon aantal wachtende meldingen</string>
@@ -741,8 +736,6 @@
   <string name="show_ime_arrows_title">Toon pijltoetsen tijdens het typen</string>
   <string name="show_ime_arrows_summary">Toon linker en rechter cursor knoppen voor IME.</string>
   <!-- LCD Density -->
-  <string name="lcd_density">LCD dichtheid</string>
-  <string name="dialog_title_lcd_density">LCD dichtheid</string>
   <string name="lcd_density_value_format">%d DPI</string>
   <string name="lcd_density_default_value_format">%d DPI (standaard)</string>
   <string name="restarting_ui">UI Herstarten\u2026</string>
@@ -754,7 +747,6 @@
   <string name="keep_screen_on_debugging">Tijdens USB debugging</string>
   <string name="keep_screen_on_charging">Tijdens het opladen</string>
   <!-- CM Lockscreen shortcuts -->
-  <string name="lockscreen_targets_message">Onderste snelkoppelingen</string>
   <!-- AOSP MultiWindow -->
   <string name="multiwindow_settings_title">Multi venster</string>
   <string name="enable_multi_window">Multi venstermodus</string>
@@ -791,7 +783,6 @@
   <string name="wake_when_plugged_or_unplugged_title">Ontwaak bij lader</string>
   <string name="wake_when_plugged_or_unplugged_summary">Het scherm inschakelen wanneer bij aansluiten of loskoppelen van de lader</string>
   <!-- Carrier label -->
-  <string name="carrier_title">Provider label</string>
   <string name="carrier_options_summary">Provider label aanpassen</string>
   <string name="custom_carrier_label_title">Aangepast Provider label</string>
   <string name="custom_carrier_label_explain">Voer een nieuw label in. Laat leeg om terug te keren naar het stock label.</string>
@@ -936,7 +927,6 @@
   <string name="volume_steps_5">5</string>
   <!-- App Circle sidebar -->
   <string name="category_app_circle_bar_title">App launcher</string>
-  <string name="app_circle_bar_title">App cirkelbalk</string>
   <string name="app_circle_bar_summary">Toon cirkel app launcher na het aanraken van de rechterkant van het scherm</string>
   <string name="app_circle_bar_included_apps_title">Opgenomen apps</string>
   <string name="app_circle_bar_included_apps_summary">Toon apps in app cirkelbalk</string>
@@ -1105,8 +1095,6 @@
   <!-- Screenshot sound -->
   <string name="screenshot_sound_title">Schermafbeelding geluid</string>
   <string name="screenshot_sound_summary">Speelt geluidseffect wanneer schermafbeelding is genomen</string>
-  <!-- Seconds clock -->
-  <string name="status_bar_show_clock_second_title">Klok seconden</string>
   <!-- QS shade transparency -->
   <string name="qs_transparent_shade">Transparantie QS shade</string>
   <!-- QS header transparency -->
@@ -1133,12 +1121,10 @@
   <!-- About Screw'd -->
   <string name="about_screwd">Over Screw\'d</string>
   <string name="screwdota_title">OTA Updates</string>
-  <string name="screwdota_missing">ScrewdOTA niet gevonden!!</string>
   <!-- Share Screwd -->
   <string name="screwd_website_title">Website</string>
   <string name="screwd_website_summary">Bezoek onze website voor meer info!</string>
   <string name="share_screwd_title">Deel Screw\'d</string>
-  <string name="share_screwd_summary">Laat anderen weten over Screw\'d</string>
   <string name="share_message">Bezoek ons op Google+ https://plus.google.com/communities/109777359391119326629</string>
   <string name="share_chooser_title">Deel Screw\'d</string>
   <!-- Screw'd Sites -->
@@ -1163,7 +1149,6 @@
   <string name="increasing_ring_min_volume_title">Start volume</string>
   <string name="increasing_ring_ramp_up_time_title">Oploop tijd</string>
   <!-- Task Manager -->
-  <string name="enable_task_manager_title">Taakbeheer</string>
   <string name="enable_task_manager_summary">In-/Uitschakelen van de taakbeheer knop in de uitgebreide statusbalk</string>
   <!--Heads Up -->
   <string name="heads_up_notifications">Heads-up</string>
@@ -1246,9 +1231,7 @@
   <string name="navbar_interface_title">Interface</string>
   <string name="navbar_size">Balk grootte</string>
   <string name="navbar_mode">Navigatie modus</string>
-  <string name="navbar_visibility">Navigatiebalk inschakelen</string>
   <string name="navigationbar_settings_title">Navigatie</string>
-  <string name="aosp_navigation_bar">Navigatiebalk</string>
   <string name="aosp_navigation_bar_settings">Navigatiebalk instellingen</string>
   <string name="navigationbar_settings_summary">Navigatie stijl en gedrag aanpassen</string>
   <string name="navbar_general_title">Geavanceerd</string>
@@ -1275,7 +1258,6 @@
   <string name="action_value_menu">taak_menu</string>
   <!-- Fling -->
   <string name="fling_settings">Fling instellingen</string>
-  <string name="fling_interface">Fling gebaar interface</string>
   <string name="fling_enable_title">Fling inschakelen</string>
   <string name="fling_back_home_policy">Terug en Home moeten altijd worden ingesteld. Stel eerst de gewenste toewijzing in, alvorens Back of Home te wijzigen</string>
   <string name="fling_split_bar_policy">Wanneer alleen een rwchter of linkeractie is toegewezen, is de actie van toepassing op de volledige balk</string>
@@ -1322,7 +1304,6 @@
   <string name="fling_longpress_summary">Vergroten of verkleinen van de tijd die nodig is voor het uitvoeren van een lange druk</string>
   <!-- Pulse navigation bar music visualizer -->
   <string name="pulse_help_policy_notice_title">Over Pulse</string>
-  <string name="pulse_help_policy_notice_summary">Pulse is briljante equalizer bar stijl audio-visualisering op de navigatiebalk wanneer muziek wordt gespeeld. Pulse werkt niet met sommige audio bronnen bij het luisteren via apparaat luidspreker</string>
   <string name="pulse_settings">Pulse</string>
   <string name="pulse_settings_summary">Navigatiebalk audio-visualisatie</string>
   <string name="fling_show_pulse_title">Toon Pulse</string>
@@ -1338,7 +1319,6 @@
   <string name="positive_done">Gereed</string>
   <!-- SmartBar -->
   <string name="smartbar_category">Smartbar</string>
-  <string name="smartbar_settings_title">Smartbar instellingen</string>
   <string name="smartbar_editor_title">Toggle knopbewerker</string>
   <string name="smartbar_editor_summary">Medium indrukken en sleep om de positie wijzigen. Lang indrukken om bewerkingsmenu weer te geven. Knop positie kan worden gewijzigd terwijl het menu wordt weergegeven.</string>
   <string name="smartbar_context_menu_position_title">Context knoppen lay-out</string>
@@ -1363,4 +1343,12 @@
   <string name="status_bar_custom_header_shadow_title">Header image schaduw</string>
   <string name="status_bar_custom_header_shadow_summary">Voor betere zichtbaarheid op heldere afbeeldingen</string>
   <string name="unit_percent">\u0025</string>
+  <!-- Hide Apps from Recents -->
+  <!-- Heads up snooze -->
+  <!-- Floating Windows -->
+  <!-- Omni Weather -->
+  <!-- Slim Shortcuts -->
+  <!-- Chamber of Secrets -->
+  <!-- Advanced storage settings -->
+  <!-- USB data automatic unlock -->
 </resources>

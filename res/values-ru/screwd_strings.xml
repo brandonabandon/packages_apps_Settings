@@ -15,8 +15,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Screw'd Settings -->
   <string name="header_customize">Настроить</string>
-  <string name="header_category_screwd">Настройки Screw\'d</string>
   <string name="ui">Пользовательский интерфейс</string>
   <string name="system">Система</string>
   <string name="notifications">Уведомления</string>
@@ -29,6 +29,7 @@
   <string name="statusbar">Строка состояния</string>
   <string name="sounds">Звуки и громкость</string>
   <string name="kernel_tweaker">Настройки ядра</string>
+  <!-- Screw'd Settings cats-->
   <string name="sound_buttons_cat">Кнопки</string>
   <string name="interface_navbar_cat">Параметры навигационной панели</string>
   <string name="display_category_led_title">Светодиод</string>
@@ -36,7 +37,6 @@
   <string name="battery2_summary">Изменить стиль индикатора батареи</string>
   <string name="notification_drawer_cat">Панель уведомления</string>
   <string name="lockscreen_options_title">Настройки экрана блокировки</string>
-  <string name="navbar_slimdim_cat">SlimDim</string>
   <string name="lockscreen_shortcuts_cat">Ярлыки</string>
   <string name="statusbar_clock_cat">Стиль часов</string>
   <string name="statusbar_notif_cat">Параметры уведомлений</string>
@@ -44,8 +44,10 @@
   <string name="statusbar_header_cat">Параметры заголовка</string>
   <string name="statusbar_weather_cat">Параметры погоды</string>
   <string name="statusbar_general_cat">Общие настройки</string>
+  <!-- Changelog -->
   <string name="changelog_screwd_title">История изменений</string>
   <string name="changelog_screwd_error">Не удается загрузить список изменений</string>
+  <!-- General strings -->
   <string name="ok">Ок</string>
   <string name="ok_string">Хорошо</string>
   <string name="reset">Сброс</string>
@@ -80,23 +82,39 @@
   <string name="position_right_title">Справа</string>
   <string name="position_centered_title">По центру</string>
   <string name="reset_android">Android</string>
+  <!-- About phone screen, Screw'd version name-->
   <string name="mod_version">Версия Screw\'d</string>
+  <!-- About phone screen, Screw'd unknown name-->
+  <!-- About phone screen, build date of ROM -->
   <string name="build_date">Дата сборки</string>
+  <!--  About device screen, Hardware info -->
   <string name="hardware_info">Информация об оборудовании</string>
+  <!--  About device Screen, hardware info, rear camera -->
   <string name="device_rear_camera">Задняя камера</string>
+  <!--  About device Screen, hardware info, front camera -->
   <string name="device_front_camera">Фронтальная камера</string>
+  <!--  About device Screen, hardware info, screen res -->
   <string name="device_screen_resolution">Разрешение экрана</string>
+  <!--  About device Screen, hardware info, GPU info -->
   <string name="gpu_info">Графический процессор</string>
+  <!-- About device screen, Cpu info. -->
   <string name="cpu_info">Центральный процессор</string>
+  <!-- About device screen, Chipset info -->
   <string name="chipset_info">Чипсет</string>
+  <!-- About phone screen, Free memory info -->
   <string name="mem_info">Память</string>
+  <!-- Volume rocker wake -->
   <string name="volume_rocker_wake_title">Пробуждать кнопками громкости</string>
   <string name="volume_rocker_wake_summary">Пробуждать устройство клавишами громкости</string>
+  <!-- kill app long press back -->
   <string name="kill_app_longpress_back">Кнопка \"Назад\" закроет приложение</string>
   <string name="kill_app_longpress_back_summary">Долгое нажатие кнопки Назад закроет запущенное приложение</string>
+  <!-- Double Tap Navbar to Sleep -->
   <string name="double_tap_sleep_nav_bar_summary">Дважды нажмите на панеле навигации, чтобы перевести устройство в спящий режим</string>
+  <!-- Double tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Выключение двойным нажатием</string>
   <string name="double_tap_to_sleep_summary">Двойное нажатие на строке состояния или на верхней или нижней трети области ярлыка блокировки экрана для сна</string>
+  <!-- Status bar - Battery -->
   <string name="status_bar_battery_style_title">Стиль индикатора батареи</string>
   <string name="status_bar_battery_style_icon_portrait">Вертикальный значок</string>
   <string name="status_bar_battery_style_icon_landscape">Горизонтальный значок</string>
@@ -104,17 +122,20 @@
   <string name="status_bar_battery_style_dotted_circle">Пунктирный круг</string>
   <string name="status_bar_battery_style_text">Текст</string>
   <string name="status_bar_battery_style_hidden">Не отображать</string>
+  <!-- Battery percentage -->
   <string name="status_bar_battery_percentage_title">Показывать процент заряда</string>
   <string name="status_bar_battery_percentage_dialog_title">Процент батареи</string>
   <string name="status_bar_battery_percentage_default">Скрытый (по умолчанию)</string>
   <string name="status_bar_battery_percentage_text_inside">Внутри значка</string>
   <string name="status_bar_battery_percentage_text_next">Рядом со значком</string>
+  <!-- Notification light dialogs -->
   <string name="edit_light_settings">Изменить настройки индикатора</string>
   <string name="pulse_speed_title">Длительность и скорость мигания</string>
   <string name="default_time">Стандартный</string>
   <string name="custom_time">Пользовательские</string>
   <string name="dialog_delete_title">Удалить</string>
   <string name="dialog_delete_message">Удалить выбранный элемент?</string>
+  <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">Всегда вкл</string>
   <string name="pulse_length_very_short">Очень короткие</string>
   <string name="pulse_length_short">Коротко</string>
@@ -126,12 +147,11 @@
   <string name="pulse_speed_normal">Обычно</string>
   <string name="pulse_speed_slow">Медленно</string>
   <string name="pulse_speed_very_slow">Очень медленно</string>
-  <string name="battery_light_title">Индикация батареи</string>
+  <!-- Battery light settings -->
   <string name="battery_low_pulse_title">Мигать при низком уровне заряда</string>
   <string name="battery_light_list_title">Цвета</string>
   <string name="battery_light_low_color_title">Низкий заряд батареи</string>
-  <string name="battery_light_medium_color_title">Заряжается</string>
-  <string name="battery_light_full_color_title">Полностью заряжена</string>
+  <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">Индикация уведомлений</string>
   <string name="notification_light_general_title">Общие</string>
   <string name="notification_light_applist_title">Приложения</string>
@@ -141,6 +161,7 @@
   <string name="notification_light_missed_call_title">Пропущенный вызов</string>
   <string name="notification_light_voicemail_title">Голосовая почта</string>
   <string name="notification_light_screen_on">Индикатор при включенном экране</string>
+  <!-- Profiles -->
   <string name="profile_reset_title">Сброс</string>
   <string name="profiles_add">Добавить</string>
   <string name="profile_choose_app">Выберите приложение</string>
@@ -149,6 +170,7 @@
   <string name="select_custom_app_title">Выберите пользовательские приложения</string>
   <string name="select_custom_activity_title">Выберите настраиваемое действие</string>
   <string name="systemuituner">Настройка пользовательского интерфейса</string>
+  <!-- Color Picker -->
   <string name="dialog_color_picker_title">Палитра цветов</string>
   <string name="press_color_to_apply">Нажмите на цвет ниже, чтобы применить</string>
   <string name="palette_screwd_title">Screwd</string>
@@ -161,10 +183,14 @@
   <string name="hex">Hex:</string>
   <string name="hex_hint">#ff000000</string>
   <string name="set">Установить</string>
+  <!-- Clang version -->
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Варианты перезагрузки</string>
   <string name="advanced_reboot_summary">Когда разблокирован, отображает параметры в меню выключения для перезагрузки в режим recovery, загрузчика или мягкой перезагрузки</string>
+  <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Варианты перезагрузки</string>
   <string name="advanced_reboot_summary">Когда разблокирован, отображает параметры в меню выключения для перезагрузки в режим recovery, загрузчика или мягкой перезагрузки</string>
+  <!-- Power menu -->
   <string name="power_menu_title">Меню управления питанием</string>
   <string name="power_menu_power_title">Выключить</string>
   <string name="power_menu_reboot_title">Меню перезагрузки</string>
@@ -176,18 +202,27 @@
   <string name="power_menu_bug_report_title">Отчет об ошибке</string>
   <string name="power_menu_sound_title">Звуковая панель</string>
   <string name="power_menu_bug_report_disabled">Сообщение об ошибках отключено в настройках разработчика</string>
-  <string name="navigation_bar_left_title">Режим левши</string>
-  <string name="navigation_bar_left_summary">Размещать панель навигации в левой части экрана в ландшафтном режиме</string>
+  <!-- Doze options -->
   <string name="display_category_doze_options_title">Запрет спящего режима</string>
   <string name="doze_settings_title">Дополнительные параметры режима doze</string>
   <string name="doze_timeout_title">Тайм-аут мигания режима Doze</string>
   <string name="doze_timeout_summary">Время, в течении которого экран остается включеным при уведомлении</string>
+  <!-- Recents panel -->
   <string name="show_clear_all_recents_button_title">Кнопка \"очистить все\"</string>
+  <!-- Preference category for LAN development settings. [CHAR LIMIT=25] -->
+  <!-- Hostname setting -->
+  <!-- Bluetooth settings. A checkbox to set if we should accept all the file types regardless of their presence in MIME type whitelist -->
+  <!-- Quick settings quick pull down -->
+  <!-- Quick Settings brightness slider -->
+  <!-- QuickSettings haptic feedback -->
   <string name="quick_settings_vibrate_title">Вибрация при нажатии</string>
+  <!-- QuickSettings 4 columns -->
   <string name="qs_four_columns_title">Показать четыре плитки в строке</string>
+  <!-- QuickSettings main tiles -->
   <string name="qs_main_tiles_title">Увеличить первую строку</string>
   <string name="qs_main_tiles_summary_on">Две главных плитки в первой строке</string>
   <string name="qs_main_tiles_summary_off">Три или четыре плитки в каждой строке</string>
+  <!-- Display : Rotation -->
   <string name="display_rotation_title">Автоповорот</string>
   <string name="display_rotation_disabled">Отключено</string>
   <string name="display_rotation_unit">градусов</string>
@@ -196,38 +231,159 @@
   <string name="display_rotation_90_title">90 градусов</string>
   <string name="display_rotation_180_title">180 градусов</string>
   <string name="display_rotation_270_title">270 градусов</string>
+  <!-- EdgeGesture service -->
+  <!-- Expanded desktop -->
+  <!-- Heads up -->
+  <!-- Time-context headers in notification header -->
+  <!-- Lock screen wallpaper -->
+  <!-- Status bar brightness control-->
+  <!-- Battery saver color -->
+  <!-- Lockscreen weather -->
   <string name="position_right_title">Справа</string>
   <string name="position_centered_title">По центру</string>
   <string name="hidden_title">Скрыт</string>
+  <!-- Lockscreen blur/see through -->
+  <!-- Status bar temperature -->
+  <!-- Scramble pin -->
+  <!-- Notification counters -->
+  <!-- Keyboard and Input methods  -->
   <string name="attention">Внимание</string>
+  <!-- Status bar | Network Traffic -->
+  <!-- Force expand notifications -->
+  <!-- Media art -->
+  <!-- Gesture Anywhere -->
+  <!-- Label, button used to add a gesture -->
+  <!-- Label, button used to reload all gestures -->
+  <!-- Label, button used to cancel the operation of adding a gesture -->
+  <!-- Label, button used to save a gesture newly created -->
+  <!-- Label, prompt asking the user to enter the name of the gesture -->
+  <!-- Error message, informs the user he needs to enter a name before saving a gesture -->
+  <!-- success message, tells the user where the gesture was saved -->
+  <!-- Buttons in Rename gesture dialog box -->
+  <!-- Buttons in Rename gesture dialog box -->
+  <!-- Message displayed when the user opens the gestures settings screen -->
+  <!-- Message displayed when the user has no gestures -->
+  <!-- Title of the screen used to view/manage gestures -->
+  <!-- Noun, menu item used to edit a gesture -->
+  <!-- Noun, menu item used to remove a gesture -->
+  <!-- Message displayed when a gesture is successfully deleted -->
+  <!-- Title of dialog box -->
+  <!-- Label of gesture name field in Rename gesture dialog box -->
+  <!-- Message, displayed when the sdcard cannot be found, 1st parameter is the name of the file that stores the gestures.  CHAR LIMIT=80 -->
   <string name="picker_activities">Действия</string>
   <string name="select_custom_app_title">Выберите пользовательские приложения</string>
   <string name="select_custom_activity_title">Выберите настраиваемое действие</string>
   <string name="profile_applist_title">Приложения</string>
-  <string name="navigation_bar_size_42_dp_default">42 dp (по умолчанию)</string>
-  <string name="navigation_bar_size_36_dp">36 dp</string>
-  <string name="navigation_bar_size_30_dp">30 dp</string>
-  <string name="navigation_bar_size_24_dp">24 dp</string>
-  <string name="navigation_bar_size_48_dp_default">42 dp (по умолчанию)</string>
-  <string name="navigation_bar_size_44_dp">44 dp</string>
-  <string name="navigation_bar_size_40_dp">40 dp</string>
-  <string name="navigation_bar_size_42_dp">42 dp</string>
-  <string name="navigation_bar_size_0_dp">0 dp (выкл.)</string>
-  <string name="navigation_bar_height_title">Высота панели навигации</string>
-  <string name="navigation_bar_height_landscape_title">Высота панели навигации в ландшафтном режиме</string>
-  <string name="navigation_bar_width_title">Ширина панели навигации</string>
-  <string name="navbar_dimensions_reset_message">Сбросить все размеры по умолчанию?</string>
+  <!-- Lock screen rotation -->
+  <!-- Battery Bar -->
+  <!-- Restart SystemUI -->
+  <!-- Slim DSLV -->
+  <!-- Button shorcut actions -->
+  <!-- Lockscreen shortcuts -->
+  <!-- AOKP custom system animations -->
+  <!-- Toast Animation -->
+  <!-- ListView animation -->
+  <!-- ListView interpolator -->
+  <!-- Disabling FC notifications -->
+  <!-- Doze notification color invert -->
+  <!-- Breathing Notifications -->
+  <!-- Toast Icons -->
+  <!--Power menu on lockscreen -->
+  <!-- Media ducking -->
+  <!-- Navbar cursor buttons -->
+  <!-- LCD Density -->
+  <!-- Disable animations -->
+  <!-- Keep screen on strings -->
+  <!-- CM Lockscreen shortcuts -->
+  <!-- AOSP MultiWindow -->
+  <!-- Qucik unlock -->
+  <!-- OmniSwitch -->
+  <!-- Swap volume buttons when the screen is rotated -->
+  <!-- Option to enable/disable scrolling cache -->
+  <!-- Android debugging over WiFi -->
+  <!-- Warning for Adb over Network -->
+  <!-- Wake on Plug -->
+  <!-- Carrier label -->
+  <!-- Volume Keys Media Control -->
+  <!-- Immersive Recents-->
+  <!-- Blacklist preferences -->
+  <!-- Blacklist management -->
+  <!-- Privacy Settings Header item -->
+  <!-- Linked / unlinked notification volume -->
+  <!-- Volume buttons for DND -->
+  <!-- PA Pie control -->
+  <!-- On-The-Go -->
+  <!-- Volume Steps -->
+  <!-- App Circle sidebar -->
+  <!-- Break SystemUI Tuner into two parts -->
+  <!-- Recent panel -->
+  <!-- ATTENTION: RTL languages need to replace left with right -->
   <string name="default_string">По умолчанию</string>
+  <!-- Volume button music seek -->
+  <!-- Power menu Animations  -->
+  <!-- Statusbar Clock options -->
   <string name="default_string">По умолчанию</string>
   <string name="reset">Сброс</string>
+  <!-- QS -->
   <string name="qs_main_tiles_title">Увеличить первую строку</string>
   <string name="qs_main_tiles_summary_on">Две главных плитки в первой строке</string>
   <string name="qs_main_tiles_summary_off">Три или четыре плитки в каждой строке</string>
   <string name="qs_four_columns_title">Показать четыре плитки в строке</string>
+  <!-- Color Picker -->
   <string name="press_color_to_apply">Нажмите на цвет ниже, чтобы применить</string>
   <string name="arrow_right">→</string>
   <string name="arrow_down">↓</string>
   <string name="hex">Hex:</string>
   <string name="hex_hint">#ff000000</string>
   <string name="set">Установить</string>
+  <!-- Instant reboot -->
+  <!--Fingerprint auth vibration -->
+  <!-- Lockscreen Torch toggle -->
+  <!-- Disable OS on LS -->
+  <!-- Less notification sounds -->
+  <!-- Screenshot sound -->
+  <!-- QS shade transparency -->
+  <!-- QS header transparency -->
+  <!-- Volume dialog transparency -->
+  <!-- Power menu and dialogs transparency -->
+  <!-- Lock cLock -->
+  <!-- Dashboard settings -->
+  <!-- About Screw'd -->
+  <!-- Share Screwd -->
+  <!-- Screw'd Sites -->
+  <!-- Keyguard notifications options -->
+  <!-- Increasing ring tone volume -->
+  <!-- Task Manager -->
+  <!--Heads Up -->
+  <!-- Heads up timeout -->
+  <!-- Hide lockscreen clock & date -->
+  <!-- Smart Pulldown -->
+  <!-- Statusbar SCREW'D logo -->
+  <!-- Flashlight notification -->
+  <!--Secure lockscreen bouncer -->
+  <!-- Notification spamfilter -->
+  <!-- Optional Dashboard Switches -->
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
+  <!-- Lock screen vibrate settings -->
+  <!-- Navigation Bar -->
+  <string name="navigation_bar_left_title">Режим левши</string>
+  <string name="navigation_bar_left_summary">Размещать панель навигации в левой части экрана в ландшафтном режиме</string>
+  <!-- Actions dialog and default task values set in ActionPreference xml-->
+  <!-- Fling -->
+  <!-- Pulse navigation bar music visualizer -->
+  <!-- Navbar height -->
+  <string name="positive_done">Готово</string>
+  <!-- SmartBar -->
+  <!-- Heads Up button -->
+  <!-- Header image shadow -->
+  <!-- Hide Apps from Recents -->
+  <!-- Heads up snooze -->
+  <!-- Floating Windows -->
+  <!-- Omni Weather -->
+  <!-- Slim Shortcuts -->
+  <!-- Chamber of Secrets -->
+  <!-- Advanced storage settings -->
+  <!-- USB data automatic unlock -->
 </resources>

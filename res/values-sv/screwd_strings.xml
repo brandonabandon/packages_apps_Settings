@@ -17,7 +17,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Screw'd Settings -->
   <string name="header_customize">Anpassa</string>
-  <string name="header_category_screwd">Skruv \'d inställningar</string>
   <string name="ui">Användargränssnitt</string>
   <string name="system">System</string>
   <string name="notifications">Aviseringar</string>
@@ -40,7 +39,6 @@
   <string name="battery2_summary">Anpassa batteri ikon och procent</string>
   <string name="notification_drawer_cat">Aviseringsfält</string>
   <string name="lockscreen_options_title">Anpassa låsskärmen</string>
-  <string name="navbar_slimdim_cat">SlimDim</string>
   <string name="lockscreen_shortcuts_cat">Genvägar</string>
   <string name="statusbar_clock_cat">Klock alternativ</string>
   <string name="statusbar_notif_cat">Meddelandealternativ</string>
@@ -116,7 +114,6 @@
   <string name="kill_app_longpress_back">Döda appar med bakåtknapp</string>
   <string name="kill_app_longpress_back_summary">Döda appar i förgrunden genom att långtrycka på bakåtknappen</string>
   <!-- Double Tap Navbar to Sleep -->
-  <string name="double_tap_sleep_nav_bar_title">Dubbeltryck för att släcka</string>
   <string name="double_tap_sleep_nav_bar_summary">Dubbeltryck på statusfältet för att stänga av skärmen</string>
   <!-- Double tap-to-sleep -->
   <string name="double_tap_to_sleep_title">Dubbeltryck för att släcka</string>
@@ -155,11 +152,9 @@
   <string name="pulse_speed_slow">Långsam</string>
   <string name="pulse_speed_very_slow">Mycket långsam</string>
   <!-- Battery light settings -->
-  <string name="battery_light_title">Batteriljus</string>
   <string name="battery_low_pulse_title">Pulsera vid lågt batteri</string>
   <string name="battery_light_list_title">Färger</string>
   <string name="battery_light_low_color_title">Batterinivån låg</string>
-  <string name="battery_light_medium_color_title">Laddar</string>
   <!-- Lights settings screen, notification light settings -->
   <string name="notification_light_title">Aviseringsljus</string>
   <string name="notification_light_general_title">Allmänna</string>
@@ -186,6 +181,7 @@
   <string name="palette_rgb_title">RGB</string>
   <string name="reset_android_title">Android standard</string>
   <string name="reset_screwd_title">Screwd standard</string>
+  <!-- Clang version -->
   <!-- Advanced reboot options -->
   <string name="advanced_reboot_title">Avancerad omstart</string>
   <string name="advanced_reboot_summary">När upplåst, inkludera alternativ i avstängningsmenyn för omstart till recovery, bootloader eller utför en mjuk omstart</string>
@@ -206,8 +202,6 @@
   <string name="power_menu_sound_title">Ljud panel</string>
   <string name="power_menu_bug_report_disabled">Buggrapportering har inaktiverats i utvecklaralternativ</string>
   <string name="powermenu_screenshot_delay_title">Ställ fördröjning skärmdump</string>
-  <string name="navigation_bar_left_title">Vänsterhänt läge</string>
-  <string name="navigation_bar_left_summary">Placera navigeringsfältet till vänster på skärmen i liggande läge</string>
   <!-- Doze options -->
   <string name="display_category_doze_options_title">Omgivande skärm</string>
   <string name="doze_settings_title">Avancerade doze alternativ</string>
@@ -337,9 +331,6 @@
   <!-- Scramble pin -->
   <string name="unlock_scramble_pin_layout_title">Slumpmässig tangentbordslayout</string>
   <string name="unlock_scramble_pin_layout_summary">Slumpmässigt tangentbord för PIN-kodlås</string>
-  <!-- Weather in status bar -->
-  <string name="status_bar_show_weather_title">Visa väder</string>
-  <string name="status_bar_show_weather_summary">Visa vädret i status fältet</string>
   <!-- Notification counters -->
   <string name="status_bar_notif_count_title">Visa antal aviseringar</string>
   <string name="status_bar_notif_count_summary">Visa antalet väntande aviseringar</string>
@@ -435,8 +426,6 @@
   <string name="battery_bar_animate_summary">Laddnings animeringen kan resultera i en dålig användarupplevelse. Aktivera på ditt egen risk.</string>
   <!-- Restart SystemUI -->
   <string name="restart_systemui">Starta om SystemUI</string>
-  <!-- SlimDim -->
-  <string name="dim_nav_buttons_category">SlimDim</string>
   <!-- Slim DSLV -->
   <string name="shortcut_action_none">Ingen</string>
   <string name="shortcut_action_warning">Varning</string>
@@ -498,77 +487,18 @@
   <string name="shortcuts_icon_picker_unlock">Lås upp</string>
   <!-- Button shorcut actions -->
   <string name="shortcut_action_back">Tillbaka</string>
+  <string name="shortcut_action_none">Ingen</string>
   <string name="shortcut_action_app">Anpassad app</string>
-  <string name="shortcut_action_expanded_desktop">Utökat skrivbord</string>
   <string name="shortcut_action_home">Hem</string>
-  <string name="shortcut_action_kill">Döda app</string>
-  <string name="shortcut_action_lastapp">Senaste app</string>
-  <string name="shortcut_action_menu_big">Stor meny</string>
-  <string name="shortcut_action_navbar">Navigeringsfält</string>
-  <string name="shortcut_action_notifications">Aviseringar</string>
-  <string name="shortcut_action_menu_big">Stor meny</string>
+  <string name="shortcut_action_back">Tillbaka</string>
   <string name="shortcut_action_ime">Öppna IME väljare</string>
   <string name="shortcut_action_power_menu">Avstängningsmeny</string>
-  <string name="shortcut_action_qs">Snabbinställningar</string>
-  <string name="shortcut_action_smart">Smart neddragning</string>
   <string name="shortcut_action_recent">Senaste</string>
+  <string name="shortcut_action_power">Skärm Av</string>
+  <string name="shortcut_action_search">Sök i app</string>
   <string name="shortcut_action_ring_vib">Ljud/Vib</string>
   <string name="shortcut_action_ring_silent">Ljud/Tyst</string>
   <string name="shortcut_action_ring_vib_silent">Ljud/Vibrera/Tyst</string>
-  <string name="shortcut_action_now_on_tap">Now on Tap</string>
-  <string name="shortcut_action_power">Skärm Av</string>
-  <string name="shortcut_action_screenshot">Skärmbild</string>
-  <string name="shortcut_action_assist">Sök</string>
-  <string name="shortcut_action_search">Sök i app</string>
-  <string name="shortcut_action_theme_switch">Temaväljare</string>
-  <string name="shortcut_action_torch">Ficklampa</string>
-  <string name="shortcut_action_voice_search">Röstsökning</string>
-  <string name="shortcut_action_none">Ingen</string>
-  <!-- Navigation bar -->
-  <string name="navigation_bar_size_42_dp_default">42 dp (standard)</string>
-  <string name="navigation_bar_size_36_dp">36 dp</string>
-  <string name="navigation_bar_size_30_dp">30 dp</string>
-  <string name="navigation_bar_size_24_dp">24 dp</string>
-  <string name="navigation_bar_size_48_dp_default">48 dp (standard)</string>
-  <string name="navigation_bar_size_44_dp">44 dp</string>
-  <string name="navigation_bar_size_40_dp">40 dp</string>
-  <string name="navigation_bar_size_42_dp">42 dp</string>
-  <string name="navigation_bar_size_0_dp">0 dp (av)</string>
-  <string name="navigation_menu_right">Höger</string>
-  <string name="navigation_menu_left">Vänster</string>
-  <string name="navigation_menu_both">Båda</string>
-  <string name="navigation_menu_default_jb_behavior">Visa på begäran (standard)</string>
-  <string name="navigation_menu_never_show">Visa aldrig</string>
-  <string name="navigation_menu_always_show">Visa alltid</string>
-  <string name="navigation_bar">Navigeringsfält</string>
-  <string name="navbar_button_cat">Navigeringsknappar</string>
-  <string name="title_pref_menu_location">Menyplacering</string>
-  <string name="summary_pref_menu_location">Var vill du menyknapparna ska visas?</string>
-  <string name="title_pref_menu_display">Menyn synlighet</string>
-  <string name="summary_pref_menu_display">Hur och När vill du menyknapparna ska visas?</string>
-  <string name="navbar_enable_bar">Aktivera navigeringsfält</string>
-  <string name="navbar_enable_bar_summary">Aktivera navigeringsfältet</string>
-  <string name="navigation_bar_height_summary">Navigeringsfält höjd porträtt.</string>
-  <string name="navigation_bar_height_landscape_title">Navigeringsfält höjd landskap</string>
-  <string name="navigation_bar_height_landscape_summary">Navigeringsfält höjd landskap.</string>
-  <string name="navigation_bar_width_title">Navigeringsfält bredd</string>
-  <string name="navbar_can_move">Visa landskap</string>
-  <string name="navbar_can_move_summary">Visar navigeringsfältet längst ner i landskap</string>
-  <string name="navbar_style_dimen_title">Dimensioner</string>
-  <string name="navbar_button_title">Knappar</string>
-  <string name="navbar_cat">Navigeringsfält</string>
-  <string name="navbar_dimensions_reset_message">Återställa alla dimensioner till standard?</string>
-  <string name="navbar_button_style_reset_message">Återställa alla stiler till standard?</string>
-  <string name="shortcut_action_required_warning_message">Det går inte att ta bort dessa knappar</string>
-  <!-- Navigation bar button style -->
-  <string name="nav_bar_button_style">Stil på knappar</string>
-  <string name="nav_bar_button_style_summary">Ändra knappar på navigeringsfältet</string>
-  <string name="button_transparency_title">Genomskinlighet knappar</string>
-  <string name="navigation_bar_icon_tint_title">Knapp färg</string>
-  <string name="nav_button_color_mode_title">Färgläge</string>
-  <string name="nav_button_color_mode_dialog_title">Färglägg</string>
-  <string name="shortcuts_icon_custom">Galleri</string>
-  <string name="shortcuts_icon_picker_choose_icon_title">Välj ikon</string>
   <string name="shortcut_action_warning">Varning</string>
   <string name="shortcut_action_help_shortcut">genväg</string>
   <string name="shortcut_action_help_button">knappen</string>
@@ -621,7 +551,6 @@
   <string name="keep_screen_on_debugging">Vid USB-felsökning</string>
   <string name="keep_screen_on_charging">Under laddning</string>
   <!-- CM Lockscreen shortcuts -->
-  <string name="lockscreen_targets_message">Nedre genvägar</string>
   <!-- AOSP MultiWindow -->
   <string name="multiwindow_settings_title">Fler fönster</string>
   <string name="enable_multi_window">Fler fönster-läge</string>
@@ -658,7 +587,6 @@
   <string name="wake_when_plugged_or_unplugged_title">Vakna vid koppling</string>
   <string name="wake_when_plugged_or_unplugged_summary">Starta skärmen vid anslutning till eller frånkoppling från strömkälla</string>
   <!-- Carrier label -->
-  <string name="carrier_title">Operatörsnamn</string>
   <string name="carrier_options_summary">Anpassa operatörsnamn</string>
   <string name="custom_carrier_label_title">Anpassa operatörsnamn</string>
   <!-- Volume Keys Media Control -->
@@ -809,8 +737,6 @@
   <!-- Screenshot sound -->
   <string name="screenshot_sound_title">Skärmdump ljud</string>
   <string name="screenshot_sound_summary">Spel ljudeffekt när skärmdump tas</string>
-  <!-- Seconds clock -->
-  <string name="status_bar_show_clock_second_title">Klock sekunder</string>
   <!-- QS shade transparency -->
   <!-- QS header transparency -->
   <!-- Volume dialog transparency -->
@@ -822,18 +748,40 @@
   <!-- About Screw'd -->
   <!-- Share Screwd -->
   <!-- Screw'd Sites -->
-  <!-- Navbar cursor buttons -->
   <!-- Keyguard notifications options -->
   <!-- Increasing ring tone volume -->
   <!-- Task Manager -->
   <!--Heads Up -->
   <string name="heads_up_notifications">Heads up</string>
+  <!-- Heads up timeout -->
   <!-- Hide lockscreen clock & date -->
-  <!-- Selinux Switch -->
   <!-- Smart Pulldown -->
   <!-- Statusbar SCREW'D logo -->
   <!-- Flashlight notification -->
   <!--Secure lockscreen bouncer -->
   <!-- Notification spamfilter -->
   <!-- Optional Dashboard Switches -->
+  <!-- Sizes for pattern lockscreen -->
+  <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
+  <!-- Whether the dots will be drawn when using the lockscreen pattern -->
+  <!-- Lock screen vibrate settings -->
+  <!-- Navigation Bar -->
+  <string name="navigation_bar_left_title">Vänsterhänt läge</string>
+  <string name="navigation_bar_left_summary">Placera navigeringsfältet till vänster på skärmen i liggande läge</string>
+  <!-- Actions dialog and default task values set in ActionPreference xml-->
+  <!-- Fling -->
+  <!-- Pulse navigation bar music visualizer -->
+  <!-- Navbar height -->
+  <string name="positive_done">Klart</string>
+  <!-- SmartBar -->
+  <!-- Heads Up button -->
+  <!-- Header image shadow -->
+  <!-- Hide Apps from Recents -->
+  <!-- Heads up snooze -->
+  <!-- Floating Windows -->
+  <!-- Omni Weather -->
+  <!-- Slim Shortcuts -->
+  <!-- Chamber of Secrets -->
+  <!-- Advanced storage settings -->
+  <!-- USB data automatic unlock -->
 </resources>
