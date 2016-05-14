@@ -87,6 +87,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_DEVICE_MEMORY = "device_memory";
     private static final String KEY_DTC_VERSION = "dtc_version";
     private static final String PROPERTY_DTC_VERSION = "ro.dtc.version";
+    private static final String KEY_SM_AND = "sm_android";
+    private static final String KEY_SM_FLAGS = "sm_flags";
 
     private static final String KEY_DEVICE_REAR_CAMERA = "device_rear_camera";
     private static final String KEY_DEVICE_FRONT_CAMERA = "device_front_camera";
@@ -141,6 +143,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setValueSummary(KEY_MOD_VERSION, "ro.screwd.version");
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
         setValueSummary(KEY_DTC_VERSION, "ro.dtc.version");
+        findPreference(KEY_SM_AND).setEnabled(true);
+        findPreference(KEY_SM_FLAGS).setEnabled(true);
+        setValueSummary(KEY_SM_AND, "ro.sm.android");
+        setValueSummary(KEY_SM_FLAGS, "ro.sm.flags");
 
         addStringPreference(KEY_DEVICE_CHIPSET,
                 SystemProperties.get("ro.device.chipset", null));
