@@ -141,24 +141,12 @@
                 android:title="@string/build_number"
                 android:summary="@string/device_info_default"/>
 
-         <!-- GCC build info --> 
-         <PreferenceScreen android:key="dtcbanner"
-                           android:enabled="false"
-                           android:layout="@layout/dtcbanner_row"
-                           android:selectable="false" />
-
        <!-- GCC build info -->
        <Preference android:key="dtc_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/dtc_version"
                 android:summary="@string/dtc_version_default"
                 android:selectable="false" />
-
-         <!-- GCC build info --> 
-         <PreferenceScreen android:key="hyperbanner"
-                           android:enabled="false"
-                           android:layout="@layout/hyperbanner_row"
-                           android:selectable="false" />
 
         <Preference android:key="sm_android"
                  style="?android:preferenceInformationStyle"
